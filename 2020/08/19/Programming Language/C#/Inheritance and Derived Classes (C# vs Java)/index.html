@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#F8865B"><meta name="author" content="Alyssa"><meta name="copyright" content="Alyssa"><meta name="generator" content="Hexo 5.0.2"><meta name="theme" content="hexo-theme-yun"><title>Inheritance and Derived Classes (C# vs Java) | 各有未来</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400&amp;display=swap" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.19/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_stqaphw3j4.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false},
+      {left: "\\[", right: "\\]", display: true}
+    ]
+  });
+});</script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#F8865B"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"各有未来","version":"0.9.7","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"/data/sentences.json"},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><meta name="description" content="In C#, both inheritance and interface implementation are defined by the : operator, equivalent to extends and implements in Java. The base class should always be leftmost in the class declaration. Li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Inheritance and Derived Classes (C# vs Java)">
+<meta property="og:url" content="http://yoursite.com/2020/08/19/Programming%20Language/C#/Inheritance%20and%20Derived%20Classes%20(C#%20vs%20Java)/index.html">
+<meta property="og:site_name" content="各有未来">
+<meta property="og:description" content="In C#, both inheritance and interface implementation are defined by the : operator, equivalent to extends and implements in Java. The base class should always be leftmost in the class declaration. Li">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-19T06:17:59.000Z">
+<meta property="article:modified_time" content="2020-08-19T07:29:05.000Z">
+<meta property="article:author" content="Alyssa">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script><link id="light-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link id="dark-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="Alyssa"><img width="96" loading="lazy" src="/images/toux.jpg" alt="Alyssa"></a><div class="site-author-name"><a href="/about/">Alyssa</a></div><a class="site-name" href="/about/site.html">各有未来</a><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">29</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">11</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">10</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/YunYouJun" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="292704929@qq.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-base-Keyword"><span class="toc-number">1.</span> <span class="toc-text">The base Keyword</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Selecting-Constructors"><span class="toc-number">2.</span> <span class="toc-text">Selecting Constructors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Method-Overriding-Virtual-Methods"><span class="toc-number">3.</span> <span class="toc-text">Method Overriding: Virtual Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-Classes"><span class="toc-number">4.</span> <span class="toc-text">Abstract Classes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interfaces"><span class="toc-number">5.</span> <span class="toc-text">Interfaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementing-Multiple-Interfaces"><span class="toc-number">6.</span> <span class="toc-text">Implementing Multiple Interfaces</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/19/Programming%20Language/C#/Inheritance%20and%20Derived%20Classes%20(C#%20vs%20Java)/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Alyssa"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="各有未来"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Inheritance and Derived Classes (C# vs Java)</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-08-19 14:17:59" itemprop="dateCreated datePublished" datetime="2020-08-19T14:17:59+08:00">2020-08-19</time></div><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/Languages/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">Languages</span></a></span> > <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/Languages/C/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">C#</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/C/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">C#</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#F8865B;"><blockquote>
+<p>In C#, both inheritance and interface implementation are defined by the : operator, equivalent to extends and implements in Java. The base class should always be leftmost in the class declaration.</p>
+<p>Like Java, C# does not support multiple inheritance, meaning that classes cannot inherit from more than one class. You can, however, use interfaces for that purpose in the same way as in Java.</p>
+</blockquote>
+<p>The following code defines a class called CoOrds with two private member variables x and y representing the position of the point. These variables are accessed through properties called X and Y respectively:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public class CoOrds
+&#123;
+    private int x, y;
+
+    public CoOrds()  &#x2F;&#x2F; constructor
+    &#123;
+        x &#x3D; 0;
+        y &#x3D; 0;
+    &#125;
+
+    public int X
+    &#123;
+        get &#123; return x; &#125;
+        set &#123; x &#x3D; value; &#125;
+    &#125;
+
+    public int Y
+    &#123;
+        get &#123; return y; &#125;
+        set &#123; y &#x3D; value; &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>You derive a new class, called ColorCoOrds, from the CoOrds class, as follows:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public class ColorCoOrds : CoOrds</code></pre>
+
+<p>ColorCoOrds then inherits all the fields and methods of the base class, to which you can add new ones to provide extra features in the derived class according to our needs. In this example, you add a private member and accessors to add color to the class:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public class ColorCoOrds : CoOrds
+&#123;
+    private System.Drawing.Color screenColor;
+
+    public ColorCoOrds()  &#x2F;&#x2F; constructor
+    &#123;
+        screenColor &#x3D; System.Drawing.Color.Red;
+    &#125;
+
+    public System.Drawing.Color ScreenColor
+    &#123;
+        get &#123; return screenColor; &#125;
+        set &#123; screenColor &#x3D; value; &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>The constructor of the derived class implicitly calls the constructor for the base class, or the superclass in Java terminology. In inheritance, all base class constructors are called before the derived class’s constructors in the order that the classes appear in the class hierarchy.</p>
+<h2 id="The-base-Keyword"><a href="#The-base-Keyword" class="headerlink" title="The base Keyword"></a>The base Keyword</h2><blockquote>
+<p>You can access base class members in a subclass even when those base members are overridden in the superclass using the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/hfw7t1ce(v=vs.90)">base</a> keyword. </p>
+<p>也就是说，即使父类的方法在子类中被重写了，那么使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/hfw7t1ce(v=vs.90)">base</a> 关键字，仍可访问父类中的该方法。</p>
+</blockquote>
+<p>For instance, you can create a derived class which contains a method with the same signature as in the base class. If you prefaced that method with the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/435f1dw2(v=vs.90)">new</a> keyword, you indicate that this is an all-new method belonging to the derived class. You could still provide a method for accessing the original method in the base class with the base keyword.</p>
+<p>For instance, say your base CoOrds class had a method called Invert(), which swaps the x and y coordinates. You could provide a substitute for this method in your derived ColorCoOrds class with code like this:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public new void Invert()
+&#123;
+    int temp &#x3D; X;
+    X &#x3D; Y;
+    Y &#x3D; temp;
+    screenColor &#x3D; System.Drawing.Color.Gray;
+&#125;</code></pre>
+
+<p>As you can see, this method swaps x and y, and then sets the coordinates’ color to gray. You could provide access to the base implementation for this method by creating another method in ColorCoOrds, such as this one:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public void BaseInvert()
+&#123;
+    base.Invert();
+&#125;</code></pre>
+
+<p>You then invoke the base method on a ColorCoOrds object by calling the BaseInvert() method.</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">ColorCoOrds color1 &#x3D; new ColorCoOrds();
+color1.BaseInvert();</code></pre>
+
+<p>Remember that you would get the same effect if you assigned a reference to the base class to an instance of ColorCoOrds, and then accessed its methods:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">CoOrds coords1 &#x3D; color1;
+coords1.Invert();</code></pre>
+
+<h2 id="Selecting-Constructors"><a href="#Selecting-Constructors" class="headerlink" title="Selecting Constructors"></a>Selecting Constructors</h2><p>Base class objects are always constructed before any deriving class. Thus the constructor for the base class is executed before the constructor of the derived class. If the base class has more than one constructor, the derived class can decide the constructor to be called. For example, you could modify your CoOrds class to add a second constructor, as follows:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public class CoOrds
+&#123;
+    private int x, y;
+
+    public CoOrds()
+    &#123;
+        x &#x3D; 0;
+        y &#x3D; 0;
+    &#125;
+
+    public CoOrds(int x, int y)
+    &#123;
+        this.x &#x3D; x;
+        this.y &#x3D; y;
+    &#125;
+&#125;</code></pre>
+
+<p>You could then change the ColorCoOrds class to use a particular one of the available constructors using the base keyword:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public class ColorCoOrds : CoOrds
+&#123;
+    public System.Drawing.Color color;
+
+    public ColorCoOrds() : base ()
+    &#123;
+        color &#x3D; System.Drawing.Color.Red;
+    &#125;
+
+    public ColorCoOrds(int x, int y) : base (x, y)
+    &#123;
+        color &#x3D; System.Drawing.Color.Red;
+    &#125;
+&#125;</code></pre>
+
+<p>In Java, this functionality is implemented using the super keyword.</p>
+<h2 id="Method-Overriding-Virtual-Methods"><a href="#Method-Overriding-Virtual-Methods" class="headerlink" title="Method Overriding: Virtual Methods"></a>Method Overriding: Virtual Methods</h2><blockquote>
+<p>A method that is to be overridden in a derived class is declared with the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/9fkccyh4(v=vs.90)">virtual</a> modifier. In a derived class, the overridden method is declared using the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ebca9ah3(v=vs.90)">override</a> modifier.</p>
+<p>就是被重写的方法，必须要在父类中用 virtual 声明，然后在子类中，重写时要用 override 声明。</p>
+</blockquote>
+<p>The override modifier denotes a method or a property of a derived class that replaces one with the same name and signature in the base class. The base method, which is to be overridden, must be declared as virtual, <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/sf985hc5(v=vs.90)">abstract</a>, or override: it is not possible to override a non-virtual or static method in this way. Both the overridden and the overriding method or property must have the same access-level modifiers.</p>
+<p>The following example shows a virtual method called StepUp that is overridden in a derived class with the override modifier:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public class CountClass 
+&#123;
+    public int count; 
+
+    public CountClass(int startValue)  &#x2F;&#x2F; constructor
+    &#123;
+        count &#x3D; startValue;
+    &#125;
+
+    public virtual int StepUp()
+    &#123;
+        return ++count;
+    &#125;
+&#125;
+
+class Count100Class : CountClass 
+&#123;
+    public Count100Class(int x) : base(x)  &#x2F;&#x2F; constructor 
+    &#123;
+    &#125;
+
+    public override int StepUp()
+    &#123;
+        return ((base.count) + 100);
+    &#125;
+&#125;
+
+class TestCounters
+&#123;
+    static void Main()
+    &#123;
+        CountClass counter1 &#x3D; new CountClass(1);
+        CountClass counter100 &#x3D; new Count100Class(1);
+
+        System.Console.WriteLine(&quot;Count in base class &#x3D; &#123;0&#125;&quot;, counter1.StepUp());  &#x2F;&#x2F; 2
+        System.Console.WriteLine(&quot;Count in derived class &#x3D; &#123;0&#125;&quot;, counter100.StepUp()); &#x2F;&#x2F; 101
+    &#125; 
+&#125;</code></pre>
+
+<h2 id="Abstract-Classes"><a href="#Abstract-Classes" class="headerlink" title="Abstract Classes"></a>Abstract Classes</h2><p>An abstract class declares one or more methods or properties as abstract. Such methods do not have an implementation provided in the class that declares them, although an abstract class can also contain non-abstract methods, that is, methods for which an implementation has been provided. An abstract class cannot be instantiated directly, but only as a derived class. Such derived classes must provide implementations for all abstract methods and properties, using the override keyword, unless the derived member is itself declared abstract.</p>
+<p>The following example declares an abstract Employee class. You also create a derived class called Manager that provides an implementation of the abstract Show() method defined in the Employee class:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public abstract class Employee 
+&#123; 
+    protected string name;
+
+    public Employee(string name)  &#x2F;&#x2F; constructor
+    &#123; 
+        this.name &#x3D; name;
+    &#125;
+
+    public abstract void Show();  &#x2F;&#x2F; abstract show method
+&#125;
+
+public class Manager: Employee
+&#123; 
+    public Manager(string name) : base(name) &#123;&#125;  &#x2F;&#x2F; constructor 
+
+    public override void Show()  &#x2F;&#x2F;override the abstract show method
+    &#123;
+        System.Console.WriteLine(&quot;Name : &quot; + name);
+    &#125;
+&#125;
+
+class TestEmployeeAndManager
+&#123; 
+    static void Main()
+    &#123; 
+        &#x2F;&#x2F; Create an instance of Manager and assign it to a Manager reference:
+        Manager m1 &#x3D; new Manager(&quot;H. Ackerman&quot;);
+        m1.Show();
+
+        &#x2F;&#x2F; Create an instance of Manager and assign it to an Employee reference:
+        Employee ee1 &#x3D; new Manager(&quot;M. Knott&quot;);
+        ee1.Show();  &#x2F;&#x2F;call the show method of the Manager class
+    &#125; 
+&#125;</code></pre>
+
+<h2 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h2><p>An interface is a sort of skeleton class, containing method signatures but no method implementations. In this way, interfaces are like abstract classes that contain only abstract methods. C# interfaces are very similar to Java interfaces, and work in very much the same way.</p>
+<p>All the members of an interface are public by definition, and an interface cannot contain constants, fields (private data members), constructors, destructors, or any type of static member. The compiler will generate an error if any modifier is specified for the members of an interface.</p>
+<p>You can derive classes from an interface in order to implement that interface. Such derived classes must provide implementations for all the interface’s methods unless the derived class is declared abstract.</p>
+<p>An interface is declared identically to Java. In an interface definition, a property indicates only its type, and whether it is read-only, write-only, or read/write by <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228503(v=vs.90)">get</a> and <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228368(v=vs.90)">set</a> keywords alone. The interface below declares one read-only property:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public interface ICDPlayer
+&#123; 
+    void Play();  &#x2F;&#x2F; method signature 
+    void Stop();  &#x2F;&#x2F; method signature 
+
+    int FastForward(float numberOfSeconds);
+
+    int CurrentTrack  &#x2F;&#x2F; read-only property
+    &#123;
+        get;
+    &#125; 
+&#125;</code></pre>
+
+<p>A class can inherit from this interface using a colon in place of Java’s implements keyword. The implementing class must provide definitions for all methods, and any required property accessors, as follows:</p>
+<pre class="language-c#" data-language="c#"><code class="language-c#">public class CDPlayer : ICDPlayer
+&#123;
+    private int currentTrack &#x3D; 0;
+
+    &#x2F;&#x2F; implement methods defined in the interface 
+    public void Play()
+    &#123;
+        &#x2F;&#x2F; code to start CD...
+    &#125;
+
+    public void Stop()
+    &#123;
+        &#x2F;&#x2F; code to stop CD...
+    &#125;
+
+    public int FastForward(float numberOfSeconds)
+    &#123;
+        &#x2F;&#x2F; code to fast forward CD using numberOfSeconds... 
+
+        return 0;  &#x2F;&#x2F;return success code
+    &#125;
+
+    public int CurrentTrack  &#x2F;&#x2F; read-only property
+    &#123; 
+        get 
+        &#123; 
+            return currentTrack; 
+        &#125; 
+    &#125;
+
+    &#x2F;&#x2F; Add additional methods if required...
+&#125;</code></pre>
+
+<h2 id="Implementing-Multiple-Interfaces"><a href="#Implementing-Multiple-Interfaces" class="headerlink" title="Implementing Multiple Interfaces"></a>Implementing Multiple Interfaces</h2><pre class="language-c#" data-language="c#"><code class="language-c#">public class CDAndDVDComboPlayer : ICDPlayer, IDVDPlayer</code></pre>
+
+<p>If a class implements more than one interface where there is ambiguity in the names of members, it is resolved using the full qualifier for the property or method name. In other words, the derived class can resolve the conflict by using the fully qualified name for the method to indicate to which interface it belongs, as in ICDPlayer.Play().</p>
+</div></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/08/19/Programming%20Language/C#/C#%20for%20Java%20Developers/" rel="next" title="C# for Java Developers"><span class="post-nav-text">C# for Java Developers</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>若您想及时得到回复提醒，建议跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/YunYouJun/yunyoujun.github.io/issues?q=is:issue+Inheritance and Derived Classes (C# vs Java)">GitHub Issues</a></div><div id="valine-container"></div><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function initValine() {
+  const valineConfig = {"enable":true,"appId":"L1L3amngY3t6lUuqj9WFAdmx-gzGzoHsz","appKey":"QxsNKlHq02w0n8rqr5jd0k07","placeholder":"Just go go","avatar":null,"pageSize":10,"visitor":false,"highlight":true,"recordIP":false,"enableQQ":true,"meta":["nick","mail","link"],"el":"#valine-container","lang":"zh-cn"}
+  valineConfig.path = window.location.pathname
+  new Valine(valineConfig)
+}
+setTimeout(initValine, 1000)</script></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> Alyssa</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.0.2</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.7</span></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#F8865B" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script></body></html>
