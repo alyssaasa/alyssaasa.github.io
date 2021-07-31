@@ -17,10 +17,10 @@
   --btn-default-hover-bg: #649ab6;
   --btn-default-hover-color: #fff;
   --btn-default-hover-border-color: #222;
-  --highlight-background: #fff;
-  --highlight-foreground: #4d4d4c;
-  --highlight-gutter-background: #ededed;
-  --highlight-gutter-foreground: #5e5e5d;
+  --highlight-background: #272822;
+  --highlight-foreground: #ddd;
+  --highlight-gutter-background: #393a34;
+  --highlight-gutter-foreground: #cacaca;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -42,10 +42,10 @@
     --btn-default-hover-bg: #666;
     --btn-default-hover-color: #ccc;
     --btn-default-hover-border-color: #666;
-    --highlight-background: #1d1f21;
-    --highlight-foreground: #c5c8c6;
-    --highlight-gutter-background: #2d2f31;
-    --highlight-gutter-foreground: #b4b7b5;
+    --highlight-background: #23241f;
+    --highlight-foreground: #f8f8f2;
+    --highlight-gutter-background: #383934;
+    --highlight-gutter-foreground: #e2e2dc;
   }
   img {
     opacity: 0.75;
@@ -391,154 +391,161 @@ td {
   top: -5px;
   transform: rotate(-45deg);
 }
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-  color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-  color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-  color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-  color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-  color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-  color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-  color: #8959a8;
-}
+/*
+Monokai style - ported by Luigi Maselli - http://grigio.org
+*/
 
 .hljs {
   display: block;
   overflow-x: auto;
-  background: white;
-  color: #4d4d4c;
   padding: 0.5em;
+  background: #272822;
+  color: #ddd;
 }
 
-.hljs-emphasis {
-  font-style: italic;
+.hljs-tag,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-strong,
+.hljs-name {
+  color: #f92672;
 }
 
-.hljs-strong {
+.hljs-code {
+  color: #66d9ef;
+}
+
+.hljs-class .hljs-title {
+  color: white;
+}
+
+.hljs-attribute,
+.hljs-symbol,
+.hljs-regexp,
+.hljs-link {
+  color: #bf79db;
+}
+
+.hljs-string,
+.hljs-bullet,
+.hljs-subst,
+.hljs-title,
+.hljs-section,
+.hljs-emphasis,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #a6e22e;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-title,
+.hljs-section,
+.hljs-type,
+.hljs-selector-id {
   font-weight: bold;
 }
 
 @media (prefers-color-scheme: dark) {
-/* Tomorrow Night Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/*
 
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-  color: #969896;
-}
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
 
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-  color: #cc6666;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-  color: #de935f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-  color: #f0c674;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-  color: #b5bd68;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-  color: #81a2be;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-  color: #b294bb;
-}
+*/
 
 .hljs {
   display: block;
   overflow-x: auto;
-  background: #1d1f21;
-  color: #c5c8c6;
   padding: 0.5em;
+  background: #23241f;
+}
+
+.hljs,
+.hljs-tag,
+.hljs-subst {
+  color: #f8f8f2;
+}
+
+.hljs-strong,
+.hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-link {
+  color: #ae81ff;
+}
+
+.hljs-code,
+.hljs-title,
+.hljs-section,
+.hljs-selector-class {
+  color: #a6e22e;
+}
+
+.hljs-strong {
+  font-weight: bold;
 }
 
 .hljs-emphasis {
   font-style: italic;
 }
 
-.hljs-strong {
-  font-weight: bold;
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-attr {
+  color: #f92672;
+}
+
+.hljs-symbol,
+.hljs-attribute {
+  color: #66d9ef;
+}
+
+.hljs-params,
+.hljs-class .hljs-title {
+  color: #f8f8f2;
+}
+
+.hljs-string,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-variable {
+  color: #e6db74;
+}
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
 }
 
 }
@@ -1269,7 +1276,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .header-inner {
-    width: 72%;
+    width: 82%;
   }
 }
 @media (min-width: 1600px) {
@@ -1704,7 +1711,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .footer-inner {
-    width: 72%;
+    width: 82%;
   }
 }
 @media (min-width: 1600px) {
@@ -2748,7 +2755,7 @@ mjx-container[display="true"] + br {
 }
 @media (min-width: 1200px) {
   .main {
-    width: 72%;
+    width: 82%;
   }
 }
 @media (min-width: 1600px) {
@@ -3068,6 +3075,7 @@ body {
   background-image: url("/images/body-bg.png");
   background-repeat: repeat;
   background-attachment: fixed;
+  background-size: contain;
 }
 @media (prefers-color-scheme: dark) {
   body {
@@ -3392,4 +3400,49 @@ li {
 .v[data-class=v] .vbtn.primary:hover {
   border-color: #649ab6 !important;
   background: #649ab6 !important;
+}
+/*文章 Markdown样式*/
+/*https://cdn.jsdelivr.net/gh/alyssaasa/Markdown@1.2.8/orange.css*/
+.post-body h2 {
+  border-bottom: 2px solid #ef7060;
+}
+.post-body h2 .header-anchor,
+.post-body h2 .headerlink {
+  border-bottom-style: none;
+  color: #fff;
+  float: right;
+  font-size: 0.875em;
+  margin-left: 10px;
+  opacity: 0;
+}
+.post-body h2 .header-anchor::before,
+.post-body h2 .headerlink::before {
+  content: '\f0c1';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+.post-body h2 span {
+  display: inline-block;
+  font-weight: bold;
+  background: #ef7060;
+  color: #fff;
+  padding: 3px 10px 1px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  margin-right: 3px;
+}
+.post-body h2:after {
+  display: inline-block;
+  content: "";
+  vertical-align: bottom;
+  border-bottom: 30px solid #efebe9;
+  border-right: 20px solid transparent;
+}
+.post-body h2:hover .header-anchor,
+.post-body h2:hover .headerlink {
+  opacity: 0.5;
+}
+.post-body h2:hover .header-anchor:hover,
+.post-body h2:hover .headerlink:hover {
+  opacity: 1;
 }

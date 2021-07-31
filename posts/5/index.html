@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#6c599f">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#6c599f">
+  <meta name="google-site-verification" content="SJUudYL5q_atXSgew2qwy69FXOnSnNB2rAmwHmcBT9U">
+  <meta name="baidu-site-verification" content="wvc37nzEad">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.dlzhang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="回溯法：实现某个元素选或不选的问题。  回溯法的基本思想 选当前元素，递归的进行后续元素的选择； 将当前元素拿出，再进行一次不放入该元素，递归的进行后续元素的选择。 本来选择放入，再选择不放入的过程，称为回溯试探法。 回溯就是，返回之前的状态，再进行一次递归。 回溯问题的求解一般流程：  1234567891011121314151617181920212223List&lt;List&lt;O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回溯算法">
+<meta property="og:url" content="https://blog.dlzhang.com/posts/5/">
+<meta property="og:site_name" content="醉里挑灯赏猫">
+<meta property="og:description" content="回溯法：实现某个元素选或不选的问题。  回溯法的基本思想 选当前元素，递归的进行后续元素的选择； 将当前元素拿出，再进行一次不放入该元素，递归的进行后续元素的选择。 本来选择放入，再选择不放入的过程，称为回溯试探法。 回溯就是，返回之前的状态，再进行一次递归。 回溯问题的求解一般流程：  1234567891011121314151617181920212223List&lt;List&lt;O">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-08T13:56:07.000Z">
+<meta property="article:modified_time" content="2021-07-31T12:41:22.000Z">
+<meta property="article:author" content="Alyssa">
+<meta property="article:tag" content="Leetcode">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.dlzhang.com/posts/5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.dlzhang.com/posts/5/","path":"/posts/5/","title":"回溯算法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>回溯算法 | 醉里挑灯赏猫</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141207776-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-141207776-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+<link rel="dns-prefetch" href="https://blog-waline-five.vercel.app/">
+
+
+<link rel="preconnect" href="https://website-1256060851.file.myqcloud.com" crossorigin>
+<link rel="preconnect" href="https://sdn.geekzu.org" crossorigin>
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xiangsudian/CaoMei/style.min.css">
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">醉里挑灯赏猫</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">努力努力再努力</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fas fa-home fa-fw"></i>博客首页</a></li>
+        
+            
+  <li class="menu-item menu-item-overview"><a href="/overview/" rel="section"><i class="fas fa-archive fa-fw"></i>文章总览</a></li>
+
+
+      
+        <li class="menu-item menu-item-more"><a href="/more/" rel="section"><i class="fas fa-location-arrow fa-fw"></i>关于更多</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>全站搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">回溯法的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BE%8B%E9%A2%98"><span class="nav-text">回溯法的相关例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-78-%E6%B1%82%E5%AD%90%E9%9B%86-Subsets"><span class="nav-text">leetcode 78. 求子集 Subsets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-90-%E5%B8%A6%E6%9C%89%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E6%B1%82%E5%AD%90%E9%9B%86-Subsets-II"><span class="nav-text">leetcode 90. 带有重复元素求子集 Subsets II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-46-%E5%85%A8%E6%8E%92%E5%88%97-Permutations"><span class="nav-text">leetcode 46.  全排列 Permutations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-47-%E6%9C%89%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97-Permutations-II"><span class="nav-text">leetcode 47. 有重复元素的全排列 Permutations II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-39-%E5%92%8C%E4%B8%BAtarget%E7%9A%84%E6%89%80%E6%9C%89%E7%BB%84%E5%90%88%EF%BC%8C%E9%80%89%E6%8B%A9%E7%9A%84%E5%85%83%E7%B4%A0%E5%8F%AF%E9%87%8D%E5%A4%8D-Combination-Sum"><span class="nav-text">leetcode 39. 和为target的所有组合，选择的元素可重复 Combination Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-131-Palindrome-Partitioning"><span class="nav-text">leetcode 131. Palindrome Partitioning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-842-Split-Array-into-Fibonacci-Sequence"><span class="nav-text">leetcode 842. Split Array into Fibonacci Sequence</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Alyssa"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Alyssa</p>
+  <div class="site-description" itemprop="description">二次元/coser/手办宅/程序媛</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/overview/timeline/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/overview/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/overview/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Alyssa">
+      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醉里挑灯赏猫">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          回溯算法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发布：</span>
+
+      <time title="创建时间：2019-09-08 21:56:07" itemprop="dateCreated datePublished" datetime="2019-09-08T21:56:07+08:00">2019-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类：</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">评论：</span>
+  
+    <a title="waline" href="/posts/5/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/5/" data-xid="/posts/5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span id="/posts/5/" class="post-meta-item leancloud_visitors" data-flag-title="回溯算法" title="阅读">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>回溯法：实现某个元素选或不选的问题。</p>
+</blockquote>
+<h2 id="回溯法的基本思想"><a href="#回溯法的基本思想" class="headerlink" title="回溯法的基本思想"></a><span>回溯法的基本思想</span></h2><ul>
+<li>选当前元素，递归的进行后续元素的选择；</li>
+<li>将当前元素拿出，再进行一次不放入该元素，递归的进行后续元素的选择。</li>
+<li><strong>本来选择放入，再选择不放入的过程，称为回溯试探法。</strong></li>
+<li>回溯就是，返回之前的状态，再进行一次递归。</li>
+<li>回溯问题的求解一般流程：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;Object&gt;&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(字符串 或 数组, <span class="keyword">int</span> index, List&lt;Object&gt; tmp....)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(不满足条件) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(满足条件) &#123;</span><br><span class="line">        res.add(<span class="keyword">new</span> ArrayList(tmp)); <span class="comment">// 将结果存在最终的List&lt;List&lt;Object&gt;&gt; 里面</span></span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 返回</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=?;j&lt;arr.length();j++) &#123;  <span class="comment">// 根据需要确定循环条件</span></span><br><span class="line">        tmp.add(某一部分);</span><br><span class="line">        记录当前状态S1</span><br><span class="line">        更新状态为<span class="function">S2</span></span><br><span class="line"><span class="function">        <span class="title">backtracking</span><span class="params">(用状态S2回溯)</span></span>;</span><br><span class="line">        tmp.remove(tmp.size()-<span class="number">1</span>); <span class="comment">// 移除添加的元素</span></span><br><span class="line">        回到状态S1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Object&gt;&gt; main(字符串 或 数组) &#123;</span><br><span class="line">    List&lt;Object&gt; tmp = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    backtracking(需要传递的参数值。一般有源参数，index, tmp....);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="回溯法的相关例题"><a href="#回溯法的相关例题" class="headerlink" title="回溯法的相关例题"></a><span>回溯法的相关例题</span></h2><h3 id="leetcode-78-求子集-Subsets"><a href="#leetcode-78-求子集-Subsets" class="headerlink" title="leetcode 78. 求子集 Subsets"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/subsets/">leetcode 78. 求子集 Subsets</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Given a set of distinct integers, nums, <span class="keyword">return</span> all possible subsets.</span><br><span class="line">Input: nums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">3</span>],</span><br><span class="line">  [<span class="number">1</span>],</span><br><span class="line">  [<span class="number">2</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> index, List&lt;Integer&gt; tmp_res)</span> </span>&#123;</span><br><span class="line">    result.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(tmp_res));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=index;i&lt;nums.length;i++) &#123;</span><br><span class="line">        tmp_res.add(nums[i]);</span><br><span class="line">        backtracking(nums, i+<span class="number">1</span>, tmp_res);</span><br><span class="line">        tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    backtracking(nums, <span class="number">0</span>, tmp_res);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-90-带有重复元素求子集-Subsets-II"><a href="#leetcode-90-带有重复元素求子集-Subsets-II" class="headerlink" title="leetcode 90. 带有重复元素求子集 Subsets II"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/subsets-ii/">leetcode 90. 带有重复元素求子集 Subsets II</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Given a collection of integers that might contain duplicates, nums, <span class="keyword">return</span> <span class="function">all possible <span class="title">subsets</span> <span class="params">(the power set)</span>.</span></span><br><span class="line"><span class="function">Input: nums </span>= [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">2</span>],</span><br><span class="line">  [<span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将数组先进行排序，然后将得到的结果放入set中去重。</li>
+<li>一定要先排序，否则就会出现 <code>[1,2,2,1]</code> 和 <code>[1,1,2,2]</code>，就会出错。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> HashSet();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> index, List&lt;Integer&gt; tmp_res)</span> </span>&#123;</span><br><span class="line">    result.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(tmp_res));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=index;i&lt;nums.length;i++) &#123;</span><br><span class="line">        tmp_res.add(nums[i]);</span><br><span class="line">        backtracking(nums, i+<span class="number">1</span>, tmp_res);</span><br><span class="line">        tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    backtracking(nums, <span class="number">0</span>, tmp_res);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>也可以不用set，回溯时遇到相同元素就跳过。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> index, List&lt;Integer&gt; tmp_res)</span> </span>&#123;</span><br><span class="line">    result.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;(tmp_res));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=index;i&lt;nums.length;i++) &#123;</span><br><span class="line">        tmp_res.add(nums[i]);</span><br><span class="line">        backtracking(nums, i+<span class="number">1</span>, tmp_res);</span><br><span class="line">        tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span>(i+<span class="number">1</span>&lt;nums.length &amp;&amp; nums[i+<span class="number">1</span>]==nums[i]) </span><br><span class="line">            i += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    backtracking(nums, <span class="number">0</span>, tmp_res);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-46-全排列-Permutations"><a href="#leetcode-46-全排列-Permutations" class="headerlink" title="leetcode 46.  全排列 Permutations"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/permutations/">leetcode 46.  全排列 Permutations</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Given a collection of distinct integers, <span class="keyword">return</span> all possible permutations.</span><br><span class="line">Input: nums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(<span class="keyword">int</span>[] nums, List&lt;Integer&gt; tmp_res, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp_res.size()==nums.length) &#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> ArrayList(tmp_res));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">            tmp_res.add(nums[i]);</span><br><span class="line">            visit[i] = <span class="number">1</span>;</span><br><span class="line">            backtracking(nums, tmp_res, visit);</span><br><span class="line">            tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">            visit[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">    backtracking(nums, tmp_res, visit);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-47-有重复元素的全排列-Permutations-II"><a href="#leetcode-47-有重复元素的全排列-Permutations-II" class="headerlink" title="leetcode 47. 有重复元素的全排列 Permutations II"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/permutations-ii/">leetcode 47. 有重复元素的全排列 Permutations II</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Given a collection of numbers that might contain duplicates, <span class="keyword">return</span> all possible unique permutations.</span><br><span class="line">Input: nums = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(<span class="keyword">int</span>[] nums, List&lt;Integer&gt; tmp_res, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp_res.size()==nums.length) &#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> ArrayList(tmp_res));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">            tmp_res.add(nums[i]);</span><br><span class="line">            visit[i] = <span class="number">1</span>;</span><br><span class="line">            backtracking(nums, tmp_res, visit);</span><br><span class="line">            tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">            visit[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i+<span class="number">1</span>&lt;nums.length &amp;&amp; nums[i+<span class="number">1</span>]==nums[i]) </span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">    backtracking(nums, tmp_res, visit);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-39-和为target的所有组合，选择的元素可重复-Combination-Sum"><a href="#leetcode-39-和为target的所有组合，选择的元素可重复-Combination-Sum" class="headerlink" title="leetcode 39. 和为target的所有组合，选择的元素可重复 Combination Sum"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/combination-sum/">leetcode 39. 和为target的所有组合，选择的元素可重复 Combination Sum</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Given a set of candidate <span class="title">numbers</span> <span class="params">(candidates)</span> <span class="params">(without duplicates)</span> and a target <span class="title">number</span> <span class="params">(target)</span>, find all unique combinations in candidates where the candidate numbers sums to target.</span></span><br><span class="line"><span class="function">The same repeated number may be chosen from candidates unlimited number of times.</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">Input: candidates </span>= [<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">7</span>], target = <span class="number">7</span>,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">7</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>因为元素可以重复使用，所以backtracking时从 <code>i</code> 开始即可。</li>
+<li>而且原始数组中无重复元素，所以直接用list即可，否则使用set.</li>
+<li>类似题目1：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/combination-sum-ii/">leetcode 40. Combination Sum II</a> : 元素不可重复使用：backtracking时从 <code>i+1</code> 开始；原始数组有重复元素：使用set即可。</li>
+<li>类似题目2：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/combination-sum-iii/">leetcode 216. Combination Sum III</a>：直接初始化原始数组为0-9、判断条件多加一条即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> index, <span class="keyword">int</span> target, <span class="keyword">int</span> sum, List&lt;Integer&gt; tmp_res)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sum&gt;target) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(sum==target) &#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> ArrayList(tmp_res));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=index;i&lt;nums.length;i++) &#123;</span><br><span class="line">        tmp_res.add(nums[i]);</span><br><span class="line">        sum += nums[i];</span><br><span class="line">        backtracking(nums, i, target, sum, tmp_res);</span><br><span class="line">        tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">        sum -= nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    Arrays.sort(candidates);</span><br><span class="line">    List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    backtracking(candidates,<span class="number">0</span>, target, <span class="number">0</span>, tmp_res);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-131-Palindrome-Partitioning"><a href="#leetcode-131-Palindrome-Partitioning" class="headerlink" title="leetcode 131. Palindrome Partitioning"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/palindrome-partitioning/">leetcode 131. Palindrome Partitioning</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Given a string s, partition s such that every substring of the partition is a palindrome.</span><br><span class="line">分区s使得分区的每个子字符串都是回文.</span><br><span class="line">Return all possible palindrome partitioning of s.</span><br><span class="line">    </span><br><span class="line">Input: <span class="string">&quot;aab&quot;</span></span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [<span class="string">&quot;aa&quot;</span>,<span class="string">&quot;b&quot;</span>],</span><br><span class="line">  [<span class="string">&quot;a&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>就是从头开始找回文串，找到一个就放进List里，再判断后面是不是回文串就行了。</li>
+<li>回溯都是有模板的，先把模板写出来，然后再填充具体需要判断的内容，就会思路清晰很多。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;String&gt;&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isplindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> begin = <span class="number">0</span>, end = s.length()-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(begin&lt;=end) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(begin)==s.charAt(end)) &#123;</span><br><span class="line">            begin += <span class="number">1</span>;</span><br><span class="line">            end -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(String s, List&lt;String&gt; tmp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s.length()==<span class="number">0</span>) &#123;</span><br><span class="line">        res.add(<span class="keyword">new</span> ArrayList(tmp));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;s.length();j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(isplindrome(s.substring(<span class="number">0</span>, j+<span class="number">1</span>))) &#123;</span><br><span class="line">            tmp.add(s.substring(<span class="number">0</span>, j+<span class="number">1</span>));</span><br><span class="line">            String tmp_s = s;</span><br><span class="line">            s = s.substring(j+<span class="number">1</span>, s.length());</span><br><span class="line">            backtracking(s, tmp);</span><br><span class="line">            tmp.remove(tmp.size()-<span class="number">1</span>);</span><br><span class="line">            s = tmp_s;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</span><br><span class="line">    List&lt;String&gt; tmp = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    backtracking(s, tmp);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-842-Split-Array-into-Fibonacci-Sequence"><a href="#leetcode-842-Split-Array-into-Fibonacci-Sequence" class="headerlink" title="leetcode 842. Split Array into Fibonacci Sequence"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/split-array-into-fibonacci-sequence/">leetcode 842. Split Array into Fibonacci Sequence</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Given a string S of digits, such as S = <span class="string">&quot;123456579&quot;</span>, we can split it into a Fibonacci-like sequence [<span class="number">123</span>, <span class="number">456</span>, <span class="number">579</span>].</span><br><span class="line">(F.length &gt;= <span class="number">3</span>) and (F[i] + F[i+<span class="number">1</span>] = F[i+<span class="number">2</span>] <span class="keyword">for</span> all <span class="number">0</span> &lt;= i &lt; F.length - <span class="number">2</span>).</span><br><span class="line">每个数字不能有前导<span class="number">0.</span>除非单独一个<span class="number">0</span></span><br><span class="line"></span><br><span class="line">Input: <span class="string">&quot;11235813&quot;</span>    Output: [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">13</span>]</span><br><span class="line">Input: <span class="string">&quot;112358130&quot;</span>   Output: []</span><br><span class="line">Input: <span class="string">&quot;0123&quot;</span>        Output: []</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>try catch</code> 主要是应对字符串长度过长，超出整数的范围。</p>
+</li>
+<li><p>本来写了三重循环，因为不知道初始的那两个元素怎么加到res里。后来发现：</p>
+<p><code>if(res.size()&lt;2||res.get(len-1)+res.get(len-2)==value) </code>，用  <code>res.size()&lt;2</code> 判断一下就行了呀</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">boolean</span> <span class="title">backtracking</span><span class="params">(String S, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;=S.length() &amp;&amp; res.size()&gt;<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(k&gt;=S.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">int</span> len = res.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&lt;S.length();i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;k &amp;&amp; S.charAt(k)==<span class="string">&#x27;0&#x27;</span>) <span class="comment">// 前导0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;value = Integer.parseInt(S.substring(k, i+<span class="number">1</span>));&#125;</span><br><span class="line">        <span class="keyword">catch</span>(Exception e) &#123;<span class="keyword">return</span> <span class="keyword">false</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span>(len&lt;<span class="number">2</span> || res.get(len-<span class="number">1</span>)+res.get(len-<span class="number">2</span>)==value) &#123;</span><br><span class="line">            res.add(value);</span><br><span class="line">            <span class="keyword">boolean</span> flag = backtracking(S, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(flag) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            res.remove(res.size()-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(res.get(len-<span class="number">1</span>)+res.get(len-<span class="number">2</span>)&lt;value) <span class="comment">// 提前结束</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span>  List&lt;Integer&gt; <span class="title">splitIntoFibonacci</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">    backtracking(S, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+<span style="margin-top:30px; color:var(--blockquote-color); font-size:0.85em">
+</span>
+
+          <div class="post-tags">
+              <a href="/overview/tags/Leetcode/" rel="tag"><i class="fa fa-tag"></i> Leetcode</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3/" rel="prev" title="位运算">
+                  <i class="fa fa-chevron-left"></i> 位运算
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/1/" rel="next" title="HashMap 空间换时间">
+                  HashMap 空间换时间 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alyssa</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://blog-waline-five.vercel.app/","placeholder":"Just go go","dark":"auto","avatar":"wavatar","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredMeta":["nick","mail"],"copyright":true,"login":"","avatarCDN":"https://sdn.geekzu.org/avatar/","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq"],"locale":{"placeholder":"在这里分享你的观点与想法～ 昵称、邮箱必填，邮件通知回复。","admin":"博主","nick":"昵称*","mail":"邮箱*","link":"网址（http://）"},"el":"#waline-comments","libUrl":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","path":"/posts/5/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  if(CONFIG.waline.qiniuDomain && CONFIG.waline.qiniuTokenUrl){
+    CONFIG.waline.uploadImage = qiniuUploadImage;
+  }
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+if(window.location.hash){
+    var checkExist = setInterval(function() {
+        if ($(window.location.hash).length) {
+            $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+            clearInterval(checkExist);
+        }
+    }, 100);
+}
+</script>
+
+
+</body>
+</html>
