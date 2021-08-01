@@ -139,6 +139,57 @@
       </tags>
   </entry>
   <entry>
+    <title>位运算</title>
+    <url>//posts/3/</url>
+    <content><![CDATA[<h5 id="1-leetcode-136-Single-Number"><a href="#1-leetcode-136-Single-Number" class="headerlink" title="1. leetcode 136. Single Number"></a>1. <a href="https://leetcode.com/problems/single-number/">leetcode 136. Single Number</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a non-empty array of integers, every element appears twice except <span class="keyword">for</span> one. Find that single one.</span><br><span class="line">数组中只有一个数字出现了一次，其他数字都出现了<span class="number">2</span>次。找出这个只出现一次的数字。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>异或。相同的两个数二进制异或为0.</li>
+<li>所有的元素进行异或，最后的值即为出现一次的元素的值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)</span><br><span class="line">        res = res^nums[i];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h5 id="2-leetcode-137-Single-Number-II"><a href="#2-leetcode-137-Single-Number-II" class="headerlink" title="2. leetcode 137. Single Number II"></a>2. <a href="https://leetcode.com/problems/single-number-ii/">leetcode 137. Single Number II</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a non-empty array of integers, every element appears three times except <span class="keyword">for</span> one, which appears exactly once. Find that single one.</span><br><span class="line">数组中只有一个数字出现了一次，其他数字都出现了<span class="number">3</span>次。找出这个只出现一次的数字。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我们把数组中的每个数字都转为二进制。</li>
+<li>如果一个数字出现三次，那么二进制的每一位也都出现三次。如果把所有出现三次的数字的二进制表示的每一位都分别累加起来，那么每一位的和都能被3整除。</li>
+<li>那么我们就把所有数字的对应位都累加起来，如果能被3整除，那么出现一次的数字该位为0，否则该位为1，这样运算下来，我们就能知道只出现一次的这个数字的二进制表示，那么我们就可以得到这个数字的值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-leetcode-260-Single-Number-III"><a href="#3-leetcode-260-Single-Number-III" class="headerlink" title="3. leetcode 260. Single Number III"></a>3. <a href="https://leetcode.com/problems/single-number-iii/">leetcode 260. Single Number III</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.</span><br><span class="line">数组中有两个数字仅出现一次，其余数字都出现两次。找出仅出现一次的这两个数字。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>只有一个数字可以直接异或，因为其他部分异或都为0。而两个数字，就不能直接整个数组异或了，因为这两个只出现一次的数字也会求异或，所以得不到两个数字的值。如果能把这两个数字分开，分到两个不同的子数组里就好了。</li>
+<li>如何划分到两个不同的子数组中呢？</li>
+</ul>
+<ol>
+<li>假设不同的数字为a和b，</li>
+<li>先将整个数组求异或，那么得到的就是a和b异或的值c</li>
+<li>我们得到c的二进制值，找到第一个为1的位置。该位之所以为1，是因为a和b中只有一个该位置为1，那么我们就能够把a和b区分开了。</li>
+<li>所以，我们假设c的第n位为1，那么我们将整个数组按照第n位是不是为1分成两个数组。那么a和b肯定在不同的数组中</li>
+<li>同时，其他出现两次的每个数字，每个相同的两个数必出现在同一个子数组中，因为他们俩完全相等，第n位是不是1当然也是同样的结果。</li>
+<li>也就是说，两个子数组中，除了a和b分别在自己的子数组中出现一次，其他数字都出现两次，那么我们将两个子数组分别求异或，就能得到a和b的值了。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>二叉树</title>
     <url>//posts/2/</url>
     <content><![CDATA[<h2 id="二叉树结构的定义"><a href="#二叉树结构的定义" class="headerlink" title="二叉树结构的定义"></a><span>二叉树结构的定义</span></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -238,124 +289,6 @@
       </tags>
   </entry>
   <entry>
-    <title>位运算</title>
-    <url>//posts/3/</url>
-    <content><![CDATA[<h5 id="1-leetcode-136-Single-Number"><a href="#1-leetcode-136-Single-Number" class="headerlink" title="1. leetcode 136. Single Number"></a>1. <a href="https://leetcode.com/problems/single-number/">leetcode 136. Single Number</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a non-empty array of integers, every element appears twice except <span class="keyword">for</span> one. Find that single one.</span><br><span class="line">数组中只有一个数字出现了一次，其他数字都出现了<span class="number">2</span>次。找出这个只出现一次的数字。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>异或。相同的两个数二进制异或为0.</li>
-<li>所有的元素进行异或，最后的值即为出现一次的元素的值。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)</span><br><span class="line">        res = res^nums[i];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h5 id="2-leetcode-137-Single-Number-II"><a href="#2-leetcode-137-Single-Number-II" class="headerlink" title="2. leetcode 137. Single Number II"></a>2. <a href="https://leetcode.com/problems/single-number-ii/">leetcode 137. Single Number II</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a non-empty array of integers, every element appears three times except <span class="keyword">for</span> one, which appears exactly once. Find that single one.</span><br><span class="line">数组中只有一个数字出现了一次，其他数字都出现了<span class="number">3</span>次。找出这个只出现一次的数字。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>我们把数组中的每个数字都转为二进制。</li>
-<li>如果一个数字出现三次，那么二进制的每一位也都出现三次。如果把所有出现三次的数字的二进制表示的每一位都分别累加起来，那么每一位的和都能被3整除。</li>
-<li>那么我们就把所有数字的对应位都累加起来，如果能被3整除，那么出现一次的数字该位为0，否则该位为1，这样运算下来，我们就能知道只出现一次的这个数字的二进制表示，那么我们就可以得到这个数字的值。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="3-leetcode-260-Single-Number-III"><a href="#3-leetcode-260-Single-Number-III" class="headerlink" title="3. leetcode 260. Single Number III"></a>3. <a href="https://leetcode.com/problems/single-number-iii/">leetcode 260. Single Number III</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.</span><br><span class="line">数组中有两个数字仅出现一次，其余数字都出现两次。找出仅出现一次的这两个数字。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>只有一个数字可以直接异或，因为其他部分异或都为0。而两个数字，就不能直接整个数组异或了，因为这两个只出现一次的数字也会求异或，所以得不到两个数字的值。如果能把这两个数字分开，分到两个不同的子数组里就好了。</li>
-<li>如何划分到两个不同的子数组中呢？</li>
-</ul>
-<ol>
-<li>假设不同的数字为a和b，</li>
-<li>先将整个数组求异或，那么得到的就是a和b异或的值c</li>
-<li>我们得到c的二进制值，找到第一个为1的位置。该位之所以为1，是因为a和b中只有一个该位置为1，那么我们就能够把a和b区分开了。</li>
-<li>所以，我们假设c的第n位为1，那么我们将整个数组按照第n位是不是为1分成两个数组。那么a和b肯定在不同的数组中</li>
-<li>同时，其他出现两次的每个数字，每个相同的两个数必出现在同一个子数组中，因为他们俩完全相等，第n位是不是1当然也是同样的结果。</li>
-<li>也就是说，两个子数组中，除了a和b分别在自己的子数组中出现一次，其他数字都出现两次，那么我们将两个子数组分别求异或，就能得到a和b的值了。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图</title>
-    <url>//posts/6/</url>
-    <content><![CDATA[<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
-<span id="more"></span>
-
-<h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
-<li><p>图分为邻接矩阵和邻接表。</p>
-</li>
-<li><p>邻接矩阵：<br><img data-src="/images/graph/2.png"></p>
-</li>
-<li><p>邻接表：<br><img data-src="/images/graph/3.png"></p>
-</li>
-<li><p>不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。</p>
-</li>
-</ul>
-<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><ul>
-<li>访问顶点v；</li>
-<li>依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</li>
-<li>若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">    System.out.println(node);</span><br><span class="line">    <span class="comment">//DFS遍历其他节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[node].length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(graph[node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>)</span><br><span class="line">            DFS(graph, visit, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><ul>
-<li>首先将根节点放入队列中;</li>
-<li>从队列中取出第一个节点, 将它所有尚未检验过的直接子节点加入队列中;</li>
-<li>若队列为空，表示整张图都检查过了。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    que.add(node);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> new_node = que.poll();</span><br><span class="line">        <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">        System.out.println(new_node);</span><br><span class="line">        <span class="comment">// 将new_node相连的节点放入队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[new_node].length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[new_node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                visit[i] = <span class="number">1</span>;</span><br><span class="line">                que.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a><span>经典题</span></h2><h3 id="leetcode-200-岛屿的数量"><a href="#leetcode-200-岛屿的数量" class="headerlink" title="leetcode 200. 岛屿的数量"></a><a href="https://leetcode.com/problems/number-of-islands/">leetcode 200. 岛屿的数量</a></h3><ul>
-<li>1为陆地，0为水，垂直方向才能算作一个岛屿，斜着不能算作一个岛屿。</li>
-<li>类似题目1：<a href="https://leetcode.com/problems/max-area-of-island/">leetcode 695. 岛屿的最大面积</a>，只需再增加一个计数功能即可。</li>
-<li>类似题目2：<a href="https://leetcode.com/problems/flood-fill/">leetcode 733. Flood Fill</a>,  访问节点时再改变一下节点的值即可。</li>
-</ul>
-<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Input:</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">00100</span></span><br><span class="line"><span class="number">00011</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">Output:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">islandDFS</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span>[][] visit, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=grid.length || j&lt;<span class="number">0</span> || j&gt;=grid[<span class="number">0</span>].length)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">        visit[i][j] = <span class="number">1</span>;</span><br><span class="line">        islandDFS(grid, visit, i, j-<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i, j+<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i+<span class="number">1</span>, j);</span><br><span class="line">        islandDFS(grid, visit, i-<span class="number">1</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(grid.length==<span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] visit = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 把和grid[i][j]相连接的位置都标记为1，记作一块岛屿</span></span><br><span class="line">                islandDFS(grid, visit, i, j);</span><br><span class="line">                number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-463-确定岛屿的周长"><a href="#leetcode-463-确定岛屿的周长" class="headerlink" title="leetcode 463. 确定岛屿的周长"></a><a href="https://leetcode.com/problems/island-perimeter/">leetcode 463. 确定岛屿的周长</a></h3><ul>
-<li>题目中只有一个岛屿，确定岛屿的周长</li>
-<li>就是确定每个1周围有几个0，或者在边界位置。</li>
-<li>这道题跟图没什么关系。遍历一遍就行了。</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从头到尾遍历，查看每个1周围几个0，上下左右。</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span> || grid[i-<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || grid[i][j-<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i==grid.length-<span class="number">1</span> || grid[i+<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==grid[<span class="number">0</span>].length-<span class="number">1</span> || grid[i][j+<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-787-从src飞到dst的最小花销"><a href="#leetcode-787-从src飞到dst的最小花销" class="headerlink" title="leetcode. 787 从src飞到dst的最小花销"></a><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">leetcode. 787 从src飞到dst的最小花销</a></h3><ul>
-<li>方法一：递归调用，但leetcode会超时。</li>
-<li>优化：对于遍历到的结点，首先判断如果当前结点已经访问过了，直接跳过。或者是当前价格out加上到达这个结点需要的价格之和大于结果res的话，那么直接跳过。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> [][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K, <span class="keyword">int</span> v, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(src==dst &amp;&amp; v&lt;min) &#123;</span><br><span class="line">        min = v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(K&lt;<span class="number">0</span>||v&gt;min) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;flights.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[src]==<span class="number">0</span> &amp;&amp; flights[i][<span class="number">0</span>]==src) &#123;</span><br><span class="line">            visit[src] = <span class="number">1</span>;</span><br><span class="line">            DFS(flights, flights[i][<span class="number">1</span>], dst, K-<span class="number">1</span>, v+flights[i][<span class="number">2</span>], visit);    </span><br><span class="line">            visit[src] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] f, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    DFS(f, src, dst, K, <span class="number">0</span>, visit);</span><br><span class="line">    <span class="keyword">if</span>(min == Integer.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-529-扫雷游戏"><a href="#leetcode-529-扫雷游戏" class="headerlink" title="leetcode 529. 扫雷游戏"></a><a href="https://leetcode.com/problems/minesweeper/">leetcode 529. 扫雷游戏</a></h3><ul>
-<li>题太复杂了。。之后再做。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><span>拓扑排序</span></h2><hr>
-<p>图片来源： <a href="https://www.cnblogs.com/XMU-hcq/p/6065057.html">https://www.cnblogs.com/XMU-hcq/p/6065057.html</a></p>
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>回溯算法</title>
     <url>//posts/5/</url>
     <content><![CDATA[<blockquote>
@@ -426,6 +359,73 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">boolean</span> <span class="title">backtracking</span><span class="params">(String S, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;=S.length() &amp;&amp; res.size()&gt;<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(k&gt;=S.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">int</span> len = res.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&lt;S.length();i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;k &amp;&amp; S.charAt(k)==<span class="string">&#x27;0&#x27;</span>) <span class="comment">// 前导0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;value = Integer.parseInt(S.substring(k, i+<span class="number">1</span>));&#125;</span><br><span class="line">        <span class="keyword">catch</span>(Exception e) &#123;<span class="keyword">return</span> <span class="keyword">false</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span>(len&lt;<span class="number">2</span> || res.get(len-<span class="number">1</span>)+res.get(len-<span class="number">2</span>)==value) &#123;</span><br><span class="line">            res.add(value);</span><br><span class="line">            <span class="keyword">boolean</span> flag = backtracking(S, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(flag) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            res.remove(res.size()-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(res.get(len-<span class="number">1</span>)+res.get(len-<span class="number">2</span>)&lt;value) <span class="comment">// 提前结束</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span>  List&lt;Integer&gt; <span class="title">splitIntoFibonacci</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">    backtracking(S, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图</title>
+    <url>//posts/6/</url>
+    <content><![CDATA[<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
+<span id="more"></span>
+
+<h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
+<li><p>图分为邻接矩阵和邻接表。</p>
+</li>
+<li><p>邻接矩阵：<br><img data-src="/images/graph/2.png"></p>
+</li>
+<li><p>邻接表：<br><img data-src="/images/graph/3.png"></p>
+</li>
+<li><p>不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。</p>
+</li>
+</ul>
+<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><ul>
+<li>访问顶点v；</li>
+<li>依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</li>
+<li>若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">    System.out.println(node);</span><br><span class="line">    <span class="comment">//DFS遍历其他节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[node].length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(graph[node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>)</span><br><span class="line">            DFS(graph, visit, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><ul>
+<li>首先将根节点放入队列中;</li>
+<li>从队列中取出第一个节点, 将它所有尚未检验过的直接子节点加入队列中;</li>
+<li>若队列为空，表示整张图都检查过了。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    que.add(node);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> new_node = que.poll();</span><br><span class="line">        <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">        System.out.println(new_node);</span><br><span class="line">        <span class="comment">// 将new_node相连的节点放入队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[new_node].length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[new_node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                visit[i] = <span class="number">1</span>;</span><br><span class="line">                que.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a><span>经典题</span></h2><h3 id="leetcode-200-岛屿的数量"><a href="#leetcode-200-岛屿的数量" class="headerlink" title="leetcode 200. 岛屿的数量"></a><a href="https://leetcode.com/problems/number-of-islands/">leetcode 200. 岛屿的数量</a></h3><ul>
+<li>1为陆地，0为水，垂直方向才能算作一个岛屿，斜着不能算作一个岛屿。</li>
+<li>类似题目1：<a href="https://leetcode.com/problems/max-area-of-island/">leetcode 695. 岛屿的最大面积</a>，只需再增加一个计数功能即可。</li>
+<li>类似题目2：<a href="https://leetcode.com/problems/flood-fill/">leetcode 733. Flood Fill</a>,  访问节点时再改变一下节点的值即可。</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Input:</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">00100</span></span><br><span class="line"><span class="number">00011</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">Output:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">islandDFS</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span>[][] visit, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=grid.length || j&lt;<span class="number">0</span> || j&gt;=grid[<span class="number">0</span>].length)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">        visit[i][j] = <span class="number">1</span>;</span><br><span class="line">        islandDFS(grid, visit, i, j-<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i, j+<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i+<span class="number">1</span>, j);</span><br><span class="line">        islandDFS(grid, visit, i-<span class="number">1</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(grid.length==<span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] visit = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 把和grid[i][j]相连接的位置都标记为1，记作一块岛屿</span></span><br><span class="line">                islandDFS(grid, visit, i, j);</span><br><span class="line">                number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-463-确定岛屿的周长"><a href="#leetcode-463-确定岛屿的周长" class="headerlink" title="leetcode 463. 确定岛屿的周长"></a><a href="https://leetcode.com/problems/island-perimeter/">leetcode 463. 确定岛屿的周长</a></h3><ul>
+<li>题目中只有一个岛屿，确定岛屿的周长</li>
+<li>就是确定每个1周围有几个0，或者在边界位置。</li>
+<li>这道题跟图没什么关系。遍历一遍就行了。</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从头到尾遍历，查看每个1周围几个0，上下左右。</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span> || grid[i-<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || grid[i][j-<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i==grid.length-<span class="number">1</span> || grid[i+<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==grid[<span class="number">0</span>].length-<span class="number">1</span> || grid[i][j+<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-787-从src飞到dst的最小花销"><a href="#leetcode-787-从src飞到dst的最小花销" class="headerlink" title="leetcode. 787 从src飞到dst的最小花销"></a><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">leetcode. 787 从src飞到dst的最小花销</a></h3><ul>
+<li>方法一：递归调用，但leetcode会超时。</li>
+<li>优化：对于遍历到的结点，首先判断如果当前结点已经访问过了，直接跳过。或者是当前价格out加上到达这个结点需要的价格之和大于结果res的话，那么直接跳过。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> [][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K, <span class="keyword">int</span> v, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(src==dst &amp;&amp; v&lt;min) &#123;</span><br><span class="line">        min = v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(K&lt;<span class="number">0</span>||v&gt;min) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;flights.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[src]==<span class="number">0</span> &amp;&amp; flights[i][<span class="number">0</span>]==src) &#123;</span><br><span class="line">            visit[src] = <span class="number">1</span>;</span><br><span class="line">            DFS(flights, flights[i][<span class="number">1</span>], dst, K-<span class="number">1</span>, v+flights[i][<span class="number">2</span>], visit);    </span><br><span class="line">            visit[src] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] f, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    DFS(f, src, dst, K, <span class="number">0</span>, visit);</span><br><span class="line">    <span class="keyword">if</span>(min == Integer.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-529-扫雷游戏"><a href="#leetcode-529-扫雷游戏" class="headerlink" title="leetcode 529. 扫雷游戏"></a><a href="https://leetcode.com/problems/minesweeper/">leetcode 529. 扫雷游戏</a></h3><ul>
+<li>题太复杂了。。之后再做。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><span>拓扑排序</span></h2><hr>
+<p>图片来源： <a href="https://www.cnblogs.com/XMU-hcq/p/6065057.html">https://www.cnblogs.com/XMU-hcq/p/6065057.html</a></p>
 ]]></content>
       <categories>
         <category>Algorithms</category>
@@ -825,6 +825,60 @@
       </tags>
   </entry>
   <entry>
+    <title>洗牌算法</title>
+    <url>//posts/13/</url>
+    <content><![CDATA[<p>之前两次面试都被问到洗牌算法，虽然不是直接问的，但都是基于洗牌算法的。结果第一次被问到之后没有重视，导致在一个地方栽了两次坑。。。😭</p>
+<blockquote>
+<p>洗牌算法，就是给你一个1到n的序列，让你随机打乱，保证每个数出现在任意一个位置的概率相同。换句话说，经过洗牌的数组的排列组合有n!种可能。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a><span>解法</span></h2><h3 id="Fisher-Yates-Shuffle-算法-动态演示"><a href="#Fisher-Yates-Shuffle-算法-动态演示" class="headerlink" title="Fisher-Yates Shuffle 算法 动态演示"></a>Fisher-Yates Shuffle 算法 <a href="https://bost.ocks.org/mike/shuffle/">动态演示</a></h3><ul>
+<li><p>思想：从原始数组中随机取一个之前没有取过的数字到新的数组中。</p>
+</li>
+<li><p>步骤：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">1</span>. 初始化原始数组和新数组，原始数组长度为n（已知）；</span><br><span class="line"><span class="attribute">2</span>. 从还没处理的数组（假如还剩k个）中，随机产生一个[<span class="number">0</span>, k)之间的数字p（数组下标从<span class="number">0</span>开始）；</span><br><span class="line"><span class="attribute">3</span>. 从剩下的k个数中第p个数取出；</span><br><span class="line"><span class="attribute">4</span>. 重复步骤<span class="number">2</span>，<span class="number">3</span>直到数字全部取完；</span><br><span class="line"><span class="attribute">5</span>. 从步骤<span class="number">3</span>中去除的数字序列便是一个打乱的数列。</span><br></pre></td></tr></table></figure></li>
+<li><p>证明：证明其随机性，即每个元素被放置在新数组中的第 <code>i</code> 个位置是 <code>1/n</code><br>一个元素m被放入第 <code>i</code> 个位置的概率 P = 前 <code>i-1</code> 个位置选择元素时没有选中m的概率 * 第 <code>i</code> 个位置选中m的概率，即:</p>
+<p>$$P = \frac{n-1}{n} * \frac{n-2}{n-1} * … * \frac{n-i+1}{n-i+2} * \frac{1}{n-i+1} = \frac{1}{n}$$</p>
+</li>
+<li><p><strong>时间复杂度为O(n*n),空间复杂度为O(n).</strong></p>
+</li>
+<li><p>时间复杂度为O(n*n) 是因为我们要删除list中的元素，那么也就是要将后面的元素都向前移动一位，导致时间复杂度为O(n*n) .</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> ArrayList <span class="title">Fisher_Yates_Shuffle</span><span class="params">(ArrayList&lt;Integer&gt; arr)</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; tar_arr = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">int</span> n = arr.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="comment">// 生成0-n的随机数，包括0不包括n -- [0,n)</span></span><br><span class="line">        <span class="keyword">int</span> p =(<span class="keyword">int</span>)(Math.random()*(n-i));</span><br><span class="line">        tar_arr.add(arr.get(p));</span><br><span class="line">        arr.remove(p);  <span class="comment">// 删除index=p位置的元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tar_arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Knuth-Durstenfeld-Shuffle-算法"><a href="#Knuth-Durstenfeld-Shuffle-算法" class="headerlink" title="Knuth-Durstenfeld Shuffle 算法"></a>Knuth-Durstenfeld Shuffle 算法</h3><ul>
+<li>对1的算法进行了改进，直接在原始数组上进行交换，而不必开辟额外的数组，节省空间。</li>
+<li>思想：每次从未处理的数字中随机取出一个数字，然后把该数字放在数组的尾部，即数组尾部存放的是已经处理过的数字。</li>
+<li>步骤：<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> 建立一个数组大小为 n 的数组 arr，分别存放 1 到 n 的数值；</span><br><span class="line"><span class="bullet">2.</span> 生成一个从 0 到 n - 1 的随机数 x；</span><br><span class="line"><span class="bullet">3.</span> 输出 arr 下标为 x 的数值，即为第一个随机数；</span><br><span class="line"><span class="bullet">4.</span> 将 arr 的尾元素和下标为 x 的元素互换；</span><br><span class="line"><span class="bullet">5.</span> 同2，生成一个从 0 到 n - 2 的随机数 x；</span><br><span class="line"><span class="bullet">6.</span> 输出 arr 下标为 x 的数值，为第二个随机数；</span><br><span class="line"><span class="bullet">7.</span> 将 arr 的倒数第二个元素和下标为 x 的元素互换；</span><br></pre></td></tr></table></figure></li>
+<li><strong>时间复杂度为O(n),空间复杂度为O(1)。缺点：必须知道数组长度n.</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Knuth_Durstenfeld_Shuffle</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="comment">// 生成0-n的随机数，包括0不包括n -- [0,n)</span></span><br><span class="line">        <span class="keyword">int</span> p =(<span class="keyword">int</span>)(Math.random()*(n-i));</span><br><span class="line">        swap(arr, p, n-i-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Inside-Out-Algorithm-算法"><a href="#Inside-Out-Algorithm-算法" class="headerlink" title="Inside-Out Algorithm 算法"></a>Inside-Out Algorithm 算法</h3><ul>
+<li> Knuth-Durstenfeld Shuffle 是一个内部打乱的算法，算法完成后原始数据被直接打乱，尽管这个方法可以节省空间，但在有些应用中可能需要保留原始数据，所以需要另外开辟一个数组来存储生成的新序列。</li>
+<li>Inside-Out Algorithm 算法是既可以开辟新的空间，而且不需要对原数组进行删除操作。</li>
+<li>思想：设一游标i从前向后扫描原始数据的拷贝，在[0, i]之间随机一个下标p，然后用位置p的元素替换掉位置i的数字，再用原始数据位置i的元素替换掉拷贝数据位置p的元素。其作用相当于在拷贝数据中交换i与p位置处的值。</li>
+<li><strong>时间复杂度为O(n),空间复杂度为O(n)</strong></li>
+<li>这个算法的一个优点就是可以处理n未知的数组。</li>
+<li>这个相当于：<code>1*2*3*4*5*6*7*...*n = n!</code> 种可能情况。</li>
+<li>而前两种洗牌算法都相当于：<code>n*n-1*n-2*n-3*...*1 = n!</code> 种可能情况。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] Inside_Out_Shuffle(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] tar_arr = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">    tar_arr = arr.clone();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = (<span class="keyword">int</span>)(Math.random()*(i+<span class="number">1</span>));</span><br><span class="line">        tar_arr[i] = tar_arr[p];</span><br><span class="line">        tar_arr[p] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tar_arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：之前Inside-Out Algorithm看了半天，没搞明白为什么需要那么麻烦两个数组替换来替换去的。。搞这么一波骚操作，但其实，Inside-Out Algorithm算法和Knuth-Durstenfeld Shuffle 算法的区别就在于一个原地打乱，一个在新数组上打乱。那么我们就可以先拷贝一份原数组，然后在新数组上按照Knuth-Durstenfeld Shuffle 算法的方法执行一遍就行了。两个数组替换实际上就是代替了原来的swap操作，不用额外开辟一个空间给暂存数据。而且Inside-Out Algorithm是从前向后处理的，可以处理n未知的数组。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-384-数组随即洗牌"><a href="#leetcode-384-数组随即洗牌" class="headerlink" title="leetcode 384. 数组随即洗牌"></a><a href="https://leetcode.com/problems/shuffle-an-array/">leetcode 384. 数组随即洗牌</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>查找算法</title>
     <url>//posts/12/</url>
     <content><![CDATA[<p><strong>平均查找长度（Average Search Length，ASL）：</strong>需和指定key进行比较的关键字的个数的期望值，称为查找算法在查找成功时的平均查找长度。</p>
@@ -911,60 +965,6 @@
       </tags>
   </entry>
   <entry>
-    <title>洗牌算法</title>
-    <url>//posts/13/</url>
-    <content><![CDATA[<p>之前两次面试都被问到洗牌算法，虽然不是直接问的，但都是基于洗牌算法的。结果第一次被问到之后没有重视，导致在一个地方栽了两次坑。。。😭</p>
-<blockquote>
-<p>洗牌算法，就是给你一个1到n的序列，让你随机打乱，保证每个数出现在任意一个位置的概率相同。换句话说，经过洗牌的数组的排列组合有n!种可能。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a><span>解法</span></h2><h3 id="Fisher-Yates-Shuffle-算法-动态演示"><a href="#Fisher-Yates-Shuffle-算法-动态演示" class="headerlink" title="Fisher-Yates Shuffle 算法 动态演示"></a>Fisher-Yates Shuffle 算法 <a href="https://bost.ocks.org/mike/shuffle/">动态演示</a></h3><ul>
-<li><p>思想：从原始数组中随机取一个之前没有取过的数字到新的数组中。</p>
-</li>
-<li><p>步骤：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">1</span>. 初始化原始数组和新数组，原始数组长度为n（已知）；</span><br><span class="line"><span class="attribute">2</span>. 从还没处理的数组（假如还剩k个）中，随机产生一个[<span class="number">0</span>, k)之间的数字p（数组下标从<span class="number">0</span>开始）；</span><br><span class="line"><span class="attribute">3</span>. 从剩下的k个数中第p个数取出；</span><br><span class="line"><span class="attribute">4</span>. 重复步骤<span class="number">2</span>，<span class="number">3</span>直到数字全部取完；</span><br><span class="line"><span class="attribute">5</span>. 从步骤<span class="number">3</span>中去除的数字序列便是一个打乱的数列。</span><br></pre></td></tr></table></figure></li>
-<li><p>证明：证明其随机性，即每个元素被放置在新数组中的第 <code>i</code> 个位置是 <code>1/n</code><br>一个元素m被放入第 <code>i</code> 个位置的概率 P = 前 <code>i-1</code> 个位置选择元素时没有选中m的概率 * 第 <code>i</code> 个位置选中m的概率，即:</p>
-<p>$$P = \frac{n-1}{n} * \frac{n-2}{n-1} * … * \frac{n-i+1}{n-i+2} * \frac{1}{n-i+1} = \frac{1}{n}$$</p>
-</li>
-<li><p><strong>时间复杂度为O(n*n),空间复杂度为O(n).</strong></p>
-</li>
-<li><p>时间复杂度为O(n*n) 是因为我们要删除list中的元素，那么也就是要将后面的元素都向前移动一位，导致时间复杂度为O(n*n) .</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> ArrayList <span class="title">Fisher_Yates_Shuffle</span><span class="params">(ArrayList&lt;Integer&gt; arr)</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; tar_arr = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">int</span> n = arr.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="comment">// 生成0-n的随机数，包括0不包括n -- [0,n)</span></span><br><span class="line">        <span class="keyword">int</span> p =(<span class="keyword">int</span>)(Math.random()*(n-i));</span><br><span class="line">        tar_arr.add(arr.get(p));</span><br><span class="line">        arr.remove(p);  <span class="comment">// 删除index=p位置的元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tar_arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Knuth-Durstenfeld-Shuffle-算法"><a href="#Knuth-Durstenfeld-Shuffle-算法" class="headerlink" title="Knuth-Durstenfeld Shuffle 算法"></a>Knuth-Durstenfeld Shuffle 算法</h3><ul>
-<li>对1的算法进行了改进，直接在原始数组上进行交换，而不必开辟额外的数组，节省空间。</li>
-<li>思想：每次从未处理的数字中随机取出一个数字，然后把该数字放在数组的尾部，即数组尾部存放的是已经处理过的数字。</li>
-<li>步骤：<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> 建立一个数组大小为 n 的数组 arr，分别存放 1 到 n 的数值；</span><br><span class="line"><span class="bullet">2.</span> 生成一个从 0 到 n - 1 的随机数 x；</span><br><span class="line"><span class="bullet">3.</span> 输出 arr 下标为 x 的数值，即为第一个随机数；</span><br><span class="line"><span class="bullet">4.</span> 将 arr 的尾元素和下标为 x 的元素互换；</span><br><span class="line"><span class="bullet">5.</span> 同2，生成一个从 0 到 n - 2 的随机数 x；</span><br><span class="line"><span class="bullet">6.</span> 输出 arr 下标为 x 的数值，为第二个随机数；</span><br><span class="line"><span class="bullet">7.</span> 将 arr 的倒数第二个元素和下标为 x 的元素互换；</span><br></pre></td></tr></table></figure></li>
-<li><strong>时间复杂度为O(n),空间复杂度为O(1)。缺点：必须知道数组长度n.</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Knuth_Durstenfeld_Shuffle</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="comment">// 生成0-n的随机数，包括0不包括n -- [0,n)</span></span><br><span class="line">        <span class="keyword">int</span> p =(<span class="keyword">int</span>)(Math.random()*(n-i));</span><br><span class="line">        swap(arr, p, n-i-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Inside-Out-Algorithm-算法"><a href="#Inside-Out-Algorithm-算法" class="headerlink" title="Inside-Out Algorithm 算法"></a>Inside-Out Algorithm 算法</h3><ul>
-<li> Knuth-Durstenfeld Shuffle 是一个内部打乱的算法，算法完成后原始数据被直接打乱，尽管这个方法可以节省空间，但在有些应用中可能需要保留原始数据，所以需要另外开辟一个数组来存储生成的新序列。</li>
-<li>Inside-Out Algorithm 算法是既可以开辟新的空间，而且不需要对原数组进行删除操作。</li>
-<li>思想：设一游标i从前向后扫描原始数据的拷贝，在[0, i]之间随机一个下标p，然后用位置p的元素替换掉位置i的数字，再用原始数据位置i的元素替换掉拷贝数据位置p的元素。其作用相当于在拷贝数据中交换i与p位置处的值。</li>
-<li><strong>时间复杂度为O(n),空间复杂度为O(n)</strong></li>
-<li>这个算法的一个优点就是可以处理n未知的数组。</li>
-<li>这个相当于：<code>1*2*3*4*5*6*7*...*n = n!</code> 种可能情况。</li>
-<li>而前两种洗牌算法都相当于：<code>n*n-1*n-2*n-3*...*1 = n!</code> 种可能情况。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] Inside_Out_Shuffle(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] tar_arr = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">    tar_arr = arr.clone();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = (<span class="keyword">int</span>)(Math.random()*(i+<span class="number">1</span>));</span><br><span class="line">        tar_arr[i] = tar_arr[p];</span><br><span class="line">        tar_arr[p] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tar_arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注：之前Inside-Out Algorithm看了半天，没搞明白为什么需要那么麻烦两个数组替换来替换去的。。搞这么一波骚操作，但其实，Inside-Out Algorithm算法和Knuth-Durstenfeld Shuffle 算法的区别就在于一个原地打乱，一个在新数组上打乱。那么我们就可以先拷贝一份原数组，然后在新数组上按照Knuth-Durstenfeld Shuffle 算法的方法执行一遍就行了。两个数组替换实际上就是代替了原来的swap操作，不用额外开辟一个空间给暂存数据。而且Inside-Out Algorithm是从前向后处理的，可以处理n未知的数组。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-384-数组随即洗牌"><a href="#leetcode-384-数组随即洗牌" class="headerlink" title="leetcode 384. 数组随即洗牌"></a><a href="https://leetcode.com/problems/shuffle-an-array/">leetcode 384. 数组随即洗牌</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>队列</title>
     <url>//posts/15/</url>
     <content><![CDATA[<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a><span>队列</span></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">que.offer(<span class="number">1</span>);  <span class="comment">// 添加元素</span></span><br><span class="line"><span class="keyword">int</span> v1 = que.poll();   <span class="comment">// 返回第一个元素，并在队列中删除，如果队列为空，返回null</span></span><br><span class="line"><span class="keyword">int</span> v2 = que.peek();   <span class="comment">// 返回第一个元素</span></span><br></pre></td></tr></table></figure>
@@ -1038,6 +1038,52 @@
       </tags>
   </entry>
   <entry>
+    <title>将keras的h5文件转为tensorflow的pb文件</title>
+    <url>//posts/301/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
+<span id="more"></span>
+
+<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
+<p>🎋. <strong>keras中：</strong></p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
+
+<p> 🎋. <strong>在python中的使用：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
+<p>参考代码：<a href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>soft label 和 hard label</title>
+    <url>//posts/302/</url>
+    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
+<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
+<span id="more"></span>
+
+<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
+<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
+</li>
+<li><p>软标签：</p>
+<ul>
+<li>用于模棱两可的情况；</li>
+<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>准确率，精确率，召回率和AUC曲线，PR曲线</title>
     <url>//posts/300/</url>
     <content><![CDATA[<p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
@@ -1086,52 +1132,6 @@
       </categories>
       <tags>
         <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>将keras的h5文件转为tensorflow的pb文件</title>
-    <url>//posts/301/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
-<span id="more"></span>
-
-<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
-<p>🎋. <strong>keras中：</strong></p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
-
-<p> 🎋. <strong>在python中的使用：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
-<p>参考代码：<a href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
-]]></content>
-      <categories>
-        <category>Deep Learning</category>
-      </categories>
-      <tags>
-        <tag>Deep Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>soft label 和 hard label</title>
-    <url>//posts/302/</url>
-    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
-<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
-<span id="more"></span>
-
-<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
-<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
-</li>
-<li><p>软标签：</p>
-<ul>
-<li>用于模棱两可的情况；</li>
-<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Deep Learning</category>
-      </categories>
-      <tags>
-        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
