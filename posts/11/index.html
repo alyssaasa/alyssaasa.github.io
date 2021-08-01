@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.dlzhang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.dlzhang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 <meta name="description" content="时间复杂度一遍循环：O(n)嵌套两遍循环：O(n*n)123for(int i&#x3D;0;i&lt;n;i++)     for(int j&#x3D;0;j&lt;n;j++)        .....  O(log n) 与 O(n log n) 分析方法：📍 自理解：一般这种带有 logn 都是有递归操作的。例如二分查找，就是每次我找到中间位置，然后如果查找的值大于当前值，那么我只需在后一半中继续查找，如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时间复杂度问题">
@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.dlzhang.com/images/others/tree.png">
 <meta property="article:published_time" content="2019-09-02T15:29:35.000Z">
-<meta property="article:modified_time" content="2021-07-31T12:44:32.000Z">
+<meta property="article:modified_time" content="2021-08-01T05:09:56.000Z">
 <meta property="article:author" content="Alyssa">
 <meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
@@ -308,6 +308,8 @@
         <h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><span>时间复杂度</span></h2><h3 id="一遍循环：O-n"><a href="#一遍循环：O-n" class="headerlink" title="一遍循环：O(n)"></a>一遍循环：O(n)</h3><h3 id="嵌套两遍循环：O-n-n"><a href="#嵌套两遍循环：O-n-n" class="headerlink" title="嵌套两遍循环：O(n*n)"></a>嵌套两遍循环：O(n*n)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        .....</span><br></pre></td></tr></table></figure>
 
 <h3 id="O-log-n-与-O-n-log-n-分析方法："><a href="#O-log-n-与-O-n-log-n-分析方法：" class="headerlink" title="O(log n) 与 O(n log n) 分析方法："></a>O(log n) 与 O(n log n) 分析方法：</h3><p>📍 自理解：一般这种带有 <code>logn</code> 都是有递归操作的。例如二分查找，就是每次我找到中间位置，然后如果查找的值大于当前值，那么我只需在后一半中继续查找，如果查找的值小于当前值，就在前一半中继续查找，每次我都可以减少一半数量的元素。其时间复杂度为 <code>O(logn)</code> 。像归并排序, 虽然我每次把整个array分成了两个部分，但是两个部分都需要去进行递归处理，那么时间复杂度就是 <code>O(nlogn)</code> 。</p>
+<span id="more"></span>
+
 <p>📍 通过递归深度来计算时间复杂度：</p>
 <p><img data-src="/images/others/tree.png"></p>
 <p><strong>快速排序的时间复杂度：</strong>快速排序是通过交换，找到中间位置的元素，然后左右两部分分别去递归进行排序。</p>

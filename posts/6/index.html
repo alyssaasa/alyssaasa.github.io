@@ -22,18 +22,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.dlzhang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。图的一个最重要的点：设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过。  图的深度优先搜索和广度优先搜索 图分为邻接矩阵和邻接表。  邻接矩阵：  邻接表：  不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。   深度优先搜索 D">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.dlzhang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。图的一个最重要的点：设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图">
 <meta property="og:url" content="https://blog.dlzhang.com/posts/6/">
 <meta property="og:site_name" content="醉里挑灯赏猫">
-<meta property="og:description" content="图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。图的一个最重要的点：设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过。  图的深度优先搜索和广度优先搜索 图分为邻接矩阵和邻接表。  邻接矩阵：  邻接表：  不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。   深度优先搜索 D">
+<meta property="og:description" content="图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。图的一个最重要的点：设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.dlzhang.com/images/graph/2.png">
 <meta property="og:image" content="https://blog.dlzhang.com/images/graph/3.png">
 <meta property="article:published_time" content="2019-08-21T13:30:11.000Z">
-<meta property="article:modified_time" content="2021-07-31T12:40:24.000Z">
+<meta property="article:modified_time" content="2021-08-01T05:11:06.000Z">
 <meta property="article:author" content="Alyssa">
 <meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
@@ -306,9 +306,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <blockquote>
-<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
-</blockquote>
+        <p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
+<span id="more"></span>
+
 <h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
 <li><p>图分为邻接矩阵和邻接表。</p>
 </li>

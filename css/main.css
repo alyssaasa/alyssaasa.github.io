@@ -3165,6 +3165,7 @@ p {
 /* post-图片阴影 */
 .posts-expand .post-body img {
   box-shadow: 0 5px 15px 0px rgba(0,0,0,0.4);
+  opacity: 1;
 }
 /* post-引用与 note 字体 */
 blockquote p,
