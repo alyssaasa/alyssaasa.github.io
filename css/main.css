@@ -2900,7 +2900,6 @@ mjx-container[display="true"] + br {
   position: sticky;
   top: 12px;
   width: 240px;
-  visibility: hidden;
 }
 @media (max-width: 991px) {
   .sidebar {
@@ -3078,6 +3077,7 @@ body {
   background-attachment: fixed;
   background-size: 100% 100%;
   background-position: 50% 50%;
+  opacity: 0.9;
 }
 @media (prefers-color-scheme: dark) {
   body {
