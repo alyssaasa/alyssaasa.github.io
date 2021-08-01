@@ -1038,6 +1038,52 @@
       </tags>
   </entry>
   <entry>
+    <title>将keras的h5文件转为tensorflow的pb文件</title>
+    <url>//posts/301/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
+<span id="more"></span>
+
+<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
+<p>🎋. <strong>keras中：</strong></p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
+
+<p> 🎋. <strong>在python中的使用：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
+<p>参考代码：<a href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>soft label 和 hard label</title>
+    <url>//posts/302/</url>
+    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
+<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
+<span id="more"></span>
+
+<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
+<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
+</li>
+<li><p>软标签：</p>
+<ul>
+<li>用于模棱两可的情况；</li>
+<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>准确率，精确率，召回率和AUC曲线，PR曲线</title>
     <url>//posts/300/</url>
     <content><![CDATA[<p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
@@ -1089,87 +1135,6 @@
       </tags>
   </entry>
   <entry>
-    <title>将keras的h5文件转为tensorflow的pb文件</title>
-    <url>//posts/301/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
-<span id="more"></span>
-
-<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
-<p>🎋. <strong>keras中：</strong></p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
-
-<p> 🎋. <strong>在python中的使用：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
-<p>参考代码：<a href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
-]]></content>
-      <categories>
-        <category>Deep Learning</category>
-      </categories>
-      <tags>
-        <tag>Deep Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>soft label 和 hard label</title>
-    <url>//posts/302/</url>
-    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
-<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
-<span id="more"></span>
-
-<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
-<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
-</li>
-<li><p>软标签：</p>
-<ul>
-<li>用于模棱两可的情况；</li>
-<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Deep Learning</category>
-      </categories>
-      <tags>
-        <tag>NLP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Conda 常用命令</title>
-    <url>//posts/513/</url>
-    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
-<li>创建虚拟环境：<code>conda create -n env_name python=2.7</code></li>
-<li>创建虚拟环境，同时安装必要的包：<code>conda create -n env_name numpy matplotlib python=2.7</code></li>
-<li>激活虚拟环境：<ul>
-<li>Linux：<code>source activate your_env_name</code></li>
-<li>Windows: <code>activate your_env_name</code></li>
-</ul>
-</li>
-<li>检查当前 python 版本是否为想要的：<code>python --version</code></li>
-<li>退出虚拟环境：<ul>
-<li>Linux: <code>source deactivate your_env_name</code></li>
-<li>Windows: <code>deactivate env_name</code>，也可以使用<code>activate root</code>切回root环境。</li>
-</ul>
-</li>
-<li>删除虚拟环境：<ul>
-<li>使用命令 <code>conda remove -n your_env_name --all</code>， 即可删除。</li>
-<li>删除虚拟环境中的包：<code>conda remove --name $your_env_name $package_name</code></li>
-</ul>
-</li>
-<li>查看安装了哪些包：<code>conda list</code></li>
-<li>安装包：<code>conda install package_name</code></li>
-<li>查看当前存在哪些虚拟环境：<code>conda env list</code> 或 <code>conda info -e</code></li>
-<li>检查更新当前 conda：<code>conda update conda</code><span id="more"></span></li>
-</ul>
-<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
-<li><a href="https://datumorphism.leima.is/til/programming/python/python-anaconda-install-requirements/">Installing requirements.txt in Conda Environments | Datumorphism | Lei Ma</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux 常用命令</title>
     <url>//posts/512/</url>
     <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
@@ -1206,32 +1171,39 @@
       </tags>
   </entry>
   <entry>
-    <title>C++ 类</title>
-    <url>//posts/402/</url>
-    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
-<span id="more"></span>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
-<ol>
-<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
-<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
-<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
-<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
-<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
-</ol>
+    <title>Conda 常用命令</title>
+    <url>//posts/513/</url>
+    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
+<li>创建虚拟环境：<code>conda create -n env_name python=2.7</code></li>
+<li>创建虚拟环境，同时安装必要的包：<code>conda create -n env_name numpy matplotlib python=2.7</code></li>
+<li>激活虚拟环境：<ul>
+<li>Linux：<code>source activate your_env_name</code></li>
+<li>Windows: <code>activate your_env_name</code></li>
+</ul>
+</li>
+<li>检查当前 python 版本是否为想要的：<code>python --version</code></li>
+<li>退出虚拟环境：<ul>
+<li>Linux: <code>source deactivate your_env_name</code></li>
+<li>Windows: <code>deactivate env_name</code>，也可以使用<code>activate root</code>切回root环境。</li>
+</ul>
+</li>
+<li>删除虚拟环境：<ul>
+<li>使用命令 <code>conda remove -n your_env_name --all</code>， 即可删除。</li>
+<li>删除虚拟环境中的包：<code>conda remove --name $your_env_name $package_name</code></li>
+</ul>
+</li>
+<li>查看安装了哪些包：<code>conda list</code></li>
+<li>安装包：<code>conda install package_name</code></li>
+<li>查看当前存在哪些虚拟环境：<code>conda env list</code> 或 <code>conda info -e</code></li>
+<li>检查更新当前 conda：<code>conda update conda</code><span id="more"></span></li>
+</ul>
+<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
+<li><a href="https://datumorphism.leima.is/til/programming/python/python-anaconda-install-requirements/">Installing requirements.txt in Conda Environments | Datumorphism | Lei Ma</a></li>
+</ul>
 ]]></content>
       <categories>
-        <category>Languages</category>
+        <category>Tools</category>
       </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
   </entry>
   <entry>
     <title>Java 继承</title>
@@ -1309,6 +1281,34 @@
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 类</title>
+    <url>//posts/402/</url>
+    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
+<span id="more"></span>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
+<ol>
+<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
+<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
+<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
+<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
+<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Languages</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
