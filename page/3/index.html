@@ -180,18 +180,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/overview/timeline/">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/overview/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/overview/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -230,7 +230,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/undefined/">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/300/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -243,7 +243,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/undefined/" class="post-title-link" itemprop="url">准确率，精确率，召回率和AUC曲线，PR曲线</a>
+          <a href="/posts/300/" class="post-title-link" itemprop="url">准确率，精确率，召回率和AUC曲线，PR曲线</a>
         </h2>
 
         <div class="post-meta-container">
@@ -275,13 +275,13 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/posts/undefined/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/undefined/" data-xid="/posts/undefined/" itemprop="commentCount"></span>
+    <a title="waline" href="/posts/300/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/300/" data-xid="/posts/300/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-    <span id="/posts/undefined/" class="post-meta-item leancloud_visitors" data-flag-title="准确率，精确率，召回率和AUC曲线，PR曲线" title="阅读">
+    <span id="/posts/300/" class="post-meta-item leancloud_visitors" data-flag-title="准确率，精确率，召回率和AUC曲线，PR曲线" title="阅读">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -298,47 +298,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-<h2 id="什么是性能度量？"><a href="#什么是性能度量？" class="headerlink" title="什么是性能度量？"></a>什么是性能度量？</h2><p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
-<h2 id="混淆矩阵-（TP-TN-FP-FN）"><a href="#混淆矩阵-（TP-TN-FP-FN）" class="headerlink" title="混淆矩阵 （TP TN FP FN）"></a>混淆矩阵 （TP TN FP FN）</h2><ol>
-<li>True Positives,TP：预测为正样本，实际也为正样本的特征数</li>
-<li>False Positives,FP：预测为正样本，实际为负样本的特征数</li>
-<li>True Negatives,TN：预测为负样本，实际也为负样本的特征数</li>
-<li>False Negatives,FN：预测为负样本，实际为正样本的特征数</li>
-</ol>
-<p><strong>True / False：是针对原样本而言的。</strong><br><strong>Positive / Negative：是针对预测结果而言的。</strong></p>
-<h2 id="准确率-accuracy"><a href="#准确率-accuracy" class="headerlink" title="准确率 (accuracy)"></a>准确率 (accuracy)</h2><p>既然是个分类指标，我们可以很自然的想到准确率，准确率的定义是预测正确的结果占总样本的百分比，其公式如下：</p>
-<p>$$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$</p>
-<p>虽然准确率可以判断总的正确率，但是在<strong>样本不平衡</strong>的情况下，并不能作为很好的指标来衡量结果。举个简单的例子，比如在一个总样本中，正样本占90%，负样本占10%，样本是严重不平衡的。对于这种情况，我们只需要将全部样本预测为正样本即可得到90%的高准确率，但实际上我们并没有很用心的分类，只是随便无脑一分而已。这就说明了：由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。</p>
-<p>正因为如此，也就衍生出了其它两种指标：精准率和召回率。</p>
-<h5 id="🎃-精确率-precision"><a href="#🎃-精确率-precision" class="headerlink" title="🎃. 精确率 (precision)"></a>🎃. 精确率 (precision)</h5><p>$$precision = \frac{TP}{TP+FP}$$</p>
-<p>精确率：预测为正的样本中有多少是真的正样本。精确率和准确率看上去有些类似，但是完全不同的两个概念。精准率代表对正样本结果中的预测准确程度，而准确率则代表整体的预测准确程度，既包括正样本，也包括负样本。</p>
-<h5 id="🎃-召回率-recall"><a href="#🎃-召回率-recall" class="headerlink" title="🎃. 召回率 (recall)"></a>🎃. 召回率 (recall)</h5><p>$$recall = \frac{TP}{TP+FN}$$</p>
-<p>召回率，又叫查全率，它是针对原样本而言的，它的含义是样本中为正的，有多少被预测为正。</p>
-<p><strong>召回率的应用场景：</strong>比如拿网贷违约率为例，相对好用户，我们更关心坏用户，不能错放过任何一个坏用户。因为如果我们过多的将坏用户当成好用户，这样后续可能发生的违约金额会远超过好用户偿还的借贷利息金额，造成严重偿失。<strong>召回率越高，代表实际坏用户被预测出来的概率越高，它的含义类似：宁可错杀一千，绝不放过一个。</strong></p>
-<h5 id="🎃-特异度-specificity"><a href="#🎃-特异度-specificity" class="headerlink" title="🎃. 特异度 (specificity)"></a>🎃. 特异度 (specificity)</h5><p>$$specificity = \frac{TN}{TN+FP}$$</p>
-<p>特异度被定义为：样本中为负的，有多少被预测为负。和召回率刚好相反，一个针对正样本而言，一个针对负样本而言。</p>
-<h5 id="🎃-F-1-值"><a href="#🎃-F-1-值" class="headerlink" title="🎃. $F_1$值"></a>🎃. $F_1$值</h5><p>$$F_1 = \frac{P * R * 2}{P + R}$$</p>
-<p>F1值 = 精确率 * 召回率 * 2 / (精确率 + 召回率) （F1值即为精确率和召回率的调和平均值）</p>
-<p>不妨举<a href="https://link.zhihu.com/?target=http://peghoty.blog.163.com/blog/static/49346409201302595935709/">这样一个例子</a>：某池塘有1400条鲤鱼，300只虾，300只鳖。现在以捕鲤鱼为目的。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">700</span> / (<span class="number">700</span> + <span class="number">200</span> + <span class="number">100</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">700</span> / <span class="number">1400</span> = <span class="number">50</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">50</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">50</span>%) = <span class="number">58</span>.<span class="number">3</span>%</span><br></pre></td></tr></table></figure>
-
-<p>不妨看看如果把池子里的所有的鲤鱼、虾和鳖都一网打尽，这些指标又有何变化：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">1400</span> / (<span class="number">1400</span> + <span class="number">300</span> + <span class="number">300</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">1400</span> / <span class="number">1400</span> = <span class="number">100</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">100</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">100</span>%) = <span class="number">82</span>.<span class="number">35</span>% </span><br></pre></td></tr></table></figure>
-
-<p>由此可见，精确率是评估捕获的成果中目标成果所占得比例；召回率，顾名思义，就是从关注领域中，召回目标类别的比例；而F值，则是综合这二者指标的评估指标，用于综合反映整体的指标。</p>
-<p>当然希望检索结果precision越高越好，同时recall也越高越好，但事实上这两者在某些情况下有矛盾的。比如极端情况下，我们只搜索出了一个结果，且是准确的，那么precision就是100%，但是recall就很低；而如果我们把所有结果都返回，那么recall是100%，但是precision就会很低。因此在不同的场合中需要自己判断希望precision比较高或是recall比较高。如果是做实验研究，可以绘制<strong>Precision-Recall曲线</strong>来帮助分析。</p>
-<p>有时候我们对精确率和召回率并不是一视同仁，比如有时候我们更加重视精确率。我们用一个参数 $\beta$ 来度量两者之间的关系。如果 $\beta&gt;1$, 召回率有更大影响，如果 $\beta&lt;1$, 精确率有更大影响。自然，当 $\beta=1$ 的时候，精确率和召回率影响力相同，和F1形式一样。含有度量参数 $\beta$ 的F1我们记为 $F_\beta$, 严格的数学定义如下：</p>
-<p>$$𝐹_𝛽=\frac{(1+𝛽^2)∗𝑃∗𝑅}{𝛽^2∗𝑃+𝑅} $$</p>
-<h5 id="🎃-RoC-曲线与AUC值"><a href="#🎃-RoC-曲线与AUC值" class="headerlink" title="🎃. RoC 曲线与AUC值"></a>🎃. RoC 曲线与AUC值</h5><p>🎋. 灵敏度 TPR (true positive rate) (同召回率)：真实样本中为正的，有多少被预测为正</p>
-<p>🎋. 1-特异度：FPR (false positive rate)：真实样本为负的，有多少被预测为正</p>
-<p>$$FPR = \frac{FP}{FP+TN}$$</p>
-<p>🎋. ROC曲线与AUC值：以TPR为y轴，以FPR为x轴，我们就直接得到了RoC曲线。从FPR和TPR的定义可以理解，TPR越高，FPR越小，我们的模型和算法就越高效。也就是画出来的RoC曲线越靠近左上越好。如下图左图所示。从几何的角度讲，RoC曲线下方的面积越大越大，则模型越优。所以有时候我们用<strong>RoC曲线下的面积</strong>，即AUC（Area Under Curve）值来作为算法和模型好坏的标准。</p>
-<p><img data-src="/images/others/1.png" alt="img"></p>
-<p>🎋. PR曲线：以精确率为y轴，以召回率为x轴，我们就得到了PR曲线。仍然从精确率和召回率的定义可以理解，精确率越高，召回率越高，我们的模型和算法就越高效。也就是画出来的PR曲线越靠近右上越好。如上图右图所示。</p>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016686335">https://segmentfault.com/a/1190000016686335</a><br>参考链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/5993450.html">https://www.cnblogs.com/pinard/p/5993450.html</a></p>
-
+          <p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
       
     </div>
 
@@ -800,106 +763,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/22/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Alyssa">
-      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醉里挑灯赏猫">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/22/" class="post-title-link" itemprop="url">经济学学习科研相关网站</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发布：</span>
-
-      <time title="创建时间：2017-02-21 18:30:01" itemprop="dateCreated datePublished" datetime="2017-02-21T18:30:01+08:00">2017-02-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类：</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/academic/" itemprop="url" rel="index"><span itemprop="name">学术向</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">评论：</span>
-  
-    <a title="waline" href="/posts/22/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/22/" data-xid="/posts/22/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span id="/posts/22/" class="post-meta-item leancloud_visitors" data-flag-title="经济学学习科研相关网站" title="阅读">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="1-论文期刊"><a href="#1-论文期刊" class="headerlink" title="1. 论文期刊"></a>1. 论文期刊</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://econpapers.repec.org/">EconPaper</a></li>
-<li><a target="_blank" rel="noopener" href="https://ideas.repec.org/">IDEAS</a></li>
-<li><a href="/posts/21/">经济学顶尖学术期刊</a>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
   </nav>
@@ -945,7 +808,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
