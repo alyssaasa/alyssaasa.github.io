@@ -180,18 +180,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/overview/timeline/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/overview/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/overview/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -298,12 +298,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="C"><a href="#C" class="headerlink" title="C#"></a><span>C#</span></h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228358(v=vs.90)">C# for Java Developers</a></li>
-</ul>
-<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a><span>Shell</span></h2><ul>
-<li><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/743.html">Shell变量：Shell变量的定义、赋值和删除</a></li>
-<li><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/1120.html">Shell字符串</a>
+          <p>学习和生活当中总结的一些实用的学习网站</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -400,10 +395,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a><span>继承的概念</span></h2><blockquote>
-<p>继承是 java 面向对象编程技术的一块基石，因为它允许创建分等级层次的类。</p>
+          <p>继承是 java 面向对象编程技术的一块基石，因为它允许创建分等级层次的类。</p>
 <p>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。</p>
-</blockquote>
           <!--noindex-->
           <!--/noindex-->
         
@@ -563,10 +556,6 @@
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/overview/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
         </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Tools/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
-        </span>
     </span>
 
   
@@ -631,7 +620,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/undefined/">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/406/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -644,7 +633,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/undefined/" class="post-title-link" itemprop="url">BatchNorm 与 LayerNorm</a>
+          <a href="/posts/406/" class="post-title-link" itemprop="url">深度学习相关知识网站</a>
         </h2>
 
         <div class="post-meta-container">
@@ -676,13 +665,13 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/posts/undefined/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/undefined/" data-xid="/posts/undefined/" itemprop="commentCount"></span>
+    <a title="waline" href="/posts/406/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/406/" data-xid="/posts/406/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-    <span id="/posts/undefined/" class="post-meta-item leancloud_visitors" data-flag-title="BatchNorm 与 LayerNorm" title="阅读">
+    <span id="/posts/406/" class="post-meta-item leancloud_visitors" data-flag-title="深度学习相关知识网站" title="阅读">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -699,41 +688,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="🌼-Batch-Normalization"><a href="#🌼-Batch-Normalization" class="headerlink" title="🌼  Batch Normalization"></a>🌼  <a target="_blank" rel="noopener" href="http://arxiv.org/abs/1502.03167">Batch Normalization</a></h4><h5 id="1-作用："><a href="#1-作用：" class="headerlink" title="1. 作用："></a>1. 作用：</h5><p>batch normalization 主要起到正则化的作用，可以加速网络收敛，并防止梯度消失。<br>具体解释可以看： <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av16000304">https://www.bilibili.com/video/av16000304</a> </p>
-<h5 id="2-做法："><a href="#2-做法：" class="headerlink" title="2. 做法："></a>2. 做法：</h5><ul>
-<li>对每个batch的元素求均值和方差：<br>$$E(x) = \frac{1}{m}\sum\limits_i x_i$$<br>$$Var(x) = \frac{1}{m}\sum\limits_i(x_i-E(x))^2$$</li>
-<li>用均值和方差对每个元素进行归一化：<br>$$\hat{x_i}= \frac{x_i-E(x)}{\sqrt{Var(x)+ \epsilon }}$$</li>
-<li>因为使用了归一化，强制改变了学习到的分布，所以加了两个可以学习的参数 $$\gamma$$ 和 $$\beta$$ 来恢复分布：<br>$$y_i= \frac{x_i-E(x)}{\sqrt{Var(x)+ \epsilon }}*\gamma + \beta$$</li>
-</ul>
-<h5 id="3-BN层的反向传播："><a href="#3-BN层的反向传播：" class="headerlink" title="3. BN层的反向传播："></a>3. BN层的反向传播：</h5><ul>
-<li>反向传播时，我们需要求 $$\frac{\partial L}{\partial \gamma}$$， $$\frac{\partial L}{\partial \beta}$$ 和 $$\frac{\partial L}{\partial x_i}$$</li>
-<li>求  $$\frac{\partial L}{\partial x_i}$$ 以更新 $$w$$ 和 $$b$$。求  $$\frac{\partial L}{\partial x_i}$$ 时，需要用到  $$\frac{\partial L}{\partial \mu}$$， $$\frac{\partial L}{\partial \sigma^2}$$ 和 $$\frac{\partial L}{\partial \hat{x_i}}$$</li>
-</ul>
-<p>$$\begin{cases} \hat{x_i}= \frac{x_i-\mu}{\sqrt{\sigma^2+ \epsilon }} \ y_i= \hat{x_i}*\gamma + \beta\end{cases}$$</p>
-<ul>
-<li><p>先求 $$\frac{\partial L}{\partial \gamma}$$， $$\frac{\partial L}{\partial \beta}$$：</p>
-<p>$$\begin{cases} \frac{\partial L}{\partial \gamma} = \sum\limits_i \frac{\partial L}{\partial y_i}·\frac{\partial y_i}{\partial \gamma} =  \sum\limits_i \frac{\partial L}{\partial y_i}·\hat{x_i} \ \frac{\partial L}{\partial \beta} = \sum\limits_i \frac{\partial L}{\partial y_i}·\frac{\partial y_i}{\partial \beta} =  \sum\limits_i \frac{\partial L}{\partial y_i} \end{cases}$$</p>
+          <h2 id="Batch-Normalization-and-Layer-Normalization"><a href="#Batch-Normalization-and-Layer-Normalization" class="headerlink" title="Batch Normalization and Layer Normalization "></a><span>Batch Normalization and Layer Normalization </span></h2><ul>
+<li><p><a target="_blank" rel="noopener" href="http://arxiv.org/abs/1502.03167">Batch Normalization 论文</a></p>
 </li>
-<li><p>求 $$\frac{\partial L}{\partial x_i}$$：</p>
-<p>$$\begin{align} &amp; \begin{cases} \frac{\partial L}{\partial \hat{x_i}} = \sum\limits_i \frac{\partial L}{\partial y_i}·\frac{\partial y_i}{\partial \hat{x_i}} =  \sum\limits_i \frac{\partial L}{\partial y_i}·\gamma \ \frac{\partial L}{\partial \sigma^2} = \sum\limits_i \frac{\partial L}{\partial y_i}·\frac{\partial y_i}{\partial \hat{x_i}}·\frac{\partial \hat{x_i}}{\partial \sigma^2} = \sum\limits_i  \frac{\partial L}{\partial \hat{x_i}} ·\frac{\partial \hat{x_i}}{\partial \sigma^2}= \sum\limits_i \frac{\partial L}{\partial y_i}·\gamma·-\frac{x_i-\mu}{2}(\sigma^2+\epsilon )^{-\frac{3}{2}} \  \frac{\partial L}{\partial \mu} = \sum\limits_i \frac{\partial L}{\partial \sigma^2}·\frac{\partial \sigma^2}{\partial \mu} + \sum\limits_i \frac{\partial L}{\partial \hat{x_i}}·\frac{\partial \hat{x_i}}{\partial \mu}= \sum\limits_i [\frac{\partial L}{\partial \hat{x_i}}·(-\frac{1}{\sqrt{\sigma^2+\epsilon}}) + \frac{\partial L}{\partial \sigma^2}·\frac{-2\sum_i(x_i-\mu)}{m}]\end{cases} \ &amp; ==&gt;\frac{\partial L}{\partial x_i} = \frac{\partial L}{\partial \hat{x_i}}· \frac{\partial \hat{x_i}}{\partial x_i}+\frac{\partial L}{\partial \sigma^2}· \frac{\partial \sigma^2}{\partial x_i}+\frac{\partial L}{\partial \mu}· \frac{\partial \mu}{\partial x_i} \end{align}$$</p>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av16000304">Batch Normalization 作用</a> </p>
 </li>
-<li><p>⭐$$y_i=f(\hat{x_i})；\hat{x_i}=g(x_i,\mu,\sigma^2)；\mu=h(x_i)；\sigma^2=m(\mu, x_i)$$ 在求偏导关系的时候，我们先把函数关系和他们的参数都写出来，如前面所示。比如要求 $$\frac{\partial L}{\partial \mu}$$，根据函数与参数的关系式，我们可以看到，$$\hat{x_i}=g(x_i,\mu,\sigma^2)；\sigma^2=m(\mu, x_i)$$ 两个式子中有 $$\mu$$，那么则有下式，其他同理。</p>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1607.06450">Layer Normalization 论文</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54530247">Layer Normalization 讲解</a></p>
 </li>
 </ul>
-<p>$$\frac{\partial L}{\partial \mu} = \sum\limits_i \frac{\partial L}{\partial \sigma^2}·\frac{\partial \sigma^2}{\partial \mu} + \sum\limits_i \frac{\partial L}{\partial \hat{x_i}}·\frac{\partial \hat{x_i}}{\partial \mu}$$</p>
-<h5 id="4-测试阶段：平均移动"><a href="#4-测试阶段：平均移动" class="headerlink" title="4. 测试阶段：平均移动"></a>4. 测试阶段：平均移动</h5><p>在测试时，若输入单张图片，则无法求均值和方差，那么测试阶段的 $$\mu$$ 和 $$\sigma^2$$ 用的是训练时所有的 $$\mu$$ 和 $$\sigma^2$$ 的均值。<br>训练时为何不用：可能与梯度优化存在冲突。（原论文就是这样解释的）</p>
-<h4 id="🌼-Layer-Normalization"><a href="#🌼-Layer-Normalization" class="headerlink" title="🌼  Layer Normalization"></a>🌼  <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1607.06450">Layer Normalization</a></h4><p>原博链接： <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54530247">https://zhuanlan.zhihu.com/p/54530247</a> </p>
-<p>BN并不适用于RNN等动态网络和batchsize较小的时候效果不好。Layer Normalization（LN）的提出有效的解决BN的这两个问题。LN和BN不同点是归一化的维度是互相垂直的，如图所示。在下图中 $$N$$ 表示样本轴， $$C$$ 表示通道轴，$$F$$ 是每个通道的特征数量。</p>
+<h2 id="tensorflow-代码"><a href="#tensorflow-代码" class="headerlink" title=" tensorflow 代码 "></a><span> tensorflow 代码 </span></h2><p><a target="_blank" rel="noopener" href="https://www.github.com/tensorflow/tensorflow/blob/r1.8/tensorflow/contrib/layers/python/layers/layers.py">tensorflow/contrib/layers/python/layers/layers.py</a></p>
 <ul>
-<li>BN如右侧所示，它是取不同样本的同一个通道的特征做归一化；</li>
-<li>LN则是如左侧所示，它取的是同一个样本的不同通道做归一化。 </li>
-</ul>
-<p><img data-src="/images/others/1.jpg" alt="img"></p>
-<p>BN为什么不适用于RNN等网络具体看原博。</p>
-<h4 id="🌼-Tensorflow-源码"><a href="#🌼-Tensorflow-源码" class="headerlink" title="🌼 Tensorflow 源码"></a>🌼 Tensorflow 源码</h4><p>链接： <a target="_blank" rel="noopener" href="https://www.github.com/tensorflow/tensorflow/blob/r1.8/tensorflow/contrib/layers/python/layers/layers.py">tensorflow/contrib/layers/python/layers/layers.py</a></p>
-<ul>
-<li>tf.contrib.layers.batch_norm() 和 tf.contrib.layers.layer_norm() 的主要作用是根据自己需要求的维度，先求出均值和方差，并为 beta 和 gamma 进行初始化.</li>
-<li>tf.nn.batch_normalization() 的作用是根据你求出的均值和方差，对原输入进行归一化操作。</li>
+<li><p>tf.contrib.layers.batch_norm() 和 tf.contrib.layers.layer_norm() 的主要作用是根据自己需要求的维度，先求出均值和方差，并为 beta 和 gamma 进行初始化.</p>
+</li>
+<li><p>tf.nn.batch_normalization() 的作用是根据你求出的均值和方差，对原输入进行归一化操作。</p>
+</li>
 </ul>
 <h5 id="1-tf-nn-moments-函数"><a href="#1-tf-nn-moments-函数" class="headerlink" title="1. tf.nn.moments()函数"></a>1. <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_16320025/article/details/89397883">tf.nn.moments()函数</a></h5><ul>
 <li>定义：<code>def moments(x, axes, name=None, keep_dims=False)</code></li>

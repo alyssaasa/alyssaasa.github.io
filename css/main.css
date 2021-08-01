@@ -11,7 +11,7 @@
   --table-row-odd-bg-color: #f9f9f9;
   --table-row-hover-bg-color: #f5f5f5;
   --menu-item-bg-color: #f5f5f5;
-  --btn-default-bg: #3f5973;
+  --btn-default-bg: #ef7060;
   --btn-default-color: #555;
   --btn-default-border-color: #555;
   --btn-default-hover-bg: #649ab6;
@@ -3073,9 +3073,11 @@ mjx-container[display="true"] + br {
 /* header-页面背景 */
 body {
   background-image: url("/images/body-bg.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: contain;
+  background-size: 100% 100%;
+  background-position: 50% 50%;
+  opacity: 0.9;
 }
 @media (prefers-color-scheme: dark) {
   body {
@@ -3116,7 +3118,7 @@ body {
 /* post-首页文章标题 */
 .index .post-title {
   text-align: left;
-  border-left: #3f5973 8px solid;
+  border-left: #ef7060 8px solid;
   padding-left: 10px;
 }
 /* post-首页文章信息 */
@@ -3182,7 +3184,7 @@ li {
 /************************ Button ***************************/
 /* button-back2top */
 .back-to-top {
-  background: #3f5973;
+  background: #ef7060;
   opacity: 0.8;
   font-weight: bold;
   font-size: 1em;
@@ -3271,7 +3273,7 @@ li {
 }
 /* pagination-当前页码 */
 .pagination .page-number.current {
-  background: #3f5973;
+  background: #ef7060;
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -3307,7 +3309,7 @@ li {
     padding: 10px 15px;
     font-weight: bold;
     color: #fff;
-    background: #3f5973;
+    background: #ef7060;
     border-bottom: none;
     border-radius: 15px;
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -3352,7 +3354,7 @@ li {
   .tag-cloud a,
   .posts-expand .post-tags a {
     color: var(--text-color) !important;
-    background: #3f5973;
+    background: #ef7060;
   }
 }
 /************************* Comment ************************/
@@ -3394,8 +3396,8 @@ li {
 /* comment-评论提交按钮 */
 .v[data-class=v] .vbtn.primary {
   color: #fff !important;
-  border-color: #3f5973 !important;
-  background: #3f5973 !important;
+  border-color: #ef7060 !important;
+  background: #ef7060 !important;
 }
 .v[data-class=v] .vbtn.primary:hover {
   border-color: #649ab6 !important;
