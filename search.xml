@@ -17,6 +17,29 @@
       </tags>
   </entry>
   <entry>
+    <title>学习工具网站</title>
+    <url>//posts/405/</url>
+    <content><![CDATA[<p>学习和生活当中总结的一些实用的学习网站</p>
+<span id="more"></span>
+
+<h2 id="C"><a href="#C" class="headerlink" title="C#"></a><span>C#</span></h2><ul>
+<li><a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228358(v=vs.90)">C# for Java Developers</a></li>
+</ul>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a><span>Shell</span></h2><ul>
+<li><a href="http://c.biancheng.net/view/743.html">Shell变量：Shell变量的定义、赋值和删除</a></li>
+<li><a href="http://c.biancheng.net/view/1120.html">Shell字符串</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>C#</tag>
+        <tag>清单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>深度学习相关知识网站</title>
     <url>//posts/406/</url>
     <content><![CDATA[<h2 id="Batch-Normalization-and-Layer-Normalization"><a href="#Batch-Normalization-and-Layer-Normalization" class="headerlink" title="Batch Normalization and Layer Normalization "></a><span>Batch Normalization and Layer Normalization </span></h2><ul>
@@ -52,26 +75,28 @@
       </tags>
   </entry>
   <entry>
-    <title>学习工具网站</title>
-    <url>//posts/405/</url>
-    <content><![CDATA[<p>学习和生活当中总结的一些实用的学习网站</p>
+    <title>soft label 和 hard label</title>
+    <url>//posts/302/</url>
+    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
+<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
 <span id="more"></span>
 
-<h2 id="C"><a href="#C" class="headerlink" title="C#"></a><span>C#</span></h2><ul>
-<li><a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228358(v=vs.90)">C# for Java Developers</a></li>
+<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
+<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
+</li>
+<li><p>软标签：</p>
+<ul>
+<li>用于模棱两可的情况；</li>
+<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
 </ul>
-<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a><span>Shell</span></h2><ul>
-<li><a href="http://c.biancheng.net/view/743.html">Shell变量：Shell变量的定义、赋值和删除</a></li>
-<li><a href="http://c.biancheng.net/view/1120.html">Shell字符串</a></li>
+</li>
 </ul>
 ]]></content>
       <categories>
-        <category>Tools</category>
+        <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>Shell</tag>
-        <tag>C#</tag>
-        <tag>清单</tag>
+        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
@@ -187,6 +212,27 @@
       </categories>
       <tags>
         <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将keras的h5文件转为tensorflow的pb文件</title>
+    <url>//posts/301/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
+<span id="more"></span>
+
+<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
+<p>🎋. <strong>keras中：</strong></p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
+
+<p> 🎋. <strong>在python中的使用：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
+<p>参考代码：<a href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -340,73 +386,6 @@
       </tags>
   </entry>
   <entry>
-    <title>图</title>
-    <url>//posts/6/</url>
-    <content><![CDATA[<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
-<span id="more"></span>
-
-<h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
-<li><p>图分为邻接矩阵和邻接表。</p>
-</li>
-<li><p>邻接矩阵：<br><img data-src="/images/graph/2.png"></p>
-</li>
-<li><p>邻接表：<br><img data-src="/images/graph/3.png"></p>
-</li>
-<li><p>不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。</p>
-</li>
-</ul>
-<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><ul>
-<li>访问顶点v；</li>
-<li>依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</li>
-<li>若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">    System.out.println(node);</span><br><span class="line">    <span class="comment">//DFS遍历其他节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[node].length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(graph[node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>)</span><br><span class="line">            DFS(graph, visit, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><ul>
-<li>首先将根节点放入队列中;</li>
-<li>从队列中取出第一个节点, 将它所有尚未检验过的直接子节点加入队列中;</li>
-<li>若队列为空，表示整张图都检查过了。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    que.add(node);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> new_node = que.poll();</span><br><span class="line">        <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">        System.out.println(new_node);</span><br><span class="line">        <span class="comment">// 将new_node相连的节点放入队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[new_node].length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[new_node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                visit[i] = <span class="number">1</span>;</span><br><span class="line">                que.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a><span>经典题</span></h2><h3 id="leetcode-200-岛屿的数量"><a href="#leetcode-200-岛屿的数量" class="headerlink" title="leetcode 200. 岛屿的数量"></a><a href="https://leetcode.com/problems/number-of-islands/">leetcode 200. 岛屿的数量</a></h3><ul>
-<li>1为陆地，0为水，垂直方向才能算作一个岛屿，斜着不能算作一个岛屿。</li>
-<li>类似题目1：<a href="https://leetcode.com/problems/max-area-of-island/">leetcode 695. 岛屿的最大面积</a>，只需再增加一个计数功能即可。</li>
-<li>类似题目2：<a href="https://leetcode.com/problems/flood-fill/">leetcode 733. Flood Fill</a>,  访问节点时再改变一下节点的值即可。</li>
-</ul>
-<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Input:</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">00100</span></span><br><span class="line"><span class="number">00011</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">Output:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">islandDFS</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span>[][] visit, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=grid.length || j&lt;<span class="number">0</span> || j&gt;=grid[<span class="number">0</span>].length)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">        visit[i][j] = <span class="number">1</span>;</span><br><span class="line">        islandDFS(grid, visit, i, j-<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i, j+<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i+<span class="number">1</span>, j);</span><br><span class="line">        islandDFS(grid, visit, i-<span class="number">1</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(grid.length==<span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] visit = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 把和grid[i][j]相连接的位置都标记为1，记作一块岛屿</span></span><br><span class="line">                islandDFS(grid, visit, i, j);</span><br><span class="line">                number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-463-确定岛屿的周长"><a href="#leetcode-463-确定岛屿的周长" class="headerlink" title="leetcode 463. 确定岛屿的周长"></a><a href="https://leetcode.com/problems/island-perimeter/">leetcode 463. 确定岛屿的周长</a></h3><ul>
-<li>题目中只有一个岛屿，确定岛屿的周长</li>
-<li>就是确定每个1周围有几个0，或者在边界位置。</li>
-<li>这道题跟图没什么关系。遍历一遍就行了。</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从头到尾遍历，查看每个1周围几个0，上下左右。</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span> || grid[i-<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || grid[i][j-<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i==grid.length-<span class="number">1</span> || grid[i+<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==grid[<span class="number">0</span>].length-<span class="number">1</span> || grid[i][j+<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-787-从src飞到dst的最小花销"><a href="#leetcode-787-从src飞到dst的最小花销" class="headerlink" title="leetcode. 787 从src飞到dst的最小花销"></a><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">leetcode. 787 从src飞到dst的最小花销</a></h3><ul>
-<li>方法一：递归调用，但leetcode会超时。</li>
-<li>优化：对于遍历到的结点，首先判断如果当前结点已经访问过了，直接跳过。或者是当前价格out加上到达这个结点需要的价格之和大于结果res的话，那么直接跳过。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> [][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K, <span class="keyword">int</span> v, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(src==dst &amp;&amp; v&lt;min) &#123;</span><br><span class="line">        min = v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(K&lt;<span class="number">0</span>||v&gt;min) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;flights.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[src]==<span class="number">0</span> &amp;&amp; flights[i][<span class="number">0</span>]==src) &#123;</span><br><span class="line">            visit[src] = <span class="number">1</span>;</span><br><span class="line">            DFS(flights, flights[i][<span class="number">1</span>], dst, K-<span class="number">1</span>, v+flights[i][<span class="number">2</span>], visit);    </span><br><span class="line">            visit[src] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] f, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    DFS(f, src, dst, K, <span class="number">0</span>, visit);</span><br><span class="line">    <span class="keyword">if</span>(min == Integer.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-529-扫雷游戏"><a href="#leetcode-529-扫雷游戏" class="headerlink" title="leetcode 529. 扫雷游戏"></a><a href="https://leetcode.com/problems/minesweeper/">leetcode 529. 扫雷游戏</a></h3><ul>
-<li>题太复杂了。。之后再做。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><span>拓扑排序</span></h2><hr>
-<p>图片来源： <a href="https://www.cnblogs.com/XMU-hcq/p/6065057.html">https://www.cnblogs.com/XMU-hcq/p/6065057.html</a></p>
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>回溯算法</title>
     <url>//posts/5/</url>
     <content><![CDATA[<blockquote>
@@ -478,47 +457,6 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">boolean</span> <span class="title">backtracking</span><span class="params">(String S, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;=S.length() &amp;&amp; res.size()&gt;<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(k&gt;=S.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">int</span> len = res.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&lt;S.length();i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;k &amp;&amp; S.charAt(k)==<span class="string">&#x27;0&#x27;</span>) <span class="comment">// 前导0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;value = Integer.parseInt(S.substring(k, i+<span class="number">1</span>));&#125;</span><br><span class="line">        <span class="keyword">catch</span>(Exception e) &#123;<span class="keyword">return</span> <span class="keyword">false</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span>(len&lt;<span class="number">2</span> || res.get(len-<span class="number">1</span>)+res.get(len-<span class="number">2</span>)==value) &#123;</span><br><span class="line">            res.add(value);</span><br><span class="line">            <span class="keyword">boolean</span> flag = backtracking(S, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(flag) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            res.remove(res.size()-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(res.get(len-<span class="number">1</span>)+res.get(len-<span class="number">2</span>)&lt;value) <span class="comment">// 提前结束</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span>  List&lt;Integer&gt; <span class="title">splitIntoFibonacci</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">    backtracking(S, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字符串</title>
-    <url>//posts/7/</url>
-    <content><![CDATA[<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-316-删除字符串中的重复字符"><a href="#leetcode-316-删除字符串中的重复字符" class="headerlink" title="leetcode 316. 删除字符串中的重复字符"></a><a href="https://leetcode.com/problems/remove-duplicate-letters/">leetcode 316. 删除字符串中的重复字符</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a string which contains only lowercase letters, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</span><br><span class="line">Example <span class="number">1</span>:  Input: <span class="string">&quot;bcabc&quot;</span>      Output: <span class="string">&quot;abc&quot;</span></span><br><span class="line">Example <span class="number">2</span>:  Input: <span class="string">&quot;cbacdcbc&quot;</span>   Output: <span class="string">&quot;acdb&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>因为只有26个小写字母，所以可以用数组模拟 hashmap 先统计每个字符出现的次数。</li>
-<li>然后要用辅助栈。其实发现很多问题都是数组和栈辅助进行操作，来对比当前元素和栈顶元素的大小，从而进行相应的操作。删除栈顶元素还是向栈中添加元素。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeDuplicateLetters</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];  <span class="comment">// 统计每个字符出现的次数</span></span><br><span class="line">    <span class="keyword">boolean</span>[] visit = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">26</span>];  <span class="comment">// 表示某个字符是否已经出现在栈中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray())  </span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] += <span class="number">1</span>;</span><br><span class="line">    Stack&lt;Character&gt; sta = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray()) &#123;</span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(visit[ch-<span class="string">&#x27;a&#x27;</span>]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素比栈顶元素小，并且栈顶元素次数不等0</span></span><br><span class="line">        <span class="comment">// 那么就把栈顶元素弹出来，把当前元素入栈</span></span><br><span class="line">        <span class="keyword">while</span>(!sta.isEmpty() &amp;&amp; ch&lt;sta.peek() &amp;&amp; count[sta.peek()-<span class="string">&#x27;a&#x27;</span>]!=<span class="number">0</span>) </span><br><span class="line">            visit[sta.pop()-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">false</span>;</span><br><span class="line">        sta.push(ch);</span><br><span class="line">        visit[ch-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span>(!sta.isEmpty())</span><br><span class="line">        res = sta.pop()+res;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h3 id="leetcode-567-字符串中的全排列"><a href="#leetcode-567-字符串中的全排列" class="headerlink" title="leetcode 567. 字符串中的全排列"></a><a href="https://leetcode.com/problems/permutation-in-string/">leetcode 567. 字符串中的全排列</a></h3><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">Given two strings s1 <span class="keyword">and</span> s2, <span class="built_in">write</span> a function <span class="keyword">to</span> <span class="literal">return</span> <span class="literal">true</span> <span class="keyword">if</span> s2 <span class="keyword">contains</span> <span class="keyword">the</span> permutation <span class="keyword">of</span> s1. In other <span class="built_in">words</span>, one <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">first</span> <span class="built_in">string</span>&#x27;s permutations <span class="keyword">is</span> <span class="keyword">the</span> substring <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">second</span> <span class="built_in">string</span>.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Input</span>: s<span class="number">1</span> = <span class="string">&quot;ab&quot;</span> s<span class="number">2</span> = <span class="string">&quot;eidbaooo&quot;</span></span><br><span class="line"><span class="attribute">Output</span>: True</span><br><span class="line"><span class="attribute">Explanation</span>: s<span class="number">2</span> contains one permutation of s<span class="number">1</span> (<span class="string">&quot;ba&quot;</span>).</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>最直观的做法就是把s1的全排列都列出来，然后看每个全排列是不是s2的子串，但是当字符串的长度过长时，会超时。</li>
-<li><strong>如何判断字符串m是不是字符串n的全排列，我们只要把字符串m和字符串n中的每个字符出现的次数做统计，如果两者每个字符出现的次数都相等，那么就证明字符串m是字符串n的一个全排列。</strong></li>
-<li>如何判断字符串n是不是包含字符串m的全排列，也就是字符串m的全排列是不是字符串n的一个子串，那么我们就需要<strong>建立一个长度为m.length的滑动窗口</strong>，判断n的这个滑动窗口中n子串和m字符串每个字符出现的次数是不是相等。</li>
-<li>但每到一个滑动窗口都重新统计一次次数很麻烦，每次移动滑动窗口的时候，只有左侧被移出去的字符和右侧被移进来的字符的次数有变化，那么我们把左侧移出去的字符数-1，右侧移进来的字符数+1，即为当前窗口n的每个字符出现的次数。</li>
-<li>该题的类似题目：<a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/">leetcode 438. 找到s1的全排列在s2中的位置</a></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkInclusion</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s1.length()&gt;s2.length())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">//统计s1中每个字符出现的次数，s2中每个长度为s1.length的窗口中字符出现的次数</span></span><br><span class="line">    <span class="keyword">int</span>[] hash1 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span>[] hash2 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s1.length();i++) &#123;</span><br><span class="line">        hash1[s1.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">        hash2[s2.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(Arrays.equals(hash1, hash2))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=s1.length();i&lt;s2.length();i++) &#123;</span><br><span class="line">        hash2[s2.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">        hash2[s2.charAt(i-s1.length())-<span class="string">&#x27;a&#x27;</span>] --;</span><br><span class="line">        <span class="keyword">if</span>(Arrays.equals(hash1, hash2))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-179-将数组进行排序，使之组成的数最大-实则为对字符串排序"><a href="#leetcode-179-将数组进行排序，使之组成的数最大-实则为对字符串排序" class="headerlink" title="leetcode 179. 将数组进行排序，使之组成的数最大 (实则为对字符串排序)"></a><a href="https://leetcode.com/problems/largest-number/">leetcode 179. 将数组进行排序，使之组成的数最大 (实则为对字符串排序)</a></h3><ul>
-<li>输入：<code>[3,30,34,5,9]</code> </li>
-<li>输出：<code>9534330</code></li>
-<li>特殊问题：<code>[2, 2281]</code>   <code>[12, 121]</code>   <code>[23, 234]</code></li>
-<li>碰到长度不等时，会有些问题，比如第一个要交换。第二个不要交换；第三个要交换</li>
-<li>最好的办法就是直接把两个字符串m和n拼接起来，然后比较mn和nm的大小即可，不存在长度不等的情况。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(String[] str, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line"> String tmp = str[i];</span><br><span class="line"> str[i] = str[j];</span><br><span class="line"> str[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//因为这道题涉及到了长度不同，谁放在前面的问题，不能简单地直接逐个字符比较</span></span><br><span class="line"><span class="comment">//那么，把m和n拼接成的mn和nm按照字符串大小的比较规则来处理即可。</span></span><br><span class="line"><span class="comment">//如果mn &lt; nm,应该打印出nm,即n应该排在m前面，要交换顺序，反之，m应该排在n前面。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">cmp</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    String new_1 = a+b;</span><br><span class="line">    String new_2 = b+a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;new_1.length();i++)  &#123;</span><br><span class="line">        <span class="keyword">if</span>(new_1.charAt(i)==new_2.charAt(i)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> new_1.charAt(i)&lt;new_2.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">largestNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    String[] str = <span class="keyword">new</span> String[nums.length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;  <span class="comment">// 先将数组中的数字转为字符串，再去比较。</span></span><br><span class="line">        str[i] = nums[i]+<span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//写个冒泡排序，任何一种排序算法都可以，只要把交换的条件变为我们的cmp条件即可。</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cmp(str[j], str[j+<span class="number">1</span>])) &#123;</span><br><span class="line">                swap(str, j, j+<span class="number">1</span>);</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length;i++) &#123;</span><br><span class="line">        result += str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(result.charAt(<span class="number">0</span>)==<span class="string">&#x27;0&#x27;</span>) <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>; <span class="comment">//防止出现&quot;00&quot;的情况。</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Algorithms</category>
       </categories>
@@ -682,6 +620,114 @@
 <h2 id="桶排序-bucket-sort"><a href="#桶排序-bucket-sort" class="headerlink" title="桶排序 (bucket sort)"></a><span>桶排序 (bucket sort)</span></h2><h2 id="基数排序-radix-sort"><a href="#基数排序-radix-sort" class="headerlink" title="基数排序 (radix sort)"></a><span>基数排序 (radix sort)</span></h2><p><a href="https://www.cnblogs.com/onepixel/p/7674659.html">https://www.cnblogs.com/onepixel/p/7674659.html</a></p>
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a><span>注释</span></h2><p>文中图片来源：<a href="https://www.cnblogs.com/onepixel/p/7674659.html">https://www.cnblogs.com/onepixel/p/7674659.html</a></p>
 ]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图</title>
+    <url>//posts/6/</url>
+    <content><![CDATA[<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
+<span id="more"></span>
+
+<h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
+<li><p>图分为邻接矩阵和邻接表。</p>
+</li>
+<li><p>邻接矩阵：<br><img data-src="/images/graph/2.png"></p>
+</li>
+<li><p>邻接表：<br><img data-src="/images/graph/3.png"></p>
+</li>
+<li><p>不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。</p>
+</li>
+</ul>
+<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><ul>
+<li>访问顶点v；</li>
+<li>依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</li>
+<li>若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">    System.out.println(node);</span><br><span class="line">    <span class="comment">//DFS遍历其他节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[node].length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(graph[node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>)</span><br><span class="line">            DFS(graph, visit, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><ul>
+<li>首先将根节点放入队列中;</li>
+<li>从队列中取出第一个节点, 将它所有尚未检验过的直接子节点加入队列中;</li>
+<li>若队列为空，表示整张图都检查过了。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    que.add(node);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> new_node = que.poll();</span><br><span class="line">        <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">        System.out.println(new_node);</span><br><span class="line">        <span class="comment">// 将new_node相连的节点放入队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[new_node].length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[new_node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                visit[i] = <span class="number">1</span>;</span><br><span class="line">                que.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a><span>经典题</span></h2><h3 id="leetcode-200-岛屿的数量"><a href="#leetcode-200-岛屿的数量" class="headerlink" title="leetcode 200. 岛屿的数量"></a><a href="https://leetcode.com/problems/number-of-islands/">leetcode 200. 岛屿的数量</a></h3><ul>
+<li>1为陆地，0为水，垂直方向才能算作一个岛屿，斜着不能算作一个岛屿。</li>
+<li>类似题目1：<a href="https://leetcode.com/problems/max-area-of-island/">leetcode 695. 岛屿的最大面积</a>，只需再增加一个计数功能即可。</li>
+<li>类似题目2：<a href="https://leetcode.com/problems/flood-fill/">leetcode 733. Flood Fill</a>,  访问节点时再改变一下节点的值即可。</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Input:</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">00100</span></span><br><span class="line"><span class="number">00011</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">Output:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">islandDFS</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span>[][] visit, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=grid.length || j&lt;<span class="number">0</span> || j&gt;=grid[<span class="number">0</span>].length)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">        visit[i][j] = <span class="number">1</span>;</span><br><span class="line">        islandDFS(grid, visit, i, j-<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i, j+<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i+<span class="number">1</span>, j);</span><br><span class="line">        islandDFS(grid, visit, i-<span class="number">1</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(grid.length==<span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] visit = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 把和grid[i][j]相连接的位置都标记为1，记作一块岛屿</span></span><br><span class="line">                islandDFS(grid, visit, i, j);</span><br><span class="line">                number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-463-确定岛屿的周长"><a href="#leetcode-463-确定岛屿的周长" class="headerlink" title="leetcode 463. 确定岛屿的周长"></a><a href="https://leetcode.com/problems/island-perimeter/">leetcode 463. 确定岛屿的周长</a></h3><ul>
+<li>题目中只有一个岛屿，确定岛屿的周长</li>
+<li>就是确定每个1周围有几个0，或者在边界位置。</li>
+<li>这道题跟图没什么关系。遍历一遍就行了。</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从头到尾遍历，查看每个1周围几个0，上下左右。</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span> || grid[i-<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || grid[i][j-<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i==grid.length-<span class="number">1</span> || grid[i+<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==grid[<span class="number">0</span>].length-<span class="number">1</span> || grid[i][j+<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-787-从src飞到dst的最小花销"><a href="#leetcode-787-从src飞到dst的最小花销" class="headerlink" title="leetcode. 787 从src飞到dst的最小花销"></a><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">leetcode. 787 从src飞到dst的最小花销</a></h3><ul>
+<li>方法一：递归调用，但leetcode会超时。</li>
+<li>优化：对于遍历到的结点，首先判断如果当前结点已经访问过了，直接跳过。或者是当前价格out加上到达这个结点需要的价格之和大于结果res的话，那么直接跳过。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> [][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K, <span class="keyword">int</span> v, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(src==dst &amp;&amp; v&lt;min) &#123;</span><br><span class="line">        min = v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(K&lt;<span class="number">0</span>||v&gt;min) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;flights.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[src]==<span class="number">0</span> &amp;&amp; flights[i][<span class="number">0</span>]==src) &#123;</span><br><span class="line">            visit[src] = <span class="number">1</span>;</span><br><span class="line">            DFS(flights, flights[i][<span class="number">1</span>], dst, K-<span class="number">1</span>, v+flights[i][<span class="number">2</span>], visit);    </span><br><span class="line">            visit[src] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] f, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    DFS(f, src, dst, K, <span class="number">0</span>, visit);</span><br><span class="line">    <span class="keyword">if</span>(min == Integer.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-529-扫雷游戏"><a href="#leetcode-529-扫雷游戏" class="headerlink" title="leetcode 529. 扫雷游戏"></a><a href="https://leetcode.com/problems/minesweeper/">leetcode 529. 扫雷游戏</a></h3><ul>
+<li>题太复杂了。。之后再做。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><span>拓扑排序</span></h2><hr>
+<p>图片来源： <a href="https://www.cnblogs.com/XMU-hcq/p/6065057.html">https://www.cnblogs.com/XMU-hcq/p/6065057.html</a></p>
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字符串</title>
+    <url>//posts/7/</url>
+    <content><![CDATA[<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-316-删除字符串中的重复字符"><a href="#leetcode-316-删除字符串中的重复字符" class="headerlink" title="leetcode 316. 删除字符串中的重复字符"></a><a href="https://leetcode.com/problems/remove-duplicate-letters/">leetcode 316. 删除字符串中的重复字符</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a string which contains only lowercase letters, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</span><br><span class="line">Example <span class="number">1</span>:  Input: <span class="string">&quot;bcabc&quot;</span>      Output: <span class="string">&quot;abc&quot;</span></span><br><span class="line">Example <span class="number">2</span>:  Input: <span class="string">&quot;cbacdcbc&quot;</span>   Output: <span class="string">&quot;acdb&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>因为只有26个小写字母，所以可以用数组模拟 hashmap 先统计每个字符出现的次数。</li>
+<li>然后要用辅助栈。其实发现很多问题都是数组和栈辅助进行操作，来对比当前元素和栈顶元素的大小，从而进行相应的操作。删除栈顶元素还是向栈中添加元素。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeDuplicateLetters</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];  <span class="comment">// 统计每个字符出现的次数</span></span><br><span class="line">    <span class="keyword">boolean</span>[] visit = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">26</span>];  <span class="comment">// 表示某个字符是否已经出现在栈中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray())  </span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] += <span class="number">1</span>;</span><br><span class="line">    Stack&lt;Character&gt; sta = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray()) &#123;</span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(visit[ch-<span class="string">&#x27;a&#x27;</span>]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素比栈顶元素小，并且栈顶元素次数不等0</span></span><br><span class="line">        <span class="comment">// 那么就把栈顶元素弹出来，把当前元素入栈</span></span><br><span class="line">        <span class="keyword">while</span>(!sta.isEmpty() &amp;&amp; ch&lt;sta.peek() &amp;&amp; count[sta.peek()-<span class="string">&#x27;a&#x27;</span>]!=<span class="number">0</span>) </span><br><span class="line">            visit[sta.pop()-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">false</span>;</span><br><span class="line">        sta.push(ch);</span><br><span class="line">        visit[ch-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span>(!sta.isEmpty())</span><br><span class="line">        res = sta.pop()+res;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="leetcode-567-字符串中的全排列"><a href="#leetcode-567-字符串中的全排列" class="headerlink" title="leetcode 567. 字符串中的全排列"></a><a href="https://leetcode.com/problems/permutation-in-string/">leetcode 567. 字符串中的全排列</a></h3><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">Given two strings s1 <span class="keyword">and</span> s2, <span class="built_in">write</span> a function <span class="keyword">to</span> <span class="literal">return</span> <span class="literal">true</span> <span class="keyword">if</span> s2 <span class="keyword">contains</span> <span class="keyword">the</span> permutation <span class="keyword">of</span> s1. In other <span class="built_in">words</span>, one <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">first</span> <span class="built_in">string</span>&#x27;s permutations <span class="keyword">is</span> <span class="keyword">the</span> substring <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">second</span> <span class="built_in">string</span>.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Input</span>: s<span class="number">1</span> = <span class="string">&quot;ab&quot;</span> s<span class="number">2</span> = <span class="string">&quot;eidbaooo&quot;</span></span><br><span class="line"><span class="attribute">Output</span>: True</span><br><span class="line"><span class="attribute">Explanation</span>: s<span class="number">2</span> contains one permutation of s<span class="number">1</span> (<span class="string">&quot;ba&quot;</span>).</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最直观的做法就是把s1的全排列都列出来，然后看每个全排列是不是s2的子串，但是当字符串的长度过长时，会超时。</li>
+<li><strong>如何判断字符串m是不是字符串n的全排列，我们只要把字符串m和字符串n中的每个字符出现的次数做统计，如果两者每个字符出现的次数都相等，那么就证明字符串m是字符串n的一个全排列。</strong></li>
+<li>如何判断字符串n是不是包含字符串m的全排列，也就是字符串m的全排列是不是字符串n的一个子串，那么我们就需要<strong>建立一个长度为m.length的滑动窗口</strong>，判断n的这个滑动窗口中n子串和m字符串每个字符出现的次数是不是相等。</li>
+<li>但每到一个滑动窗口都重新统计一次次数很麻烦，每次移动滑动窗口的时候，只有左侧被移出去的字符和右侧被移进来的字符的次数有变化，那么我们把左侧移出去的字符数-1，右侧移进来的字符数+1，即为当前窗口n的每个字符出现的次数。</li>
+<li>该题的类似题目：<a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/">leetcode 438. 找到s1的全排列在s2中的位置</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkInclusion</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s1.length()&gt;s2.length())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">//统计s1中每个字符出现的次数，s2中每个长度为s1.length的窗口中字符出现的次数</span></span><br><span class="line">    <span class="keyword">int</span>[] hash1 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span>[] hash2 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s1.length();i++) &#123;</span><br><span class="line">        hash1[s1.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">        hash2[s2.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(Arrays.equals(hash1, hash2))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=s1.length();i&lt;s2.length();i++) &#123;</span><br><span class="line">        hash2[s2.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">        hash2[s2.charAt(i-s1.length())-<span class="string">&#x27;a&#x27;</span>] --;</span><br><span class="line">        <span class="keyword">if</span>(Arrays.equals(hash1, hash2))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-179-将数组进行排序，使之组成的数最大-实则为对字符串排序"><a href="#leetcode-179-将数组进行排序，使之组成的数最大-实则为对字符串排序" class="headerlink" title="leetcode 179. 将数组进行排序，使之组成的数最大 (实则为对字符串排序)"></a><a href="https://leetcode.com/problems/largest-number/">leetcode 179. 将数组进行排序，使之组成的数最大 (实则为对字符串排序)</a></h3><ul>
+<li>输入：<code>[3,30,34,5,9]</code> </li>
+<li>输出：<code>9534330</code></li>
+<li>特殊问题：<code>[2, 2281]</code>   <code>[12, 121]</code>   <code>[23, 234]</code></li>
+<li>碰到长度不等时，会有些问题，比如第一个要交换。第二个不要交换；第三个要交换</li>
+<li>最好的办法就是直接把两个字符串m和n拼接起来，然后比较mn和nm的大小即可，不存在长度不等的情况。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(String[] str, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line"> String tmp = str[i];</span><br><span class="line"> str[i] = str[j];</span><br><span class="line"> str[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//因为这道题涉及到了长度不同，谁放在前面的问题，不能简单地直接逐个字符比较</span></span><br><span class="line"><span class="comment">//那么，把m和n拼接成的mn和nm按照字符串大小的比较规则来处理即可。</span></span><br><span class="line"><span class="comment">//如果mn &lt; nm,应该打印出nm,即n应该排在m前面，要交换顺序，反之，m应该排在n前面。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">cmp</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    String new_1 = a+b;</span><br><span class="line">    String new_2 = b+a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;new_1.length();i++)  &#123;</span><br><span class="line">        <span class="keyword">if</span>(new_1.charAt(i)==new_2.charAt(i)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> new_1.charAt(i)&lt;new_2.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">largestNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    String[] str = <span class="keyword">new</span> String[nums.length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;  <span class="comment">// 先将数组中的数字转为字符串，再去比较。</span></span><br><span class="line">        str[i] = nums[i]+<span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//写个冒泡排序，任何一种排序算法都可以，只要把交换的条件变为我们的cmp条件即可。</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cmp(str[j], str[j+<span class="number">1</span>])) &#123;</span><br><span class="line">                swap(str, j, j+<span class="number">1</span>);</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length;i++) &#123;</span><br><span class="line">        result += str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(result.charAt(<span class="number">0</span>)==<span class="string">&#x27;0&#x27;</span>) <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>; <span class="comment">//防止出现&quot;00&quot;的情况。</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Algorithms</category>
       </categories>
@@ -1089,49 +1135,39 @@
       </tags>
   </entry>
   <entry>
-    <title>将keras的h5文件转为tensorflow的pb文件</title>
-    <url>//posts/301/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
-<span id="more"></span>
-
-<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
-<p>🎋. <strong>keras中：</strong></p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
-
-<p> 🎋. <strong>在python中的使用：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
-<p>参考代码：<a href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
-]]></content>
-      <categories>
-        <category>Deep Learning</category>
-      </categories>
-      <tags>
-        <tag>Deep Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>soft label 和 hard label</title>
-    <url>//posts/302/</url>
-    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
-<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
-<span id="more"></span>
-
-<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
-<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
-</li>
-<li><p>软标签：</p>
-<ul>
-<li>用于模棱两可的情况；</li>
-<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
+    <title>Linux 常用命令</title>
+    <url>//posts/512/</url>
+    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
+<li>增加对某个目录的权限: <code>sudo chown -R gesong /export/g06 </code></li>
+<li>查看文件多少行: <code>wc -l file.txt  </code></li>
+<li>将某个文件分成多份：<code>split -l 10000000 -d file.txt file_</code></li>
+<li>将多个文件合为一个文件： <code>cat 1.tsv 2.tsv 3.tsv &gt; 123.tsv</code></li>
+<li>查看正在执行 python 程序: <code>ps -ef | grep python</code><span id="more"></span></li>
+<li>从我电脑往服务器拷东西：<code>scp file name@ip:/home/user/...</code></li>
+<li>从服务器往容器拷东西：<code>sudo docker cp mini-id_map.json  330773d6b921:/notebooks/</code></li>
 </ul>
+<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
+<li><p><a href="https://www.cnblogs.com/hankal/p/9815068.html">linux 网络文件下载</a></p>
+</li>
+<li><p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2">linux ssh-key 免密登陆</a></p>
+</li>
+<li><p><a href="https://cloud.tencent.com/developer/article/1341083">如何在Ubuntu 16.04上添加和删除用户</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/Jacky_Dai/article/details/84885212">在linux 下怎么进入 /dev/sda1</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/h_8410435/article/details/86303995">Linux /dev/sda1磁盘满了，清理办法。</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/wl1780852311/article/details/104247348?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param">Ubuntu 18.04下创建新用户/目录、修改用户权限及删除用户的方法</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/cunyusup/p/9813847.html">解决ubuntu登陆失败，”Failed to start session”的问题</a></p>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>Deep Learning</category>
+        <category>Tools</category>
       </categories>
       <tags>
-        <tag>NLP</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1168,42 +1204,6 @@
       <categories>
         <category>Tools</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Linux 常用命令</title>
-    <url>//posts/512/</url>
-    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
-<li>增加对某个目录的权限: <code>sudo chown -R gesong /export/g06 </code></li>
-<li>查看文件多少行: <code>wc -l file.txt  </code></li>
-<li>将某个文件分成多份：<code>split -l 10000000 -d file.txt file_</code></li>
-<li>将多个文件合为一个文件： <code>cat 1.tsv 2.tsv 3.tsv &gt; 123.tsv</code></li>
-<li>查看正在执行 python 程序: <code>ps -ef | grep python</code><span id="more"></span></li>
-<li>从我电脑往服务器拷东西：<code>scp file name@ip:/home/user/...</code></li>
-<li>从服务器往容器拷东西：<code>sudo docker cp mini-id_map.json  330773d6b921:/notebooks/</code></li>
-</ul>
-<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
-<li><p><a href="https://www.cnblogs.com/hankal/p/9815068.html">linux 网络文件下载</a></p>
-</li>
-<li><p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2">linux ssh-key 免密登陆</a></p>
-</li>
-<li><p><a href="https://cloud.tencent.com/developer/article/1341083">如何在Ubuntu 16.04上添加和删除用户</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/Jacky_Dai/article/details/84885212">在linux 下怎么进入 /dev/sda1</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/h_8410435/article/details/86303995">Linux /dev/sda1磁盘满了，清理办法。</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/wl1780852311/article/details/104247348?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param">Ubuntu 18.04下创建新用户/目录、修改用户权限及删除用户的方法</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/cunyusup/p/9813847.html">解决ubuntu登陆失败，”Failed to start session”的问题</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>Java 继承</title>
