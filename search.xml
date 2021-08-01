@@ -1,29 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>学习工具网站</title>
-    <url>//posts/405/</url>
-    <content><![CDATA[<p>学习和生活当中总结的一些实用的学习网站</p>
-<span id="more"></span>
-
-<h2 id="C"><a href="#C" class="headerlink" title="C#"></a><span>C#</span></h2><ul>
-<li><a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228358(v=vs.90)">C# for Java Developers</a></li>
-</ul>
-<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a><span>Shell</span></h2><ul>
-<li><a href="http://c.biancheng.net/view/743.html">Shell变量：Shell变量的定义、赋值和删除</a></li>
-<li><a href="http://c.biancheng.net/view/1120.html">Shell字符串</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>C#</tag>
-        <tag>清单</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>机器学习白板推导</title>
     <url>//posts/401/</url>
     <content><![CDATA[<h2 id="白板推导"><a href="#白板推导" class="headerlink" title="白板推导"></a><span>白板推导</span></h2><ul>
@@ -75,6 +52,29 @@
       </tags>
   </entry>
   <entry>
+    <title>学习工具网站</title>
+    <url>//posts/405/</url>
+    <content><![CDATA[<p>学习和生活当中总结的一些实用的学习网站</p>
+<span id="more"></span>
+
+<h2 id="C"><a href="#C" class="headerlink" title="C#"></a><span>C#</span></h2><ul>
+<li><a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228358(v=vs.90)">C# for Java Developers</a></li>
+</ul>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a><span>Shell</span></h2><ul>
+<li><a href="http://c.biancheng.net/view/743.html">Shell变量：Shell变量的定义、赋值和删除</a></li>
+<li><a href="http://c.biancheng.net/view/1120.html">Shell字符串</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>C#</tag>
+        <tag>清单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NLP 学习相关网站</title>
     <url>//posts/407/</url>
     <content><![CDATA[<h2 id="BERT"><a href="#BERT" class="headerlink" title=" BERT "></a><span> BERT </span></h2><ul>
@@ -116,24 +116,54 @@
       </tags>
   </entry>
   <entry>
-    <title>将keras的h5文件转为tensorflow的pb文件</title>
-    <url>//posts/301/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
+    <title>准确率，精确率，召回率和AUC曲线，PR曲线</title>
+    <url>//posts/300/</url>
+    <content><![CDATA[<p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
 <span id="more"></span>
 
-<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
-<p>🎋. <strong>keras中：</strong></p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
+<h2 id="混淆矩阵-（TP-TN-FP-FN）"><a href="#混淆矩阵-（TP-TN-FP-FN）" class="headerlink" title="混淆矩阵 （TP TN FP FN）"></a><span>混淆矩阵 （TP TN FP FN）</span></h2><ol>
+<li>True Positives,TP：预测为正样本，实际也为正样本的特征数</li>
+<li>False Positives,FP：预测为正样本，实际为负样本的特征数</li>
+<li>True Negatives,TN：预测为负样本，实际也为负样本的特征数</li>
+<li>False Negatives,FN：预测为负样本，实际为正样本的特征数</li>
+</ol>
+<p><strong>True / False：是针对原样本而言的。</strong><br><strong>Positive / Negative：是针对预测结果而言的。</strong></p>
+<h2 id="准确率-accuracy"><a href="#准确率-accuracy" class="headerlink" title="准确率 (accuracy)"></a><span>准确率 (accuracy)</span></h2><p>既然是个分类指标，我们可以很自然的想到准确率，准确率的定义是预测正确的结果占总样本的百分比，其公式如下：</p>
+<p>$$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$</p>
+<p>虽然准确率可以判断总的正确率，但是在<strong>样本不平衡</strong>的情况下，并不能作为很好的指标来衡量结果。举个简单的例子，比如在一个总样本中，正样本占90%，负样本占10%，样本是严重不平衡的。对于这种情况，我们只需要将全部样本预测为正样本即可得到90%的高准确率，但实际上我们并没有很用心的分类，只是随便无脑一分而已。这就说明了：由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。</p>
+<p>正因为如此，也就衍生出了其它两种指标：精准率和召回率。</p>
+<h2 id="精确率-precision"><a href="#精确率-precision" class="headerlink" title="精确率 (precision)"></a><span>精确率 (precision)</span></h2><p>精确率：预测为正的样本中有多少是真的正样本。精确率和准确率看上去有些类似，但是完全不同的两个概念。精准率代表对正样本结果中的预测准确程度，而准确率则代表整体的预测准确程度，既包括正样本，也包括负样本。</p>
+<p>$$precision = \frac{TP}{TP+FP}$$</p>
+<h2 id="召回率-recall"><a href="#召回率-recall" class="headerlink" title="召回率 (recall)"></a><span>召回率 (recall)</span></h2><p>召回率，又叫查全率，它是针对原样本而言的，它的含义是样本中为正的，有多少被预测为正。</p>
+<p>$$recall = \frac{TP}{TP+FN}$$</p>
+<p><strong>召回率的应用场景：</strong>比如拿网贷违约率为例，相对好用户，我们更关心坏用户，不能错放过任何一个坏用户。因为如果我们过多的将坏用户当成好用户，这样后续可能发生的违约金额会远超过好用户偿还的借贷利息金额，造成严重偿失。<strong>召回率越高，代表实际坏用户被预测出来的概率越高，它的含义类似：宁可错杀一千，绝不放过一个。</strong></p>
+<h2 id="特异度-specificity"><a href="#特异度-specificity" class="headerlink" title="特异度 (specificity) "></a><span>特异度 (specificity) </span></h2><p>特异度被定义为：样本中为负的，有多少被预测为负。和召回率刚好相反，一个针对正样本而言，一个针对负样本而言。</p>
+<p>$$specificity = \frac{TN}{TN+FP}$$</p>
+<h2 id="F-1值"><a href="#F-1值" class="headerlink" title="F_1值"></a><span>F_1值</span></h2><p>F1值 = 精确率 * 召回率 * 2 / (精确率 + 召回率) （F1值即为精确率和召回率的调和平均值）</p>
+<p>$$F_1 = \frac{P * R * 2}{P + R}$$</p>
+<p>不妨举<a href="https://link.zhihu.com/?target=http://peghoty.blog.163.com/blog/static/49346409201302595935709/">这样一个例子</a>：某池塘有1400条鲤鱼，300只虾，300只鳖。现在以捕鲤鱼为目的。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">700</span> / (<span class="number">700</span> + <span class="number">200</span> + <span class="number">100</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">700</span> / <span class="number">1400</span> = <span class="number">50</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">50</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">50</span>%) = <span class="number">58</span>.<span class="number">3</span>%</span><br></pre></td></tr></table></figure>
 
-<p> 🎋. <strong>在python中的使用：</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
-<p>参考代码：<a href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
+<p>不妨看看如果把池子里的所有的鲤鱼、虾和鳖都一网打尽，这些指标又有何变化：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">1400</span> / (<span class="number">1400</span> + <span class="number">300</span> + <span class="number">300</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">1400</span> / <span class="number">1400</span> = <span class="number">100</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">100</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">100</span>%) = <span class="number">82</span>.<span class="number">35</span>% </span><br></pre></td></tr></table></figure>
+
+<p>由此可见，精确率是评估捕获的成果中目标成果所占得比例；召回率，顾名思义，就是从关注领域中，召回目标类别的比例；而F值，则是综合这二者指标的评估指标，用于综合反映整体的指标。</p>
+<p>当然希望检索结果precision越高越好，同时recall也越高越好，但事实上这两者在某些情况下有矛盾的。比如极端情况下，我们只搜索出了一个结果，且是准确的，那么precision就是100%，但是recall就很低；而如果我们把所有结果都返回，那么recall是100%，但是precision就会很低。因此在不同的场合中需要自己判断希望precision比较高或是recall比较高。如果是做实验研究，可以绘制<strong>Precision-Recall曲线</strong>来帮助分析。</p>
+<p>有时候我们对精确率和召回率并不是一视同仁，比如有时候我们更加重视精确率。我们用一个参数 $\beta$ 来度量两者之间的关系。如果 $\beta&gt;1$, 召回率有更大影响，如果 $\beta&lt;1$, 精确率有更大影响。自然，当 $\beta=1$ 的时候，精确率和召回率影响力相同，和F1形式一样。含有度量参数 $\beta$ 的F1我们记为 $F_\beta$, 严格的数学定义如下：</p>
+<p>$$𝐹_𝛽=\frac{(1+𝛽^2)∗𝑃∗𝑅}{𝛽^2∗𝑃+𝑅} $$</p>
+<h2 id="RoC-曲线与-AUC-值"><a href="#RoC-曲线与-AUC-值" class="headerlink" title="RoC 曲线与 AUC 值"></a><span>RoC 曲线与 AUC 值</span></h2><p>🎋. 灵敏度 TPR (true positive rate) (同召回率)：真实样本中为正的，有多少被预测为正</p>
+<p>🎋. 1-特异度：FPR (false positive rate)：真实样本为负的，有多少被预测为正</p>
+<p>$$FPR = \frac{FP}{FP+TN}$$</p>
+<p>🎋. ROC曲线与AUC值：以TPR为y轴，以FPR为x轴，我们就直接得到了RoC曲线。从FPR和TPR的定义可以理解，TPR越高，FPR越小，我们的模型和算法就越高效。也就是画出来的RoC曲线越靠近左上越好。如下图左图所示。从几何的角度讲，RoC曲线下方的面积越大越大，则模型越优。所以有时候我们用<strong>RoC曲线下的面积</strong>，即AUC（Area Under Curve）值来作为算法和模型好坏的标准。</p>
+<p><img data-src="/images/others/1.png" alt="img"></p>
+<p>🎋. PR曲线：以精确率为y轴，以召回率为x轴，我们就得到了PR曲线。仍然从精确率和召回率的定义可以理解，精确率越高，召回率越高，我们的模型和算法就越高效。也就是画出来的PR曲线越靠近右上越好。如上图右图所示。</p>
+<p>参考链接：<a href="https://segmentfault.com/a/1190000016686335">https://segmentfault.com/a/1190000016686335</a><br>参考链接：<a href="https://www.cnblogs.com/pinard/p/5993450.html">https://www.cnblogs.com/pinard/p/5993450.html</a></p>
 ]]></content>
       <categories>
-        <category>Deep Learning</category>
+        <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>Deep Learning</tag>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -157,31 +187,6 @@
       </categories>
       <tags>
         <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>soft label 和 hard label</title>
-    <url>//posts/302/</url>
-    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
-<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
-<span id="more"></span>
-
-<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
-<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
-</li>
-<li><p>软标签：</p>
-<ul>
-<li>用于模棱两可的情况；</li>
-<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Deep Learning</category>
-      </categories>
-      <tags>
-        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
@@ -335,6 +340,73 @@
       </tags>
   </entry>
   <entry>
+    <title>图</title>
+    <url>//posts/6/</url>
+    <content><![CDATA[<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
+<span id="more"></span>
+
+<h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
+<li><p>图分为邻接矩阵和邻接表。</p>
+</li>
+<li><p>邻接矩阵：<br><img data-src="/images/graph/2.png"></p>
+</li>
+<li><p>邻接表：<br><img data-src="/images/graph/3.png"></p>
+</li>
+<li><p>不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。</p>
+</li>
+</ul>
+<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><ul>
+<li>访问顶点v；</li>
+<li>依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</li>
+<li>若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">    System.out.println(node);</span><br><span class="line">    <span class="comment">//DFS遍历其他节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[node].length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(graph[node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>)</span><br><span class="line">            DFS(graph, visit, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><ul>
+<li>首先将根节点放入队列中;</li>
+<li>从队列中取出第一个节点, 将它所有尚未检验过的直接子节点加入队列中;</li>
+<li>若队列为空，表示整张图都检查过了。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    que.add(node);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> new_node = que.poll();</span><br><span class="line">        <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">        System.out.println(new_node);</span><br><span class="line">        <span class="comment">// 将new_node相连的节点放入队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[new_node].length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[new_node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                visit[i] = <span class="number">1</span>;</span><br><span class="line">                que.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a><span>经典题</span></h2><h3 id="leetcode-200-岛屿的数量"><a href="#leetcode-200-岛屿的数量" class="headerlink" title="leetcode 200. 岛屿的数量"></a><a href="https://leetcode.com/problems/number-of-islands/">leetcode 200. 岛屿的数量</a></h3><ul>
+<li>1为陆地，0为水，垂直方向才能算作一个岛屿，斜着不能算作一个岛屿。</li>
+<li>类似题目1：<a href="https://leetcode.com/problems/max-area-of-island/">leetcode 695. 岛屿的最大面积</a>，只需再增加一个计数功能即可。</li>
+<li>类似题目2：<a href="https://leetcode.com/problems/flood-fill/">leetcode 733. Flood Fill</a>,  访问节点时再改变一下节点的值即可。</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Input:</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">00100</span></span><br><span class="line"><span class="number">00011</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">Output:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">islandDFS</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span>[][] visit, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=grid.length || j&lt;<span class="number">0</span> || j&gt;=grid[<span class="number">0</span>].length)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">        visit[i][j] = <span class="number">1</span>;</span><br><span class="line">        islandDFS(grid, visit, i, j-<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i, j+<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i+<span class="number">1</span>, j);</span><br><span class="line">        islandDFS(grid, visit, i-<span class="number">1</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(grid.length==<span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] visit = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 把和grid[i][j]相连接的位置都标记为1，记作一块岛屿</span></span><br><span class="line">                islandDFS(grid, visit, i, j);</span><br><span class="line">                number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-463-确定岛屿的周长"><a href="#leetcode-463-确定岛屿的周长" class="headerlink" title="leetcode 463. 确定岛屿的周长"></a><a href="https://leetcode.com/problems/island-perimeter/">leetcode 463. 确定岛屿的周长</a></h3><ul>
+<li>题目中只有一个岛屿，确定岛屿的周长</li>
+<li>就是确定每个1周围有几个0，或者在边界位置。</li>
+<li>这道题跟图没什么关系。遍历一遍就行了。</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从头到尾遍历，查看每个1周围几个0，上下左右。</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span> || grid[i-<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || grid[i][j-<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i==grid.length-<span class="number">1</span> || grid[i+<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==grid[<span class="number">0</span>].length-<span class="number">1</span> || grid[i][j+<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-787-从src飞到dst的最小花销"><a href="#leetcode-787-从src飞到dst的最小花销" class="headerlink" title="leetcode. 787 从src飞到dst的最小花销"></a><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">leetcode. 787 从src飞到dst的最小花销</a></h3><ul>
+<li>方法一：递归调用，但leetcode会超时。</li>
+<li>优化：对于遍历到的结点，首先判断如果当前结点已经访问过了，直接跳过。或者是当前价格out加上到达这个结点需要的价格之和大于结果res的话，那么直接跳过。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> [][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K, <span class="keyword">int</span> v, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(src==dst &amp;&amp; v&lt;min) &#123;</span><br><span class="line">        min = v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(K&lt;<span class="number">0</span>||v&gt;min) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;flights.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[src]==<span class="number">0</span> &amp;&amp; flights[i][<span class="number">0</span>]==src) &#123;</span><br><span class="line">            visit[src] = <span class="number">1</span>;</span><br><span class="line">            DFS(flights, flights[i][<span class="number">1</span>], dst, K-<span class="number">1</span>, v+flights[i][<span class="number">2</span>], visit);    </span><br><span class="line">            visit[src] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] f, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    DFS(f, src, dst, K, <span class="number">0</span>, visit);</span><br><span class="line">    <span class="keyword">if</span>(min == Integer.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-529-扫雷游戏"><a href="#leetcode-529-扫雷游戏" class="headerlink" title="leetcode 529. 扫雷游戏"></a><a href="https://leetcode.com/problems/minesweeper/">leetcode 529. 扫雷游戏</a></h3><ul>
+<li>题太复杂了。。之后再做。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><span>拓扑排序</span></h2><hr>
+<p>图片来源： <a href="https://www.cnblogs.com/XMU-hcq/p/6065057.html">https://www.cnblogs.com/XMU-hcq/p/6065057.html</a></p>
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>回溯算法</title>
     <url>//posts/5/</url>
     <content><![CDATA[<blockquote>
@@ -447,73 +519,6 @@
 <li>最好的办法就是直接把两个字符串m和n拼接起来，然后比较mn和nm的大小即可，不存在长度不等的情况。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(String[] str, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line"> String tmp = str[i];</span><br><span class="line"> str[i] = str[j];</span><br><span class="line"> str[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//因为这道题涉及到了长度不同，谁放在前面的问题，不能简单地直接逐个字符比较</span></span><br><span class="line"><span class="comment">//那么，把m和n拼接成的mn和nm按照字符串大小的比较规则来处理即可。</span></span><br><span class="line"><span class="comment">//如果mn &lt; nm,应该打印出nm,即n应该排在m前面，要交换顺序，反之，m应该排在n前面。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">cmp</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    String new_1 = a+b;</span><br><span class="line">    String new_2 = b+a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;new_1.length();i++)  &#123;</span><br><span class="line">        <span class="keyword">if</span>(new_1.charAt(i)==new_2.charAt(i)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> new_1.charAt(i)&lt;new_2.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">largestNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    String[] str = <span class="keyword">new</span> String[nums.length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;  <span class="comment">// 先将数组中的数字转为字符串，再去比较。</span></span><br><span class="line">        str[i] = nums[i]+<span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//写个冒泡排序，任何一种排序算法都可以，只要把交换的条件变为我们的cmp条件即可。</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cmp(str[j], str[j+<span class="number">1</span>])) &#123;</span><br><span class="line">                swap(str, j, j+<span class="number">1</span>);</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length;i++) &#123;</span><br><span class="line">        result += str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(result.charAt(<span class="number">0</span>)==<span class="string">&#x27;0&#x27;</span>) <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>; <span class="comment">//防止出现&quot;00&quot;的情况。</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图</title>
-    <url>//posts/6/</url>
-    <content><![CDATA[<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
-<span id="more"></span>
-
-<h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
-<li><p>图分为邻接矩阵和邻接表。</p>
-</li>
-<li><p>邻接矩阵：<br><img data-src="/images/graph/2.png"></p>
-</li>
-<li><p>邻接表：<br><img data-src="/images/graph/3.png"></p>
-</li>
-<li><p>不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。</p>
-</li>
-</ul>
-<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><ul>
-<li>访问顶点v；</li>
-<li>依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</li>
-<li>若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">    System.out.println(node);</span><br><span class="line">    <span class="comment">//DFS遍历其他节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[node].length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(graph[node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>)</span><br><span class="line">            DFS(graph, visit, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><ul>
-<li>首先将根节点放入队列中;</li>
-<li>从队列中取出第一个节点, 将它所有尚未检验过的直接子节点加入队列中;</li>
-<li>若队列为空，表示整张图都检查过了。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    que.add(node);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> new_node = que.poll();</span><br><span class="line">        <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">        System.out.println(new_node);</span><br><span class="line">        <span class="comment">// 将new_node相连的节点放入队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[new_node].length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[new_node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                visit[i] = <span class="number">1</span>;</span><br><span class="line">                que.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a><span>经典题</span></h2><h3 id="leetcode-200-岛屿的数量"><a href="#leetcode-200-岛屿的数量" class="headerlink" title="leetcode 200. 岛屿的数量"></a><a href="https://leetcode.com/problems/number-of-islands/">leetcode 200. 岛屿的数量</a></h3><ul>
-<li>1为陆地，0为水，垂直方向才能算作一个岛屿，斜着不能算作一个岛屿。</li>
-<li>类似题目1：<a href="https://leetcode.com/problems/max-area-of-island/">leetcode 695. 岛屿的最大面积</a>，只需再增加一个计数功能即可。</li>
-<li>类似题目2：<a href="https://leetcode.com/problems/flood-fill/">leetcode 733. Flood Fill</a>,  访问节点时再改变一下节点的值即可。</li>
-</ul>
-<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Input:</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">00100</span></span><br><span class="line"><span class="number">00011</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">Output:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">islandDFS</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span>[][] visit, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=grid.length || j&lt;<span class="number">0</span> || j&gt;=grid[<span class="number">0</span>].length)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">        visit[i][j] = <span class="number">1</span>;</span><br><span class="line">        islandDFS(grid, visit, i, j-<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i, j+<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i+<span class="number">1</span>, j);</span><br><span class="line">        islandDFS(grid, visit, i-<span class="number">1</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(grid.length==<span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] visit = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 把和grid[i][j]相连接的位置都标记为1，记作一块岛屿</span></span><br><span class="line">                islandDFS(grid, visit, i, j);</span><br><span class="line">                number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-463-确定岛屿的周长"><a href="#leetcode-463-确定岛屿的周长" class="headerlink" title="leetcode 463. 确定岛屿的周长"></a><a href="https://leetcode.com/problems/island-perimeter/">leetcode 463. 确定岛屿的周长</a></h3><ul>
-<li>题目中只有一个岛屿，确定岛屿的周长</li>
-<li>就是确定每个1周围有几个0，或者在边界位置。</li>
-<li>这道题跟图没什么关系。遍历一遍就行了。</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从头到尾遍历，查看每个1周围几个0，上下左右。</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span> || grid[i-<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || grid[i][j-<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i==grid.length-<span class="number">1</span> || grid[i+<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==grid[<span class="number">0</span>].length-<span class="number">1</span> || grid[i][j+<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-787-从src飞到dst的最小花销"><a href="#leetcode-787-从src飞到dst的最小花销" class="headerlink" title="leetcode. 787 从src飞到dst的最小花销"></a><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">leetcode. 787 从src飞到dst的最小花销</a></h3><ul>
-<li>方法一：递归调用，但leetcode会超时。</li>
-<li>优化：对于遍历到的结点，首先判断如果当前结点已经访问过了，直接跳过。或者是当前价格out加上到达这个结点需要的价格之和大于结果res的话，那么直接跳过。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> [][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K, <span class="keyword">int</span> v, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(src==dst &amp;&amp; v&lt;min) &#123;</span><br><span class="line">        min = v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(K&lt;<span class="number">0</span>||v&gt;min) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;flights.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[src]==<span class="number">0</span> &amp;&amp; flights[i][<span class="number">0</span>]==src) &#123;</span><br><span class="line">            visit[src] = <span class="number">1</span>;</span><br><span class="line">            DFS(flights, flights[i][<span class="number">1</span>], dst, K-<span class="number">1</span>, v+flights[i][<span class="number">2</span>], visit);    </span><br><span class="line">            visit[src] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] f, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    DFS(f, src, dst, K, <span class="number">0</span>, visit);</span><br><span class="line">    <span class="keyword">if</span>(min == Integer.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-529-扫雷游戏"><a href="#leetcode-529-扫雷游戏" class="headerlink" title="leetcode 529. 扫雷游戏"></a><a href="https://leetcode.com/problems/minesweeper/">leetcode 529. 扫雷游戏</a></h3><ul>
-<li>题太复杂了。。之后再做。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><span>拓扑排序</span></h2><hr>
-<p>图片来源： <a href="https://www.cnblogs.com/XMU-hcq/p/6065057.html">https://www.cnblogs.com/XMU-hcq/p/6065057.html</a></p>
-]]></content>
       <categories>
         <category>Algorithms</category>
       </categories>
@@ -1011,57 +1016,6 @@
       </tags>
   </entry>
   <entry>
-    <title>准确率，精确率，召回率和AUC曲线，PR曲线</title>
-    <url>//posts/300/</url>
-    <content><![CDATA[<p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
-<span id="more"></span>
-
-<h2 id="混淆矩阵-（TP-TN-FP-FN）"><a href="#混淆矩阵-（TP-TN-FP-FN）" class="headerlink" title="混淆矩阵 （TP TN FP FN）"></a><span>混淆矩阵 （TP TN FP FN）</span></h2><ol>
-<li>True Positives,TP：预测为正样本，实际也为正样本的特征数</li>
-<li>False Positives,FP：预测为正样本，实际为负样本的特征数</li>
-<li>True Negatives,TN：预测为负样本，实际也为负样本的特征数</li>
-<li>False Negatives,FN：预测为负样本，实际为正样本的特征数</li>
-</ol>
-<p><strong>True / False：是针对原样本而言的。</strong><br><strong>Positive / Negative：是针对预测结果而言的。</strong></p>
-<h2 id="准确率-accuracy"><a href="#准确率-accuracy" class="headerlink" title="准确率 (accuracy)"></a><span>准确率 (accuracy)</span></h2><p>既然是个分类指标，我们可以很自然的想到准确率，准确率的定义是预测正确的结果占总样本的百分比，其公式如下：</p>
-<p>$$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$</p>
-<p>虽然准确率可以判断总的正确率，但是在<strong>样本不平衡</strong>的情况下，并不能作为很好的指标来衡量结果。举个简单的例子，比如在一个总样本中，正样本占90%，负样本占10%，样本是严重不平衡的。对于这种情况，我们只需要将全部样本预测为正样本即可得到90%的高准确率，但实际上我们并没有很用心的分类，只是随便无脑一分而已。这就说明了：由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。</p>
-<p>正因为如此，也就衍生出了其它两种指标：精准率和召回率。</p>
-<h2 id="精确率-precision"><a href="#精确率-precision" class="headerlink" title="精确率 (precision)"></a><span>精确率 (precision)</span></h2><p>精确率：预测为正的样本中有多少是真的正样本。精确率和准确率看上去有些类似，但是完全不同的两个概念。精准率代表对正样本结果中的预测准确程度，而准确率则代表整体的预测准确程度，既包括正样本，也包括负样本。</p>
-<p>$$precision = \frac{TP}{TP+FP}$$</p>
-<h2 id="召回率-recall"><a href="#召回率-recall" class="headerlink" title="召回率 (recall)"></a><span>召回率 (recall)</span></h2><p>召回率，又叫查全率，它是针对原样本而言的，它的含义是样本中为正的，有多少被预测为正。</p>
-<p>$$recall = \frac{TP}{TP+FN}$$</p>
-<p><strong>召回率的应用场景：</strong>比如拿网贷违约率为例，相对好用户，我们更关心坏用户，不能错放过任何一个坏用户。因为如果我们过多的将坏用户当成好用户，这样后续可能发生的违约金额会远超过好用户偿还的借贷利息金额，造成严重偿失。<strong>召回率越高，代表实际坏用户被预测出来的概率越高，它的含义类似：宁可错杀一千，绝不放过一个。</strong></p>
-<h2 id="特异度-specificity"><a href="#特异度-specificity" class="headerlink" title="特异度 (specificity) "></a><span>特异度 (specificity) </span></h2><p>特异度被定义为：样本中为负的，有多少被预测为负。和召回率刚好相反，一个针对正样本而言，一个针对负样本而言。</p>
-<p>$$specificity = \frac{TN}{TN+FP}$$</p>
-<h2 id="F-1值"><a href="#F-1值" class="headerlink" title="F_1值"></a><span>F_1值</span></h2><p>F1值 = 精确率 * 召回率 * 2 / (精确率 + 召回率) （F1值即为精确率和召回率的调和平均值）</p>
-<p>$$F_1 = \frac{P * R * 2}{P + R}$$</p>
-<p>不妨举<a href="https://link.zhihu.com/?target=http://peghoty.blog.163.com/blog/static/49346409201302595935709/">这样一个例子</a>：某池塘有1400条鲤鱼，300只虾，300只鳖。现在以捕鲤鱼为目的。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">700</span> / (<span class="number">700</span> + <span class="number">200</span> + <span class="number">100</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">700</span> / <span class="number">1400</span> = <span class="number">50</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">50</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">50</span>%) = <span class="number">58</span>.<span class="number">3</span>%</span><br></pre></td></tr></table></figure>
-
-<p>不妨看看如果把池子里的所有的鲤鱼、虾和鳖都一网打尽，这些指标又有何变化：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">1400</span> / (<span class="number">1400</span> + <span class="number">300</span> + <span class="number">300</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">1400</span> / <span class="number">1400</span> = <span class="number">100</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">100</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">100</span>%) = <span class="number">82</span>.<span class="number">35</span>% </span><br></pre></td></tr></table></figure>
-
-<p>由此可见，精确率是评估捕获的成果中目标成果所占得比例；召回率，顾名思义，就是从关注领域中，召回目标类别的比例；而F值，则是综合这二者指标的评估指标，用于综合反映整体的指标。</p>
-<p>当然希望检索结果precision越高越好，同时recall也越高越好，但事实上这两者在某些情况下有矛盾的。比如极端情况下，我们只搜索出了一个结果，且是准确的，那么precision就是100%，但是recall就很低；而如果我们把所有结果都返回，那么recall是100%，但是precision就会很低。因此在不同的场合中需要自己判断希望precision比较高或是recall比较高。如果是做实验研究，可以绘制<strong>Precision-Recall曲线</strong>来帮助分析。</p>
-<p>有时候我们对精确率和召回率并不是一视同仁，比如有时候我们更加重视精确率。我们用一个参数 $\beta$ 来度量两者之间的关系。如果 $\beta&gt;1$, 召回率有更大影响，如果 $\beta&lt;1$, 精确率有更大影响。自然，当 $\beta=1$ 的时候，精确率和召回率影响力相同，和F1形式一样。含有度量参数 $\beta$ 的F1我们记为 $F_\beta$, 严格的数学定义如下：</p>
-<p>$$𝐹_𝛽=\frac{(1+𝛽^2)∗𝑃∗𝑅}{𝛽^2∗𝑃+𝑅} $$</p>
-<h2 id="RoC-曲线与-AUC-值"><a href="#RoC-曲线与-AUC-值" class="headerlink" title="RoC 曲线与 AUC 值"></a><span>RoC 曲线与 AUC 值</span></h2><p>🎋. 灵敏度 TPR (true positive rate) (同召回率)：真实样本中为正的，有多少被预测为正</p>
-<p>🎋. 1-特异度：FPR (false positive rate)：真实样本为负的，有多少被预测为正</p>
-<p>$$FPR = \frac{FP}{FP+TN}$$</p>
-<p>🎋. ROC曲线与AUC值：以TPR为y轴，以FPR为x轴，我们就直接得到了RoC曲线。从FPR和TPR的定义可以理解，TPR越高，FPR越小，我们的模型和算法就越高效。也就是画出来的RoC曲线越靠近左上越好。如下图左图所示。从几何的角度讲，RoC曲线下方的面积越大越大，则模型越优。所以有时候我们用<strong>RoC曲线下的面积</strong>，即AUC（Area Under Curve）值来作为算法和模型好坏的标准。</p>
-<p><img data-src="/images/others/1.png" alt="img"></p>
-<p>🎋. PR曲线：以精确率为y轴，以召回率为x轴，我们就得到了PR曲线。仍然从精确率和召回率的定义可以理解，精确率越高，召回率越高，我们的模型和算法就越高效。也就是画出来的PR曲线越靠近右上越好。如上图右图所示。</p>
-<p>参考链接：<a href="https://segmentfault.com/a/1190000016686335">https://segmentfault.com/a/1190000016686335</a><br>参考链接：<a href="https://www.cnblogs.com/pinard/p/5993450.html">https://www.cnblogs.com/pinard/p/5993450.html</a></p>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>队列</title>
     <url>//posts/15/</url>
     <content><![CDATA[<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a><span>队列</span></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">que.offer(<span class="number">1</span>);  <span class="comment">// 添加元素</span></span><br><span class="line"><span class="keyword">int</span> v1 = que.poll();   <span class="comment">// 返回第一个元素，并在队列中删除，如果队列为空，返回null</span></span><br><span class="line"><span class="keyword">int</span> v2 = que.peek();   <span class="comment">// 返回第一个元素</span></span><br></pre></td></tr></table></figure>
@@ -1135,39 +1089,49 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux 常用命令</title>
-    <url>//posts/512/</url>
-    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
-<li>增加对某个目录的权限: <code>sudo chown -R gesong /export/g06 </code></li>
-<li>查看文件多少行: <code>wc -l file.txt  </code></li>
-<li>将某个文件分成多份：<code>split -l 10000000 -d file.txt file_</code></li>
-<li>将多个文件合为一个文件： <code>cat 1.tsv 2.tsv 3.tsv &gt; 123.tsv</code></li>
-<li>查看正在执行 python 程序: <code>ps -ef | grep python</code><span id="more"></span></li>
-<li>从我电脑往服务器拷东西：<code>scp file name@ip:/home/user/...</code></li>
-<li>从服务器往容器拷东西：<code>sudo docker cp mini-id_map.json  330773d6b921:/notebooks/</code></li>
+    <title>将keras的h5文件转为tensorflow的pb文件</title>
+    <url>//posts/301/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
+<span id="more"></span>
+
+<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
+<p>🎋. <strong>keras中：</strong></p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
+
+<p> 🎋. <strong>在python中的使用：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
+<p>参考代码：<a href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>soft label 和 hard label</title>
+    <url>//posts/302/</url>
+    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
+<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
+<span id="more"></span>
+
+<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
+<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
+</li>
+<li><p>软标签：</p>
+<ul>
+<li>用于模棱两可的情况；</li>
+<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
 </ul>
-<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
-<li><p><a href="https://www.cnblogs.com/hankal/p/9815068.html">linux 网络文件下载</a></p>
-</li>
-<li><p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2">linux ssh-key 免密登陆</a></p>
-</li>
-<li><p><a href="https://cloud.tencent.com/developer/article/1341083">如何在Ubuntu 16.04上添加和删除用户</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/Jacky_Dai/article/details/84885212">在linux 下怎么进入 /dev/sda1</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/h_8410435/article/details/86303995">Linux /dev/sda1磁盘满了，清理办法。</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/wl1780852311/article/details/104247348?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param">Ubuntu 18.04下创建新用户/目录、修改用户权限及删除用户的方法</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/cunyusup/p/9813847.html">解决ubuntu登陆失败，”Failed to start session”的问题</a></p>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>Tools</category>
+        <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
+        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
@@ -1204,6 +1168,148 @@
       <categories>
         <category>Tools</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Linux 常用命令</title>
+    <url>//posts/512/</url>
+    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
+<li>增加对某个目录的权限: <code>sudo chown -R gesong /export/g06 </code></li>
+<li>查看文件多少行: <code>wc -l file.txt  </code></li>
+<li>将某个文件分成多份：<code>split -l 10000000 -d file.txt file_</code></li>
+<li>将多个文件合为一个文件： <code>cat 1.tsv 2.tsv 3.tsv &gt; 123.tsv</code></li>
+<li>查看正在执行 python 程序: <code>ps -ef | grep python</code><span id="more"></span></li>
+<li>从我电脑往服务器拷东西：<code>scp file name@ip:/home/user/...</code></li>
+<li>从服务器往容器拷东西：<code>sudo docker cp mini-id_map.json  330773d6b921:/notebooks/</code></li>
+</ul>
+<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
+<li><p><a href="https://www.cnblogs.com/hankal/p/9815068.html">linux 网络文件下载</a></p>
+</li>
+<li><p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2">linux ssh-key 免密登陆</a></p>
+</li>
+<li><p><a href="https://cloud.tencent.com/developer/article/1341083">如何在Ubuntu 16.04上添加和删除用户</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/Jacky_Dai/article/details/84885212">在linux 下怎么进入 /dev/sda1</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/h_8410435/article/details/86303995">Linux /dev/sda1磁盘满了，清理办法。</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/wl1780852311/article/details/104247348?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param">Ubuntu 18.04下创建新用户/目录、修改用户权限及删除用户的方法</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/cunyusup/p/9813847.html">解决ubuntu登陆失败，”Failed to start session”的问题</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 继承</title>
+    <url>//posts/403/</url>
+    <content><![CDATA[<p>继承是 java 面向对象编程技术的一块基石，因为它允许创建分等级层次的类。</p>
+<p>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。</p>
+<span id="more"></span>
+
+<h2 id="生活中的继承"><a href="#生活中的继承" class="headerlink" title="生活中的继承"></a><span>生活中的继承</span></h2><p><img data-src="/images/java/14B0951E-FC75-47A3-B611-4E1883887339.jpg"></p>
+<p>兔子和羊属于食草动物类，狮子和豹属于食肉动物类。</p>
+<p>食草动物和食肉动物又是属于动物类。</p>
+<p>所以继承需要符合的关系是：is-a，父类更通用，子类更具体。</p>
+<p>虽然食草动物和食肉动物都是属于动物，但是两者的属性和行为上有差别，所以子类会具有父类的一般特性也会具有自身的特性。</p>
+<h2 id="类的继承格式"><a href="#类的继承格式" class="headerlink" title="类的继承格式"></a><span>类的继承格式</span></h2><p>如果类 B 从类 A 派生，或者说类 B 扩展自类 A，或者说类 B 继承类 A，则称类 A 为”父类”，也称为超类、基类；称类 B 为”子类”，也称为次类、扩展类、派生类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父类 </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> 子类 <span class="keyword">extends</span> 父类 </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么需要继承"><a href="#为什么需要继承" class="headerlink" title="为什么需要继承"></a><span>为什么需要继承</span></h2><p>接下来我们通过实例来说明这个需求。</p>
+<p>开发动物类，其中动物分别为企鹅以及老鼠，要求如下：</p>
+<ul>
+<li>企鹅：属性（姓名，id），方法（吃，睡，自我介绍）</li>
+<li>老鼠：属性（姓名，id），方法（吃，睡，自我介绍）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Penguin</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Penguin</span><span class="params">(String myName, <span class="keyword">int</span>  myid)</span> </span>&#123; </span><br><span class="line">        name = myName; </span><br><span class="line">        id = myid; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在吃&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在睡&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">introduction</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;大家好！我是&quot;</span>         + id + <span class="string">&quot;号&quot;</span> + name + <span class="string">&quot;.&quot;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mouse</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Mouse</span><span class="params">(String myName, <span class="keyword">int</span>  myid)</span> </span>&#123; </span><br><span class="line">        name = myName; </span><br><span class="line">        id = myid; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在吃&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在睡&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">introduction</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;大家好！我是&quot;</span>         + id + <span class="string">&quot;号&quot;</span> + name + <span class="string">&quot;.&quot;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从这两段代码可以看出来，代码存在重复了，导致后果就是代码量大且臃肿，而且维护性不高(维护性主要是后期需要修改的时候，就需要修改很多的代码，容易出错)，所以要从根本上解决这两段代码的问题，就需要继承，将两段代码中相同的部分提取出来组成 一个父类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String myName, <span class="keyword">int</span> myid)</span> </span>&#123; </span><br><span class="line">        name = myName; </span><br><span class="line">        id = myid;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在吃&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在睡&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">introduction</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;大家好！我是&quot;</span>         + id + <span class="string">&quot;号&quot;</span> + name + <span class="string">&quot;.&quot;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个Animal类就可以作为一个父类，然后企鹅类和老鼠类继承这个类之后，就具有父类当中的属性和方法，子类就不会存在重复的代码，维护性也提高，代码也更加简洁，提高代码的复用性（复用性主要是可以多次使用，不用再多次写同样的代码） 继承之后的代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Penguin</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Penguin</span><span class="params">(String myName, <span class="keyword">int</span> myid)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">super</span>(myName, myid); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mouse</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Mouse</span><span class="params">(String myName, <span class="keyword">int</span> myid)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">super</span>(myName, myid); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a><span>继承类型</span></h2><blockquote>
+<p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
+</blockquote>
+<p><img data-src="/images/java/types_of_inheritance-1.png"></p>
+<h2 id="继承的特性"><a href="#继承的特性" class="headerlink" title="继承的特性"></a><span>继承的特性</span></h2><ul>
+<li>子类拥有父类非 private 的属性、方法。</li>
+<li>子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。</li>
+<li>子类可以用自己的方式实现父类的方法。</li>
+<li>Java 的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如 A 类继承 B 类，B 类继承 C 类，所以按照关系就是 C 类是 B 类的父类，B 类是 A 类的父类，这是 Java 继承区别于 C++ 继承的一个特性。</li>
+<li>提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系越紧密，代码独立性越差）。</li>
+</ul>
+<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a><span>继承关键字</span></h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong> 祖先类。</p>
+<h3 id="extends-关键字"><a href="#extends-关键字" class="headerlink" title="extends 关键字"></a>extends 关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name;   </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String myName, String myid)</span> </span>&#123; </span><br><span class="line">        <span class="comment">//初始化属性值</span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;  <span class="comment">//吃东西方法的具体实现  &#125; </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span> </span>&#123; <span class="comment">//睡觉方法的具体实现  &#125; </span></span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Penguin</span>  <span class="keyword">extends</span>  <span class="title">Animal</span></span>&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="implements-关键字"><a href="#implements-关键字" class="headerlink" title="implements 关键字"></a>implements 关键字</h3><p>使用 implements 关键字可以变相的使java具有多继承的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">implements</span> <span class="title">A</span>,<span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><blockquote>
+<p>super 关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
+<p>this 关键字：指向自己的引用。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;animal : eat&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;dog : eat&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">eatTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.eat();   <span class="comment">// this 调用自己的方法</span></span><br><span class="line">    <span class="keyword">super</span>.eat();  <span class="comment">// super 调用父类方法</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Animal a = <span class="keyword">new</span> Animal();</span><br><span class="line">    a.eat();</span><br><span class="line">    Dog d = <span class="keyword">new</span> Dog();</span><br><span class="line">    d.eatTest();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// animal : eat</span></span><br><span class="line"><span class="comment">// dog : eat</span></span><br><span class="line"><span class="comment">// animal : eat</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><blockquote>
+<p>final 关键字声明类可以把类定义为不能继承的，即最终类；或者用于修饰方法，该方法不能被子类重写。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 声明类：</span></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> 类名 </span>&#123;</span><br><span class="line">    <span class="comment">//类体</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 声明方法：</span></span><br><span class="line">修饰符(<span class="keyword">public</span>/<span class="keyword">private</span>/<span class="keyword">default</span>/<span class="keyword">protected</span>) <span class="keyword">final</span> 返回值类型 方法名()&#123; </span><br><span class="line">    <span class="comment">//方法体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注</strong>:实例变量也可以被定义为 final，被定义为 final 的变量不能被修改。被声明为 final 类的方法自动地声明为 final，但是实例变量并不是 final。</p>
+<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a><span>构造器</span></h2><p>子类是不继承父类的构造器（构造方法或者构造函数）的，它只是调用（隐式或显式）。如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 <strong>super</strong> 关键字调用父类的构造器并配以适当的参数列表。</p>
+<p>如果父类构造器没有参数，则在子类的构造器中不需要使用 <strong>super</strong> 关键字调用父类构造器，系统会自动调用父类的无参构造器。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SuperClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> n;</span><br><span class="line">  SuperClass()&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;SuperClass()&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  SuperClass(<span class="keyword">int</span> n) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;SuperClass(int n)&quot;</span>);</span><br><span class="line">    <span class="keyword">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubClass 类继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">SuperClass</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> n;</span><br><span class="line">  </span><br><span class="line">  SubClass()&#123; <span class="comment">// 自动调用父类的无参数构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass&quot;</span>);</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SubClass</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; </span><br><span class="line">    <span class="keyword">super</span>(<span class="number">300</span>);  <span class="comment">// 调用父类中带有参数的构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass(int n):&quot;</span>+n);</span><br><span class="line">    <span class="keyword">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubClass2 类继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass2</span> <span class="keyword">extends</span> <span class="title">SuperClass</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> n;</span><br><span class="line">  </span><br><span class="line">  SubClass2()&#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="number">300</span>);  <span class="comment">// 调用父类中带有参数的构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass2&quot;</span>);</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SubClass2</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; <span class="comment">// 自动调用父类的无参数构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass2(int n):&quot;</span>+n);</span><br><span class="line">    <span class="keyword">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSuperSub</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String args[])</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;------SubClass 类继承------&quot;</span>);</span><br><span class="line">    SubClass sc1 = <span class="keyword">new</span> SubClass();</span><br><span class="line">    SubClass sc2 = <span class="keyword">new</span> SubClass(<span class="number">100</span>); </span><br><span class="line">    System.out.println(<span class="string">&quot;------SubClass2 类继承------&quot;</span>);</span><br><span class="line">    SubClass2 sc3 = <span class="keyword">new</span> SubClass2();</span><br><span class="line">    SubClass2 sc4 = <span class="keyword">new</span> SubClass2(<span class="number">200</span>); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其输出结果为：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">------SubClass 类继承------</span><br><span class="line"><span class="function"><span class="title">SuperClass</span><span class="params">()</span></span></span><br><span class="line">SubClass</span><br><span class="line"><span class="function"><span class="title">SuperClass</span><span class="params">(int n)</span></span></span><br><span class="line"><span class="function"><span class="title">SubClass</span><span class="params">(int n)</span></span>:<span class="number">100</span></span><br><span class="line">------SubClass2 类继承------</span><br><span class="line"><span class="function"><span class="title">SuperClass</span><span class="params">(int n)</span></span></span><br><span class="line">SubClass2</span><br><span class="line"><span class="function"><span class="title">SuperClass</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">SubClass2</span><span class="params">(int n)</span></span>:<span class="number">200</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Languages</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 类</title>
+    <url>//posts/402/</url>
+    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
+<span id="more"></span>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
+<ol>
+<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
+<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
+<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
+<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
+<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Languages</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
   </entry>
   <entry>
     <title>动态规划</title>
@@ -1416,112 +1522,6 @@
       </categories>
       <tags>
         <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 继承</title>
-    <url>//posts/403/</url>
-    <content><![CDATA[<p>继承是 java 面向对象编程技术的一块基石，因为它允许创建分等级层次的类。</p>
-<p>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。</p>
-<span id="more"></span>
-
-<h2 id="生活中的继承"><a href="#生活中的继承" class="headerlink" title="生活中的继承"></a><span>生活中的继承</span></h2><p><img data-src="/images/java/14B0951E-FC75-47A3-B611-4E1883887339.jpg"></p>
-<p>兔子和羊属于食草动物类，狮子和豹属于食肉动物类。</p>
-<p>食草动物和食肉动物又是属于动物类。</p>
-<p>所以继承需要符合的关系是：is-a，父类更通用，子类更具体。</p>
-<p>虽然食草动物和食肉动物都是属于动物，但是两者的属性和行为上有差别，所以子类会具有父类的一般特性也会具有自身的特性。</p>
-<h2 id="类的继承格式"><a href="#类的继承格式" class="headerlink" title="类的继承格式"></a><span>类的继承格式</span></h2><p>如果类 B 从类 A 派生，或者说类 B 扩展自类 A，或者说类 B 继承类 A，则称类 A 为”父类”，也称为超类、基类；称类 B 为”子类”，也称为次类、扩展类、派生类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父类 </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> 子类 <span class="keyword">extends</span> 父类 </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="为什么需要继承"><a href="#为什么需要继承" class="headerlink" title="为什么需要继承"></a><span>为什么需要继承</span></h2><p>接下来我们通过实例来说明这个需求。</p>
-<p>开发动物类，其中动物分别为企鹅以及老鼠，要求如下：</p>
-<ul>
-<li>企鹅：属性（姓名，id），方法（吃，睡，自我介绍）</li>
-<li>老鼠：属性（姓名，id），方法（吃，睡，自我介绍）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Penguin</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Penguin</span><span class="params">(String myName, <span class="keyword">int</span>  myid)</span> </span>&#123; </span><br><span class="line">        name = myName; </span><br><span class="line">        id = myid; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在吃&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在睡&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">introduction</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;大家好！我是&quot;</span>         + id + <span class="string">&quot;号&quot;</span> + name + <span class="string">&quot;.&quot;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mouse</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Mouse</span><span class="params">(String myName, <span class="keyword">int</span>  myid)</span> </span>&#123; </span><br><span class="line">        name = myName; </span><br><span class="line">        id = myid; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在吃&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在睡&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">introduction</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;大家好！我是&quot;</span>         + id + <span class="string">&quot;号&quot;</span> + name + <span class="string">&quot;.&quot;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从这两段代码可以看出来，代码存在重复了，导致后果就是代码量大且臃肿，而且维护性不高(维护性主要是后期需要修改的时候，就需要修改很多的代码，容易出错)，所以要从根本上解决这两段代码的问题，就需要继承，将两段代码中相同的部分提取出来组成 一个父类：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String myName, <span class="keyword">int</span> myid)</span> </span>&#123; </span><br><span class="line">        name = myName; </span><br><span class="line">        id = myid;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在吃&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;正在睡&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">introduction</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;大家好！我是&quot;</span>         + id + <span class="string">&quot;号&quot;</span> + name + <span class="string">&quot;.&quot;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个Animal类就可以作为一个父类，然后企鹅类和老鼠类继承这个类之后，就具有父类当中的属性和方法，子类就不会存在重复的代码，维护性也提高，代码也更加简洁，提高代码的复用性（复用性主要是可以多次使用，不用再多次写同样的代码） 继承之后的代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Penguin</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Penguin</span><span class="params">(String myName, <span class="keyword">int</span> myid)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">super</span>(myName, myid); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mouse</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Mouse</span><span class="params">(String myName, <span class="keyword">int</span> myid)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">super</span>(myName, myid); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a><span>继承类型</span></h2><blockquote>
-<p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
-</blockquote>
-<p><img data-src="/images/java/types_of_inheritance-1.png"></p>
-<h2 id="继承的特性"><a href="#继承的特性" class="headerlink" title="继承的特性"></a><span>继承的特性</span></h2><ul>
-<li>子类拥有父类非 private 的属性、方法。</li>
-<li>子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。</li>
-<li>子类可以用自己的方式实现父类的方法。</li>
-<li>Java 的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如 A 类继承 B 类，B 类继承 C 类，所以按照关系就是 C 类是 B 类的父类，B 类是 A 类的父类，这是 Java 继承区别于 C++ 继承的一个特性。</li>
-<li>提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系越紧密，代码独立性越差）。</li>
-</ul>
-<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a><span>继承关键字</span></h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong> 祖先类。</p>
-<h3 id="extends-关键字"><a href="#extends-关键字" class="headerlink" title="extends 关键字"></a>extends 关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name;   </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String myName, String myid)</span> </span>&#123; </span><br><span class="line">        <span class="comment">//初始化属性值</span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;  <span class="comment">//吃东西方法的具体实现  &#125; </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span> </span>&#123; <span class="comment">//睡觉方法的具体实现  &#125; </span></span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Penguin</span>  <span class="keyword">extends</span>  <span class="title">Animal</span></span>&#123; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="implements-关键字"><a href="#implements-关键字" class="headerlink" title="implements 关键字"></a>implements 关键字</h3><p>使用 implements 关键字可以变相的使java具有多继承的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">implements</span> <span class="title">A</span>,<span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><blockquote>
-<p>super 关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
-<p>this 关键字：指向自己的引用。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;animal : eat&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;dog : eat&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">eatTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.eat();   <span class="comment">// this 调用自己的方法</span></span><br><span class="line">    <span class="keyword">super</span>.eat();  <span class="comment">// super 调用父类方法</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Animal a = <span class="keyword">new</span> Animal();</span><br><span class="line">    a.eat();</span><br><span class="line">    Dog d = <span class="keyword">new</span> Dog();</span><br><span class="line">    d.eatTest();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// animal : eat</span></span><br><span class="line"><span class="comment">// dog : eat</span></span><br><span class="line"><span class="comment">// animal : eat</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><blockquote>
-<p>final 关键字声明类可以把类定义为不能继承的，即最终类；或者用于修饰方法，该方法不能被子类重写。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 声明类：</span></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> 类名 </span>&#123;</span><br><span class="line">    <span class="comment">//类体</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 声明方法：</span></span><br><span class="line">修饰符(<span class="keyword">public</span>/<span class="keyword">private</span>/<span class="keyword">default</span>/<span class="keyword">protected</span>) <span class="keyword">final</span> 返回值类型 方法名()&#123; </span><br><span class="line">    <span class="comment">//方法体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注</strong>:实例变量也可以被定义为 final，被定义为 final 的变量不能被修改。被声明为 final 类的方法自动地声明为 final，但是实例变量并不是 final。</p>
-<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a><span>构造器</span></h2><p>子类是不继承父类的构造器（构造方法或者构造函数）的，它只是调用（隐式或显式）。如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 <strong>super</strong> 关键字调用父类的构造器并配以适当的参数列表。</p>
-<p>如果父类构造器没有参数，则在子类的构造器中不需要使用 <strong>super</strong> 关键字调用父类构造器，系统会自动调用父类的无参构造器。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SuperClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> n;</span><br><span class="line">  SuperClass()&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;SuperClass()&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  SuperClass(<span class="keyword">int</span> n) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;SuperClass(int n)&quot;</span>);</span><br><span class="line">    <span class="keyword">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubClass 类继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">SuperClass</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> n;</span><br><span class="line">  </span><br><span class="line">  SubClass()&#123; <span class="comment">// 自动调用父类的无参数构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass&quot;</span>);</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SubClass</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; </span><br><span class="line">    <span class="keyword">super</span>(<span class="number">300</span>);  <span class="comment">// 调用父类中带有参数的构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass(int n):&quot;</span>+n);</span><br><span class="line">    <span class="keyword">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubClass2 类继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass2</span> <span class="keyword">extends</span> <span class="title">SuperClass</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> n;</span><br><span class="line">  </span><br><span class="line">  SubClass2()&#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="number">300</span>);  <span class="comment">// 调用父类中带有参数的构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass2&quot;</span>);</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SubClass2</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; <span class="comment">// 自动调用父类的无参数构造器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;SubClass2(int n):&quot;</span>+n);</span><br><span class="line">    <span class="keyword">this</span>.n = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSuperSub</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String args[])</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;------SubClass 类继承------&quot;</span>);</span><br><span class="line">    SubClass sc1 = <span class="keyword">new</span> SubClass();</span><br><span class="line">    SubClass sc2 = <span class="keyword">new</span> SubClass(<span class="number">100</span>); </span><br><span class="line">    System.out.println(<span class="string">&quot;------SubClass2 类继承------&quot;</span>);</span><br><span class="line">    SubClass2 sc3 = <span class="keyword">new</span> SubClass2();</span><br><span class="line">    SubClass2 sc4 = <span class="keyword">new</span> SubClass2(<span class="number">200</span>); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其输出结果为：</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">------SubClass 类继承------</span><br><span class="line"><span class="function"><span class="title">SuperClass</span><span class="params">()</span></span></span><br><span class="line">SubClass</span><br><span class="line"><span class="function"><span class="title">SuperClass</span><span class="params">(int n)</span></span></span><br><span class="line"><span class="function"><span class="title">SubClass</span><span class="params">(int n)</span></span>:<span class="number">100</span></span><br><span class="line">------SubClass2 类继承------</span><br><span class="line"><span class="function"><span class="title">SuperClass</span><span class="params">(int n)</span></span></span><br><span class="line">SubClass2</span><br><span class="line"><span class="function"><span class="title">SuperClass</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">SubClass2</span><span class="params">(int n)</span></span>:<span class="number">200</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Languages</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++ 类</title>
-    <url>//posts/402/</url>
-    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
-<span id="more"></span>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
-<ol>
-<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
-<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
-<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
-<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
-<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Languages</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>

@@ -49,7 +49,7 @@
 
 
 
-<link rel="dns-prefetch" href="https://alyssacomments-eoj2v9b1x-alyssaasa.vercel.app/">
+<link rel="dns-prefetch" href="https://alyssacomments.vercel.app/">
 
 
 <link rel="preconnect" href="https://website-1256060851.file.myqcloud.com" crossorigin>
@@ -230,7 +230,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/6/">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -243,7 +243,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/6/" class="post-title-link" itemprop="url">图</a>
+          <a href="/posts/7/" class="post-title-link" itemprop="url">字符串</a>
         </h2>
 
         <div class="post-meta-container">
@@ -275,13 +275,13 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/posts/6/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/6/" data-xid="/posts/6/" itemprop="commentCount"></span>
+    <a title="waline" href="/posts/7/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/7/" data-xid="/posts/7/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-    <span id="/posts/6/" class="post-meta-item leancloud_visitors" data-flag-title="图" title="阅读">
+    <span id="/posts/7/" class="post-meta-item leancloud_visitors" data-flag-title="字符串" title="阅读">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -298,7 +298,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
+          <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-316-删除字符串中的重复字符"><a href="#leetcode-316-删除字符串中的重复字符" class="headerlink" title="leetcode 316. 删除字符串中的重复字符"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-duplicate-letters/">leetcode 316. 删除字符串中的重复字符</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given a string which contains only lowercase letters, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</span><br><span class="line">Example <span class="number">1</span>:  Input: <span class="string">&quot;bcabc&quot;</span>      Output: <span class="string">&quot;abc&quot;</span></span><br><span class="line">Example <span class="number">2</span>:  Input: <span class="string">&quot;cbacdcbc&quot;</span>   Output: <span class="string">&quot;acdb&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>因为只有26个小写字母，所以可以用数组模拟 hashmap 先统计每个字符出现的次数。</li>
+<li>然后要用辅助栈。其实发现很多问题都是数组和栈辅助进行操作，来对比当前元素和栈顶元素的大小，从而进行相应的操作。删除栈顶元素还是向栈中添加元素。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeDuplicateLetters</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];  <span class="comment">// 统计每个字符出现的次数</span></span><br><span class="line">    <span class="keyword">boolean</span>[] visit = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">26</span>];  <span class="comment">// 表示某个字符是否已经出现在栈中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray())  </span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] += <span class="number">1</span>;</span><br><span class="line">    Stack&lt;Character&gt; sta = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray()) &#123;</span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(visit[ch-<span class="string">&#x27;a&#x27;</span>]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素比栈顶元素小，并且栈顶元素次数不等0</span></span><br><span class="line">        <span class="comment">// 那么就把栈顶元素弹出来，把当前元素入栈</span></span><br><span class="line">        <span class="keyword">while</span>(!sta.isEmpty() &amp;&amp; ch&lt;sta.peek() &amp;&amp; count[sta.peek()-<span class="string">&#x27;a&#x27;</span>]!=<span class="number">0</span>) </span><br><span class="line">            visit[sta.pop()-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">false</span>;</span><br><span class="line">        sta.push(ch);</span><br><span class="line">        visit[ch-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span>(!sta.isEmpty())</span><br><span class="line">        res = sta.pop()+res;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <!--/noindex-->
         
@@ -631,103 +637,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Alyssa">
-      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醉里挑灯赏猫">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/2/" class="post-title-link" itemprop="url">二叉树</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发布：</span>
-
-      <time title="创建时间：2019-08-17 14:11:16" itemprop="dateCreated datePublished" datetime="2019-08-17T14:11:16+08:00">2019-08-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类：</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">评论：</span>
-  
-    <a title="waline" href="/posts/2/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/2/" data-xid="/posts/2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span id="/posts/2/" class="post-meta-item leancloud_visitors" data-flag-title="二叉树" title="阅读">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="二叉树结构的定义"><a href="#二叉树结构的定义" class="headerlink" title="二叉树结构的定义"></a><span>二叉树结构的定义</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/300/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -797,6 +706,103 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Alyssa">
+      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醉里挑灯赏猫">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/2/" class="post-title-link" itemprop="url">二叉树</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发布：</span>
+
+      <time title="创建时间：2019-08-17 14:11:16" itemprop="dateCreated datePublished" datetime="2019-08-17T14:11:16+08:00">2019-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类：</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">评论：</span>
+  
+    <a title="waline" href="/posts/2/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/2/" data-xid="/posts/2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span id="/posts/2/" class="post-meta-item leancloud_visitors" data-flag-title="二叉树" title="阅读">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="二叉树结构的定义"><a href="#二叉树结构的定义" class="headerlink" title="二叉树结构的定义"></a><span>二叉树结构的定义</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <!--/noindex-->
         
@@ -1073,7 +1079,7 @@
 
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://alyssacomments-eoj2v9b1x-alyssaasa.vercel.app/","placeholder":"Just go go","dark":"auto","avatar":"wavatar","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredMeta":["nick","mail"],"copyright":true,"login":"","avatarCDN":"https://sdn.geekzu.org/avatar/","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq"],"locale":{"placeholder":"在这里分享你的观点与想法～ 昵称、邮箱必填，邮件通知回复。","admin":"博主","nick":"昵称*","mail":"邮箱*","link":"网址（http://）"},"el":"#waline-comments","libUrl":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","path":"/page/3/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://alyssacomments.vercel.app/","placeholder":"Just go go","dark":"auto","avatar":"wavatar","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredMeta":["nick","mail"],"copyright":true,"login":"","avatarCDN":"https://sdn.geekzu.org/avatar/","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq"],"locale":{"placeholder":"在这里分享你的观点与想法～ 昵称、邮箱必填，邮件通知回复。","admin":"博主","nick":"昵称*","mail":"邮箱*","link":"网址（http://）"},"el":"#waline-comments","libUrl":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","path":"/page/3/"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   if(CONFIG.waline.qiniuDomain && CONFIG.waline.qiniuTokenUrl){
