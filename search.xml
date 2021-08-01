@@ -17,6 +17,29 @@
       </tags>
   </entry>
   <entry>
+    <title>学习工具网站</title>
+    <url>//posts/405/</url>
+    <content><![CDATA[<p>学习和生活当中总结的一些实用的学习网站</p>
+<span id="more"></span>
+
+<h2 id="C"><a href="#C" class="headerlink" title="C#"></a><span>C#</span></h2><ul>
+<li><a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228358(v=vs.90)">C# for Java Developers</a></li>
+</ul>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a><span>Shell</span></h2><ul>
+<li><a href="http://c.biancheng.net/view/743.html">Shell变量：Shell变量的定义、赋值和删除</a></li>
+<li><a href="http://c.biancheng.net/view/1120.html">Shell字符串</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>C#</tag>
+        <tag>清单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>深度学习相关知识网站</title>
     <url>//posts/406/</url>
     <content><![CDATA[<h2 id="Batch-Normalization-and-Layer-Normalization"><a href="#Batch-Normalization-and-Layer-Normalization" class="headerlink" title="Batch Normalization and Layer Normalization "></a><span>Batch Normalization and Layer Normalization </span></h2><ul>
@@ -49,29 +72,6 @@
       </categories>
       <tags>
         <tag>Deep Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习工具网站</title>
-    <url>//posts/405/</url>
-    <content><![CDATA[<p>学习和生活当中总结的一些实用的学习网站</p>
-<span id="more"></span>
-
-<h2 id="C"><a href="#C" class="headerlink" title="C#"></a><span>C#</span></h2><ul>
-<li><a href="https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2008/ms228358(v=vs.90)">C# for Java Developers</a></li>
-</ul>
-<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a><span>Shell</span></h2><ul>
-<li><a href="http://c.biancheng.net/view/743.html">Shell变量：Shell变量的定义、赋值和删除</a></li>
-<li><a href="http://c.biancheng.net/view/1120.html">Shell字符串</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>C#</tag>
-        <tag>清单</tag>
       </tags>
   </entry>
   <entry>
@@ -129,57 +129,6 @@
 <li>因为字符串中字符的种类最多256个，所以可以用数组模拟hash表。以字符的index作为key，出现次数作为value即可。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch:s.toCharArray())</span><br><span class="line">        count[ch-<span class="string">&#x27;0&#x27;</span>] += <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        <span class="keyword">if</span>(count[s.charAt(i)-<span class="string">&#x27;0&#x27;</span>]==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>位运算</title>
-    <url>//posts/3/</url>
-    <content><![CDATA[<h5 id="1-leetcode-136-Single-Number"><a href="#1-leetcode-136-Single-Number" class="headerlink" title="1. leetcode 136. Single Number"></a>1. <a href="https://leetcode.com/problems/single-number/">leetcode 136. Single Number</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a non-empty array of integers, every element appears twice except <span class="keyword">for</span> one. Find that single one.</span><br><span class="line">数组中只有一个数字出现了一次，其他数字都出现了<span class="number">2</span>次。找出这个只出现一次的数字。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>异或。相同的两个数二进制异或为0.</li>
-<li>所有的元素进行异或，最后的值即为出现一次的元素的值。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)</span><br><span class="line">        res = res^nums[i];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h5 id="2-leetcode-137-Single-Number-II"><a href="#2-leetcode-137-Single-Number-II" class="headerlink" title="2. leetcode 137. Single Number II"></a>2. <a href="https://leetcode.com/problems/single-number-ii/">leetcode 137. Single Number II</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a non-empty array of integers, every element appears three times except <span class="keyword">for</span> one, which appears exactly once. Find that single one.</span><br><span class="line">数组中只有一个数字出现了一次，其他数字都出现了<span class="number">3</span>次。找出这个只出现一次的数字。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>我们把数组中的每个数字都转为二进制。</li>
-<li>如果一个数字出现三次，那么二进制的每一位也都出现三次。如果把所有出现三次的数字的二进制表示的每一位都分别累加起来，那么每一位的和都能被3整除。</li>
-<li>那么我们就把所有数字的对应位都累加起来，如果能被3整除，那么出现一次的数字该位为0，否则该位为1，这样运算下来，我们就能知道只出现一次的这个数字的二进制表示，那么我们就可以得到这个数字的值。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="3-leetcode-260-Single-Number-III"><a href="#3-leetcode-260-Single-Number-III" class="headerlink" title="3. leetcode 260. Single Number III"></a>3. <a href="https://leetcode.com/problems/single-number-iii/">leetcode 260. Single Number III</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.</span><br><span class="line">数组中有两个数字仅出现一次，其余数字都出现两次。找出仅出现一次的这两个数字。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>只有一个数字可以直接异或，因为其他部分异或都为0。而两个数字，就不能直接整个数组异或了，因为这两个只出现一次的数字也会求异或，所以得不到两个数字的值。如果能把这两个数字分开，分到两个不同的子数组里就好了。</li>
-<li>如何划分到两个不同的子数组中呢？</li>
-</ul>
-<ol>
-<li>假设不同的数字为a和b，</li>
-<li>先将整个数组求异或，那么得到的就是a和b异或的值c</li>
-<li>我们得到c的二进制值，找到第一个为1的位置。该位之所以为1，是因为a和b中只有一个该位置为1，那么我们就能够把a和b区分开了。</li>
-<li>所以，我们假设c的第n位为1，那么我们将整个数组按照第n位是不是为1分成两个数组。那么a和b肯定在不同的数组中</li>
-<li>同时，其他出现两次的每个数字，每个相同的两个数必出现在同一个子数组中，因为他们俩完全相等，第n位是不是1当然也是同样的结果。</li>
-<li>也就是说，两个子数组中，除了a和b分别在自己的子数组中出现一次，其他数字都出现两次，那么我们将两个子数组分别求异或，就能得到a和b的值了。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
 
 ]]></content>
       <categories>
@@ -281,6 +230,57 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">BST</span><span class="params">(ListNode begin, ListNode end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(begin==end)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    ListNode slow = begin;</span><br><span class="line">    ListNode fast = begin;</span><br><span class="line">    <span class="keyword">while</span>(fast!=end &amp;&amp; fast.next!=end) &#123;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TreeNode node = <span class="keyword">new</span> TreeNode(slow.val);</span><br><span class="line">    node.left = BST(begin, slow);</span><br><span class="line">    node.right = BST(slow.next, end);</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">sortedListToBST</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BST(head, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Z字形打印二叉树："><a href="#Z字形打印二叉树：" class="headerlink" title="Z字形打印二叉树："></a>Z字形打印二叉树：</h3><h3 id="二叉搜索树："><a href="#二叉搜索树：" class="headerlink" title="二叉搜索树："></a>二叉搜索树：</h3><h3 id="给定一个数组，判断该数组是不是二叉搜索树的后序遍历结果："><a href="#给定一个数组，判断该数组是不是二叉搜索树的后序遍历结果：" class="headerlink" title="给定一个数组，判断该数组是不是二叉搜索树的后序遍历结果："></a>给定一个数组，判断该数组是不是二叉搜索树的后序遍历结果：</h3><h3 id="二叉搜索树转为双向链表："><a href="#二叉搜索树转为双向链表：" class="headerlink" title="二叉搜索树转为双向链表："></a>二叉搜索树转为双向链表：</h3>]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>位运算</title>
+    <url>//posts/3/</url>
+    <content><![CDATA[<h5 id="1-leetcode-136-Single-Number"><a href="#1-leetcode-136-Single-Number" class="headerlink" title="1. leetcode 136. Single Number"></a>1. <a href="https://leetcode.com/problems/single-number/">leetcode 136. Single Number</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a non-empty array of integers, every element appears twice except <span class="keyword">for</span> one. Find that single one.</span><br><span class="line">数组中只有一个数字出现了一次，其他数字都出现了<span class="number">2</span>次。找出这个只出现一次的数字。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>异或。相同的两个数二进制异或为0.</li>
+<li>所有的元素进行异或，最后的值即为出现一次的元素的值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)</span><br><span class="line">        res = res^nums[i];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h5 id="2-leetcode-137-Single-Number-II"><a href="#2-leetcode-137-Single-Number-II" class="headerlink" title="2. leetcode 137. Single Number II"></a>2. <a href="https://leetcode.com/problems/single-number-ii/">leetcode 137. Single Number II</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a non-empty array of integers, every element appears three times except <span class="keyword">for</span> one, which appears exactly once. Find that single one.</span><br><span class="line">数组中只有一个数字出现了一次，其他数字都出现了<span class="number">3</span>次。找出这个只出现一次的数字。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我们把数组中的每个数字都转为二进制。</li>
+<li>如果一个数字出现三次，那么二进制的每一位也都出现三次。如果把所有出现三次的数字的二进制表示的每一位都分别累加起来，那么每一位的和都能被3整除。</li>
+<li>那么我们就把所有数字的对应位都累加起来，如果能被3整除，那么出现一次的数字该位为0，否则该位为1，这样运算下来，我们就能知道只出现一次的这个数字的二进制表示，那么我们就可以得到这个数字的值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-leetcode-260-Single-Number-III"><a href="#3-leetcode-260-Single-Number-III" class="headerlink" title="3. leetcode 260. Single Number III"></a>3. <a href="https://leetcode.com/problems/single-number-iii/">leetcode 260. Single Number III</a></h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.</span><br><span class="line">数组中有两个数字仅出现一次，其余数字都出现两次。找出仅出现一次的这两个数字。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>只有一个数字可以直接异或，因为其他部分异或都为0。而两个数字，就不能直接整个数组异或了，因为这两个只出现一次的数字也会求异或，所以得不到两个数字的值。如果能把这两个数字分开，分到两个不同的子数组里就好了。</li>
+<li>如何划分到两个不同的子数组中呢？</li>
+</ul>
+<ol>
+<li>假设不同的数字为a和b，</li>
+<li>先将整个数组求异或，那么得到的就是a和b异或的值c</li>
+<li>我们得到c的二进制值，找到第一个为1的位置。该位之所以为1，是因为a和b中只有一个该位置为1，那么我们就能够把a和b区分开了。</li>
+<li>所以，我们假设c的第n位为1，那么我们将整个数组按照第n位是不是为1分成两个数组。那么a和b肯定在不同的数组中</li>
+<li>同时，其他出现两次的每个数字，每个相同的两个数必出现在同一个子数组中，因为他们俩完全相等，第n位是不是1当然也是同样的结果。</li>
+<li>也就是说，两个子数组中，除了a和b分别在自己的子数组中出现一次，其他数字都出现两次，那么我们将两个子数组分别求异或，就能得到a和b的值了。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+]]></content>
       <categories>
         <category>Algorithms</category>
       </categories>
@@ -435,6 +435,47 @@
       </tags>
   </entry>
   <entry>
+    <title>字符串</title>
+    <url>//posts/7/</url>
+    <content><![CDATA[<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-316-删除字符串中的重复字符"><a href="#leetcode-316-删除字符串中的重复字符" class="headerlink" title="leetcode 316. 删除字符串中的重复字符"></a><a href="https://leetcode.com/problems/remove-duplicate-letters/">leetcode 316. 删除字符串中的重复字符</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a string which contains only lowercase letters, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</span><br><span class="line">Example <span class="number">1</span>:  Input: <span class="string">&quot;bcabc&quot;</span>      Output: <span class="string">&quot;abc&quot;</span></span><br><span class="line">Example <span class="number">2</span>:  Input: <span class="string">&quot;cbacdcbc&quot;</span>   Output: <span class="string">&quot;acdb&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>因为只有26个小写字母，所以可以用数组模拟 hashmap 先统计每个字符出现的次数。</li>
+<li>然后要用辅助栈。其实发现很多问题都是数组和栈辅助进行操作，来对比当前元素和栈顶元素的大小，从而进行相应的操作。删除栈顶元素还是向栈中添加元素。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeDuplicateLetters</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];  <span class="comment">// 统计每个字符出现的次数</span></span><br><span class="line">    <span class="keyword">boolean</span>[] visit = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">26</span>];  <span class="comment">// 表示某个字符是否已经出现在栈中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray())  </span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] += <span class="number">1</span>;</span><br><span class="line">    Stack&lt;Character&gt; sta = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray()) &#123;</span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(visit[ch-<span class="string">&#x27;a&#x27;</span>]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素比栈顶元素小，并且栈顶元素次数不等0</span></span><br><span class="line">        <span class="comment">// 那么就把栈顶元素弹出来，把当前元素入栈</span></span><br><span class="line">        <span class="keyword">while</span>(!sta.isEmpty() &amp;&amp; ch&lt;sta.peek() &amp;&amp; count[sta.peek()-<span class="string">&#x27;a&#x27;</span>]!=<span class="number">0</span>) </span><br><span class="line">            visit[sta.pop()-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">false</span>;</span><br><span class="line">        sta.push(ch);</span><br><span class="line">        visit[ch-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span>(!sta.isEmpty())</span><br><span class="line">        res = sta.pop()+res;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="leetcode-567-字符串中的全排列"><a href="#leetcode-567-字符串中的全排列" class="headerlink" title="leetcode 567. 字符串中的全排列"></a><a href="https://leetcode.com/problems/permutation-in-string/">leetcode 567. 字符串中的全排列</a></h3><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">Given two strings s1 <span class="keyword">and</span> s2, <span class="built_in">write</span> a function <span class="keyword">to</span> <span class="literal">return</span> <span class="literal">true</span> <span class="keyword">if</span> s2 <span class="keyword">contains</span> <span class="keyword">the</span> permutation <span class="keyword">of</span> s1. In other <span class="built_in">words</span>, one <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">first</span> <span class="built_in">string</span>&#x27;s permutations <span class="keyword">is</span> <span class="keyword">the</span> substring <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">second</span> <span class="built_in">string</span>.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Input</span>: s<span class="number">1</span> = <span class="string">&quot;ab&quot;</span> s<span class="number">2</span> = <span class="string">&quot;eidbaooo&quot;</span></span><br><span class="line"><span class="attribute">Output</span>: True</span><br><span class="line"><span class="attribute">Explanation</span>: s<span class="number">2</span> contains one permutation of s<span class="number">1</span> (<span class="string">&quot;ba&quot;</span>).</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最直观的做法就是把s1的全排列都列出来，然后看每个全排列是不是s2的子串，但是当字符串的长度过长时，会超时。</li>
+<li><strong>如何判断字符串m是不是字符串n的全排列，我们只要把字符串m和字符串n中的每个字符出现的次数做统计，如果两者每个字符出现的次数都相等，那么就证明字符串m是字符串n的一个全排列。</strong></li>
+<li>如何判断字符串n是不是包含字符串m的全排列，也就是字符串m的全排列是不是字符串n的一个子串，那么我们就需要<strong>建立一个长度为m.length的滑动窗口</strong>，判断n的这个滑动窗口中n子串和m字符串每个字符出现的次数是不是相等。</li>
+<li>但每到一个滑动窗口都重新统计一次次数很麻烦，每次移动滑动窗口的时候，只有左侧被移出去的字符和右侧被移进来的字符的次数有变化，那么我们把左侧移出去的字符数-1，右侧移进来的字符数+1，即为当前窗口n的每个字符出现的次数。</li>
+<li>该题的类似题目：<a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/">leetcode 438. 找到s1的全排列在s2中的位置</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkInclusion</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s1.length()&gt;s2.length())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">//统计s1中每个字符出现的次数，s2中每个长度为s1.length的窗口中字符出现的次数</span></span><br><span class="line">    <span class="keyword">int</span>[] hash1 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span>[] hash2 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s1.length();i++) &#123;</span><br><span class="line">        hash1[s1.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">        hash2[s2.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(Arrays.equals(hash1, hash2))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=s1.length();i&lt;s2.length();i++) &#123;</span><br><span class="line">        hash2[s2.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">        hash2[s2.charAt(i-s1.length())-<span class="string">&#x27;a&#x27;</span>] --;</span><br><span class="line">        <span class="keyword">if</span>(Arrays.equals(hash1, hash2))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-179-将数组进行排序，使之组成的数最大-实则为对字符串排序"><a href="#leetcode-179-将数组进行排序，使之组成的数最大-实则为对字符串排序" class="headerlink" title="leetcode 179. 将数组进行排序，使之组成的数最大 (实则为对字符串排序)"></a><a href="https://leetcode.com/problems/largest-number/">leetcode 179. 将数组进行排序，使之组成的数最大 (实则为对字符串排序)</a></h3><ul>
+<li>输入：<code>[3,30,34,5,9]</code> </li>
+<li>输出：<code>9534330</code></li>
+<li>特殊问题：<code>[2, 2281]</code>   <code>[12, 121]</code>   <code>[23, 234]</code></li>
+<li>碰到长度不等时，会有些问题，比如第一个要交换。第二个不要交换；第三个要交换</li>
+<li>最好的办法就是直接把两个字符串m和n拼接起来，然后比较mn和nm的大小即可，不存在长度不等的情况。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(String[] str, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line"> String tmp = str[i];</span><br><span class="line"> str[i] = str[j];</span><br><span class="line"> str[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//因为这道题涉及到了长度不同，谁放在前面的问题，不能简单地直接逐个字符比较</span></span><br><span class="line"><span class="comment">//那么，把m和n拼接成的mn和nm按照字符串大小的比较规则来处理即可。</span></span><br><span class="line"><span class="comment">//如果mn &lt; nm,应该打印出nm,即n应该排在m前面，要交换顺序，反之，m应该排在n前面。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">cmp</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    String new_1 = a+b;</span><br><span class="line">    String new_2 = b+a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;new_1.length();i++)  &#123;</span><br><span class="line">        <span class="keyword">if</span>(new_1.charAt(i)==new_2.charAt(i)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> new_1.charAt(i)&lt;new_2.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">largestNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    String[] str = <span class="keyword">new</span> String[nums.length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;  <span class="comment">// 先将数组中的数字转为字符串，再去比较。</span></span><br><span class="line">        str[i] = nums[i]+<span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//写个冒泡排序，任何一种排序算法都可以，只要把交换的条件变为我们的cmp条件即可。</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cmp(str[j], str[j+<span class="number">1</span>])) &#123;</span><br><span class="line">                swap(str, j, j+<span class="number">1</span>);</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length;i++) &#123;</span><br><span class="line">        result += str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(result.charAt(<span class="number">0</span>)==<span class="string">&#x27;0&#x27;</span>) <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>; <span class="comment">//防止出现&quot;00&quot;的情况。</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字符串匹配算法－KMP算法</title>
     <url>//posts/8/</url>
     <content><![CDATA[<p>给定一个主串S及一个模式串P，判断模式串是否为主串的子串；若是，返回匹配的第一个元素的位置，否则返回-1；</p>
@@ -487,47 +528,6 @@
       </categories>
       <tags>
         <tag>NLP</tag>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字符串</title>
-    <url>//posts/7/</url>
-    <content><![CDATA[<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-316-删除字符串中的重复字符"><a href="#leetcode-316-删除字符串中的重复字符" class="headerlink" title="leetcode 316. 删除字符串中的重复字符"></a><a href="https://leetcode.com/problems/remove-duplicate-letters/">leetcode 316. 删除字符串中的重复字符</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Given a string which contains only lowercase letters, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</span><br><span class="line">Example <span class="number">1</span>:  Input: <span class="string">&quot;bcabc&quot;</span>      Output: <span class="string">&quot;abc&quot;</span></span><br><span class="line">Example <span class="number">2</span>:  Input: <span class="string">&quot;cbacdcbc&quot;</span>   Output: <span class="string">&quot;acdb&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>因为只有26个小写字母，所以可以用数组模拟 hashmap 先统计每个字符出现的次数。</li>
-<li>然后要用辅助栈。其实发现很多问题都是数组和栈辅助进行操作，来对比当前元素和栈顶元素的大小，从而进行相应的操作。删除栈顶元素还是向栈中添加元素。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeDuplicateLetters</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];  <span class="comment">// 统计每个字符出现的次数</span></span><br><span class="line">    <span class="keyword">boolean</span>[] visit = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">26</span>];  <span class="comment">// 表示某个字符是否已经出现在栈中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray())  </span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] += <span class="number">1</span>;</span><br><span class="line">    Stack&lt;Character&gt; sta = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray()) &#123;</span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(visit[ch-<span class="string">&#x27;a&#x27;</span>]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素比栈顶元素小，并且栈顶元素次数不等0</span></span><br><span class="line">        <span class="comment">// 那么就把栈顶元素弹出来，把当前元素入栈</span></span><br><span class="line">        <span class="keyword">while</span>(!sta.isEmpty() &amp;&amp; ch&lt;sta.peek() &amp;&amp; count[sta.peek()-<span class="string">&#x27;a&#x27;</span>]!=<span class="number">0</span>) </span><br><span class="line">            visit[sta.pop()-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">false</span>;</span><br><span class="line">        sta.push(ch);</span><br><span class="line">        visit[ch-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span>(!sta.isEmpty())</span><br><span class="line">        res = sta.pop()+res;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h3 id="leetcode-567-字符串中的全排列"><a href="#leetcode-567-字符串中的全排列" class="headerlink" title="leetcode 567. 字符串中的全排列"></a><a href="https://leetcode.com/problems/permutation-in-string/">leetcode 567. 字符串中的全排列</a></h3><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">Given two strings s1 <span class="keyword">and</span> s2, <span class="built_in">write</span> a function <span class="keyword">to</span> <span class="literal">return</span> <span class="literal">true</span> <span class="keyword">if</span> s2 <span class="keyword">contains</span> <span class="keyword">the</span> permutation <span class="keyword">of</span> s1. In other <span class="built_in">words</span>, one <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">first</span> <span class="built_in">string</span>&#x27;s permutations <span class="keyword">is</span> <span class="keyword">the</span> substring <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">second</span> <span class="built_in">string</span>.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Input</span>: s<span class="number">1</span> = <span class="string">&quot;ab&quot;</span> s<span class="number">2</span> = <span class="string">&quot;eidbaooo&quot;</span></span><br><span class="line"><span class="attribute">Output</span>: True</span><br><span class="line"><span class="attribute">Explanation</span>: s<span class="number">2</span> contains one permutation of s<span class="number">1</span> (<span class="string">&quot;ba&quot;</span>).</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>最直观的做法就是把s1的全排列都列出来，然后看每个全排列是不是s2的子串，但是当字符串的长度过长时，会超时。</li>
-<li><strong>如何判断字符串m是不是字符串n的全排列，我们只要把字符串m和字符串n中的每个字符出现的次数做统计，如果两者每个字符出现的次数都相等，那么就证明字符串m是字符串n的一个全排列。</strong></li>
-<li>如何判断字符串n是不是包含字符串m的全排列，也就是字符串m的全排列是不是字符串n的一个子串，那么我们就需要<strong>建立一个长度为m.length的滑动窗口</strong>，判断n的这个滑动窗口中n子串和m字符串每个字符出现的次数是不是相等。</li>
-<li>但每到一个滑动窗口都重新统计一次次数很麻烦，每次移动滑动窗口的时候，只有左侧被移出去的字符和右侧被移进来的字符的次数有变化，那么我们把左侧移出去的字符数-1，右侧移进来的字符数+1，即为当前窗口n的每个字符出现的次数。</li>
-<li>该题的类似题目：<a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/">leetcode 438. 找到s1的全排列在s2中的位置</a></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkInclusion</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s1.length()&gt;s2.length())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">//统计s1中每个字符出现的次数，s2中每个长度为s1.length的窗口中字符出现的次数</span></span><br><span class="line">    <span class="keyword">int</span>[] hash1 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span>[] hash2 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s1.length();i++) &#123;</span><br><span class="line">        hash1[s1.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">        hash2[s2.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(Arrays.equals(hash1, hash2))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=s1.length();i&lt;s2.length();i++) &#123;</span><br><span class="line">        hash2[s2.charAt(i)-<span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">        hash2[s2.charAt(i-s1.length())-<span class="string">&#x27;a&#x27;</span>] --;</span><br><span class="line">        <span class="keyword">if</span>(Arrays.equals(hash1, hash2))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-179-将数组进行排序，使之组成的数最大-实则为对字符串排序"><a href="#leetcode-179-将数组进行排序，使之组成的数最大-实则为对字符串排序" class="headerlink" title="leetcode 179. 将数组进行排序，使之组成的数最大 (实则为对字符串排序)"></a><a href="https://leetcode.com/problems/largest-number/">leetcode 179. 将数组进行排序，使之组成的数最大 (实则为对字符串排序)</a></h3><ul>
-<li>输入：<code>[3,30,34,5,9]</code> </li>
-<li>输出：<code>9534330</code></li>
-<li>特殊问题：<code>[2, 2281]</code>   <code>[12, 121]</code>   <code>[23, 234]</code></li>
-<li>碰到长度不等时，会有些问题，比如第一个要交换。第二个不要交换；第三个要交换</li>
-<li>最好的办法就是直接把两个字符串m和n拼接起来，然后比较mn和nm的大小即可，不存在长度不等的情况。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(String[] str, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line"> String tmp = str[i];</span><br><span class="line"> str[i] = str[j];</span><br><span class="line"> str[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//因为这道题涉及到了长度不同，谁放在前面的问题，不能简单地直接逐个字符比较</span></span><br><span class="line"><span class="comment">//那么，把m和n拼接成的mn和nm按照字符串大小的比较规则来处理即可。</span></span><br><span class="line"><span class="comment">//如果mn &lt; nm,应该打印出nm,即n应该排在m前面，要交换顺序，反之，m应该排在n前面。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">cmp</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    String new_1 = a+b;</span><br><span class="line">    String new_2 = b+a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;new_1.length();i++)  &#123;</span><br><span class="line">        <span class="keyword">if</span>(new_1.charAt(i)==new_2.charAt(i)) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">return</span> new_1.charAt(i)&lt;new_2.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">largestNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    String[] str = <span class="keyword">new</span> String[nums.length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;  <span class="comment">// 先将数组中的数字转为字符串，再去比较。</span></span><br><span class="line">        str[i] = nums[i]+<span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//写个冒泡排序，任何一种排序算法都可以，只要把交换的条件变为我们的cmp条件即可。</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cmp(str[j], str[j+<span class="number">1</span>])) &#123;</span><br><span class="line">                swap(str, j, j+<span class="number">1</span>);</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length;i++) &#123;</span><br><span class="line">        result += str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(result.charAt(<span class="number">0</span>)==<span class="string">&#x27;0&#x27;</span>) <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>; <span class="comment">//防止出现&quot;00&quot;的情况。</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
         <tag>Leetcode</tag>
       </tags>
   </entry>
@@ -639,6 +639,94 @@
       </tags>
   </entry>
   <entry>
+    <title>数组</title>
+    <url>//posts/10/</url>
+    <content><![CDATA[<h2 id="数组的全排列"><a href="#数组的全排列" class="headerlink" title="数组的全排列"></a><span>数组的全排列</span></h2><h3 id="leetcode-31-给出全排列的下一个排列"><a href="#leetcode-31-给出全排列的下一个排列" class="headerlink" title="leetcode 31. 给出全排列的下一个排列"></a><a href="https://leetcode.com/problems/next-permutation/">leetcode 31. 给出全排列的下一个排列</a></h3><ul>
+<li>输入1: <code>1,2,3,4,3,8,7,6,5</code> → <code>1,2,3,4,5,3,6,7,8</code></li>
+<li>输入2: <code>3,2,1</code> → <code>1,2,3</code></li>
+<li>条件：在nums数组上就地转换，并且要使用常数级辅助空间</li>
+<li><strong>从后向前，找到递减的位置，然后从后面找到比他大的第一个元素，交换，然后对后面从小到大排序即可</strong></li>
+<li>如果当前已经是最大，那么就输出他的最小值  从小到大排序即可</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> begin)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> end = nums.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(end-begin+<span class="number">1</span>)/<span class="number">2</span>;i++)</span><br><span class="line">        swap(nums, begin+i, end-i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i]&lt;=nums[i-<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//nums[i-1]是递减的那个值</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=nums.length-<span class="number">1</span>;j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[j]&gt;nums[i-<span class="number">1</span>]) &#123;</span><br><span class="line">                    swap(nums, i-<span class="number">1</span>, j);</span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//对后面逆序</span></span><br><span class="line">            reverse(nums, i);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag)</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="leetcode-46-无重复数字数组的全排列"><a href="#leetcode-46-无重复数字数组的全排列" class="headerlink" title="leetcode 46. 无重复数字数组的全排列"></a><a href="https://leetcode.com/problems/permutations/">leetcode 46. 无重复数字数组的全排列</a></h3><ul>
+<li>输入：[1,2,3]</li>
+<li>输出：[1,2,3]   [1,3,2]  [2,1,3]  [2,3,1]  [3,1,2]  [3,2,1]</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get_permute</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span>[] visit, List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; tmp_res)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp_res.size()==nums.length) &#123;</span><br><span class="line">        List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        tmp.addAll(tmp_res);</span><br><span class="line">        result.add(tmp);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">            tmp_res.add(nums[i]);</span><br><span class="line">            visit[i] = <span class="number">1</span>;</span><br><span class="line">            get_permute(nums, visit, result, tmp_res);</span><br><span class="line">            tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">            visit[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    get_permute(nums, visit, result, tmp_res);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-47-有重复数字的全排列"><a href="#leetcode-47-有重复数字的全排列" class="headerlink" title="leetcode 47. 有重复数字的全排列"></a><a href="https://leetcode.com/problems/permutations-ii/">leetcode 47. 有重复数字的全排列</a></h3><ul>
+<li>输入：[1,2,1]</li>
+<li>输出：[1,1,2]  [1,2,1]  [2,1,1]</li>
+<li>有重复数字时，可以使用set代替之前的list,因为set本身就有过滤重复的用途。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get_permute</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span>[] visit, Set&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; tmp_res)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp_res.size()==nums.length) &#123;</span><br><span class="line">     List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        tmp.addAll(tmp_res);</span><br><span class="line">        result.add(tmp);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">            tmp_res.add(nums[i]);</span><br><span class="line">            visit[i] = <span class="number">1</span>;</span><br><span class="line">            get_permute(nums, visit, result, tmp_res);</span><br><span class="line">            tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">            visit[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    Set&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> HashSet();</span><br><span class="line">true<span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">    </span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    get_permute(nums, visit, res, list);</span><br><span class="line"></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">for</span>(List&lt;Integer&gt; list1:res)</span><br><span class="line">        result.add(list1);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>但是这种做法会比较复杂，不管相同不相同的数字，都会进行一次全排列，会比较耗时，所以可以先将数组排序，将相同的放在一起，如果取出下一个元素和上一个相同，那么这一轮就可以不再进行全排列了。</li>
+</ul>
+<h3 id="leetcode-60-取特定位置的全排列字符串"><a href="#leetcode-60-取特定位置的全排列字符串" class="headerlink" title="leetcode 60. 取特定位置的全排列字符串"></a><a href="https://leetcode.com/problems/permutation-sequence/">leetcode 60. 取特定位置的全排列字符串</a></h3><ul>
+<li>n=3, 则全排列为：<code>&quot;123&quot;</code> <code>&quot;132&quot;</code> <code>&quot;213&quot;</code> <code>&quot;231&quot;</code> <code>&quot;312&quot;</code> <code>&quot;321&quot;</code>，若k=3, 则输出为：<code>&quot;213&quot;</code></li>
+<li>n=4, k=9, 则输出为：<code>&quot;2314&quot;</code></li>
+<li>第一个位置有n中情况，第二个位置n-1中情况，…对于给定的n，其全排列中n!中情况。</li>
+<li>求第一个位置的值时：k/(n-1)!  = shang…yu, 若yu&gt;0, 则拿到shang位置的值。其他同理</li>
+<li>4 13     13/6 = 2…1    3</li>
+<li>7/2! = 7/2 = 3…1   </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="给定第k个全排列，求倒数第k个全排列"><a href="#给定第k个全排列，求倒数第k个全排列" class="headerlink" title="给定第k个全排列，求倒数第k个全排列"></a>给定第k个全排列，求倒数第k个全排列</h3><ul>
+<li>n=3, 则全排列为：<code>&quot;123&quot;</code> <code>&quot;132&quot;</code> <code>&quot;213&quot;</code> <code>&quot;231&quot;</code> <code>&quot;312&quot;</code> <code>&quot;321&quot;</code></li>
+<li>给定k=3, 第3个全排列为 <code>&quot;213&quot;</code> ，则输出为：<code>&quot;231&quot;</code></li>
+<li>这道题比较有规律，倒数第k个全排列，就是n+1减去正数第k个全排列每个位置上面的值。</li>
+<li>例：k=2, n=3：正数：<code>&quot;132&quot;</code>；倒数：(n+1-1)(n+1-3)(n+1-2)=<code>&quot;312&quot;</code> </li>
+</ul>
+<h2 id="输出所有和为target的数组"><a href="#输出所有和为target的数组" class="headerlink" title="输出所有和为target的数组"></a><span>输出所有和为target的数组</span></h2><h3 id="先来一个类似的简单题：leetcode-633-判断一个值可否由两个数的平方和组成"><a href="#先来一个类似的简单题：leetcode-633-判断一个值可否由两个数的平方和组成" class="headerlink" title="先来一个类似的简单题：leetcode 633. 判断一个值可否由两个数的平方和组成"></a>先来一个类似的简单题：<a href="https://leetcode.com/problems/sum-of-square-numbers/">leetcode 633. 判断一个值可否由两个数的平方和组成</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">whether there<span class="string">&#x27;re two integers a and b such that a^2 + b^2 = c.</span></span><br><span class="line"><span class="string">例如：输入5，返回true， 因为 1 * 1 + 2 * 2 = 5。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解法：设置两个变量，i=0, j= $\sqrt5$ 的向下取整， 若$i<em>i+j</em>j&lt;c$, 则增大i，否则减小j，直到i&gt;j或找到满足条件的值为止。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeSquareSum</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = (<span class="keyword">int</span>)Math.sqrt(c);</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=j) &#123;</span><br><span class="line">        <span class="keyword">int</span> value = i*i+j*j;</span><br><span class="line">        <span class="keyword">if</span>(value==c) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(value&gt;c) j -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(value&lt;c) i += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-15-threesum-输出所有和为0的数组"><a href="#leetcode-15-threesum-输出所有和为0的数组" class="headerlink" title="leetcode 15. threesum, 输出所有和为0的数组"></a><a href="https://leetcode.com/problems/3sum/">leetcode 15. threesum, 输出所有和为0的数组</a></h3><ul>
+<li><p>先将数组进行排序。</p>
+</li>
+<li><p>设置两个指针，一个指向数组头，一个指向数组尾，向中间移动。</p>
+</li>
+<li><p>如果指针指向的两数之和小于target，则我们将左边那个指针i右移一位，使得指向的数字增大一些。</p>
+</li>
+<li><p>同理，如果两数之和大于target，则我们将右边那个指针j左移一位，使得指向的数字减小一些。</p>
+</li>
+<li><p>直到找到满足条件的两个值。</p>
+</li>
+<li><p>因为该道题是三个数的和为target，所以需要先确定一个数，然后让new_target = target-当前值。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    Set&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;nums.length;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> target = <span class="number">0</span>-nums[i];</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right &amp;&amp; left!=i &amp;&amp; right!=i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]+nums[right]&gt;target)</span><br><span class="line">                right -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[left]+nums[right]&lt;target)</span><br><span class="line">                left += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                tmp_res.add(nums[left]);</span><br><span class="line">                tmp_res.add(nums[i]);</span><br><span class="line">                tmp_res.add(nums[right]);</span><br><span class="line">                res.add(tmp_res);</span><br><span class="line">                right -= <span class="number">1</span>;</span><br><span class="line">                left += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    Iterator&lt;List&lt;Integer&gt;&gt; iterator = res.iterator();</span><br><span class="line">    <span class="keyword">while</span>(iterator.hasNext())</span><br><span class="line">        result.add(iterator.next());</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-16-三个数的和最接近target"><a href="#leetcode-16-三个数的和最接近target" class="headerlink" title="leetcode 16. 三个数的和最接近target"></a><a href="https://leetcode.com/problems/3sum-closest/">leetcode 16. 三个数的和最接近target</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = Integer.MAX_VALUE;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;nums.length-<span class="number">1</span>;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> new_tar = target - nums[i];</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right &amp;&amp; left!=i &amp;&amp; right!=i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]+nums[right]&gt;new_tar)</span><br><span class="line">                right -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[left]+nums[right]&lt;new_tar)</span><br><span class="line">                left += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> target;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        left = left==i? left-<span class="number">1</span>: left;</span><br><span class="line">        right = right==i ? right+<span class="number">1</span>:right;</span><br><span class="line">        <span class="keyword">int</span> tmp = nums[i] + nums[left] + nums[right];</span><br><span class="line">        res = Math.abs(target-tmp)&lt;Math.abs(target-res)?tmp:res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他题目"><a href="#其他题目" class="headerlink" title="其他题目"></a><span>其他题目</span></h2><h3 id="leetcode-56-Merge-Intervals"><a href="#leetcode-56-Merge-Intervals" class="headerlink" title="leetcode 56. Merge Intervals"></a><a href="https://leetcode.com/problems/merge-intervals/">leetcode 56. Merge Intervals</a></h3><ul>
+<li>将数组有重叠的部分进行合并。</li>
+<li>先将数组按照第一个元素的位置排序，然后比较前一个的第二个值与后一个的第一个值</li>
+<li>如果前一个的第二个值大于后一个的第一个值，就进行合并，右边界取第一个和第二个右边界的大值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Input: [[<span class="number">1</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">6</span>],[<span class="number">8</span>,<span class="number">10</span>],[<span class="number">15</span>,<span class="number">18</span>]]</span><br><span class="line">Output: [[<span class="number">1</span>,<span class="number">6</span>],[<span class="number">8</span>,<span class="number">10</span>],[<span class="number">15</span>,<span class="number">18</span>]]</span><br><span class="line">Explanation: Since intervals [<span class="number">1</span>,<span class="number">3</span>] and [<span class="number">2</span>,<span class="number">6</span>] overlaps, merge them into [<span class="number">1</span>,<span class="number">6</span>].</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] merge(<span class="keyword">int</span>[][] intervals) &#123;</span><br><span class="line">    List&lt;<span class="keyword">int</span>[]&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    Arrays.sort(intervals, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] x, <span class="keyword">int</span>[] y)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.compare(x[<span class="number">0</span>], y[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(start&lt;intervals.length) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] tmp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        tmp[<span class="number">0</span>] = intervals[start][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> cur_end = intervals[start][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span>(start&lt;intervals.length-<span class="number">1</span> &amp;&amp; cur_end&gt;=intervals[start+<span class="number">1</span>][<span class="number">0</span>]) &#123;</span><br><span class="line">            cur_end = Math.max(cur_end, intervals[start+<span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">            start += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        start += <span class="number">1</span>;</span><br><span class="line">        tmp[<span class="number">1</span>] = cur_end;</span><br><span class="line">        list.add(tmp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list.toArray(<span class="keyword">new</span> <span class="keyword">int</span>[list.size()][<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>时间复杂度问题</title>
     <url>//posts/11/</url>
     <content><![CDATA[<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><span>时间复杂度</span></h2><h3 id="一遍循环：O-n"><a href="#一遍循环：O-n" class="headerlink" title="一遍循环：O(n)"></a>一遍循环：O(n)</h3><h3 id="嵌套两遍循环：O-n-n"><a href="#嵌套两遍循环：O-n-n" class="headerlink" title="嵌套两遍循环：O(n*n)"></a>嵌套两遍循环：O(n*n)</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        .....</span><br></pre></td></tr></table></figure>
@@ -727,94 +815,6 @@
 
 <h3 id="leetcode-381-O-1-时间插入、删除、随即抽取-允许重复"><a href="#leetcode-381-O-1-时间插入、删除、随即抽取-允许重复" class="headerlink" title="leetcode 381. O(1)时间插入、删除、随即抽取 (允许重复)"></a><a href="https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/">leetcode 381. O(1)时间插入、删除、随即抽取 (允许重复)</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Note: Duplicate elements are allowed.</span><br><span class="line"><span class="number">1.</span> insert(val): Inserts an item val to the collection.</span><br><span class="line"><span class="number">2.</span> remove(val): Removes an item val from the collection <span class="keyword">if</span> present.</span><br><span class="line"><span class="number">3.</span> getRandom: Returns a random element from current collection of elements. The probability of each element being returned is linearly related to the number of same value the collection contains.</span><br></pre></td></tr></table></figure>
 
-
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数组</title>
-    <url>//posts/10/</url>
-    <content><![CDATA[<h2 id="数组的全排列"><a href="#数组的全排列" class="headerlink" title="数组的全排列"></a><span>数组的全排列</span></h2><h3 id="leetcode-31-给出全排列的下一个排列"><a href="#leetcode-31-给出全排列的下一个排列" class="headerlink" title="leetcode 31. 给出全排列的下一个排列"></a><a href="https://leetcode.com/problems/next-permutation/">leetcode 31. 给出全排列的下一个排列</a></h3><ul>
-<li>输入1: <code>1,2,3,4,3,8,7,6,5</code> → <code>1,2,3,4,5,3,6,7,8</code></li>
-<li>输入2: <code>3,2,1</code> → <code>1,2,3</code></li>
-<li>条件：在nums数组上就地转换，并且要使用常数级辅助空间</li>
-<li><strong>从后向前，找到递减的位置，然后从后面找到比他大的第一个元素，交换，然后对后面从小到大排序即可</strong></li>
-<li>如果当前已经是最大，那么就输出他的最小值  从小到大排序即可</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> begin)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> end = nums.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(end-begin+<span class="number">1</span>)/<span class="number">2</span>;i++)</span><br><span class="line">        swap(nums, begin+i, end-i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i]&lt;=nums[i-<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//nums[i-1]是递减的那个值</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=nums.length-<span class="number">1</span>;j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[j]&gt;nums[i-<span class="number">1</span>]) &#123;</span><br><span class="line">                    swap(nums, i-<span class="number">1</span>, j);</span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//对后面逆序</span></span><br><span class="line">            reverse(nums, i);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag)</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h3 id="leetcode-46-无重复数字数组的全排列"><a href="#leetcode-46-无重复数字数组的全排列" class="headerlink" title="leetcode 46. 无重复数字数组的全排列"></a><a href="https://leetcode.com/problems/permutations/">leetcode 46. 无重复数字数组的全排列</a></h3><ul>
-<li>输入：[1,2,3]</li>
-<li>输出：[1,2,3]   [1,3,2]  [2,1,3]  [2,3,1]  [3,1,2]  [3,2,1]</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get_permute</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span>[] visit, List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; tmp_res)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp_res.size()==nums.length) &#123;</span><br><span class="line">        List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        tmp.addAll(tmp_res);</span><br><span class="line">        result.add(tmp);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">            tmp_res.add(nums[i]);</span><br><span class="line">            visit[i] = <span class="number">1</span>;</span><br><span class="line">            get_permute(nums, visit, result, tmp_res);</span><br><span class="line">            tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">            visit[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    get_permute(nums, visit, result, tmp_res);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-47-有重复数字的全排列"><a href="#leetcode-47-有重复数字的全排列" class="headerlink" title="leetcode 47. 有重复数字的全排列"></a><a href="https://leetcode.com/problems/permutations-ii/">leetcode 47. 有重复数字的全排列</a></h3><ul>
-<li>输入：[1,2,1]</li>
-<li>输出：[1,1,2]  [1,2,1]  [2,1,1]</li>
-<li>有重复数字时，可以使用set代替之前的list,因为set本身就有过滤重复的用途。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get_permute</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span>[] visit, Set&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; tmp_res)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp_res.size()==nums.length) &#123;</span><br><span class="line">     List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        tmp.addAll(tmp_res);</span><br><span class="line">        result.add(tmp);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">            tmp_res.add(nums[i]);</span><br><span class="line">            visit[i] = <span class="number">1</span>;</span><br><span class="line">            get_permute(nums, visit, result, tmp_res);</span><br><span class="line">            tmp_res.remove(tmp_res.size()-<span class="number">1</span>);</span><br><span class="line">            visit[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    Set&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> HashSet();</span><br><span class="line">true<span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">    </span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    get_permute(nums, visit, res, list);</span><br><span class="line"></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">for</span>(List&lt;Integer&gt; list1:res)</span><br><span class="line">        result.add(list1);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>但是这种做法会比较复杂，不管相同不相同的数字，都会进行一次全排列，会比较耗时，所以可以先将数组排序，将相同的放在一起，如果取出下一个元素和上一个相同，那么这一轮就可以不再进行全排列了。</li>
-</ul>
-<h3 id="leetcode-60-取特定位置的全排列字符串"><a href="#leetcode-60-取特定位置的全排列字符串" class="headerlink" title="leetcode 60. 取特定位置的全排列字符串"></a><a href="https://leetcode.com/problems/permutation-sequence/">leetcode 60. 取特定位置的全排列字符串</a></h3><ul>
-<li>n=3, 则全排列为：<code>&quot;123&quot;</code> <code>&quot;132&quot;</code> <code>&quot;213&quot;</code> <code>&quot;231&quot;</code> <code>&quot;312&quot;</code> <code>&quot;321&quot;</code>，若k=3, 则输出为：<code>&quot;213&quot;</code></li>
-<li>n=4, k=9, 则输出为：<code>&quot;2314&quot;</code></li>
-<li>第一个位置有n中情况，第二个位置n-1中情况，…对于给定的n，其全排列中n!中情况。</li>
-<li>求第一个位置的值时：k/(n-1)!  = shang…yu, 若yu&gt;0, 则拿到shang位置的值。其他同理</li>
-<li>4 13     13/6 = 2…1    3</li>
-<li>7/2! = 7/2 = 3…1   </li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="给定第k个全排列，求倒数第k个全排列"><a href="#给定第k个全排列，求倒数第k个全排列" class="headerlink" title="给定第k个全排列，求倒数第k个全排列"></a>给定第k个全排列，求倒数第k个全排列</h3><ul>
-<li>n=3, 则全排列为：<code>&quot;123&quot;</code> <code>&quot;132&quot;</code> <code>&quot;213&quot;</code> <code>&quot;231&quot;</code> <code>&quot;312&quot;</code> <code>&quot;321&quot;</code></li>
-<li>给定k=3, 第3个全排列为 <code>&quot;213&quot;</code> ，则输出为：<code>&quot;231&quot;</code></li>
-<li>这道题比较有规律，倒数第k个全排列，就是n+1减去正数第k个全排列每个位置上面的值。</li>
-<li>例：k=2, n=3：正数：<code>&quot;132&quot;</code>；倒数：(n+1-1)(n+1-3)(n+1-2)=<code>&quot;312&quot;</code> </li>
-</ul>
-<h2 id="输出所有和为target的数组"><a href="#输出所有和为target的数组" class="headerlink" title="输出所有和为target的数组"></a><span>输出所有和为target的数组</span></h2><h3 id="先来一个类似的简单题：leetcode-633-判断一个值可否由两个数的平方和组成"><a href="#先来一个类似的简单题：leetcode-633-判断一个值可否由两个数的平方和组成" class="headerlink" title="先来一个类似的简单题：leetcode 633. 判断一个值可否由两个数的平方和组成"></a>先来一个类似的简单题：<a href="https://leetcode.com/problems/sum-of-square-numbers/">leetcode 633. 判断一个值可否由两个数的平方和组成</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">whether there<span class="string">&#x27;re two integers a and b such that a^2 + b^2 = c.</span></span><br><span class="line"><span class="string">例如：输入5，返回true， 因为 1 * 1 + 2 * 2 = 5。</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>解法：设置两个变量，i=0, j= $\sqrt5$ 的向下取整， 若$i<em>i+j</em>j&lt;c$, 则增大i，否则减小j，直到i&gt;j或找到满足条件的值为止。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeSquareSum</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = (<span class="keyword">int</span>)Math.sqrt(c);</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=j) &#123;</span><br><span class="line">        <span class="keyword">int</span> value = i*i+j*j;</span><br><span class="line">        <span class="keyword">if</span>(value==c) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(value&gt;c) j -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(value&lt;c) i += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-15-threesum-输出所有和为0的数组"><a href="#leetcode-15-threesum-输出所有和为0的数组" class="headerlink" title="leetcode 15. threesum, 输出所有和为0的数组"></a><a href="https://leetcode.com/problems/3sum/">leetcode 15. threesum, 输出所有和为0的数组</a></h3><ul>
-<li><p>先将数组进行排序。</p>
-</li>
-<li><p>设置两个指针，一个指向数组头，一个指向数组尾，向中间移动。</p>
-</li>
-<li><p>如果指针指向的两数之和小于target，则我们将左边那个指针i右移一位，使得指向的数字增大一些。</p>
-</li>
-<li><p>同理，如果两数之和大于target，则我们将右边那个指针j左移一位，使得指向的数字减小一些。</p>
-</li>
-<li><p>直到找到满足条件的两个值。</p>
-</li>
-<li><p>因为该道题是三个数的和为target，所以需要先确定一个数，然后让new_target = target-当前值。</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    Set&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;nums.length;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> target = <span class="number">0</span>-nums[i];</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right &amp;&amp; left!=i &amp;&amp; right!=i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]+nums[right]&gt;target)</span><br><span class="line">                right -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[left]+nums[right]&lt;target)</span><br><span class="line">                left += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                List&lt;Integer&gt; tmp_res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                tmp_res.add(nums[left]);</span><br><span class="line">                tmp_res.add(nums[i]);</span><br><span class="line">                tmp_res.add(nums[right]);</span><br><span class="line">                res.add(tmp_res);</span><br><span class="line">                right -= <span class="number">1</span>;</span><br><span class="line">                left += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    Iterator&lt;List&lt;Integer&gt;&gt; iterator = res.iterator();</span><br><span class="line">    <span class="keyword">while</span>(iterator.hasNext())</span><br><span class="line">        result.add(iterator.next());</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-16-三个数的和最接近target"><a href="#leetcode-16-三个数的和最接近target" class="headerlink" title="leetcode 16. 三个数的和最接近target"></a><a href="https://leetcode.com/problems/3sum-closest/">leetcode 16. 三个数的和最接近target</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = Integer.MAX_VALUE;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;nums.length-<span class="number">1</span>;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> new_tar = target - nums[i];</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right &amp;&amp; left!=i &amp;&amp; right!=i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]+nums[right]&gt;new_tar)</span><br><span class="line">                right -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[left]+nums[right]&lt;new_tar)</span><br><span class="line">                left += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> target;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        left = left==i? left-<span class="number">1</span>: left;</span><br><span class="line">        right = right==i ? right+<span class="number">1</span>:right;</span><br><span class="line">        <span class="keyword">int</span> tmp = nums[i] + nums[left] + nums[right];</span><br><span class="line">        res = Math.abs(target-tmp)&lt;Math.abs(target-res)?tmp:res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他题目"><a href="#其他题目" class="headerlink" title="其他题目"></a><span>其他题目</span></h2><h3 id="leetcode-56-Merge-Intervals"><a href="#leetcode-56-Merge-Intervals" class="headerlink" title="leetcode 56. Merge Intervals"></a><a href="https://leetcode.com/problems/merge-intervals/">leetcode 56. Merge Intervals</a></h3><ul>
-<li>将数组有重叠的部分进行合并。</li>
-<li>先将数组按照第一个元素的位置排序，然后比较前一个的第二个值与后一个的第一个值</li>
-<li>如果前一个的第二个值大于后一个的第一个值，就进行合并，右边界取第一个和第二个右边界的大值</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Input: [[<span class="number">1</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">6</span>],[<span class="number">8</span>,<span class="number">10</span>],[<span class="number">15</span>,<span class="number">18</span>]]</span><br><span class="line">Output: [[<span class="number">1</span>,<span class="number">6</span>],[<span class="number">8</span>,<span class="number">10</span>],[<span class="number">15</span>,<span class="number">18</span>]]</span><br><span class="line">Explanation: Since intervals [<span class="number">1</span>,<span class="number">3</span>] and [<span class="number">2</span>,<span class="number">6</span>] overlaps, merge them into [<span class="number">1</span>,<span class="number">6</span>].</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] merge(<span class="keyword">int</span>[][] intervals) &#123;</span><br><span class="line">    List&lt;<span class="keyword">int</span>[]&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    Arrays.sort(intervals, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] x, <span class="keyword">int</span>[] y)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.compare(x[<span class="number">0</span>], y[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(start&lt;intervals.length) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] tmp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        tmp[<span class="number">0</span>] = intervals[start][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> cur_end = intervals[start][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span>(start&lt;intervals.length-<span class="number">1</span> &amp;&amp; cur_end&gt;=intervals[start+<span class="number">1</span>][<span class="number">0</span>]) &#123;</span><br><span class="line">            cur_end = Math.max(cur_end, intervals[start+<span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">            start += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        start += <span class="number">1</span>;</span><br><span class="line">        tmp[<span class="number">1</span>] = cur_end;</span><br><span class="line">        list.add(tmp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list.toArray(<span class="keyword">new</span> <span class="keyword">int</span>[list.size()][<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1135,6 +1135,41 @@
       </tags>
   </entry>
   <entry>
+    <title>Conda 常用命令</title>
+    <url>//posts/513/</url>
+    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
+<li>创建虚拟环境：<code>conda create -n env_name python=2.7</code></li>
+<li>创建虚拟环境，同时安装必要的包：<code>conda create -n env_name numpy matplotlib python=2.7</code></li>
+<li>激活虚拟环境：<ul>
+<li>Linux：<code>source activate your_env_name</code></li>
+<li>Windows: <code>activate your_env_name</code></li>
+</ul>
+</li>
+<li>检查当前 python 版本是否为想要的：<code>python --version</code></li>
+<li>退出虚拟环境：<ul>
+<li>Linux: <code>source deactivate your_env_name</code></li>
+<li>Windows: <code>deactivate env_name</code>，也可以使用<code>activate root</code>切回root环境。</li>
+</ul>
+</li>
+<li>删除虚拟环境：<ul>
+<li>使用命令 <code>conda remove -n your_env_name --all</code>， 即可删除。</li>
+<li>删除虚拟环境中的包：<code>conda remove --name $your_env_name $package_name</code></li>
+</ul>
+</li>
+<li>查看安装了哪些包：<code>conda list</code></li>
+<li>安装包：<code>conda install package_name</code></li>
+<li>查看当前存在哪些虚拟环境：<code>conda env list</code> 或 <code>conda info -e</code></li>
+<li>检查更新当前 conda：<code>conda update conda</code><span id="more"></span></li>
+</ul>
+<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
+<li><a href="https://datumorphism.leima.is/til/programming/python/python-anaconda-install-requirements/">Installing requirements.txt in Conda Environments | Datumorphism | Lei Ma</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Linux 常用命令</title>
     <url>//posts/512/</url>
     <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
@@ -1171,39 +1206,32 @@
       </tags>
   </entry>
   <entry>
-    <title>Conda 常用命令</title>
-    <url>//posts/513/</url>
-    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
-<li>创建虚拟环境：<code>conda create -n env_name python=2.7</code></li>
-<li>创建虚拟环境，同时安装必要的包：<code>conda create -n env_name numpy matplotlib python=2.7</code></li>
-<li>激活虚拟环境：<ul>
-<li>Linux：<code>source activate your_env_name</code></li>
-<li>Windows: <code>activate your_env_name</code></li>
-</ul>
-</li>
-<li>检查当前 python 版本是否为想要的：<code>python --version</code></li>
-<li>退出虚拟环境：<ul>
-<li>Linux: <code>source deactivate your_env_name</code></li>
-<li>Windows: <code>deactivate env_name</code>，也可以使用<code>activate root</code>切回root环境。</li>
-</ul>
-</li>
-<li>删除虚拟环境：<ul>
-<li>使用命令 <code>conda remove -n your_env_name --all</code>， 即可删除。</li>
-<li>删除虚拟环境中的包：<code>conda remove --name $your_env_name $package_name</code></li>
-</ul>
-</li>
-<li>查看安装了哪些包：<code>conda list</code></li>
-<li>安装包：<code>conda install package_name</code></li>
-<li>查看当前存在哪些虚拟环境：<code>conda env list</code> 或 <code>conda info -e</code></li>
-<li>检查更新当前 conda：<code>conda update conda</code><span id="more"></span></li>
-</ul>
-<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
-<li><a href="https://datumorphism.leima.is/til/programming/python/python-anaconda-install-requirements/">Installing requirements.txt in Conda Environments | Datumorphism | Lei Ma</a></li>
-</ul>
+    <title>C++ 类</title>
+    <url>//posts/402/</url>
+    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
+<span id="more"></span>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
+<ol>
+<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
+<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
+<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
+<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
+<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
+</ol>
 ]]></content>
       <categories>
-        <category>Tools</category>
+        <category>Languages</category>
       </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 继承</title>
@@ -1281,34 +1309,6 @@
       </categories>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++ 类</title>
-    <url>//posts/402/</url>
-    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
-<span id="more"></span>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
-<ol>
-<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
-<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
-<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
-<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
-<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Languages</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
