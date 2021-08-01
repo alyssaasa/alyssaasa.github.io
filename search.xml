@@ -289,6 +289,73 @@
       </tags>
   </entry>
   <entry>
+    <title>图</title>
+    <url>//posts/6/</url>
+    <content><![CDATA[<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
+<span id="more"></span>
+
+<h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
+<li><p>图分为邻接矩阵和邻接表。</p>
+</li>
+<li><p>邻接矩阵：<br><img data-src="/images/graph/2.png"></p>
+</li>
+<li><p>邻接表：<br><img data-src="/images/graph/3.png"></p>
+</li>
+<li><p>不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。</p>
+</li>
+</ul>
+<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><ul>
+<li>访问顶点v；</li>
+<li>依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</li>
+<li>若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">    System.out.println(node);</span><br><span class="line">    <span class="comment">//DFS遍历其他节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[node].length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(graph[node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>)</span><br><span class="line">            DFS(graph, visit, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><ul>
+<li>首先将根节点放入队列中;</li>
+<li>从队列中取出第一个节点, 将它所有尚未检验过的直接子节点加入队列中;</li>
+<li>若队列为空，表示整张图都检查过了。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    que.add(node);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> new_node = que.poll();</span><br><span class="line">        <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">        System.out.println(new_node);</span><br><span class="line">        <span class="comment">// 将new_node相连的节点放入队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[new_node].length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[new_node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                visit[i] = <span class="number">1</span>;</span><br><span class="line">                que.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a><span>经典题</span></h2><h3 id="leetcode-200-岛屿的数量"><a href="#leetcode-200-岛屿的数量" class="headerlink" title="leetcode 200. 岛屿的数量"></a><a href="https://leetcode.com/problems/number-of-islands/">leetcode 200. 岛屿的数量</a></h3><ul>
+<li>1为陆地，0为水，垂直方向才能算作一个岛屿，斜着不能算作一个岛屿。</li>
+<li>类似题目1：<a href="https://leetcode.com/problems/max-area-of-island/">leetcode 695. 岛屿的最大面积</a>，只需再增加一个计数功能即可。</li>
+<li>类似题目2：<a href="https://leetcode.com/problems/flood-fill/">leetcode 733. Flood Fill</a>,  访问节点时再改变一下节点的值即可。</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Input:</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">00100</span></span><br><span class="line"><span class="number">00011</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">Output:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">islandDFS</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span>[][] visit, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=grid.length || j&lt;<span class="number">0</span> || j&gt;=grid[<span class="number">0</span>].length)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">        visit[i][j] = <span class="number">1</span>;</span><br><span class="line">        islandDFS(grid, visit, i, j-<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i, j+<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i+<span class="number">1</span>, j);</span><br><span class="line">        islandDFS(grid, visit, i-<span class="number">1</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(grid.length==<span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] visit = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 把和grid[i][j]相连接的位置都标记为1，记作一块岛屿</span></span><br><span class="line">                islandDFS(grid, visit, i, j);</span><br><span class="line">                number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-463-确定岛屿的周长"><a href="#leetcode-463-确定岛屿的周长" class="headerlink" title="leetcode 463. 确定岛屿的周长"></a><a href="https://leetcode.com/problems/island-perimeter/">leetcode 463. 确定岛屿的周长</a></h3><ul>
+<li>题目中只有一个岛屿，确定岛屿的周长</li>
+<li>就是确定每个1周围有几个0，或者在边界位置。</li>
+<li>这道题跟图没什么关系。遍历一遍就行了。</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从头到尾遍历，查看每个1周围几个0，上下左右。</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span> || grid[i-<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || grid[i][j-<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i==grid.length-<span class="number">1</span> || grid[i+<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==grid[<span class="number">0</span>].length-<span class="number">1</span> || grid[i][j+<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-787-从src飞到dst的最小花销"><a href="#leetcode-787-从src飞到dst的最小花销" class="headerlink" title="leetcode. 787 从src飞到dst的最小花销"></a><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">leetcode. 787 从src飞到dst的最小花销</a></h3><ul>
+<li>方法一：递归调用，但leetcode会超时。</li>
+<li>优化：对于遍历到的结点，首先判断如果当前结点已经访问过了，直接跳过。或者是当前价格out加上到达这个结点需要的价格之和大于结果res的话，那么直接跳过。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> [][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K, <span class="keyword">int</span> v, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(src==dst &amp;&amp; v&lt;min) &#123;</span><br><span class="line">        min = v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(K&lt;<span class="number">0</span>||v&gt;min) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;flights.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[src]==<span class="number">0</span> &amp;&amp; flights[i][<span class="number">0</span>]==src) &#123;</span><br><span class="line">            visit[src] = <span class="number">1</span>;</span><br><span class="line">            DFS(flights, flights[i][<span class="number">1</span>], dst, K-<span class="number">1</span>, v+flights[i][<span class="number">2</span>], visit);    </span><br><span class="line">            visit[src] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] f, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    DFS(f, src, dst, K, <span class="number">0</span>, visit);</span><br><span class="line">    <span class="keyword">if</span>(min == Integer.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-529-扫雷游戏"><a href="#leetcode-529-扫雷游戏" class="headerlink" title="leetcode 529. 扫雷游戏"></a><a href="https://leetcode.com/problems/minesweeper/">leetcode 529. 扫雷游戏</a></h3><ul>
+<li>题太复杂了。。之后再做。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><span>拓扑排序</span></h2><hr>
+<p>图片来源： <a href="https://www.cnblogs.com/XMU-hcq/p/6065057.html">https://www.cnblogs.com/XMU-hcq/p/6065057.html</a></p>
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>回溯算法</title>
     <url>//posts/5/</url>
     <content><![CDATA[<blockquote>
@@ -359,73 +426,6 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">boolean</span> <span class="title">backtracking</span><span class="params">(String S, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;=S.length() &amp;&amp; res.size()&gt;<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(k&gt;=S.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">int</span> len = res.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k;i&lt;S.length();i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;k &amp;&amp; S.charAt(k)==<span class="string">&#x27;0&#x27;</span>) <span class="comment">// 前导0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;value = Integer.parseInt(S.substring(k, i+<span class="number">1</span>));&#125;</span><br><span class="line">        <span class="keyword">catch</span>(Exception e) &#123;<span class="keyword">return</span> <span class="keyword">false</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span>(len&lt;<span class="number">2</span> || res.get(len-<span class="number">1</span>)+res.get(len-<span class="number">2</span>)==value) &#123;</span><br><span class="line">            res.add(value);</span><br><span class="line">            <span class="keyword">boolean</span> flag = backtracking(S, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(flag) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            res.remove(res.size()-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(res.get(len-<span class="number">1</span>)+res.get(len-<span class="number">2</span>)&lt;value) <span class="comment">// 提前结束</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span>  List&lt;Integer&gt; <span class="title">splitIntoFibonacci</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">    backtracking(S, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图</title>
-    <url>//posts/6/</url>
-    <content><![CDATA[<p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
-<span id="more"></span>
-
-<h2 id="图的深度优先搜索和广度优先搜索"><a href="#图的深度优先搜索和广度优先搜索" class="headerlink" title="图的深度优先搜索和广度优先搜索"></a><span>图的深度优先搜索和广度优先搜索</span></h2><ul>
-<li><p>图分为邻接矩阵和邻接表。</p>
-</li>
-<li><p>邻接矩阵：<br><img data-src="/images/graph/2.png"></p>
-</li>
-<li><p>邻接表：<br><img data-src="/images/graph/3.png"></p>
-</li>
-<li><p>不管是 DFS 还是 BFS，都要设置一个 visit 变量，表示当前 node 是否已经被访问过，使用递归遍历所有的节点。</p>
-</li>
-</ul>
-<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><ul>
-<li>访问顶点v；</li>
-<li>依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</li>
-<li>若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">    System.out.println(node);</span><br><span class="line">    <span class="comment">//DFS遍历其他节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[node].length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(graph[node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>)</span><br><span class="line">            DFS(graph, visit, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><ul>
-<li>首先将根节点放入队列中;</li>
-<li>从队列中取出第一个节点, 将它所有尚未检验过的直接子节点加入队列中;</li>
-<li>若队列为空，表示整张图都检查过了。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span>[][] graph, <span class="keyword">int</span>[] visit, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    visit[node] = <span class="number">1</span>;</span><br><span class="line">    Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    que.add(node);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> new_node = que.poll();</span><br><span class="line">        <span class="comment">// 访问node节点要执行的操作</span></span><br><span class="line">        System.out.println(new_node);</span><br><span class="line">        <span class="comment">// 将new_node相连的节点放入队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[new_node].length;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[new_node][i]==<span class="number">1</span> &amp;&amp; visit[i]==<span class="number">0</span>) &#123;</span><br><span class="line">                visit[i] = <span class="number">1</span>;</span><br><span class="line">                que.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="经典题"><a href="#经典题" class="headerlink" title="经典题"></a><span>经典题</span></h2><h3 id="leetcode-200-岛屿的数量"><a href="#leetcode-200-岛屿的数量" class="headerlink" title="leetcode 200. 岛屿的数量"></a><a href="https://leetcode.com/problems/number-of-islands/">leetcode 200. 岛屿的数量</a></h3><ul>
-<li>1为陆地，0为水，垂直方向才能算作一个岛屿，斜着不能算作一个岛屿。</li>
-<li>类似题目1：<a href="https://leetcode.com/problems/max-area-of-island/">leetcode 695. 岛屿的最大面积</a>，只需再增加一个计数功能即可。</li>
-<li>类似题目2：<a href="https://leetcode.com/problems/flood-fill/">leetcode 733. Flood Fill</a>,  访问节点时再改变一下节点的值即可。</li>
-</ul>
-<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">Input:</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">11000</span></span><br><span class="line"><span class="number">00100</span></span><br><span class="line"><span class="number">00011</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">Output:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">islandDFS</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span>[][] visit, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">0</span> || i&gt;=grid.length || j&lt;<span class="number">0</span> || j&gt;=grid[<span class="number">0</span>].length)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">        visit[i][j] = <span class="number">1</span>;</span><br><span class="line">        islandDFS(grid, visit, i, j-<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i, j+<span class="number">1</span>);</span><br><span class="line">        islandDFS(grid, visit, i+<span class="number">1</span>, j);</span><br><span class="line">        islandDFS(grid, visit, i-<span class="number">1</span>, j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(grid.length==<span class="number">0</span>)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[][] visit = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="string">&#x27;1&#x27;</span> &amp;&amp; visit[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 把和grid[i][j]相连接的位置都标记为1，记作一块岛屿</span></span><br><span class="line">                islandDFS(grid, visit, i, j);</span><br><span class="line">                number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-463-确定岛屿的周长"><a href="#leetcode-463-确定岛屿的周长" class="headerlink" title="leetcode 463. 确定岛屿的周长"></a><a href="https://leetcode.com/problems/island-perimeter/">leetcode 463. 确定岛屿的周长</a></h3><ul>
-<li>题目中只有一个岛屿，确定岛屿的周长</li>
-<li>就是确定每个1周围有几个0，或者在边界位置。</li>
-<li>这道题跟图没什么关系。遍历一遍就行了。</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从头到尾遍历，查看每个1周围几个0，上下左右。</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.length;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;grid[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span> || grid[i-<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span> || grid[i][j-<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(i==grid.length-<span class="number">1</span> || grid[i+<span class="number">1</span>][j]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j==grid[<span class="number">0</span>].length-<span class="number">1</span> || grid[i][j+<span class="number">1</span>]==<span class="number">0</span>) number += <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-787-从src飞到dst的最小花销"><a href="#leetcode-787-从src飞到dst的最小花销" class="headerlink" title="leetcode. 787 从src飞到dst的最小花销"></a><a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">leetcode. 787 从src飞到dst的最小花销</a></h3><ul>
-<li>方法一：递归调用，但leetcode会超时。</li>
-<li>优化：对于遍历到的结点，首先判断如果当前结点已经访问过了，直接跳过。或者是当前价格out加上到达这个结点需要的价格之和大于结果res的话，那么直接跳过。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">     </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> [][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K, <span class="keyword">int</span> v, <span class="keyword">int</span>[] visit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(src==dst &amp;&amp; v&lt;min) &#123;</span><br><span class="line">        min = v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(K&lt;<span class="number">0</span>||v&gt;min) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;flights.length;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(visit[src]==<span class="number">0</span> &amp;&amp; flights[i][<span class="number">0</span>]==src) &#123;</span><br><span class="line">            visit[src] = <span class="number">1</span>;</span><br><span class="line">            DFS(flights, flights[i][<span class="number">1</span>], dst, K-<span class="number">1</span>, v+flights[i][<span class="number">2</span>], visit);    </span><br><span class="line">            visit[src] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] f, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    DFS(f, src, dst, K, <span class="number">0</span>, visit);</span><br><span class="line">    <span class="keyword">if</span>(min == Integer.MAX_VALUE) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-529-扫雷游戏"><a href="#leetcode-529-扫雷游戏" class="headerlink" title="leetcode 529. 扫雷游戏"></a><a href="https://leetcode.com/problems/minesweeper/">leetcode 529. 扫雷游戏</a></h3><ul>
-<li>题太复杂了。。之后再做。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a><span>拓扑排序</span></h2><hr>
-<p>图片来源： <a href="https://www.cnblogs.com/XMU-hcq/p/6065057.html">https://www.cnblogs.com/XMU-hcq/p/6065057.html</a></p>
 ]]></content>
       <categories>
         <category>Algorithms</category>
@@ -842,6 +842,75 @@
       </tags>
   </entry>
   <entry>
+    <title>链表</title>
+    <url>//posts/14/</url>
+    <content><![CDATA[<h2 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a><span>链表结构</span></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>链表有一个很烦的点在于可能会对头节点进行处理。。所以时刻不能忽略头节点可能被处理的情况。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="在o-1-时间内删除链表节点，给定头节点和要删除节点。"><a href="#在o-1-时间内删除链表节点，给定头节点和要删除节点。" class="headerlink" title="在o(1)时间内删除链表节点，给定头节点和要删除节点。"></a>在o(1)时间内删除链表节点，给定头节点和要删除节点。</h3><ul>
+<li>知道要删除的节点，要从头开始遍历找到他前面的结点，才能删除该节点。</li>
+<li>把要删节点的下一个节点的值赋值给要删除的节点，然后删除要删节点的下一个节点</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode head, ListNode node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="keyword">null</span> || node==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(node.next!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node.val = node.next.val;</span><br><span class="line">        node.next = node.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//node节点为尾节点，则需要找到node的前驱节点再删除它</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        ListNode pre_node = head;</span><br><span class="line">        <span class="keyword">while</span>(pre_node.next!=node)</span><br><span class="line">            pre_node = pre_node.next;</span><br><span class="line">        pre_node.next = <span class="keyword">null</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-83-删除已排序链表中重复的节点"><a href="#leetcode-83-删除已排序链表中重复的节点" class="headerlink" title="leetcode 83. 删除已排序链表中重复的节点"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/">leetcode 83. 删除已排序链表中重复的节点</a></h3><ul>
+<li>题意：输入：<code>1-&gt;2-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5</code>   输出：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code></li>
+<li>从前向后遍历，设立两个指针pre， post。pre指向重复位置的第一个节点，post指向重复的最后一个节点，然后将他们相连即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode pre = head;</span><br><span class="line">    ListNode post = head;</span><br><span class="line">    <span class="keyword">while</span>(post!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(post.next!=<span class="keyword">null</span> &amp;&amp; post.val==post.next.val)</span><br><span class="line">            post = post.next;</span><br><span class="line">        pre.next = post.next;</span><br><span class="line">        pre = post.next;</span><br><span class="line">        post = post.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Leetcode-82-删除已排序链表中重复的节点"><a href="#Leetcode-82-删除已排序链表中重复的节点" class="headerlink" title="Leetcode 82. 删除已排序链表中重复的节点"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/">Leetcode 82. 删除已排序链表中重复的节点</a></h3><ul>
+<li>题意：输入：<code>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;6-&gt;4-&gt;4-&gt;5</code>   输出：<code>3-&gt;6-&gt;5</code></li>
+<li>和之前的不同，这个因为要把重复的都删掉，那么头节点也会有重复的，所以要多设置一个开始节点start</li>
+<li>start.next = head，防止头节点被删除。</li>
+<li><strong>要学会设置计数变量，计数变量有很多好处，到处都用得到，辅助空间o(1)，还能有很大作用</strong></li>
+<li>但是这个代码的还是很耗时的，有待优化。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    start.next = head;</span><br><span class="line">    ListNode pre = start;</span><br><span class="line">    ListNode post = start.next;</span><br><span class="line">    <span class="keyword">int</span> current_num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(post!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(post.next!=<span class="keyword">null</span> &amp;&amp; post.val==post.next.val) &#123;</span><br><span class="line">            current_num += <span class="number">1</span>;</span><br><span class="line">            post = post.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(current_num==<span class="number">1</span>) &#123;</span><br><span class="line">            pre.next = post;</span><br><span class="line">            pre = post;</span><br><span class="line">        &#125;</span><br><span class="line">        post = post.next;</span><br><span class="line">        current_num = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    pre.next=post;</span><br><span class="line">  	<span class="keyword">return</span> start.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-19-移除链表中倒数第n个节点"><a href="#leetcode-19-移除链表中倒数第n个节点" class="headerlink" title="leetcode 19. 移除链表中倒数第n个节点"></a><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">leetcode 19. 移除链表中倒数第n个节点</a></h3><ul>
+<li>题意：输入：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>,   <code>n=2</code>.   输出：<code>1-&gt;2-&gt;3-&gt;5</code></li>
+<li><strong>因为要移除的可能是头指针，所以要定义一个指针指向头节点</strong></li>
+<li>思路1：遍历一遍，知道链表长度，第二次遍历到<code>length-n-1</code>的时候，<code>node.next = node.next.next</code> 即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">  	start.next = head;</span><br><span class="line">    ListNode node1 = next;</span><br><span class="line">    ListNode node2 = next;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(node1!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">        length += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length-n-<span class="number">1</span>;i++) &#123;</span><br><span class="line">        node2 = node2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node2.next==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(node2.next.next==<span class="keyword">null</span>) node2.next = <span class="keyword">null</span>; </span><br><span class="line">    <span class="keyword">else</span> node2.next = node2.next.next;</span><br><span class="line">    <span class="keyword">return</span> start.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>思路2：要想只遍历一遍链表，需要定义两个指针，当第一个指针走n次之后，两个指针一起走，第一个指针指向链表尾部时，第二个链表指向要删除的前一个位置。然后<code>node.next = node.next.next</code> 即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line"> 	start.next = head;</span><br><span class="line">    ListNode node1 = start;</span><br><span class="line">    ListNode node2 = start;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">  	<span class="keyword">while</span>(node1!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">        node2 = node2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node2.next.next==<span class="keyword">null</span>) node2.next=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span> node2.next = node2.next.next;</span><br><span class="line">    <span class="keyword">return</span> start.next;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-876-输出链表的中间节点"><a href="#leetcode-876-输出链表的中间节点" class="headerlink" title="leetcode 876. 输出链表的中间节点"></a><a href="https://leetcode.com/problems/middle-of-the-linked-list/">leetcode 876. 输出链表的中间节点</a></h3><ul>
+<li>如果链表长度为奇数，输出中间一个：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>, 输出为：<code>3</code></li>
+<li>如果链表长度为偶数，输出中间两个的第二个：<code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6</code>, 输出为：<code>4</code></li>
+<li>这道题和上一道题和相似，上一道题是指定第n个，这个是中间一个</li>
+<li>但不同点在于，知道n就知道差几了，这个完全不知道链表长度啊！</li>
+<li>快慢指针赛跑，快指针一次走两步，慢指针一次走一步，快指针到链表尾时，慢指针指向中间节点</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">middleNode</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    ListNode slow = head;</span><br><span class="line">    <span class="keyword">while</span>(fast!=<span class="keyword">null</span> &amp;&amp; fast.next!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>举一反三：当我们用一个指针遍历链表不能解决问题的时候，可以尝试用两个指针来遍历链表。可以让其中一个指针遍历的速度快一些，或者让它在链表上先走若干步。</p>
+</blockquote>
+<h3 id="leetcode-206-链表反转"><a href="#leetcode-206-链表反转" class="headerlink" title="leetcode 206. 链表反转"></a><a href="https://leetcode.com/problems/reverse-linked-list/">leetcode 206. 链表反转</a></h3><ul>
+<li>定义一个new_head, 用在开头，每次在new_head之后插入节点。</li>
+<li>Ori: 1-&gt;2-&gt;3-&gt;4</li>
+<li>New: new_head-&gt;1;   new_head-&gt;2-&gt;1;  new_head-&gt;3-&gt;2-&gt;1;  new_head-&gt;4-&gt;3-&gt;2-&gt;1</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode new_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(head!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        ListNode tmp = head.next;</span><br><span class="line">        head.next = new_head.next;</span><br><span class="line">        new_head.next = head;</span><br><span class="line">        head = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> new_head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>洗牌算法</title>
     <url>//posts/13/</url>
     <content><![CDATA[<p>之前两次面试都被问到洗牌算法，虽然不是直接问的，但都是基于洗牌算法的。结果第一次被问到之后没有重视，导致在一个地方栽了两次坑。。。😭</p>
@@ -969,72 +1038,54 @@
       </tags>
   </entry>
   <entry>
-    <title>链表</title>
-    <url>//posts/14/</url>
-    <content><![CDATA[<h2 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a><span>链表结构</span></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>链表有一个很烦的点在于可能会对头节点进行处理。。所以时刻不能忽略头节点可能被处理的情况。</p>
-</blockquote>
+    <title>准确率，精确率，召回率和AUC曲线，PR曲线</title>
+    <url>//posts/300/</url>
+    <content><![CDATA[<p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
 <span id="more"></span>
 
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="在o-1-时间内删除链表节点，给定头节点和要删除节点。"><a href="#在o-1-时间内删除链表节点，给定头节点和要删除节点。" class="headerlink" title="在o(1)时间内删除链表节点，给定头节点和要删除节点。"></a>在o(1)时间内删除链表节点，给定头节点和要删除节点。</h3><ul>
-<li>知道要删除的节点，要从头开始遍历找到他前面的结点，才能删除该节点。</li>
-<li>把要删节点的下一个节点的值赋值给要删除的节点，然后删除要删节点的下一个节点</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode head, ListNode node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="keyword">null</span> || node==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(node.next!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node.val = node.next.val;</span><br><span class="line">        node.next = node.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//node节点为尾节点，则需要找到node的前驱节点再删除它</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        ListNode pre_node = head;</span><br><span class="line">        <span class="keyword">while</span>(pre_node.next!=node)</span><br><span class="line">            pre_node = pre_node.next;</span><br><span class="line">        pre_node.next = <span class="keyword">null</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="混淆矩阵-（TP-TN-FP-FN）"><a href="#混淆矩阵-（TP-TN-FP-FN）" class="headerlink" title="混淆矩阵 （TP TN FP FN）"></a><span>混淆矩阵 （TP TN FP FN）</span></h2><ol>
+<li>True Positives,TP：预测为正样本，实际也为正样本的特征数</li>
+<li>False Positives,FP：预测为正样本，实际为负样本的特征数</li>
+<li>True Negatives,TN：预测为负样本，实际也为负样本的特征数</li>
+<li>False Negatives,FN：预测为负样本，实际为正样本的特征数</li>
+</ol>
+<p><strong>True / False：是针对原样本而言的。</strong><br><strong>Positive / Negative：是针对预测结果而言的。</strong></p>
+<h2 id="准确率-accuracy"><a href="#准确率-accuracy" class="headerlink" title="准确率 (accuracy)"></a><span>准确率 (accuracy)</span></h2><p>既然是个分类指标，我们可以很自然的想到准确率，准确率的定义是预测正确的结果占总样本的百分比，其公式如下：</p>
+<p>$$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$</p>
+<p>虽然准确率可以判断总的正确率，但是在<strong>样本不平衡</strong>的情况下，并不能作为很好的指标来衡量结果。举个简单的例子，比如在一个总样本中，正样本占90%，负样本占10%，样本是严重不平衡的。对于这种情况，我们只需要将全部样本预测为正样本即可得到90%的高准确率，但实际上我们并没有很用心的分类，只是随便无脑一分而已。这就说明了：由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。</p>
+<p>正因为如此，也就衍生出了其它两种指标：精准率和召回率。</p>
+<h2 id="精确率-precision"><a href="#精确率-precision" class="headerlink" title="精确率 (precision)"></a><span>精确率 (precision)</span></h2><p>精确率：预测为正的样本中有多少是真的正样本。精确率和准确率看上去有些类似，但是完全不同的两个概念。精准率代表对正样本结果中的预测准确程度，而准确率则代表整体的预测准确程度，既包括正样本，也包括负样本。</p>
+<p>$$precision = \frac{TP}{TP+FP}$$</p>
+<h2 id="召回率-recall"><a href="#召回率-recall" class="headerlink" title="召回率 (recall)"></a><span>召回率 (recall)</span></h2><p>召回率，又叫查全率，它是针对原样本而言的，它的含义是样本中为正的，有多少被预测为正。</p>
+<p>$$recall = \frac{TP}{TP+FN}$$</p>
+<p><strong>召回率的应用场景：</strong>比如拿网贷违约率为例，相对好用户，我们更关心坏用户，不能错放过任何一个坏用户。因为如果我们过多的将坏用户当成好用户，这样后续可能发生的违约金额会远超过好用户偿还的借贷利息金额，造成严重偿失。<strong>召回率越高，代表实际坏用户被预测出来的概率越高，它的含义类似：宁可错杀一千，绝不放过一个。</strong></p>
+<h2 id="特异度-specificity"><a href="#特异度-specificity" class="headerlink" title="特异度 (specificity) "></a><span>特异度 (specificity) </span></h2><p>特异度被定义为：样本中为负的，有多少被预测为负。和召回率刚好相反，一个针对正样本而言，一个针对负样本而言。</p>
+<p>$$specificity = \frac{TN}{TN+FP}$$</p>
+<h2 id="F-1值"><a href="#F-1值" class="headerlink" title="F_1值"></a><span>F_1值</span></h2><p>F1值 = 精确率 * 召回率 * 2 / (精确率 + 召回率) （F1值即为精确率和召回率的调和平均值）</p>
+<p>$$F_1 = \frac{P * R * 2}{P + R}$$</p>
+<p>不妨举<a href="https://link.zhihu.com/?target=http://peghoty.blog.163.com/blog/static/49346409201302595935709/">这样一个例子</a>：某池塘有1400条鲤鱼，300只虾，300只鳖。现在以捕鲤鱼为目的。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">700</span> / (<span class="number">700</span> + <span class="number">200</span> + <span class="number">100</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">700</span> / <span class="number">1400</span> = <span class="number">50</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">50</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">50</span>%) = <span class="number">58</span>.<span class="number">3</span>%</span><br></pre></td></tr></table></figure>
 
-<h3 id="leetcode-83-删除已排序链表中重复的节点"><a href="#leetcode-83-删除已排序链表中重复的节点" class="headerlink" title="leetcode 83. 删除已排序链表中重复的节点"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/">leetcode 83. 删除已排序链表中重复的节点</a></h3><ul>
-<li>题意：输入：<code>1-&gt;2-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5</code>   输出：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code></li>
-<li>从前向后遍历，设立两个指针pre， post。pre指向重复位置的第一个节点，post指向重复的最后一个节点，然后将他们相连即可。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode pre = head;</span><br><span class="line">    ListNode post = head;</span><br><span class="line">    <span class="keyword">while</span>(post!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(post.next!=<span class="keyword">null</span> &amp;&amp; post.val==post.next.val)</span><br><span class="line">            post = post.next;</span><br><span class="line">        pre.next = post.next;</span><br><span class="line">        pre = post.next;</span><br><span class="line">        post = post.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不妨看看如果把池子里的所有的鲤鱼、虾和鳖都一网打尽，这些指标又有何变化：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">1400</span> / (<span class="number">1400</span> + <span class="number">300</span> + <span class="number">300</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">1400</span> / <span class="number">1400</span> = <span class="number">100</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">100</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">100</span>%) = <span class="number">82</span>.<span class="number">35</span>% </span><br></pre></td></tr></table></figure>
 
-<h3 id="Leetcode-82-删除已排序链表中重复的节点"><a href="#Leetcode-82-删除已排序链表中重复的节点" class="headerlink" title="Leetcode 82. 删除已排序链表中重复的节点"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/">Leetcode 82. 删除已排序链表中重复的节点</a></h3><ul>
-<li>题意：输入：<code>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;6-&gt;4-&gt;4-&gt;5</code>   输出：<code>3-&gt;6-&gt;5</code></li>
-<li>和之前的不同，这个因为要把重复的都删掉，那么头节点也会有重复的，所以要多设置一个开始节点start</li>
-<li>start.next = head，防止头节点被删除。</li>
-<li><strong>要学会设置计数变量，计数变量有很多好处，到处都用得到，辅助空间o(1)，还能有很大作用</strong></li>
-<li>但是这个代码的还是很耗时的，有待优化。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    start.next = head;</span><br><span class="line">    ListNode pre = start;</span><br><span class="line">    ListNode post = start.next;</span><br><span class="line">    <span class="keyword">int</span> current_num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(post!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(post.next!=<span class="keyword">null</span> &amp;&amp; post.val==post.next.val) &#123;</span><br><span class="line">            current_num += <span class="number">1</span>;</span><br><span class="line">            post = post.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(current_num==<span class="number">1</span>) &#123;</span><br><span class="line">            pre.next = post;</span><br><span class="line">            pre = post;</span><br><span class="line">        &#125;</span><br><span class="line">        post = post.next;</span><br><span class="line">        current_num = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    pre.next=post;</span><br><span class="line">  	<span class="keyword">return</span> start.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-19-移除链表中倒数第n个节点"><a href="#leetcode-19-移除链表中倒数第n个节点" class="headerlink" title="leetcode 19. 移除链表中倒数第n个节点"></a><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">leetcode 19. 移除链表中倒数第n个节点</a></h3><ul>
-<li>题意：输入：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>,   <code>n=2</code>.   输出：<code>1-&gt;2-&gt;3-&gt;5</code></li>
-<li><strong>因为要移除的可能是头指针，所以要定义一个指针指向头节点</strong></li>
-<li>思路1：遍历一遍，知道链表长度，第二次遍历到<code>length-n-1</code>的时候，<code>node.next = node.next.next</code> 即可。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">  	start.next = head;</span><br><span class="line">    ListNode node1 = next;</span><br><span class="line">    ListNode node2 = next;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(node1!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">        length += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length-n-<span class="number">1</span>;i++) &#123;</span><br><span class="line">        node2 = node2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node2.next==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(node2.next.next==<span class="keyword">null</span>) node2.next = <span class="keyword">null</span>; </span><br><span class="line">    <span class="keyword">else</span> node2.next = node2.next.next;</span><br><span class="line">    <span class="keyword">return</span> start.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>思路2：要想只遍历一遍链表，需要定义两个指针，当第一个指针走n次之后，两个指针一起走，第一个指针指向链表尾部时，第二个链表指向要删除的前一个位置。然后<code>node.next = node.next.next</code> 即可。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line"> 	start.next = head;</span><br><span class="line">    ListNode node1 = start;</span><br><span class="line">    ListNode node2 = start;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">  	<span class="keyword">while</span>(node1!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">        node2 = node2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node2.next.next==<span class="keyword">null</span>) node2.next=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span> node2.next = node2.next.next;</span><br><span class="line">    <span class="keyword">return</span> start.next;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-876-输出链表的中间节点"><a href="#leetcode-876-输出链表的中间节点" class="headerlink" title="leetcode 876. 输出链表的中间节点"></a><a href="https://leetcode.com/problems/middle-of-the-linked-list/">leetcode 876. 输出链表的中间节点</a></h3><ul>
-<li>如果链表长度为奇数，输出中间一个：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>, 输出为：<code>3</code></li>
-<li>如果链表长度为偶数，输出中间两个的第二个：<code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6</code>, 输出为：<code>4</code></li>
-<li>这道题和上一道题和相似，上一道题是指定第n个，这个是中间一个</li>
-<li>但不同点在于，知道n就知道差几了，这个完全不知道链表长度啊！</li>
-<li>快慢指针赛跑，快指针一次走两步，慢指针一次走一步，快指针到链表尾时，慢指针指向中间节点</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">middleNode</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    ListNode slow = head;</span><br><span class="line">    <span class="keyword">while</span>(fast!=<span class="keyword">null</span> &amp;&amp; fast.next!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>举一反三：当我们用一个指针遍历链表不能解决问题的时候，可以尝试用两个指针来遍历链表。可以让其中一个指针遍历的速度快一些，或者让它在链表上先走若干步。</p>
-</blockquote>
-<h3 id="leetcode-206-链表反转"><a href="#leetcode-206-链表反转" class="headerlink" title="leetcode 206. 链表反转"></a><a href="https://leetcode.com/problems/reverse-linked-list/">leetcode 206. 链表反转</a></h3><ul>
-<li>定义一个new_head, 用在开头，每次在new_head之后插入节点。</li>
-<li>Ori: 1-&gt;2-&gt;3-&gt;4</li>
-<li>New: new_head-&gt;1;   new_head-&gt;2-&gt;1;  new_head-&gt;3-&gt;2-&gt;1;  new_head-&gt;4-&gt;3-&gt;2-&gt;1</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode new_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(head!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        ListNode tmp = head.next;</span><br><span class="line">        head.next = new_head.next;</span><br><span class="line">        new_head.next = head;</span><br><span class="line">        head = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> new_head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由此可见，精确率是评估捕获的成果中目标成果所占得比例；召回率，顾名思义，就是从关注领域中，召回目标类别的比例；而F值，则是综合这二者指标的评估指标，用于综合反映整体的指标。</p>
+<p>当然希望检索结果precision越高越好，同时recall也越高越好，但事实上这两者在某些情况下有矛盾的。比如极端情况下，我们只搜索出了一个结果，且是准确的，那么precision就是100%，但是recall就很低；而如果我们把所有结果都返回，那么recall是100%，但是precision就会很低。因此在不同的场合中需要自己判断希望precision比较高或是recall比较高。如果是做实验研究，可以绘制<strong>Precision-Recall曲线</strong>来帮助分析。</p>
+<p>有时候我们对精确率和召回率并不是一视同仁，比如有时候我们更加重视精确率。我们用一个参数 $\beta$ 来度量两者之间的关系。如果 $\beta&gt;1$, 召回率有更大影响，如果 $\beta&lt;1$, 精确率有更大影响。自然，当 $\beta=1$ 的时候，精确率和召回率影响力相同，和F1形式一样。含有度量参数 $\beta$ 的F1我们记为 $F_\beta$, 严格的数学定义如下：</p>
+<p>$$𝐹_𝛽=\frac{(1+𝛽^2)∗𝑃∗𝑅}{𝛽^2∗𝑃+𝑅} $$</p>
+<h2 id="RoC-曲线与-AUC-值"><a href="#RoC-曲线与-AUC-值" class="headerlink" title="RoC 曲线与 AUC 值"></a><span>RoC 曲线与 AUC 值</span></h2><p>🎋. 灵敏度 TPR (true positive rate) (同召回率)：真实样本中为正的，有多少被预测为正</p>
+<p>🎋. 1-特异度：FPR (false positive rate)：真实样本为负的，有多少被预测为正</p>
+<p>$$FPR = \frac{FP}{FP+TN}$$</p>
+<p>🎋. ROC曲线与AUC值：以TPR为y轴，以FPR为x轴，我们就直接得到了RoC曲线。从FPR和TPR的定义可以理解，TPR越高，FPR越小，我们的模型和算法就越高效。也就是画出来的RoC曲线越靠近左上越好。如下图左图所示。从几何的角度讲，RoC曲线下方的面积越大越大，则模型越优。所以有时候我们用<strong>RoC曲线下的面积</strong>，即AUC（Area Under Curve）值来作为算法和模型好坏的标准。</p>
+<p><img data-src="/images/others/1.png" alt="img"></p>
+<p>🎋. PR曲线：以精确率为y轴，以召回率为x轴，我们就得到了PR曲线。仍然从精确率和召回率的定义可以理解，精确率越高，召回率越高，我们的模型和算法就越高效。也就是画出来的PR曲线越靠近右上越好。如上图右图所示。</p>
+<p>参考链接：<a href="https://segmentfault.com/a/1190000016686335">https://segmentfault.com/a/1190000016686335</a><br>参考链接：<a href="https://www.cnblogs.com/pinard/p/5993450.html">https://www.cnblogs.com/pinard/p/5993450.html</a></p>
 ]]></content>
       <categories>
-        <category>Algorithms</category>
+        <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1155,85 +1206,6 @@
       </categories>
   </entry>
   <entry>
-    <title>准确率，精确率，召回率和AUC曲线，PR曲线</title>
-    <url>//posts/300/</url>
-    <content><![CDATA[<p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
-<span id="more"></span>
-
-<h2 id="混淆矩阵-（TP-TN-FP-FN）"><a href="#混淆矩阵-（TP-TN-FP-FN）" class="headerlink" title="混淆矩阵 （TP TN FP FN）"></a><span>混淆矩阵 （TP TN FP FN）</span></h2><ol>
-<li>True Positives,TP：预测为正样本，实际也为正样本的特征数</li>
-<li>False Positives,FP：预测为正样本，实际为负样本的特征数</li>
-<li>True Negatives,TN：预测为负样本，实际也为负样本的特征数</li>
-<li>False Negatives,FN：预测为负样本，实际为正样本的特征数</li>
-</ol>
-<p><strong>True / False：是针对原样本而言的。</strong><br><strong>Positive / Negative：是针对预测结果而言的。</strong></p>
-<h2 id="准确率-accuracy"><a href="#准确率-accuracy" class="headerlink" title="准确率 (accuracy)"></a><span>准确率 (accuracy)</span></h2><p>既然是个分类指标，我们可以很自然的想到准确率，准确率的定义是预测正确的结果占总样本的百分比，其公式如下：</p>
-<p>$$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$</p>
-<p>虽然准确率可以判断总的正确率，但是在<strong>样本不平衡</strong>的情况下，并不能作为很好的指标来衡量结果。举个简单的例子，比如在一个总样本中，正样本占90%，负样本占10%，样本是严重不平衡的。对于这种情况，我们只需要将全部样本预测为正样本即可得到90%的高准确率，但实际上我们并没有很用心的分类，只是随便无脑一分而已。这就说明了：由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。</p>
-<p>正因为如此，也就衍生出了其它两种指标：精准率和召回率。</p>
-<h2 id="精确率-precision"><a href="#精确率-precision" class="headerlink" title="精确率 (precision)"></a><span>精确率 (precision)</span></h2><p>精确率：预测为正的样本中有多少是真的正样本。精确率和准确率看上去有些类似，但是完全不同的两个概念。精准率代表对正样本结果中的预测准确程度，而准确率则代表整体的预测准确程度，既包括正样本，也包括负样本。</p>
-<p>$$precision = \frac{TP}{TP+FP}$$</p>
-<h2 id="召回率-recall"><a href="#召回率-recall" class="headerlink" title="召回率 (recall)"></a><span>召回率 (recall)</span></h2><p>召回率，又叫查全率，它是针对原样本而言的，它的含义是样本中为正的，有多少被预测为正。</p>
-<p>$$recall = \frac{TP}{TP+FN}$$</p>
-<p><strong>召回率的应用场景：</strong>比如拿网贷违约率为例，相对好用户，我们更关心坏用户，不能错放过任何一个坏用户。因为如果我们过多的将坏用户当成好用户，这样后续可能发生的违约金额会远超过好用户偿还的借贷利息金额，造成严重偿失。<strong>召回率越高，代表实际坏用户被预测出来的概率越高，它的含义类似：宁可错杀一千，绝不放过一个。</strong></p>
-<h2 id="特异度-specificity"><a href="#特异度-specificity" class="headerlink" title="特异度 (specificity) "></a><span>特异度 (specificity) </span></h2><p>特异度被定义为：样本中为负的，有多少被预测为负。和召回率刚好相反，一个针对正样本而言，一个针对负样本而言。</p>
-<p>$$specificity = \frac{TN}{TN+FP}$$</p>
-<h2 id="F-1值"><a href="#F-1值" class="headerlink" title="F_1值"></a><span>F_1值</span></h2><p>F1值 = 精确率 * 召回率 * 2 / (精确率 + 召回率) （F1值即为精确率和召回率的调和平均值）</p>
-<p>$$F_1 = \frac{P * R * 2}{P + R}$$</p>
-<p>不妨举<a href="https://link.zhihu.com/?target=http://peghoty.blog.163.com/blog/static/49346409201302595935709/">这样一个例子</a>：某池塘有1400条鲤鱼，300只虾，300只鳖。现在以捕鲤鱼为目的。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">700</span> / (<span class="number">700</span> + <span class="number">200</span> + <span class="number">100</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">700</span> / <span class="number">1400</span> = <span class="number">50</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">50</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">50</span>%) = <span class="number">58</span>.<span class="number">3</span>%</span><br></pre></td></tr></table></figure>
-
-<p>不妨看看如果把池子里的所有的鲤鱼、虾和鳖都一网打尽，这些指标又有何变化：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">1400</span> / (<span class="number">1400</span> + <span class="number">300</span> + <span class="number">300</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">1400</span> / <span class="number">1400</span> = <span class="number">100</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">100</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">100</span>%) = <span class="number">82</span>.<span class="number">35</span>% </span><br></pre></td></tr></table></figure>
-
-<p>由此可见，精确率是评估捕获的成果中目标成果所占得比例；召回率，顾名思义，就是从关注领域中，召回目标类别的比例；而F值，则是综合这二者指标的评估指标，用于综合反映整体的指标。</p>
-<p>当然希望检索结果precision越高越好，同时recall也越高越好，但事实上这两者在某些情况下有矛盾的。比如极端情况下，我们只搜索出了一个结果，且是准确的，那么precision就是100%，但是recall就很低；而如果我们把所有结果都返回，那么recall是100%，但是precision就会很低。因此在不同的场合中需要自己判断希望precision比较高或是recall比较高。如果是做实验研究，可以绘制<strong>Precision-Recall曲线</strong>来帮助分析。</p>
-<p>有时候我们对精确率和召回率并不是一视同仁，比如有时候我们更加重视精确率。我们用一个参数 $\beta$ 来度量两者之间的关系。如果 $\beta&gt;1$, 召回率有更大影响，如果 $\beta&lt;1$, 精确率有更大影响。自然，当 $\beta=1$ 的时候，精确率和召回率影响力相同，和F1形式一样。含有度量参数 $\beta$ 的F1我们记为 $F_\beta$, 严格的数学定义如下：</p>
-<p>$$𝐹_𝛽=\frac{(1+𝛽^2)∗𝑃∗𝑅}{𝛽^2∗𝑃+𝑅} $$</p>
-<h2 id="RoC-曲线与-AUC-值"><a href="#RoC-曲线与-AUC-值" class="headerlink" title="RoC 曲线与 AUC 值"></a><span>RoC 曲线与 AUC 值</span></h2><p>🎋. 灵敏度 TPR (true positive rate) (同召回率)：真实样本中为正的，有多少被预测为正</p>
-<p>🎋. 1-特异度：FPR (false positive rate)：真实样本为负的，有多少被预测为正</p>
-<p>$$FPR = \frac{FP}{FP+TN}$$</p>
-<p>🎋. ROC曲线与AUC值：以TPR为y轴，以FPR为x轴，我们就直接得到了RoC曲线。从FPR和TPR的定义可以理解，TPR越高，FPR越小，我们的模型和算法就越高效。也就是画出来的RoC曲线越靠近左上越好。如下图左图所示。从几何的角度讲，RoC曲线下方的面积越大越大，则模型越优。所以有时候我们用<strong>RoC曲线下的面积</strong>，即AUC（Area Under Curve）值来作为算法和模型好坏的标准。</p>
-<p><img data-src="/images/others/1.png" alt="img"></p>
-<p>🎋. PR曲线：以精确率为y轴，以召回率为x轴，我们就得到了PR曲线。仍然从精确率和召回率的定义可以理解，精确率越高，召回率越高，我们的模型和算法就越高效。也就是画出来的PR曲线越靠近右上越好。如上图右图所示。</p>
-<p>参考链接：<a href="https://segmentfault.com/a/1190000016686335">https://segmentfault.com/a/1190000016686335</a><br>参考链接：<a href="https://www.cnblogs.com/pinard/p/5993450.html">https://www.cnblogs.com/pinard/p/5993450.html</a></p>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++ 类</title>
-    <url>//posts/402/</url>
-    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
-<span id="more"></span>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
-<ol>
-<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
-<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
-<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
-<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
-<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Languages</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 继承</title>
     <url>//posts/403/</url>
     <content><![CDATA[<p>继承是 java 面向对象编程技术的一块基石，因为它允许创建分等级层次的类。</p>
@@ -1309,6 +1281,34 @@
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 类</title>
+    <url>//posts/402/</url>
+    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
+<span id="more"></span>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
+<ol>
+<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
+<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
+<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
+<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
+<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Languages</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
