@@ -23,28 +23,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.dlzhang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="背景目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。">
+<meta name="description" content="BERT  📽️ Overview of NLP Tasks  📽️ BERT and its family - Introduction and Fine-tune  📽️ BERT and its family - ELMo, BERT, GPT, XLNet, MASS, BART, UniLM, ELECTRA, and more  📄 BERT 时代与后时代的 NLP - 知乎">
 <meta property="og:type" content="article">
-<meta property="og:title" content="将keras的h5文件转为tensorflow的pb文件">
-<meta property="og:url" content="https://blog.dlzhang.com/posts/301/">
+<meta property="og:title" content="NLP 学习相关网站">
+<meta property="og:url" content="https://blog.dlzhang.com/posts/407/">
 <meta property="og:site_name" content="醉里挑灯赏猫">
-<meta property="og:description" content="背景目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。">
+<meta property="og:description" content="BERT  📽️ Overview of NLP Tasks  📽️ BERT and its family - Introduction and Fine-tune  📽️ BERT and its family - ELMo, BERT, GPT, XLNet, MASS, BART, UniLM, ELECTRA, and more  📄 BERT 时代与后时代的 NLP - 知乎">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-08-21T05:30:11.000Z">
-<meta property="article:modified_time" content="2021-07-31T14:35:04.000Z">
+<meta property="article:published_time" content="2021-08-01T08:16:23.000Z">
+<meta property="article:modified_time" content="2021-08-01T08:36:12.000Z">
 <meta property="article:author" content="Alyssa">
-<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://blog.dlzhang.com/posts/301/">
+<link rel="canonical" href="https://blog.dlzhang.com/posts/407/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.dlzhang.com/posts/301/","path":"/posts/301/","title":"将keras的h5文件转为tensorflow的pb文件"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.dlzhang.com/posts/407/","path":"/posts/407/","title":"NLP 学习相关网站"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>将keras的h5文件转为tensorflow的pb文件 | 醉里挑灯赏猫</title>
+<title>NLP 学习相关网站 | 醉里挑灯赏猫</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141207776-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-141207776-1","only_pageview":false}</script>
@@ -168,7 +168,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86keras%E7%9A%84h5%E8%BD%AC%E4%B8%BAtensorflow%E5%8A%A0%E8%BD%BDpb"><span class="nav-text">将keras的h5转为tensorflow加载pb</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BERT"><span class="nav-text"> BERT </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPT-3"><span class="nav-text"> GPT-3 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bert-fine-tune-%E7%AD%96%E7%95%A5"><span class="nav-text"> Bert fine-tune 策略 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTR-%E9%A2%84%E4%BC%B0%E6%A8%A1%E5%9E%8B"><span class="nav-text"> CTR 预估模型 </span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -235,7 +235,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/301/">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/407/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -248,7 +248,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          将keras的h5文件转为tensorflow的pb文件
+          NLP 学习相关网站
         </h1>
 
         <div class="post-meta-container">
@@ -259,7 +259,7 @@
       </span>
       <span class="post-meta-item-text">发布：</span>
 
-      <time title="创建时间：2019-08-21 13:30:11" itemprop="dateCreated datePublished" datetime="2019-08-21T13:30:11+08:00">2019-08-21</time>
+      <time title="创建时间：2021-08-01 16:16:23" itemprop="dateCreated datePublished" datetime="2021-08-01T16:16:23+08:00">2021-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -280,13 +280,13 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/posts/301/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/301/" data-xid="/posts/301/" itemprop="commentCount"></span>
+    <a title="waline" href="/posts/407/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/407/" data-xid="/posts/407/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-    <span id="/posts/301/" class="post-meta-item leancloud_visitors" data-flag-title="将keras的h5文件转为tensorflow的pb文件" title="阅读">
+    <span id="/posts/407/" class="post-meta-item leancloud_visitors" data-flag-title="NLP 学习相关网站" title="阅读">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -303,16 +303,36 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
+        <h2 id="BERT"><a href="#BERT" class="headerlink" title=" BERT "></a><span> BERT </span></h2><ul>
+<li><p>📽️ <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tFBrqPPxWzE&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=17">Overview of NLP Tasks</a></p>
+</li>
+<li><p>📽️ <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=1_gRK9EIQpc&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=18">BERT and its family - Introduction and Fine-tune</a></p>
+</li>
+<li><p>📽️ <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Bywo7m6ySlk&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=19">BERT and its family - ELMo, BERT, GPT, XLNet, MASS, BART, UniLM, ELECTRA, and more</a></p>
+</li>
+<li><p>📄 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/66676144">BERT 时代与后时代的 NLP - 知乎 (zhihu.com)</a></p>
+</li>
+</ul>
 <span id="more"></span>
 
-<h2 id="将keras的h5转为tensorflow加载pb"><a href="#将keras的h5转为tensorflow加载pb" class="headerlink" title="将keras的h5转为tensorflow加载pb"></a><span>将keras的h5转为tensorflow加载pb</span></h2><p>🎋. 网上各种给的代码乱七八糟，直接用下面这个链接的程序转就好了：<a target="_blank" rel="noopener" href="https://github.com/amir-abdi/keras_to_tensorflow">https://github.com/amir-abdi/keras_to_tensorflow</a></p>
-<p>🎋. <strong>keras中：</strong></p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cnn.save(<span class="string">&quot;model.h5&quot;</span>)   <span class="comment"># 保存模型和权值</span></span><br><span class="line">cnn.save_weights(<span class="string">&quot;model_weights.h5&quot;</span>) <span class="comment"># 保存权值</span></span><br><span class="line">cnn = load_model(<span class="string">&quot;model.h5&quot;</span>) <span class="comment"># 导入模型和权值</span></span><br><span class="line">cnn.load_weights(<span class="string">&quot;model_weights.h5&quot;</span>)  <span class="comment"># 导入权值</span></span><br></pre></td></tr></table></figure>
-
-<p> 🎋. <strong>在python中的使用：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span>(<span class="params">input_1, input_2</span>):</span></span><br><span class="line">   <span class="keyword">with</span> tf.Graph().as_default():</span><br><span class="line">       output_graph_def = tf.GraphDef()</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;model.pb&#x27;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">           output_graph_def.ParseFromString(f.read())</span><br><span class="line">           _ = tf.import_graph_def(output_graph_def, name=<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">       <span class="comment"># 这里是看pb文件中保存的模型的每一层的名字</span></span><br><span class="line">       tensor_name = [tensor.name <span class="keyword">for</span> tensor <span class="keyword">in</span> output_graph_def.node]</span><br><span class="line">       <span class="built_in">print</span>(tensor_name)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">           init = tf.global_variables_initializer()</span><br><span class="line">           sess.run(init)</span><br><span class="line"></span><br><span class="line">           input_x1 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_1:0&quot;</span>)</span><br><span class="line">           input_x2 = sess.graph.get_tensor_by_name(<span class="string">&quot;input_2:0&quot;</span>)</span><br><span class="line">           output = sess.graph.get_tensor_by_name(<span class="string">&quot;dense_3/Sigmoid:0&quot;</span>)</span><br><span class="line">           <span class="built_in">print</span>(sess.run(output, feed_dict=&#123;input_x1:input_1, input_x2:input_2&#125;))</span><br></pre></td></tr></table></figure>
-<p>参考代码：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Butertfly/article/details/80952987">https://blog.csdn.net/Butertfly/article/details/80952987</a></p>
+<h2 id="GPT-3"><a href="#GPT-3" class="headerlink" title=" GPT-3 "></a><span> GPT-3 </span></h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://dugas.ch/artificial_curiosity/GPT_architecture.html">The GPT-3 Architecture, on a Napkin (dugas.ch)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://gpt3examples.com/#examples">GPT3 Examples</a></p>
+</li>
+</ul>
+<h2 id="Bert-fine-tune-策略"><a href="#Bert-fine-tune-策略" class="headerlink" title=" Bert fine-tune 策略 "></a><span> Bert fine-tune 策略 </span></h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1905.05583.pdf">bert fine-tune 策略</a></p>
+<ul>
+<li>The top layer of BERT is more useful for text classification; </li>
+<li>With an appropriate layer-wise decreasing learning rate, BERT can overcome the catastrophic for getting problem; </li>
+<li>Within-task and in-domain further pre-training can significantly boost its performance; </li>
+<li>A preceding multi-task fine-tuning is also helpful to the single-task fine-tuning, but its benefit is smaller than further pre-training; </li>
+<li>BERT can improve the task with small-size data.</li>
+</ul>
+<h2 id="CTR-预估模型"><a href="#CTR-预估模型" class="headerlink" title=" CTR 预估模型 "></a><span> CTR 预估模型 </span></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61154299">前深度学习时代的CTR预估模型</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/63186101">基于深度学习的CTR预估模型</a></li>
+</ul>
 
     </div>
 
@@ -327,20 +347,20 @@
 </span>
 
           <div class="post-tags">
-              <a href="/overview/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
+              <a href="/overview/tags/NLP/" rel="tag"><i class="fa fa-tag"></i> NLP</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/9/" rel="prev" title="排序算法">
-                  <i class="fa fa-chevron-left"></i> 排序算法
+                <a href="/posts/513/" rel="prev" title="Conda 常用命令">
+                  <i class="fa fa-chevron-left"></i> Conda 常用命令
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/10/" rel="next" title="数组">
-                  数组 <i class="fa fa-chevron-right"></i>
+                <a href="/posts/302/" rel="next" title="soft label 和 hard label">
+                  soft label 和 hard label <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -400,7 +420,7 @@
 
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://blog-waline-five.vercel.app/","placeholder":"Just go go","dark":"auto","avatar":"wavatar","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredMeta":["nick","mail"],"copyright":true,"login":"","avatarCDN":"https://sdn.geekzu.org/avatar/","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq"],"locale":{"placeholder":"在这里分享你的观点与想法～ 昵称、邮箱必填，邮件通知回复。","admin":"博主","nick":"昵称*","mail":"邮箱*","link":"网址（http://）"},"el":"#waline-comments","libUrl":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","path":"/posts/301/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://blog-waline-five.vercel.app/","placeholder":"Just go go","dark":"auto","avatar":"wavatar","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredMeta":["nick","mail"],"copyright":true,"login":"","avatarCDN":"https://sdn.geekzu.org/avatar/","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq"],"locale":{"placeholder":"在这里分享你的观点与想法～ 昵称、邮箱必填，邮件通知回复。","admin":"博主","nick":"昵称*","mail":"邮箱*","link":"网址（http://）"},"el":"#waline-comments","libUrl":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","path":"/posts/407/"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   if(CONFIG.waline.qiniuDomain && CONFIG.waline.qiniuTokenUrl){
