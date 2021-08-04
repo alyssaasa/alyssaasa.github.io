@@ -3048,6 +3048,11 @@ body {
     background-image: none;
   }
 }
+@media (max-width: 767px) {
+  body {
+    background-attachment: fixed;
+  }
+}
 /* Day of Mourning */
 .site-brand-container {
   background: url("/images/header-bg.jpg");
