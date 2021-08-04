@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#6c599f">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#6c599f">
+  <meta name="google-site-verification" content="SJUudYL5q_atXSgew2qwy69FXOnSnNB2rAmwHmcBT9U">
+  <meta name="baidu-site-verification" content="wvc37nzEad">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7CLong+Cang:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.dlzhang.com","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="RoBERTa: A Robustly Optimized BERT Pretraining Approach (arxiv.org)  Roberta-large and Roberta-base Model roberta-large · Hugging Face roberta-base · Hugging Face fairseq&#x2F;examples&#x2F;roberta at master ·">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RoBERTa Model">
+<meta property="og:url" content="https://blog.dlzhang.com/posts/306/">
+<meta property="og:site_name" content="醉里挑灯赏猫">
+<meta property="og:description" content="RoBERTa: A Robustly Optimized BERT Pretraining Approach (arxiv.org)  Roberta-large and Roberta-base Model roberta-large · Hugging Face roberta-base · Hugging Face fairseq&#x2F;examples&#x2F;roberta at master ·">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.dlzhang.com/images/Models/loss.PNG">
+<meta property="og:image" content="https://blog.dlzhang.com/images/Models/matrix.png">
+<meta property="article:published_time" content="2021-08-03T07:20:36.000Z">
+<meta property="article:modified_time" content="2021-08-04T13:16:02.000Z">
+<meta property="article:author" content="Alyssa">
+<meta property="article:tag" content="Models">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.dlzhang.com/images/Models/loss.PNG">
+
+
+<link rel="canonical" href="https://blog.dlzhang.com/posts/306/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.dlzhang.com/posts/306/","path":"/posts/306/","title":"RoBERTa Model"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>RoBERTa Model | 醉里挑灯赏猫</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141207776-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-141207776-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+<link rel="dns-prefetch" href="https://alyssacomments-eoj2v9b1x-alyssaasa.vercel.app/">
+
+
+<link rel="preconnect" href="https://website-1256060851.file.myqcloud.com" crossorigin>
+<link rel="preconnect" href="https://sdn.geekzu.org" crossorigin>
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xiangsudian/CaoMei/style.min.css">
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">醉里挑灯赏猫</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">努力努力再努力</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fas fa-home fa-fw"></i>博客首页</a></li>
+        
+            
+  <li class="menu-item menu-item-overview"><a href="/overview/" rel="section"><i class="fas fa-archive fa-fw"></i>文章总览</a></li>
+
+
+      
+        <li class="menu-item menu-item-more"><a href="/more/" rel="section"><i class="fas fa-location-arrow fa-fw"></i>关于更多</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>全站搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Roberta-large-and-Roberta-base-Model"><span class="nav-text">Roberta-large and Roberta-base Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-RoBERTa-model"><span class="nav-text">Try RoBERTa model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Retrain-our-own-RoBERTa-MLM-using-our-Own-Dataset"><span class="nav-text"> Retrain our own RoBERTa MLM using our Own Dataset </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Finetune-RoBERTa-for-Text-Classification"><span class="nav-text"> Finetune RoBERTa for Text Classification</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Alyssa"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Alyssa</p>
+  <div class="site-description" itemprop="description">二次元/coser/手办宅/程序媛</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/overview/timeline/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/overview/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/overview/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/306/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Alyssa">
+      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醉里挑灯赏猫">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RoBERTa Model
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发布：</span>
+
+      <time title="创建时间：2021-08-03 15:20:36" itemprop="dateCreated datePublished" datetime="2021-08-03T15:20:36+08:00">2021-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类：</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/overview/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">评论：</span>
+  
+    <a title="waline" href="/posts/306/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/306/" data-xid="/posts/306/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span id="/posts/306/" class="post-meta-item leancloud_visitors" data-flag-title="RoBERTa Model" title="阅读">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.11692">RoBERTa: A Robustly Optimized BERT Pretraining Approach (arxiv.org)</a></p>
+</blockquote>
+<h2 id="Roberta-large-and-Roberta-base-Model"><a href="#Roberta-large-and-Roberta-base-Model" class="headerlink" title="Roberta-large and Roberta-base Model"></a><span>Roberta-large and Roberta-base Model</span></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/roberta-large">roberta-large · Hugging Face</a></li>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/roberta-base">roberta-base · Hugging Face</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pytorch/fairseq/tree/master/examples/roberta">fairseq/examples/roberta at master · pytorch/fairseq · GitHub</a></li>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/transformers/model_doc/roberta.html">RoBERTa — transformers 4.7.0 documentation (huggingface.co)</a> <span id="more"></span></li>
+</ul>
+<h2 id="Try-RoBERTa-model"><a href="#Try-RoBERTa-model" class="headerlink" title="Try RoBERTa model"></a><span>Try RoBERTa model</span></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> pipeline</span><br><span class="line"></span><br><span class="line">fill_mask = pipeline(</span><br><span class="line">    <span class="string">&quot;fill-mask&quot;</span>,</span><br><span class="line">    model=<span class="string">&quot;roberta-base&quot;</span>,</span><br><span class="line">    tokenizer=<span class="string">&quot;roberta-base&quot;</span></span><br><span class="line">)</span><br><span class="line">fill_mask(<span class="string">&quot;Send these &lt;mask&gt; back!&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&#x27;sequence&#x27;: &#x27;Send these pictures back!&#x27;,</span><br><span class="line">  &#x27;score&#x27;: 0.166615292429924,</span><br><span class="line">  &#x27;token&#x27;: 3493,</span><br><span class="line">  &#x27;token<span class="emphasis">_str&#x27;: &#x27; pictures&#x27;&#125;,</span></span><br><span class="line"><span class="emphasis"> &#123;&#x27;sequence&#x27;: &#x27;Send these photos back!&#x27;,</span></span><br><span class="line"><span class="emphasis">  &#x27;score&#x27;: 0.10792841762304306,</span></span><br><span class="line"><span class="emphasis">  &#x27;token&#x27;: 2356,</span></span><br><span class="line"><span class="emphasis">  &#x27;token_</span>str&#x27;: &#x27; photos&#x27;&#125;,</span><br><span class="line"> &#123;&#x27;sequence&#x27;: &#x27;Send these emails back!&#x27;,</span><br><span class="line">  &#x27;score&#x27;: 0.07670938968658447,</span><br><span class="line">  &#x27;token&#x27;: 5575,</span><br><span class="line">  &#x27;token<span class="emphasis">_str&#x27;: &#x27; emails&#x27;&#125;,</span></span><br><span class="line"><span class="emphasis"> &#123;&#x27;sequence&#x27;: &#x27;Send these images back!&#x27;,</span></span><br><span class="line"><span class="emphasis">  &#x27;score&#x27;: 0.048607729375362396,</span></span><br><span class="line"><span class="emphasis">  &#x27;token&#x27;: 3156,</span></span><br><span class="line"><span class="emphasis">  &#x27;token_</span>str&#x27;: &#x27; images&#x27;&#125;,</span><br><span class="line"> &#123;&#x27;sequence&#x27;: &#x27;Send these letters back!&#x27;,</span><br><span class="line">  &#x27;score&#x27;: 0.0484173484146595,</span><br><span class="line">  &#x27;token&#x27;: 5430,</span><br><span class="line">  &#x27;token<span class="emphasis">_str&#x27;: &#x27; letters&#x27;&#125;]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Here is how to use this model to get the features of a given text in PyTorch:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> RobertaTokenizer, RobertaModel</span><br><span class="line">tokenizer = RobertaTokenizer.from_pretrained(<span class="string">&#x27;roberta-base&#x27;</span>)</span><br><span class="line">model = RobertaModel.from_pretrained(<span class="string">&#x27;roberta-base&#x27;</span>)</span><br><span class="line">text = <span class="string">&quot;Replace me by any text you&#x27;d like.&quot;</span></span><br><span class="line">encoded_input = tokenizer(text, return_tensors=<span class="string">&#x27;pt&#x27;</span>)</span><br><span class="line">output = model(**encodednput)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Retrain-our-own-RoBERTa-MLM-using-our-Own-Dataset"><a href="#Retrain-our-own-RoBERTa-MLM-using-our-Own-Dataset" class="headerlink" title=" Retrain our own RoBERTa MLM using our Own Dataset "></a><span> Retrain our own RoBERTa MLM using our Own Dataset </span></h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://towardsdatascience.com/transformers-retraining-roberta-base-using-the-roberta-mlm-procedure-7422160d5764">Huggingface🤗Transformers: Retraining roberta-base using the RoBERTa MLM Procedure</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> RobertaTokenizer, RobertaForMaskedLM</span><br><span class="line"></span><br><span class="line">tokenizer = RobertaTokenizer.from_pretrained(<span class="string">&#x27;roberta-base&#x27;</span>)</span><br><span class="line">model = RobertaForMaskedLM.from_pretrained(<span class="string">&#x27;roberta-base&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 raw_data 中拿出我们需要的数据。</span></span><br><span class="line">input_list = [<span class="string">&#x27;url&#x27;</span>, <span class="string">&#x27;snippet&#x27;</span>, <span class="string">&#x27;zhanwei&#x27;</span>, <span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;body&#x27;</span>, <span class="string">&#x27;label&#x27;</span>]</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;./data/unlabeled_large.tsv&#x27;</span>, sep=<span class="string">&#x27;\t&#x27;</span>, header=<span class="literal">None</span>, names=input_list)</span><br><span class="line">data_out = data[<span class="string">&#x27;title&#x27;</span>] + <span class="string">&quot;. &quot;</span> + data[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line"><span class="comment"># print(data_out[0])</span></span><br><span class="line">data_out.to_csv(<span class="string">&#x27;./data/unlabeled_large_new.tsv&#x27;</span>, sep=<span class="string">&#x27;\t&#x27;</span>, header=<span class="literal">False</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> LineByLineTextDataset</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果数据文件就是一行一个数据，那么直接用下面这个函数即可。</span></span><br><span class="line">dataset = LineByLineTextDataset(</span><br><span class="line">    tokenizer = tokenizer,</span><br><span class="line">    file_path = <span class="string">&quot;./data/unlabeled_large_new.tsv&quot;</span>,</span><br><span class="line">    block_size = <span class="number">512</span>,  <span class="comment"># Roberta 处理的数据的最大长度</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> DataCollatorForLanguageModeling</span><br><span class="line"></span><br><span class="line"><span class="comment"># The data collator object helps us to form input data batches in a form on which the LM can be trained. </span></span><br><span class="line"><span class="comment"># For example, it pads all examples of a batch to bring them to the same length.</span></span><br><span class="line"><span class="comment"># and for mlm task, it mask 15% token.</span></span><br><span class="line">data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=<span class="literal">True</span>, mlm_probability=<span class="number">0.15</span>) </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> Trainer, TrainingArguments</span><br><span class="line"></span><br><span class="line">train_args = TrainingArguments (</span><br><span class="line">    output_dir= <span class="string">&#x27;./output/roberta_retrained&#x27;</span>,</span><br><span class="line">    overwrite_output_dir=<span class="literal">True</span>,</span><br><span class="line">    num_train_epochs=<span class="number">5</span>,</span><br><span class="line">    per_device_train_batch_size=<span class="number">4</span>,</span><br><span class="line">    save_steps=<span class="number">5</span>,</span><br><span class="line">    save_total_limit=<span class="number">2</span>,</span><br><span class="line">    seed=<span class="number">1</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">trainer = Trainer(</span><br><span class="line">    model=model,</span><br><span class="line">    args=train_args,</span><br><span class="line">    data_collator=data_collator,</span><br><span class="line">    train_dataset=dataset</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">trainer.train()</span><br><span class="line">trainer.save_model(<span class="string">&quot;./output/roberta_retrained&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Finetune-RoBERTa-for-Text-Classification"><a href="#Finetune-RoBERTa-for-Text-Classification" class="headerlink" title=" Finetune RoBERTa for Text Classification"></a><span> Finetune RoBERTa for Text Classification</span></h2><blockquote>
+<p>Code：<a target="_blank" rel="noopener" href="https://github.com/aramakus/ML-and-Data-Analysis/blob/master/RoBERTa%20for%20text%20classification.ipynb">ML-and-Data-Analysis/RoBERTa for text classification.ipynb at master</a></p>
+<p>讲解：<a target="_blank" rel="noopener" href="https://towardsdatascience.com/fine-tuning-bert-and-roberta-for-high-accuracy-text-classification-in-pytorch-c9e63cf64646">High accuracy text classification with Python | Towards Data Science</a></p>
+<p>上面这份 code 有些地方因为版本什么的问题在运行的时候会有些问题，下面的代码是修改并注释过的</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set random seed and set device to GPU.</span></span><br><span class="line">torch.manual_seed(<span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = torch.device(<span class="string">&#x27;cuda:0&#x27;</span>)</span><br><span class="line">    torch.backends.cudnn.deterministic = <span class="literal">True</span></span><br><span class="line">    torch.backends.cudnn.benchmark = <span class="literal">False</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    device = torch.device(<span class="string">&#x27;cpu&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(device)</span><br></pre></td></tr></table></figure>
+
+<p><strong>从 raw_data 中拿出我们需要的数据。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">input_list = [<span class="string">&#x27;query&#x27;</span>, <span class="string">&#x27;host&#x27;</span>, <span class="string">&#x27;url&#x27;</span>, <span class="string">&#x27;title&#x27;</span>, <span class="string">&#x27;body&#x27;</span>, <span class="string">&#x27;label&#x27;</span>]</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;./data/train.tsv&#x27;</span>, sep=<span class="string">&#x27;\t&#x27;</span>, header=<span class="literal">None</span>, names=input_list)</span><br><span class="line"></span><br><span class="line">data_out = pd.DataFrame()</span><br><span class="line">data_out[<span class="string">&#x27;titletext&#x27;</span>] = data[<span class="string">&#x27;title&#x27;</span>] + <span class="string">&quot;. &quot;</span> + data[<span class="string">&#x27;body&#x27;</span>]</span><br><span class="line">data_out[<span class="string">&#x27;label&#x27;</span>] = data[<span class="string">&#x27;label&#x27;</span>].astype(<span class="string">&#x27;Int64&#x27;</span>)</span><br><span class="line">data_out[<span class="string">&#x27;length&#x27;</span>] = data_out[<span class="string">&#x27;titletext&#x27;</span>].apply(<span class="keyword">lambda</span> x: <span class="built_in">len</span>(<span class="built_in">str</span>(x).split()))</span><br><span class="line"></span><br><span class="line">data_out = data_out[data_out[<span class="string">&#x27;label&#x27;</span>]&gt;=<span class="number">0</span>] <span class="comment"># 过滤掉 label 不存在的行</span></span><br><span class="line"></span><br><span class="line">data_out[<span class="string">&#x27;titletext&#x27;</span>] = data_out[<span class="string">&#x27;titletext&#x27;</span>].apply(<span class="keyword">lambda</span> x: <span class="string">&quot; &quot;</span>.join(<span class="built_in">str</span>(x).split()[:<span class="number">512</span>])) <span class="comment"># 数据截断</span></span><br><span class="line">data_out.to_csv(<span class="string">&#x27;./data/train_classification.csv&#x27;</span>)</span><br><span class="line"><span class="comment">#print(data_out[&#x27;label&#x27;][0])</span></span><br><span class="line"><span class="comment">#print(data_out[&#x27;length&#x27;][0])</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>安装 <a target="_blank" rel="noopener" href="https://torchtext.readthedocs.io/en/latest/index.html">torchtext</a>：</strong> <code>conda install -c pytorch torchtext</code> - </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> RobertaTokenizer</span><br><span class="line">tokenizer = RobertaTokenizer.from_pretrained(<span class="string">&#x27;roberta-base&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torchtext.legacy.data <span class="keyword">import</span> Field, TabularDataset, BucketIterator, Iterator</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set tokenizer hyperparameters.</span></span><br><span class="line">MAX_SEQ_LEN = <span class="number">512</span></span><br><span class="line">BATCH_SIZE = <span class="number">16</span></span><br><span class="line">PAD_INDEX = tokenizer.convert_tokens_to_ids(tokenizer.pad_token)  <span class="comment"># PAD_INDEX = 1</span></span><br><span class="line">UNK_INDEX = tokenizer.convert_tokens_to_ids(tokenizer.unk_token)  <span class="comment"># 碰到字典中没有的字，用来表示未知字符，比如用 &quot;[UNK]&quot; 表示未知字符. UNK_INDEX = 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define columns to read.</span></span><br><span class="line"><span class="comment"># https://torchtext.readthedocs.io/en/latest/data.html#field</span></span><br><span class="line">label_field = Field(sequential=<span class="literal">False</span>, use_vocab=<span class="literal">False</span>, batch_first=<span class="literal">True</span>)  <span class="comment"># squential：数据是否为序列数据，默认为Ture。如果为False，则不能使用分词。</span></span><br><span class="line">text_field = Field(use_vocab=<span class="literal">False</span>,               <span class="comment"># 是否使用词典，默认为 True</span></span><br><span class="line">                   tokenize=tokenizer.encode,     <span class="comment"># 分词函数，默认为 str.split</span></span><br><span class="line">                   include_lengths=<span class="literal">False</span>, </span><br><span class="line">                   batch_first=<span class="literal">True</span>,              <span class="comment"># batch 作为第一个维度</span></span><br><span class="line">                   fix_length=MAX_SEQ_LEN,        <span class="comment"># 所有样本的长度，不够则使用 pad_token 补全。默认为 None，表示灵活长度</span></span><br><span class="line">                   pad_token=PAD_INDEX,           <span class="comment"># 用于补全的字符，默认为 &lt;pad&gt;</span></span><br><span class="line">                   unk_token=UNK_INDEX)           <span class="comment"># 替换袋外词的字符，默认为 &lt;unk&gt;</span></span><br><span class="line"></span><br><span class="line">fields = &#123;<span class="string">&#x27;titletext&#x27;</span> : (<span class="string">&#x27;titletext&#x27;</span>, text_field), <span class="string">&#x27;label&#x27;</span> : (<span class="string">&#x27;label&#x27;</span>, label_field)&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将一个文件分为 training data, valid data 和 test data</span></span><br><span class="line"><span class="comment"># https://torchtext.readthedocs.io/en/latest/data.html#torchtext.data.TabularDataset</span></span><br><span class="line">train_data, valid_data, test_data = TabularDataset(path=<span class="string">f&quot;./data/unlabeled_large_classification.csv&quot;</span>, </span><br><span class="line">                                                   <span class="built_in">format</span>=<span class="string">&#x27;CSV&#x27;</span>, </span><br><span class="line">                                                   fields=fields, </span><br><span class="line">                                                   skip_header=<span class="literal">False</span>).split(split_ratio=[<span class="number">0.70</span>, <span class="number">0.2</span>, <span class="number">0.1</span>], </span><br><span class="line">                                                                            stratified=<span class="literal">True</span>,  <span class="comment"># whether the sampling should be stratified. Default is False.</span></span><br><span class="line">                                                                            strata_field=<span class="string">&#x27;label&#x27;</span>) <span class="comment"># name of the examples Field stratified over. Default is ‘label’ for the conventional label field.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create train and validation iterators.</span></span><br><span class="line"><span class="comment"># https://torchtext.readthedocs.io/en/latest/data.html#bucketiterator</span></span><br><span class="line">train_iter, valid_iter = BucketIterator.splits((train_data, valid_data),</span><br><span class="line">                                               batch_size=BATCH_SIZE,</span><br><span class="line">                                               device=device,</span><br><span class="line">                                               shuffle=<span class="literal">True</span>,</span><br><span class="line">                                               sort_key=<span class="keyword">lambda</span> x: <span class="built_in">len</span>(x.titletext), </span><br><span class="line">                                               sort=<span class="literal">True</span>, </span><br><span class="line">                                               sort_within_batch=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Test iterator, no shuffling or sorting required.</span></span><br><span class="line">test_iter = Iterator(test_data, batch_size=BATCH_SIZE, device=device, train=<span class="literal">False</span>, shuffle=<span class="literal">False</span>, sort=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>自定义 model 模型</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> RobertaModel</span><br><span class="line"></span><br><span class="line"><span class="comment"># Model with extra layers on top of RoBERTa</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ROBERTAClassifier</span>(<span class="params">torch.nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, dropout_rate=<span class="number">0.3</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(ROBERTAClassifier, self).__init__()</span><br><span class="line">        </span><br><span class="line">        self.roberta = RobertaModel.from_pretrained(<span class="string">&#x27;roberta-base&#x27;</span>)</span><br><span class="line">        self.d1 = torch.nn.Dropout(dropout_rate)</span><br><span class="line">        self.l1 = torch.nn.Linear(<span class="number">768</span>, <span class="number">64</span>)</span><br><span class="line">        self.bn1 = torch.nn.LayerNorm(<span class="number">64</span>)</span><br><span class="line">        self.d2 = torch.nn.Dropout(dropout_rate)</span><br><span class="line">        self.l2 = torch.nn.Linear(<span class="number">64</span>, <span class="number">2</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, input_ids, attention_mask</span>):</span></span><br><span class="line">        _, x = self.roberta(input_ids=input_ids, attention_mask=attention_mask, return_dict=<span class="literal">False</span>) <span class="comment"># 加上了 return_dict=False，否则报错</span></span><br><span class="line">        x = self.d1(x)</span><br><span class="line">        x = self.l1(x)</span><br><span class="line">        x = self.bn1(x)</span><br><span class="line">        x = torch.nn.Tanh()(x)</span><br><span class="line">        x = self.d2(x)</span><br><span class="line">        x = self.l2(x)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pretrain</span>(<span class="params">model, </span></span></span><br><span class="line"><span class="params"><span class="function">             optimizer, </span></span></span><br><span class="line"><span class="params"><span class="function">             train_iter, </span></span></span><br><span class="line"><span class="params"><span class="function">             valid_iter, </span></span></span><br><span class="line"><span class="params"><span class="function">             scheduler = <span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">             valid_period = <span class="built_in">len</span>(<span class="params">train_iter</span>),</span></span></span><br><span class="line"><span class="params"><span class="function">             num_epochs = <span class="number">5</span></span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Pretrain linear layers, do not train bert</span></span><br><span class="line">    <span class="keyword">for</span> param <span class="keyword">in</span> model.roberta.parameters():</span><br><span class="line">        param.requires_grad = <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">    model.train()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Initialize losses and loss histories</span></span><br><span class="line">    train_loss = <span class="number">0.0</span></span><br><span class="line">    valid_loss = <span class="number">0.0</span>   </span><br><span class="line">    global_step = <span class="number">0</span>  </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Train loop</span></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(num_epochs):</span><br><span class="line">        <span class="keyword">for</span> (source, target), _ <span class="keyword">in</span> train_iter:</span><br><span class="line">            mask = (source != PAD_INDEX).<span class="built_in">type</span>(torch.uint8)</span><br><span class="line">            </span><br><span class="line">            y_pred = model(input_ids=source, attention_mask=mask)</span><br><span class="line">            loss = torch.nn.CrossEntropyLoss()(y_pred, target)</span><br><span class="line">            loss.backward()</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Optimizer and scheduler step</span></span><br><span class="line">            optimizer.step()    </span><br><span class="line">            scheduler.step()</span><br><span class="line">                </span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Update train loss and global step</span></span><br><span class="line">            train_loss += loss.item()</span><br><span class="line">            global_step += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># Validation loop. Save progress and evaluate model performance.</span></span><br><span class="line">            <span class="keyword">if</span> global_step % valid_period == <span class="number">0</span>:</span><br><span class="line">                model.<span class="built_in">eval</span>()</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">with</span> torch.no_grad():                    </span><br><span class="line">                    <span class="keyword">for</span> (source, target), _ <span class="keyword">in</span> valid_iter:</span><br><span class="line">                        mask = (source != PAD_INDEX).<span class="built_in">type</span>(torch.uint8)</span><br><span class="line"></span><br><span class="line">                        y_pred = model(input_ids=source, attention_mask=mask)</span><br><span class="line">                        loss = torch.nn.CrossEntropyLoss()(y_pred, target)</span><br><span class="line">                        valid_loss += loss.item()</span><br><span class="line"></span><br><span class="line">                <span class="comment"># Store train and validation loss history</span></span><br><span class="line">                train_loss = train_loss / valid_period</span><br><span class="line">                valid_loss = valid_loss / <span class="built_in">len</span>(valid_iter)</span><br><span class="line">                </span><br><span class="line">                model.train()</span><br><span class="line"></span><br><span class="line">                <span class="comment"># print summary</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;Epoch [&#123;&#125;/&#123;&#125;], global step [&#123;&#125;/&#123;&#125;], PT Loss: &#123;:.4f&#125;, Val Loss: &#123;:.4f&#125;&#x27;</span></span><br><span class="line">                      .<span class="built_in">format</span>(epoch+<span class="number">1</span>, num_epochs, global_step, num_epochs*<span class="built_in">len</span>(train_iter), train_loss, valid_loss))</span><br><span class="line">                </span><br><span class="line">                train_loss = <span class="number">0.0</span>                </span><br><span class="line">                valid_loss = <span class="number">0.0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Set bert parameters back to trainable</span></span><br><span class="line">    <span class="keyword">for</span> param <span class="keyword">in</span> model.roberta.parameters():</span><br><span class="line">        param.requires_grad = <span class="literal">True</span></span><br><span class="line">        </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Pre-training done!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Training Function</span></span><br><span class="line">output_path = <span class="string">&quot;./output/roberta_classification&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">model,</span></span></span><br><span class="line"><span class="params"><span class="function">          optimizer,</span></span></span><br><span class="line"><span class="params"><span class="function">          train_iter,</span></span></span><br><span class="line"><span class="params"><span class="function">          valid_iter,</span></span></span><br><span class="line"><span class="params"><span class="function">          scheduler = <span class="literal">None</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">          num_epochs = <span class="number">5</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">          valid_period = <span class="built_in">len</span>(<span class="params">train_iter</span>),</span></span></span><br><span class="line"><span class="params"><span class="function">          output_path = output_path</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Initialize losses and loss histories</span></span><br><span class="line">    train_loss = <span class="number">0.0</span></span><br><span class="line">    valid_loss = <span class="number">0.0</span></span><br><span class="line">    train_loss_list = []</span><br><span class="line">    valid_loss_list = []</span><br><span class="line">    best_valid_loss = <span class="built_in">float</span>(<span class="string">&#x27;Inf&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    global_step = <span class="number">0</span></span><br><span class="line">    global_steps_list = []</span><br><span class="line">    </span><br><span class="line">    model.train()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Train loop</span></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(num_epochs):</span><br><span class="line">        <span class="keyword">for</span> (source, target), _ <span class="keyword">in</span> train_iter:</span><br><span class="line">            mask = (source != PAD_INDEX).<span class="built_in">type</span>(torch.uint8)</span><br><span class="line"></span><br><span class="line">            y_pred = model(input_ids=source, attention_mask=mask)</span><br><span class="line">            loss = torch.nn.CrossEntropyLoss()(y_pred, target)</span><br><span class="line">            loss.backward()</span><br><span class="line">            </span><br><span class="line">            <span class="comment">#torch.nn.utils.clip_grad_norm_(model.parameters(), 0.1)</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Optimizer and scheduler step</span></span><br><span class="line">            optimizer.step()    </span><br><span class="line">            scheduler.step()</span><br><span class="line">                </span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Update train loss and global step</span></span><br><span class="line">            train_loss += loss.item()</span><br><span class="line">            global_step += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># Validation loop. Save progress and evaluate model performance.</span></span><br><span class="line">            <span class="keyword">if</span> global_step % valid_period == <span class="number">0</span>:</span><br><span class="line">                model.<span class="built_in">eval</span>()</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">with</span> torch.no_grad():                    </span><br><span class="line">                    <span class="keyword">for</span> (source, target), _ <span class="keyword">in</span> valid_iter:</span><br><span class="line">                        mask = (source != PAD_INDEX).<span class="built_in">type</span>(torch.uint8)</span><br><span class="line"></span><br><span class="line">                        y_pred = model(input_ids=source, attention_mask=mask)</span><br><span class="line">                        loss = torch.nn.CrossEntropyLoss()(y_pred, target)</span><br><span class="line">                        valid_loss += loss.item()</span><br><span class="line"></span><br><span class="line">                <span class="comment"># Store train and validation loss history</span></span><br><span class="line">                train_loss = train_loss / valid_period</span><br><span class="line">                valid_loss = valid_loss / <span class="built_in">len</span>(valid_iter)</span><br><span class="line">                train_loss_list.append(train_loss)</span><br><span class="line">                valid_loss_list.append(valid_loss)</span><br><span class="line">                global_steps_list.append(global_step)</span><br><span class="line"></span><br><span class="line">                <span class="comment"># print summary</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;Epoch [&#123;&#125;/&#123;&#125;], global step [&#123;&#125;/&#123;&#125;], Train Loss: &#123;:.4f&#125;, Valid Loss: &#123;:.4f&#125;&#x27;</span></span><br><span class="line">                      .<span class="built_in">format</span>(epoch+<span class="number">1</span>, num_epochs, global_step, num_epochs*<span class="built_in">len</span>(train_iter),</span><br><span class="line">                              train_loss, valid_loss))</span><br><span class="line">                </span><br><span class="line">                <span class="comment"># checkpoint</span></span><br><span class="line">                <span class="keyword">if</span> best_valid_loss &gt; valid_loss:</span><br><span class="line">                    best_valid_loss = valid_loss</span><br><span class="line">                    save_checkpoint(output_path + <span class="string">&#x27;/model.pkl&#x27;</span>, model, best_valid_loss)</span><br><span class="line">                    save_metrics(output_path + <span class="string">&#x27;/metric.pkl&#x27;</span>, train_loss_list, valid_loss_list, global_steps_list)</span><br><span class="line">                        </span><br><span class="line">                train_loss = <span class="number">0.0</span>                </span><br><span class="line">                valid_loss = <span class="number">0.0</span></span><br><span class="line">                model.train()</span><br><span class="line">    </span><br><span class="line">    save_metrics(output_path + <span class="string">&#x27;/metric.pkl&#x27;</span>, train_loss_list, valid_loss_list, global_steps_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Training done!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AdamW, get_linear_schedule_with_warmup</span><br><span class="line"></span><br><span class="line"><span class="comment"># Main training loop</span></span><br><span class="line">NUM_EPOCHS = <span class="number">6</span></span><br><span class="line">steps_per_epoch = <span class="built_in">len</span>(train_iter)</span><br><span class="line"></span><br><span class="line">model = ROBERTAClassifier(<span class="number">0.4</span>)</span><br><span class="line">model = model.to(device)</span><br><span class="line"></span><br><span class="line">optimizer = AdamW(model.parameters(), lr=<span class="number">1e-4</span>)</span><br><span class="line">scheduler = get_linear_schedule_with_warmup(optimizer, </span><br><span class="line">                                            num_warmup_steps=steps_per_epoch*<span class="number">1</span>, </span><br><span class="line">                                            num_training_steps=steps_per_epoch*NUM_EPOCHS)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;======================= Start pretraining ==============================&quot;</span>)</span><br><span class="line"></span><br><span class="line">pretrain(model=model,</span><br><span class="line">         train_iter=train_iter,</span><br><span class="line">         valid_iter=valid_iter,</span><br><span class="line">         optimizer=optimizer,</span><br><span class="line">         scheduler=scheduler,</span><br><span class="line">         num_epochs=NUM_EPOCHS)</span><br><span class="line"></span><br><span class="line">NUM_EPOCHS = <span class="number">12</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;======================= Start training =================================&quot;</span>)</span><br><span class="line">optimizer = AdamW(model.parameters(), lr=<span class="number">2e-6</span>)</span><br><span class="line">scheduler = get_linear_schedule_with_warmup(optimizer, </span><br><span class="line">                                            num_warmup_steps=steps_per_epoch*<span class="number">2</span>, </span><br><span class="line">                                            num_training_steps=steps_per_epoch*NUM_EPOCHS)</span><br><span class="line"></span><br><span class="line">train(model=model, </span><br><span class="line">      train_iter=train_iter, </span><br><span class="line">      valid_iter=valid_iter, </span><br><span class="line">      optimizer=optimizer, </span><br><span class="line">      scheduler=scheduler, </span><br><span class="line">      num_epochs=NUM_EPOCHS)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">======================= Start pretraining ==============================</span><br><span class="line">Epoch [1/6], global step [4442/26652], PT Loss: 0.6695, Val Loss: 0.6873</span><br><span class="line">Epoch [2/6], global step [8884/26652], PT Loss: 0.6504, Val Loss: 0.6829</span><br><span class="line">Epoch [3/6], global step [13326/26652], PT Loss: 0.6436, Val Loss: 0.6726</span><br><span class="line">Epoch [4/6], global step [17768/26652], PT Loss: 0.6333, Val Loss: 0.6459</span><br><span class="line">Epoch [5/6], global step [22210/26652], PT Loss: 0.6185, Val Loss: 0.6076</span><br><span class="line">Epoch [6/6], global step [26652/26652], PT Loss: 0.6044, Val Loss: 0.6007</span><br><span class="line">Pre-training done!</span><br><span class="line">======================= Start training =================================</span><br><span class="line">Epoch [1/12], global step [4442/53304], Train Loss: 0.4489, Valid Loss: 0.3322</span><br><span class="line">Epoch [2/12], global step [8884/53304], Train Loss: 0.3454, Valid Loss: 0.2886</span><br><span class="line">Epoch [3/12], global step [13326/53304], Train Loss: 0.2872, Valid Loss: 0.2474</span><br><span class="line">Epoch [4/12], global step [17768/53304], Train Loss: 0.2378, Valid Loss: 0.2406</span><br><span class="line">Epoch [5/12], global step [22210/53304], Train Loss: 0.2052, Valid Loss: 0.2541</span><br><span class="line">Epoch [6/12], global step [26652/53304], Train Loss: 0.1811, Valid Loss: 0.2360</span><br><span class="line">Epoch [7/12], global step [31094/53304], Train Loss: 0.1597, Valid Loss: 0.2461</span><br><span class="line">Epoch [8/12], global step [35536/53304], Train Loss: 0.1419, Valid Loss: 0.2602</span><br><span class="line">Epoch [9/12], global step [39978/53304], Train Loss: 0.1299, Valid Loss: 0.2449</span><br><span class="line">Epoch [10/12], global step [44420/53304], Train Loss: 0.1193, Valid Loss: 0.2503</span><br><span class="line">Epoch [11/12], global step [48862/53304], Train Loss: 0.1106, Valid Loss: 0.2511</span><br><span class="line">Epoch [12/12], global step [53304/53304], Train Loss: 0.1064, Valid Loss: 0.2479</span><br><span class="line">Training done!</span><br></pre></td></tr></table></figure>
+
+<p><strong>画出 loss 下降的图</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">8</span>))</span><br><span class="line">train_loss_list, valid_loss_list, global_steps_list = load_metrics(output_path + <span class="string">&#x27;/metric.pkl&#x27;</span>)</span><br><span class="line">plt.plot(global_steps_list, train_loss_list, label=<span class="string">&#x27;Train&#x27;</span>)</span><br><span class="line">plt.plot(global_steps_list, valid_loss_list, label=<span class="string">&#x27;Valid&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Global Steps&#x27;</span>, fontsize=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Loss&#x27;</span>, fontsize=<span class="number">14</span>)</span><br><span class="line">plt.legend(fontsize=<span class="number">14</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/Models/loss.PNG"></p>
+<p><strong>对 model 进行 evaluate</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score, classification_report, confusion_matrix, precision_recall_fscore_support</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line"><span class="comment"># Evaluation Function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluate</span>(<span class="params">model, test_loader</span>):</span></span><br><span class="line">    y_pred = []</span><br><span class="line">    y_true = []</span><br><span class="line"></span><br><span class="line">    model.<span class="built_in">eval</span>()</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">for</span> (source, target), _ <span class="keyword">in</span> test_loader:</span><br><span class="line">                mask = (source != PAD_INDEX).<span class="built_in">type</span>(torch.uint8)</span><br><span class="line">                </span><br><span class="line">                output = model(source, attention_mask=mask)</span><br><span class="line">                y_pred.extend(torch.argmax(output, axis=-<span class="number">1</span>).tolist())</span><br><span class="line">                y_true.extend(target.tolist())</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Classification Report:&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(classification_report(y_true, y_pred, labels=[<span class="number">0</span>, <span class="number">1</span>], digits=<span class="number">4</span>))</span><br><span class="line">    </span><br><span class="line">    cm = confusion_matrix(y_true, y_pred, labels=[<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    ax = plt.subplot()</span><br><span class="line"></span><br><span class="line">    sns.heatmap(cm, annot=<span class="literal">True</span>, ax = ax, cmap=<span class="string">&#x27;Blues&#x27;</span>, fmt=<span class="string">&quot;d&quot;</span>)</span><br><span class="line">    ax.set_title(<span class="string">&#x27;Confusion Matrix&#x27;</span>)</span><br><span class="line">    ax.set_xlabel(<span class="string">&#x27;Predicted Labels&#x27;</span>)</span><br><span class="line">    ax.set_ylabel(<span class="string">&#x27;True Labels&#x27;</span>)</span><br><span class="line">    ax.xaxis.set_ticklabels([<span class="string">&#x27;Facts&#x27;</span>, <span class="string">&#x27;Opinion&#x27;</span>])</span><br><span class="line">    ax.yaxis.set_ticklabels([<span class="string">&#x27;Facts&#x27;</span>, <span class="string">&#x27;Opinion&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model = ROBERTAClassifier()</span><br><span class="line">model = model.to(device)</span><br><span class="line"></span><br><span class="line">load_checkpoint(output_path + <span class="string">&#x27;/model.pkl&#x27;</span>, model)</span><br><span class="line"></span><br><span class="line">evaluate(model, test_iter)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Classification Report:</span><br><span class="line"><span class="code">              precision    recall  f1-score   support</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">           0     0.8763    0.9301    0.9024      1645</span></span><br><span class="line"><span class="code">           1     0.8981    0.8244    0.8597      1230</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    accuracy                         0.8849      2875</span></span><br><span class="line"><span class="code">   macro avg     0.8872    0.8772    0.8810      2875</span></span><br><span class="line"><span class="code">weighted avg     0.8856    0.8849    0.8841      2875</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/Models/matrix.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+<span style="margin-top:30px; color:var(--blockquote-color); font-size:0.85em">
+</span>
+
+          <div class="post-tags">
+              <a href="/overview/tags/Models/" rel="tag"><i class="fa fa-tag"></i> Models</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/305/" rel="prev" title="小样本分类训练模型 PET 和 P-tuning">
+                  <i class="fa fa-chevron-left"></i> 小样本分类训练模型 PET 和 P-tuning
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alyssa</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://alyssacomments-eoj2v9b1x-alyssaasa.vercel.app/","placeholder":"Just go go","dark":"auto","avatar":"wavatar","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredMeta":["nick","mail"],"copyright":true,"login":"","avatarCDN":"https://sdn.geekzu.org/avatar/","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq"],"locale":{"placeholder":"在这里分享你的观点与想法～ 昵称、邮箱必填，邮件通知回复。","admin":"博主","nick":"昵称*","mail":"邮箱*","link":"网址（http://）"},"el":"#waline-comments","libUrl":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","path":"/posts/306/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  if(CONFIG.waline.qiniuDomain && CONFIG.waline.qiniuTokenUrl){
+    CONFIG.waline.uploadImage = qiniuUploadImage;
+  }
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+if(window.location.hash){
+    var checkExist = setInterval(function() {
+        if ($(window.location.hash).length) {
+            $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+            clearInterval(checkExist);
+        }
+    }, 100);
+}
+</script>
+
+
+</body>
+</html>
