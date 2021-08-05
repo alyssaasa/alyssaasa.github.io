@@ -3039,18 +3039,13 @@ body {
   background-image: url("/images/body-bg.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
-  background-position: 50% 50%;
+  background-size: cover;
+  background-position: 50% 100%;
   opacity: 0.9;
 }
 @media (prefers-color-scheme: dark) {
   body {
     background-image: none;
-  }
-}
-@media (max-width: 767px) {
-  body {
-    background-attachment: fixed;
   }
 }
 /* Day of Mourning */
