@@ -1236,16 +1236,16 @@ pre code {
 }
 .header-inner {
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
 }
 @media (min-width: 1200px) {
   .header-inner {
-    width: 82%;
+    width: 85%;
   }
 }
 @media (min-width: 1600px) {
   .header-inner {
-    width: 55%;
+    width: 85%;
   }
 }
 .site-brand-container {
@@ -1671,16 +1671,16 @@ pre code {
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
 }
 @media (min-width: 1200px) {
   .footer-inner {
-    width: 82%;
+    width: 85%;
   }
 }
 @media (min-width: 1600px) {
   .footer-inner {
-    width: 55%;
+    width: 85%;
   }
 }
 .use-motion .footer {
@@ -2715,16 +2715,16 @@ mjx-container[display="true"] + br {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
 }
 @media (min-width: 1200px) {
   .main {
-    width: 82%;
+    width: 85%;
   }
 }
 @media (min-width: 1600px) {
   .main {
-    width: 55%;
+    width: 85%;
   }
 }
 @media (max-width: 991px) {
