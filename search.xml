@@ -40,6 +40,98 @@
       </tags>
   </entry>
   <entry>
+    <title>NLP 学习相关网站</title>
+    <url>//posts/407/</url>
+    <content><![CDATA[<h2 id="BERT"><a href="#BERT" class="headerlink" title=" BERT "></a><span> BERT </span></h2><ul>
+<li><p>📽️ <a href="https://www.youtube.com/watch?v=tFBrqPPxWzE&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=17">Overview of NLP Tasks</a></p>
+</li>
+<li><p>📽️ <a href="https://www.youtube.com/watch?v=1_gRK9EIQpc&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=18">BERT and its family - Introduction and Fine-tune</a></p>
+</li>
+<li><p>📽️ <a href="https://www.youtube.com/watch?v=Bywo7m6ySlk&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=19">BERT and its family - ELMo, BERT, GPT, XLNet, MASS, BART, UniLM, ELECTRA, and more</a></p>
+</li>
+<li><p>📄 <a href="https://zhuanlan.zhihu.com/p/66676144">BERT 时代与后时代的 NLP - 知乎 (zhihu.com)</a></p>
+</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="GPT-3"><a href="#GPT-3" class="headerlink" title=" GPT-3 "></a><span> GPT-3 </span></h2><ul>
+<li><p><a href="https://dugas.ch/artificial_curiosity/GPT_architecture.html">The GPT-3 Architecture, on a Napkin (dugas.ch)</a></p>
+</li>
+<li><p><a href="https://gpt3examples.com/#examples">GPT3 Examples</a></p>
+</li>
+</ul>
+<h2 id="Bert-fine-tune-策略"><a href="#Bert-fine-tune-策略" class="headerlink" title=" Bert fine-tune 策略 "></a><span> Bert fine-tune 策略 </span></h2><p><a href="https://arxiv.org/pdf/1905.05583.pdf">bert fine-tune 策略</a></p>
+<ul>
+<li>The top layer of BERT is more useful for text classification; </li>
+<li>With an appropriate layer-wise decreasing learning rate, BERT can overcome the catastrophic for getting problem; </li>
+<li>Within-task and in-domain further pre-training can significantly boost its performance; </li>
+<li>A preceding multi-task fine-tuning is also helpful to the single-task fine-tuning, but its benefit is smaller than further pre-training; </li>
+<li>BERT can improve the task with small-size data.</li>
+</ul>
+<h2 id="CTR-预估模型"><a href="#CTR-预估模型" class="headerlink" title=" CTR 预估模型 "></a><span> CTR 预估模型 </span></h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/61154299">前深度学习时代的CTR预估模型</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/63186101">基于深度学习的CTR预估模型</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>NLP</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>准确率，精确率，召回率和AUC曲线，PR曲线</title>
+    <url>//posts/300/</url>
+    <content><![CDATA[<p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
+<span id="more"></span>
+
+<h2 id="混淆矩阵-（TP-TN-FP-FN）"><a href="#混淆矩阵-（TP-TN-FP-FN）" class="headerlink" title="混淆矩阵 （TP TN FP FN）"></a><span>混淆矩阵 （TP TN FP FN）</span></h2><ol>
+<li>True Positives,TP：预测为正样本，实际也为正样本的特征数</li>
+<li>False Positives,FP：预测为正样本，实际为负样本的特征数</li>
+<li>True Negatives,TN：预测为负样本，实际也为负样本的特征数</li>
+<li>False Negatives,FN：预测为负样本，实际为正样本的特征数</li>
+</ol>
+<p><strong>True / False：是针对原样本而言的。</strong><br><strong>Positive / Negative：是针对预测结果而言的。</strong></p>
+<h2 id="准确率-accuracy"><a href="#准确率-accuracy" class="headerlink" title="准确率 (accuracy)"></a><span>准确率 (accuracy)</span></h2><p>既然是个分类指标，我们可以很自然的想到准确率，准确率的定义是预测正确的结果占总样本的百分比，其公式如下：</p>
+<p>$$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$</p>
+<p>虽然准确率可以判断总的正确率，但是在<strong>样本不平衡</strong>的情况下，并不能作为很好的指标来衡量结果。举个简单的例子，比如在一个总样本中，正样本占90%，负样本占10%，样本是严重不平衡的。对于这种情况，我们只需要将全部样本预测为正样本即可得到90%的高准确率，但实际上我们并没有很用心的分类，只是随便无脑一分而已。这就说明了：由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。</p>
+<p>正因为如此，也就衍生出了其它两种指标：精准率和召回率。</p>
+<h2 id="精确率-precision"><a href="#精确率-precision" class="headerlink" title="精确率 (precision)"></a><span>精确率 (precision)</span></h2><p>精确率：预测为正的样本中有多少是真的正样本。精确率和准确率看上去有些类似，但是完全不同的两个概念。精准率代表对正样本结果中的预测准确程度，而准确率则代表整体的预测准确程度，既包括正样本，也包括负样本。</p>
+<p>$$precision = \frac{TP}{TP+FP}$$</p>
+<h2 id="召回率-recall"><a href="#召回率-recall" class="headerlink" title="召回率 (recall)"></a><span>召回率 (recall)</span></h2><p>召回率，又叫查全率，它是针对原样本而言的，它的含义是样本中为正的，有多少被预测为正。</p>
+<p>$$recall = \frac{TP}{TP+FN}$$</p>
+<p><strong>召回率的应用场景：</strong>比如拿网贷违约率为例，相对好用户，我们更关心坏用户，不能错放过任何一个坏用户。因为如果我们过多的将坏用户当成好用户，这样后续可能发生的违约金额会远超过好用户偿还的借贷利息金额，造成严重偿失。<strong>召回率越高，代表实际坏用户被预测出来的概率越高，它的含义类似：宁可错杀一千，绝不放过一个。</strong></p>
+<h2 id="特异度-specificity"><a href="#特异度-specificity" class="headerlink" title="特异度 (specificity) "></a><span>特异度 (specificity) </span></h2><p>特异度被定义为：样本中为负的，有多少被预测为负。和召回率刚好相反，一个针对正样本而言，一个针对负样本而言。</p>
+<p>$$specificity = \frac{TN}{TN+FP}$$</p>
+<h2 id="F-1值"><a href="#F-1值" class="headerlink" title="F_1值"></a><span>F_1值</span></h2><p>F1值 = 精确率 * 召回率 * 2 / (精确率 + 召回率) （F1值即为精确率和召回率的调和平均值）</p>
+<p>$$F_1 = \frac{P * R * 2}{P + R}$$</p>
+<p>不妨举<a href="https://link.zhihu.com/?target=http://peghoty.blog.163.com/blog/static/49346409201302595935709/">这样一个例子</a>：某池塘有1400条鲤鱼，300只虾，300只鳖。现在以捕鲤鱼为目的。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">700</span> / (<span class="number">700</span> + <span class="number">200</span> + <span class="number">100</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">700</span> / <span class="number">1400</span> = <span class="number">50</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">50</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">50</span>%) = <span class="number">58</span>.<span class="number">3</span>%</span><br></pre></td></tr></table></figure>
+
+<p>不妨看看如果把池子里的所有的鲤鱼、虾和鳖都一网打尽，这些指标又有何变化：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">1400</span> / (<span class="number">1400</span> + <span class="number">300</span> + <span class="number">300</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">1400</span> / <span class="number">1400</span> = <span class="number">100</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">100</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">100</span>%) = <span class="number">82</span>.<span class="number">35</span>% </span><br></pre></td></tr></table></figure>
+
+<p>由此可见，精确率是评估捕获的成果中目标成果所占得比例；召回率，顾名思义，就是从关注领域中，召回目标类别的比例；而F值，则是综合这二者指标的评估指标，用于综合反映整体的指标。</p>
+<p>当然希望检索结果precision越高越好，同时recall也越高越好，但事实上这两者在某些情况下有矛盾的。比如极端情况下，我们只搜索出了一个结果，且是准确的，那么precision就是100%，但是recall就很低；而如果我们把所有结果都返回，那么recall是100%，但是precision就会很低。因此在不同的场合中需要自己判断希望precision比较高或是recall比较高。如果是做实验研究，可以绘制<strong>Precision-Recall曲线</strong>来帮助分析。</p>
+<p>有时候我们对精确率和召回率并不是一视同仁，比如有时候我们更加重视精确率。我们用一个参数 $\beta$ 来度量两者之间的关系。如果 $\beta&gt;1$, 召回率有更大影响，如果 $\beta&lt;1$, 精确率有更大影响。自然，当 $\beta=1$ 的时候，精确率和召回率影响力相同，和F1形式一样。含有度量参数 $\beta$ 的F1我们记为 $F_\beta$, 严格的数学定义如下：</p>
+<p>$$𝐹_𝛽=\frac{(1+𝛽^2)∗𝑃∗𝑅}{𝛽^2∗𝑃+𝑅} $$</p>
+<h2 id="RoC-曲线与-AUC-值"><a href="#RoC-曲线与-AUC-值" class="headerlink" title="RoC 曲线与 AUC 值"></a><span>RoC 曲线与 AUC 值</span></h2><p>🎋. 灵敏度 TPR (true positive rate) (同召回率)：真实样本中为正的，有多少被预测为正</p>
+<p>🎋. 1-特异度：FPR (false positive rate)：真实样本为负的，有多少被预测为正</p>
+<p>$$FPR = \frac{FP}{FP+TN}$$</p>
+<p>🎋. ROC曲线与AUC值：以TPR为y轴，以FPR为x轴，我们就直接得到了RoC曲线。从FPR和TPR的定义可以理解，TPR越高，FPR越小，我们的模型和算法就越高效。也就是画出来的RoC曲线越靠近左上越好。如下图左图所示。从几何的角度讲，RoC曲线下方的面积越大越大，则模型越优。所以有时候我们用<strong>RoC曲线下的面积</strong>，即AUC（Area Under Curve）值来作为算法和模型好坏的标准。</p>
+<p><img data-src="/images/others/1.png" alt="img"></p>
+<p>🎋. PR曲线：以精确率为y轴，以召回率为x轴，我们就得到了PR曲线。仍然从精确率和召回率的定义可以理解，精确率越高，召回率越高，我们的模型和算法就越高效。也就是画出来的PR曲线越靠近右上越好。如上图右图所示。</p>
+<p>参考链接：<a href="https://segmentfault.com/a/1190000016686335">https://segmentfault.com/a/1190000016686335</a><br>参考链接：<a href="https://www.cnblogs.com/pinard/p/5993450.html">https://www.cnblogs.com/pinard/p/5993450.html</a></p>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HashMap 空间换时间</title>
     <url>//posts/1/</url>
     <content><![CDATA[<p>HashMap 的使用，很多时候都是为了空间换时间。</p>
@@ -159,47 +251,6 @@
       </categories>
       <tags>
         <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NLP 学习相关网站</title>
-    <url>//posts/407/</url>
-    <content><![CDATA[<h2 id="BERT"><a href="#BERT" class="headerlink" title=" BERT "></a><span> BERT </span></h2><ul>
-<li><p>📽️ <a href="https://www.youtube.com/watch?v=tFBrqPPxWzE&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=17">Overview of NLP Tasks</a></p>
-</li>
-<li><p>📽️ <a href="https://www.youtube.com/watch?v=1_gRK9EIQpc&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=18">BERT and its family - Introduction and Fine-tune</a></p>
-</li>
-<li><p>📽️ <a href="https://www.youtube.com/watch?v=Bywo7m6ySlk&list=PLJV_el3uVTsO07RpBYFsXg-bN5Lu0nhdG&index=19">BERT and its family - ELMo, BERT, GPT, XLNet, MASS, BART, UniLM, ELECTRA, and more</a></p>
-</li>
-<li><p>📄 <a href="https://zhuanlan.zhihu.com/p/66676144">BERT 时代与后时代的 NLP - 知乎 (zhihu.com)</a></p>
-</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="GPT-3"><a href="#GPT-3" class="headerlink" title=" GPT-3 "></a><span> GPT-3 </span></h2><ul>
-<li><p><a href="https://dugas.ch/artificial_curiosity/GPT_architecture.html">The GPT-3 Architecture, on a Napkin (dugas.ch)</a></p>
-</li>
-<li><p><a href="https://gpt3examples.com/#examples">GPT3 Examples</a></p>
-</li>
-</ul>
-<h2 id="Bert-fine-tune-策略"><a href="#Bert-fine-tune-策略" class="headerlink" title=" Bert fine-tune 策略 "></a><span> Bert fine-tune 策略 </span></h2><p><a href="https://arxiv.org/pdf/1905.05583.pdf">bert fine-tune 策略</a></p>
-<ul>
-<li>The top layer of BERT is more useful for text classification; </li>
-<li>With an appropriate layer-wise decreasing learning rate, BERT can overcome the catastrophic for getting problem; </li>
-<li>Within-task and in-domain further pre-training can significantly boost its performance; </li>
-<li>A preceding multi-task fine-tuning is also helpful to the single-task fine-tuning, but its benefit is smaller than further pre-training; </li>
-<li>BERT can improve the task with small-size data.</li>
-</ul>
-<h2 id="CTR-预估模型"><a href="#CTR-预估模型" class="headerlink" title=" CTR 预估模型 "></a><span> CTR 预估模型 </span></h2><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/61154299">前深度学习时代的CTR预估模型</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/63186101">基于深度学习的CTR预估模型</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>NLP</category>
-      </categories>
-      <tags>
-        <tag>NLP</tag>
       </tags>
   </entry>
   <entry>
@@ -492,8 +543,8 @@
         <category>Algorithms</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
         <tag>NLP</tag>
+        <tag>Leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -709,60 +760,6 @@
       </tags>
   </entry>
   <entry>
-    <title>洗牌算法</title>
-    <url>//posts/13/</url>
-    <content><![CDATA[<p>之前两次面试都被问到洗牌算法，虽然不是直接问的，但都是基于洗牌算法的。结果第一次被问到之后没有重视，导致在一个地方栽了两次坑。。。😭</p>
-<blockquote>
-<p>洗牌算法，就是给你一个1到n的序列，让你随机打乱，保证每个数出现在任意一个位置的概率相同。换句话说，经过洗牌的数组的排列组合有n!种可能。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a><span>解法</span></h2><h3 id="Fisher-Yates-Shuffle-算法-动态演示"><a href="#Fisher-Yates-Shuffle-算法-动态演示" class="headerlink" title="Fisher-Yates Shuffle 算法 动态演示"></a>Fisher-Yates Shuffle 算法 <a href="https://bost.ocks.org/mike/shuffle/">动态演示</a></h3><ul>
-<li><p>思想：从原始数组中随机取一个之前没有取过的数字到新的数组中。</p>
-</li>
-<li><p>步骤：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">1</span>. 初始化原始数组和新数组，原始数组长度为n（已知）；</span><br><span class="line"><span class="attribute">2</span>. 从还没处理的数组（假如还剩k个）中，随机产生一个[<span class="number">0</span>, k)之间的数字p（数组下标从<span class="number">0</span>开始）；</span><br><span class="line"><span class="attribute">3</span>. 从剩下的k个数中第p个数取出；</span><br><span class="line"><span class="attribute">4</span>. 重复步骤<span class="number">2</span>，<span class="number">3</span>直到数字全部取完；</span><br><span class="line"><span class="attribute">5</span>. 从步骤<span class="number">3</span>中去除的数字序列便是一个打乱的数列。</span><br></pre></td></tr></table></figure></li>
-<li><p>证明：证明其随机性，即每个元素被放置在新数组中的第 <code>i</code> 个位置是 <code>1/n</code><br>一个元素m被放入第 <code>i</code> 个位置的概率 P = 前 <code>i-1</code> 个位置选择元素时没有选中m的概率 * 第 <code>i</code> 个位置选中m的概率，即:</p>
-<p>$$P = \frac{n-1}{n} * \frac{n-2}{n-1} * … * \frac{n-i+1}{n-i+2} * \frac{1}{n-i+1} = \frac{1}{n}$$</p>
-</li>
-<li><p><strong>时间复杂度为O(n*n),空间复杂度为O(n).</strong></p>
-</li>
-<li><p>时间复杂度为O(n*n) 是因为我们要删除list中的元素，那么也就是要将后面的元素都向前移动一位，导致时间复杂度为O(n*n) .</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> ArrayList <span class="title">Fisher_Yates_Shuffle</span><span class="params">(ArrayList&lt;Integer&gt; arr)</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; tar_arr = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">int</span> n = arr.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="comment">// 生成0-n的随机数，包括0不包括n -- [0,n)</span></span><br><span class="line">        <span class="keyword">int</span> p =(<span class="keyword">int</span>)(Math.random()*(n-i));</span><br><span class="line">        tar_arr.add(arr.get(p));</span><br><span class="line">        arr.remove(p);  <span class="comment">// 删除index=p位置的元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tar_arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Knuth-Durstenfeld-Shuffle-算法"><a href="#Knuth-Durstenfeld-Shuffle-算法" class="headerlink" title="Knuth-Durstenfeld Shuffle 算法"></a>Knuth-Durstenfeld Shuffle 算法</h3><ul>
-<li>对1的算法进行了改进，直接在原始数组上进行交换，而不必开辟额外的数组，节省空间。</li>
-<li>思想：每次从未处理的数字中随机取出一个数字，然后把该数字放在数组的尾部，即数组尾部存放的是已经处理过的数字。</li>
-<li>步骤：<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> 建立一个数组大小为 n 的数组 arr，分别存放 1 到 n 的数值；</span><br><span class="line"><span class="bullet">2.</span> 生成一个从 0 到 n - 1 的随机数 x；</span><br><span class="line"><span class="bullet">3.</span> 输出 arr 下标为 x 的数值，即为第一个随机数；</span><br><span class="line"><span class="bullet">4.</span> 将 arr 的尾元素和下标为 x 的元素互换；</span><br><span class="line"><span class="bullet">5.</span> 同2，生成一个从 0 到 n - 2 的随机数 x；</span><br><span class="line"><span class="bullet">6.</span> 输出 arr 下标为 x 的数值，为第二个随机数；</span><br><span class="line"><span class="bullet">7.</span> 将 arr 的倒数第二个元素和下标为 x 的元素互换；</span><br></pre></td></tr></table></figure></li>
-<li><strong>时间复杂度为O(n),空间复杂度为O(1)。缺点：必须知道数组长度n.</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Knuth_Durstenfeld_Shuffle</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="comment">// 生成0-n的随机数，包括0不包括n -- [0,n)</span></span><br><span class="line">        <span class="keyword">int</span> p =(<span class="keyword">int</span>)(Math.random()*(n-i));</span><br><span class="line">        swap(arr, p, n-i-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Inside-Out-Algorithm-算法"><a href="#Inside-Out-Algorithm-算法" class="headerlink" title="Inside-Out Algorithm 算法"></a>Inside-Out Algorithm 算法</h3><ul>
-<li> Knuth-Durstenfeld Shuffle 是一个内部打乱的算法，算法完成后原始数据被直接打乱，尽管这个方法可以节省空间，但在有些应用中可能需要保留原始数据，所以需要另外开辟一个数组来存储生成的新序列。</li>
-<li>Inside-Out Algorithm 算法是既可以开辟新的空间，而且不需要对原数组进行删除操作。</li>
-<li>思想：设一游标i从前向后扫描原始数据的拷贝，在[0, i]之间随机一个下标p，然后用位置p的元素替换掉位置i的数字，再用原始数据位置i的元素替换掉拷贝数据位置p的元素。其作用相当于在拷贝数据中交换i与p位置处的值。</li>
-<li><strong>时间复杂度为O(n),空间复杂度为O(n)</strong></li>
-<li>这个算法的一个优点就是可以处理n未知的数组。</li>
-<li>这个相当于：<code>1*2*3*4*5*6*7*...*n = n!</code> 种可能情况。</li>
-<li>而前两种洗牌算法都相当于：<code>n*n-1*n-2*n-3*...*1 = n!</code> 种可能情况。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] Inside_Out_Shuffle(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] tar_arr = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">    tar_arr = arr.clone();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = (<span class="keyword">int</span>)(Math.random()*(i+<span class="number">1</span>));</span><br><span class="line">        tar_arr[i] = tar_arr[p];</span><br><span class="line">        tar_arr[p] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tar_arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注：之前Inside-Out Algorithm看了半天，没搞明白为什么需要那么麻烦两个数组替换来替换去的。。搞这么一波骚操作，但其实，Inside-Out Algorithm算法和Knuth-Durstenfeld Shuffle 算法的区别就在于一个原地打乱，一个在新数组上打乱。那么我们就可以先拷贝一份原数组，然后在新数组上按照Knuth-Durstenfeld Shuffle 算法的方法执行一遍就行了。两个数组替换实际上就是代替了原来的swap操作，不用额外开辟一个空间给暂存数据。而且Inside-Out Algorithm是从前向后处理的，可以处理n未知的数组。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-384-数组随即洗牌"><a href="#leetcode-384-数组随即洗牌" class="headerlink" title="leetcode 384. 数组随即洗牌"></a><a href="https://leetcode.com/problems/shuffle-an-array/">leetcode 384. 数组随即洗牌</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>时间复杂度问题</title>
     <url>//posts/11/</url>
     <content><![CDATA[<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><span>时间复杂度</span></h2><h3 id="一遍循环：O-n"><a href="#一遍循环：O-n" class="headerlink" title="一遍循环：O(n)"></a>一遍循环：O(n)</h3><h3 id="嵌套两遍循环：O-n-n"><a href="#嵌套两遍循环：O-n-n" class="headerlink" title="嵌套两遍循环：O(n*n)"></a>嵌套两遍循环：O(n*n)</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        .....</span><br></pre></td></tr></table></figure>
@@ -861,6 +858,129 @@
       </tags>
   </entry>
   <entry>
+    <title>洗牌算法</title>
+    <url>//posts/13/</url>
+    <content><![CDATA[<p>之前两次面试都被问到洗牌算法，虽然不是直接问的，但都是基于洗牌算法的。结果第一次被问到之后没有重视，导致在一个地方栽了两次坑。。。😭</p>
+<blockquote>
+<p>洗牌算法，就是给你一个1到n的序列，让你随机打乱，保证每个数出现在任意一个位置的概率相同。换句话说，经过洗牌的数组的排列组合有n!种可能。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a><span>解法</span></h2><h3 id="Fisher-Yates-Shuffle-算法-动态演示"><a href="#Fisher-Yates-Shuffle-算法-动态演示" class="headerlink" title="Fisher-Yates Shuffle 算法 动态演示"></a>Fisher-Yates Shuffle 算法 <a href="https://bost.ocks.org/mike/shuffle/">动态演示</a></h3><ul>
+<li><p>思想：从原始数组中随机取一个之前没有取过的数字到新的数组中。</p>
+</li>
+<li><p>步骤：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">1</span>. 初始化原始数组和新数组，原始数组长度为n（已知）；</span><br><span class="line"><span class="attribute">2</span>. 从还没处理的数组（假如还剩k个）中，随机产生一个[<span class="number">0</span>, k)之间的数字p（数组下标从<span class="number">0</span>开始）；</span><br><span class="line"><span class="attribute">3</span>. 从剩下的k个数中第p个数取出；</span><br><span class="line"><span class="attribute">4</span>. 重复步骤<span class="number">2</span>，<span class="number">3</span>直到数字全部取完；</span><br><span class="line"><span class="attribute">5</span>. 从步骤<span class="number">3</span>中去除的数字序列便是一个打乱的数列。</span><br></pre></td></tr></table></figure></li>
+<li><p>证明：证明其随机性，即每个元素被放置在新数组中的第 <code>i</code> 个位置是 <code>1/n</code><br>一个元素m被放入第 <code>i</code> 个位置的概率 P = 前 <code>i-1</code> 个位置选择元素时没有选中m的概率 * 第 <code>i</code> 个位置选中m的概率，即:</p>
+<p>$$P = \frac{n-1}{n} * \frac{n-2}{n-1} * … * \frac{n-i+1}{n-i+2} * \frac{1}{n-i+1} = \frac{1}{n}$$</p>
+</li>
+<li><p><strong>时间复杂度为O(n*n),空间复杂度为O(n).</strong></p>
+</li>
+<li><p>时间复杂度为O(n*n) 是因为我们要删除list中的元素，那么也就是要将后面的元素都向前移动一位，导致时间复杂度为O(n*n) .</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> ArrayList <span class="title">Fisher_Yates_Shuffle</span><span class="params">(ArrayList&lt;Integer&gt; arr)</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; tar_arr = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">int</span> n = arr.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="comment">// 生成0-n的随机数，包括0不包括n -- [0,n)</span></span><br><span class="line">        <span class="keyword">int</span> p =(<span class="keyword">int</span>)(Math.random()*(n-i));</span><br><span class="line">        tar_arr.add(arr.get(p));</span><br><span class="line">        arr.remove(p);  <span class="comment">// 删除index=p位置的元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tar_arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Knuth-Durstenfeld-Shuffle-算法"><a href="#Knuth-Durstenfeld-Shuffle-算法" class="headerlink" title="Knuth-Durstenfeld Shuffle 算法"></a>Knuth-Durstenfeld Shuffle 算法</h3><ul>
+<li>对1的算法进行了改进，直接在原始数组上进行交换，而不必开辟额外的数组，节省空间。</li>
+<li>思想：每次从未处理的数字中随机取出一个数字，然后把该数字放在数组的尾部，即数组尾部存放的是已经处理过的数字。</li>
+<li>步骤：<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> 建立一个数组大小为 n 的数组 arr，分别存放 1 到 n 的数值；</span><br><span class="line"><span class="bullet">2.</span> 生成一个从 0 到 n - 1 的随机数 x；</span><br><span class="line"><span class="bullet">3.</span> 输出 arr 下标为 x 的数值，即为第一个随机数；</span><br><span class="line"><span class="bullet">4.</span> 将 arr 的尾元素和下标为 x 的元素互换；</span><br><span class="line"><span class="bullet">5.</span> 同2，生成一个从 0 到 n - 2 的随机数 x；</span><br><span class="line"><span class="bullet">6.</span> 输出 arr 下标为 x 的数值，为第二个随机数；</span><br><span class="line"><span class="bullet">7.</span> 将 arr 的倒数第二个元素和下标为 x 的元素互换；</span><br></pre></td></tr></table></figure></li>
+<li><strong>时间复杂度为O(n),空间复杂度为O(1)。缺点：必须知道数组长度n.</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Knuth_Durstenfeld_Shuffle</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="comment">// 生成0-n的随机数，包括0不包括n -- [0,n)</span></span><br><span class="line">        <span class="keyword">int</span> p =(<span class="keyword">int</span>)(Math.random()*(n-i));</span><br><span class="line">        swap(arr, p, n-i-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Inside-Out-Algorithm-算法"><a href="#Inside-Out-Algorithm-算法" class="headerlink" title="Inside-Out Algorithm 算法"></a>Inside-Out Algorithm 算法</h3><ul>
+<li> Knuth-Durstenfeld Shuffle 是一个内部打乱的算法，算法完成后原始数据被直接打乱，尽管这个方法可以节省空间，但在有些应用中可能需要保留原始数据，所以需要另外开辟一个数组来存储生成的新序列。</li>
+<li>Inside-Out Algorithm 算法是既可以开辟新的空间，而且不需要对原数组进行删除操作。</li>
+<li>思想：设一游标i从前向后扫描原始数据的拷贝，在[0, i]之间随机一个下标p，然后用位置p的元素替换掉位置i的数字，再用原始数据位置i的元素替换掉拷贝数据位置p的元素。其作用相当于在拷贝数据中交换i与p位置处的值。</li>
+<li><strong>时间复杂度为O(n),空间复杂度为O(n)</strong></li>
+<li>这个算法的一个优点就是可以处理n未知的数组。</li>
+<li>这个相当于：<code>1*2*3*4*5*6*7*...*n = n!</code> 种可能情况。</li>
+<li>而前两种洗牌算法都相当于：<code>n*n-1*n-2*n-3*...*1 = n!</code> 种可能情况。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] Inside_Out_Shuffle(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] tar_arr = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">    tar_arr = arr.clone();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = (<span class="keyword">int</span>)(Math.random()*(i+<span class="number">1</span>));</span><br><span class="line">        tar_arr[i] = tar_arr[p];</span><br><span class="line">        tar_arr[p] = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tar_arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：之前Inside-Out Algorithm看了半天，没搞明白为什么需要那么麻烦两个数组替换来替换去的。。搞这么一波骚操作，但其实，Inside-Out Algorithm算法和Knuth-Durstenfeld Shuffle 算法的区别就在于一个原地打乱，一个在新数组上打乱。那么我们就可以先拷贝一份原数组，然后在新数组上按照Knuth-Durstenfeld Shuffle 算法的方法执行一遍就行了。两个数组替换实际上就是代替了原来的swap操作，不用额外开辟一个空间给暂存数据。而且Inside-Out Algorithm是从前向后处理的，可以处理n未知的数组。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-384-数组随即洗牌"><a href="#leetcode-384-数组随即洗牌" class="headerlink" title="leetcode 384. 数组随即洗牌"></a><a href="https://leetcode.com/problems/shuffle-an-array/">leetcode 384. 数组随即洗牌</a></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>链表</title>
+    <url>//posts/14/</url>
+    <content><![CDATA[<h2 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a><span>链表结构</span></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>链表有一个很烦的点在于可能会对头节点进行处理。。所以时刻不能忽略头节点可能被处理的情况。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="在o-1-时间内删除链表节点，给定头节点和要删除节点。"><a href="#在o-1-时间内删除链表节点，给定头节点和要删除节点。" class="headerlink" title="在o(1)时间内删除链表节点，给定头节点和要删除节点。"></a>在o(1)时间内删除链表节点，给定头节点和要删除节点。</h3><ul>
+<li>知道要删除的节点，要从头开始遍历找到他前面的结点，才能删除该节点。</li>
+<li>把要删节点的下一个节点的值赋值给要删除的节点，然后删除要删节点的下一个节点</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode head, ListNode node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="keyword">null</span> || node==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(node.next!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node.val = node.next.val;</span><br><span class="line">        node.next = node.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//node节点为尾节点，则需要找到node的前驱节点再删除它</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        ListNode pre_node = head;</span><br><span class="line">        <span class="keyword">while</span>(pre_node.next!=node)</span><br><span class="line">            pre_node = pre_node.next;</span><br><span class="line">        pre_node.next = <span class="keyword">null</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-83-删除已排序链表中重复的节点"><a href="#leetcode-83-删除已排序链表中重复的节点" class="headerlink" title="leetcode 83. 删除已排序链表中重复的节点"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/">leetcode 83. 删除已排序链表中重复的节点</a></h3><ul>
+<li>题意：输入：<code>1-&gt;2-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5</code>   输出：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code></li>
+<li>从前向后遍历，设立两个指针pre， post。pre指向重复位置的第一个节点，post指向重复的最后一个节点，然后将他们相连即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode pre = head;</span><br><span class="line">    ListNode post = head;</span><br><span class="line">    <span class="keyword">while</span>(post!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(post.next!=<span class="keyword">null</span> &amp;&amp; post.val==post.next.val)</span><br><span class="line">            post = post.next;</span><br><span class="line">        pre.next = post.next;</span><br><span class="line">        pre = post.next;</span><br><span class="line">        post = post.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Leetcode-82-删除已排序链表中重复的节点"><a href="#Leetcode-82-删除已排序链表中重复的节点" class="headerlink" title="Leetcode 82. 删除已排序链表中重复的节点"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/">Leetcode 82. 删除已排序链表中重复的节点</a></h3><ul>
+<li>题意：输入：<code>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;6-&gt;4-&gt;4-&gt;5</code>   输出：<code>3-&gt;6-&gt;5</code></li>
+<li>和之前的不同，这个因为要把重复的都删掉，那么头节点也会有重复的，所以要多设置一个开始节点start</li>
+<li>start.next = head，防止头节点被删除。</li>
+<li><strong>要学会设置计数变量，计数变量有很多好处，到处都用得到，辅助空间o(1)，还能有很大作用</strong></li>
+<li>但是这个代码的还是很耗时的，有待优化。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    start.next = head;</span><br><span class="line">    ListNode pre = start;</span><br><span class="line">    ListNode post = start.next;</span><br><span class="line">    <span class="keyword">int</span> current_num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(post!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(post.next!=<span class="keyword">null</span> &amp;&amp; post.val==post.next.val) &#123;</span><br><span class="line">            current_num += <span class="number">1</span>;</span><br><span class="line">            post = post.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(current_num==<span class="number">1</span>) &#123;</span><br><span class="line">            pre.next = post;</span><br><span class="line">            pre = post;</span><br><span class="line">        &#125;</span><br><span class="line">        post = post.next;</span><br><span class="line">        current_num = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    pre.next=post;</span><br><span class="line">  	<span class="keyword">return</span> start.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-19-移除链表中倒数第n个节点"><a href="#leetcode-19-移除链表中倒数第n个节点" class="headerlink" title="leetcode 19. 移除链表中倒数第n个节点"></a><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">leetcode 19. 移除链表中倒数第n个节点</a></h3><ul>
+<li>题意：输入：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>,   <code>n=2</code>.   输出：<code>1-&gt;2-&gt;3-&gt;5</code></li>
+<li><strong>因为要移除的可能是头指针，所以要定义一个指针指向头节点</strong></li>
+<li>思路1：遍历一遍，知道链表长度，第二次遍历到<code>length-n-1</code>的时候，<code>node.next = node.next.next</code> 即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">  	start.next = head;</span><br><span class="line">    ListNode node1 = next;</span><br><span class="line">    ListNode node2 = next;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(node1!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">        length += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length-n-<span class="number">1</span>;i++) &#123;</span><br><span class="line">        node2 = node2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node2.next==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(node2.next.next==<span class="keyword">null</span>) node2.next = <span class="keyword">null</span>; </span><br><span class="line">    <span class="keyword">else</span> node2.next = node2.next.next;</span><br><span class="line">    <span class="keyword">return</span> start.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>思路2：要想只遍历一遍链表，需要定义两个指针，当第一个指针走n次之后，两个指针一起走，第一个指针指向链表尾部时，第二个链表指向要删除的前一个位置。然后<code>node.next = node.next.next</code> 即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line"> 	start.next = head;</span><br><span class="line">    ListNode node1 = start;</span><br><span class="line">    ListNode node2 = start;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">  	<span class="keyword">while</span>(node1!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">        node2 = node2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node2.next.next==<span class="keyword">null</span>) node2.next=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span> node2.next = node2.next.next;</span><br><span class="line">    <span class="keyword">return</span> start.next;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="leetcode-876-输出链表的中间节点"><a href="#leetcode-876-输出链表的中间节点" class="headerlink" title="leetcode 876. 输出链表的中间节点"></a><a href="https://leetcode.com/problems/middle-of-the-linked-list/">leetcode 876. 输出链表的中间节点</a></h3><ul>
+<li>如果链表长度为奇数，输出中间一个：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>, 输出为：<code>3</code></li>
+<li>如果链表长度为偶数，输出中间两个的第二个：<code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6</code>, 输出为：<code>4</code></li>
+<li>这道题和上一道题和相似，上一道题是指定第n个，这个是中间一个</li>
+<li>但不同点在于，知道n就知道差几了，这个完全不知道链表长度啊！</li>
+<li>快慢指针赛跑，快指针一次走两步，慢指针一次走一步，快指针到链表尾时，慢指针指向中间节点</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">middleNode</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    ListNode slow = head;</span><br><span class="line">    <span class="keyword">while</span>(fast!=<span class="keyword">null</span> &amp;&amp; fast.next!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>举一反三：当我们用一个指针遍历链表不能解决问题的时候，可以尝试用两个指针来遍历链表。可以让其中一个指针遍历的速度快一些，或者让它在链表上先走若干步。</p>
+</blockquote>
+<h3 id="leetcode-206-链表反转"><a href="#leetcode-206-链表反转" class="headerlink" title="leetcode 206. 链表反转"></a><a href="https://leetcode.com/problems/reverse-linked-list/">leetcode 206. 链表反转</a></h3><ul>
+<li>定义一个new_head, 用在开头，每次在new_head之后插入节点。</li>
+<li>Ori: 1-&gt;2-&gt;3-&gt;4</li>
+<li>New: new_head-&gt;1;   new_head-&gt;2-&gt;1;  new_head-&gt;3-&gt;2-&gt;1;  new_head-&gt;4-&gt;3-&gt;2-&gt;1</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode new_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(head!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        ListNode tmp = head.next;</span><br><span class="line">        head.next = new_head.next;</span><br><span class="line">        new_head.next = head;</span><br><span class="line">        head = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> new_head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithms</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>队列</title>
     <url>//posts/15/</url>
     <content><![CDATA[<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a><span>队列</span></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Queue&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">que.offer(<span class="number">1</span>);  <span class="comment">// 添加元素</span></span><br><span class="line"><span class="keyword">int</span> v1 = que.poll();   <span class="comment">// 返回第一个元素，并在队列中删除，如果队列为空，返回null</span></span><br><span class="line"><span class="keyword">int</span> v2 = que.peek();   <span class="comment">// 返回第一个元素</span></span><br></pre></td></tr></table></figure>
@@ -934,57 +1054,6 @@
       </tags>
   </entry>
   <entry>
-    <title>准确率，精确率，召回率和AUC曲线，PR曲线</title>
-    <url>//posts/300/</url>
-    <content><![CDATA[<p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
-<span id="more"></span>
-
-<h2 id="混淆矩阵-（TP-TN-FP-FN）"><a href="#混淆矩阵-（TP-TN-FP-FN）" class="headerlink" title="混淆矩阵 （TP TN FP FN）"></a><span>混淆矩阵 （TP TN FP FN）</span></h2><ol>
-<li>True Positives,TP：预测为正样本，实际也为正样本的特征数</li>
-<li>False Positives,FP：预测为正样本，实际为负样本的特征数</li>
-<li>True Negatives,TN：预测为负样本，实际也为负样本的特征数</li>
-<li>False Negatives,FN：预测为负样本，实际为正样本的特征数</li>
-</ol>
-<p><strong>True / False：是针对原样本而言的。</strong><br><strong>Positive / Negative：是针对预测结果而言的。</strong></p>
-<h2 id="准确率-accuracy"><a href="#准确率-accuracy" class="headerlink" title="准确率 (accuracy)"></a><span>准确率 (accuracy)</span></h2><p>既然是个分类指标，我们可以很自然的想到准确率，准确率的定义是预测正确的结果占总样本的百分比，其公式如下：</p>
-<p>$$accuracy = \frac{TP+TN}{TP+TN+FP+FN}$$</p>
-<p>虽然准确率可以判断总的正确率，但是在<strong>样本不平衡</strong>的情况下，并不能作为很好的指标来衡量结果。举个简单的例子，比如在一个总样本中，正样本占90%，负样本占10%，样本是严重不平衡的。对于这种情况，我们只需要将全部样本预测为正样本即可得到90%的高准确率，但实际上我们并没有很用心的分类，只是随便无脑一分而已。这就说明了：由于样本不平衡的问题，导致了得到的高准确率结果含有很大的水分。即如果样本不平衡，准确率就会失效。</p>
-<p>正因为如此，也就衍生出了其它两种指标：精准率和召回率。</p>
-<h2 id="精确率-precision"><a href="#精确率-precision" class="headerlink" title="精确率 (precision)"></a><span>精确率 (precision)</span></h2><p>精确率：预测为正的样本中有多少是真的正样本。精确率和准确率看上去有些类似，但是完全不同的两个概念。精准率代表对正样本结果中的预测准确程度，而准确率则代表整体的预测准确程度，既包括正样本，也包括负样本。</p>
-<p>$$precision = \frac{TP}{TP+FP}$$</p>
-<h2 id="召回率-recall"><a href="#召回率-recall" class="headerlink" title="召回率 (recall)"></a><span>召回率 (recall)</span></h2><p>召回率，又叫查全率，它是针对原样本而言的，它的含义是样本中为正的，有多少被预测为正。</p>
-<p>$$recall = \frac{TP}{TP+FN}$$</p>
-<p><strong>召回率的应用场景：</strong>比如拿网贷违约率为例，相对好用户，我们更关心坏用户，不能错放过任何一个坏用户。因为如果我们过多的将坏用户当成好用户，这样后续可能发生的违约金额会远超过好用户偿还的借贷利息金额，造成严重偿失。<strong>召回率越高，代表实际坏用户被预测出来的概率越高，它的含义类似：宁可错杀一千，绝不放过一个。</strong></p>
-<h2 id="特异度-specificity"><a href="#特异度-specificity" class="headerlink" title="特异度 (specificity) "></a><span>特异度 (specificity) </span></h2><p>特异度被定义为：样本中为负的，有多少被预测为负。和召回率刚好相反，一个针对正样本而言，一个针对负样本而言。</p>
-<p>$$specificity = \frac{TN}{TN+FP}$$</p>
-<h2 id="F-1值"><a href="#F-1值" class="headerlink" title="F_1值"></a><span>F_1值</span></h2><p>F1值 = 精确率 * 召回率 * 2 / (精确率 + 召回率) （F1值即为精确率和召回率的调和平均值）</p>
-<p>$$F_1 = \frac{P * R * 2}{P + R}$$</p>
-<p>不妨举<a href="https://link.zhihu.com/?target=http://peghoty.blog.163.com/blog/static/49346409201302595935709/">这样一个例子</a>：某池塘有1400条鲤鱼，300只虾，300只鳖。现在以捕鲤鱼为目的。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">700</span> / (<span class="number">700</span> + <span class="number">200</span> + <span class="number">100</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">700</span> / <span class="number">1400</span> = <span class="number">50</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">50</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">50</span>%) = <span class="number">58</span>.<span class="number">3</span>%</span><br></pre></td></tr></table></figure>
-
-<p>不妨看看如果把池子里的所有的鲤鱼、虾和鳖都一网打尽，这些指标又有何变化：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">P</span> (precision) = <span class="number">1400</span> / (<span class="number">1400</span> + <span class="number">300</span> + <span class="number">300</span>) = <span class="number">70</span>%</span><br><span class="line"><span class="attribute">R</span> (recall) = <span class="number">1400</span> / <span class="number">1400</span> = <span class="number">100</span>%</span><br><span class="line"><span class="attribute">F1</span> = <span class="number">70</span>% * <span class="number">100</span>% * <span class="number">2</span> / (<span class="number">70</span>% + <span class="number">100</span>%) = <span class="number">82</span>.<span class="number">35</span>% </span><br></pre></td></tr></table></figure>
-
-<p>由此可见，精确率是评估捕获的成果中目标成果所占得比例；召回率，顾名思义，就是从关注领域中，召回目标类别的比例；而F值，则是综合这二者指标的评估指标，用于综合反映整体的指标。</p>
-<p>当然希望检索结果precision越高越好，同时recall也越高越好，但事实上这两者在某些情况下有矛盾的。比如极端情况下，我们只搜索出了一个结果，且是准确的，那么precision就是100%，但是recall就很低；而如果我们把所有结果都返回，那么recall是100%，但是precision就会很低。因此在不同的场合中需要自己判断希望precision比较高或是recall比较高。如果是做实验研究，可以绘制<strong>Precision-Recall曲线</strong>来帮助分析。</p>
-<p>有时候我们对精确率和召回率并不是一视同仁，比如有时候我们更加重视精确率。我们用一个参数 $\beta$ 来度量两者之间的关系。如果 $\beta&gt;1$, 召回率有更大影响，如果 $\beta&lt;1$, 精确率有更大影响。自然，当 $\beta=1$ 的时候，精确率和召回率影响力相同，和F1形式一样。含有度量参数 $\beta$ 的F1我们记为 $F_\beta$, 严格的数学定义如下：</p>
-<p>$$𝐹_𝛽=\frac{(1+𝛽^2)∗𝑃∗𝑅}{𝛽^2∗𝑃+𝑅} $$</p>
-<h2 id="RoC-曲线与-AUC-值"><a href="#RoC-曲线与-AUC-值" class="headerlink" title="RoC 曲线与 AUC 值"></a><span>RoC 曲线与 AUC 值</span></h2><p>🎋. 灵敏度 TPR (true positive rate) (同召回率)：真实样本中为正的，有多少被预测为正</p>
-<p>🎋. 1-特异度：FPR (false positive rate)：真实样本为负的，有多少被预测为正</p>
-<p>$$FPR = \frac{FP}{FP+TN}$$</p>
-<p>🎋. ROC曲线与AUC值：以TPR为y轴，以FPR为x轴，我们就直接得到了RoC曲线。从FPR和TPR的定义可以理解，TPR越高，FPR越小，我们的模型和算法就越高效。也就是画出来的RoC曲线越靠近左上越好。如下图左图所示。从几何的角度讲，RoC曲线下方的面积越大越大，则模型越优。所以有时候我们用<strong>RoC曲线下的面积</strong>，即AUC（Area Under Curve）值来作为算法和模型好坏的标准。</p>
-<p><img data-src="/images/others/1.png" alt="img"></p>
-<p>🎋. PR曲线：以精确率为y轴，以召回率为x轴，我们就得到了PR曲线。仍然从精确率和召回率的定义可以理解，精确率越高，召回率越高，我们的模型和算法就越高效。也就是画出来的PR曲线越靠近右上越好。如上图右图所示。</p>
-<p>参考链接：<a href="https://segmentfault.com/a/1190000016686335">https://segmentfault.com/a/1190000016686335</a><br>参考链接：<a href="https://www.cnblogs.com/pinard/p/5993450.html">https://www.cnblogs.com/pinard/p/5993450.html</a></p>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>将keras的h5文件转为tensorflow的pb文件</title>
     <url>//posts/301/</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
@@ -1006,113 +1075,8 @@
       </tags>
   </entry>
   <entry>
-    <title>链表</title>
-    <url>//posts/14/</url>
-    <content><![CDATA[<h2 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a><span>链表结构</span></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>链表有一个很烦的点在于可能会对头节点进行处理。。所以时刻不能忽略头节点可能被处理的情况。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="在o-1-时间内删除链表节点，给定头节点和要删除节点。"><a href="#在o-1-时间内删除链表节点，给定头节点和要删除节点。" class="headerlink" title="在o(1)时间内删除链表节点，给定头节点和要删除节点。"></a>在o(1)时间内删除链表节点，给定头节点和要删除节点。</h3><ul>
-<li>知道要删除的节点，要从头开始遍历找到他前面的结点，才能删除该节点。</li>
-<li>把要删节点的下一个节点的值赋值给要删除的节点，然后删除要删节点的下一个节点</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode head, ListNode node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="keyword">null</span> || node==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(node.next!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node.val = node.next.val;</span><br><span class="line">        node.next = node.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//node节点为尾节点，则需要找到node的前驱节点再删除它</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        ListNode pre_node = head;</span><br><span class="line">        <span class="keyword">while</span>(pre_node.next!=node)</span><br><span class="line">            pre_node = pre_node.next;</span><br><span class="line">        pre_node.next = <span class="keyword">null</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-83-删除已排序链表中重复的节点"><a href="#leetcode-83-删除已排序链表中重复的节点" class="headerlink" title="leetcode 83. 删除已排序链表中重复的节点"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/">leetcode 83. 删除已排序链表中重复的节点</a></h3><ul>
-<li>题意：输入：<code>1-&gt;2-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5</code>   输出：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code></li>
-<li>从前向后遍历，设立两个指针pre， post。pre指向重复位置的第一个节点，post指向重复的最后一个节点，然后将他们相连即可。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode pre = head;</span><br><span class="line">    ListNode post = head;</span><br><span class="line">    <span class="keyword">while</span>(post!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(post.next!=<span class="keyword">null</span> &amp;&amp; post.val==post.next.val)</span><br><span class="line">            post = post.next;</span><br><span class="line">        pre.next = post.next;</span><br><span class="line">        pre = post.next;</span><br><span class="line">        post = post.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Leetcode-82-删除已排序链表中重复的节点"><a href="#Leetcode-82-删除已排序链表中重复的节点" class="headerlink" title="Leetcode 82. 删除已排序链表中重复的节点"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/">Leetcode 82. 删除已排序链表中重复的节点</a></h3><ul>
-<li>题意：输入：<code>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;6-&gt;4-&gt;4-&gt;5</code>   输出：<code>3-&gt;6-&gt;5</code></li>
-<li>和之前的不同，这个因为要把重复的都删掉，那么头节点也会有重复的，所以要多设置一个开始节点start</li>
-<li>start.next = head，防止头节点被删除。</li>
-<li><strong>要学会设置计数变量，计数变量有很多好处，到处都用得到，辅助空间o(1)，还能有很大作用</strong></li>
-<li>但是这个代码的还是很耗时的，有待优化。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    start.next = head;</span><br><span class="line">    ListNode pre = start;</span><br><span class="line">    ListNode post = start.next;</span><br><span class="line">    <span class="keyword">int</span> current_num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(post!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(post.next!=<span class="keyword">null</span> &amp;&amp; post.val==post.next.val) &#123;</span><br><span class="line">            current_num += <span class="number">1</span>;</span><br><span class="line">            post = post.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(current_num==<span class="number">1</span>) &#123;</span><br><span class="line">            pre.next = post;</span><br><span class="line">            pre = post;</span><br><span class="line">        &#125;</span><br><span class="line">        post = post.next;</span><br><span class="line">        current_num = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    pre.next=post;</span><br><span class="line">  	<span class="keyword">return</span> start.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-19-移除链表中倒数第n个节点"><a href="#leetcode-19-移除链表中倒数第n个节点" class="headerlink" title="leetcode 19. 移除链表中倒数第n个节点"></a><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">leetcode 19. 移除链表中倒数第n个节点</a></h3><ul>
-<li>题意：输入：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>,   <code>n=2</code>.   输出：<code>1-&gt;2-&gt;3-&gt;5</code></li>
-<li><strong>因为要移除的可能是头指针，所以要定义一个指针指向头节点</strong></li>
-<li>思路1：遍历一遍，知道链表长度，第二次遍历到<code>length-n-1</code>的时候，<code>node.next = node.next.next</code> 即可。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">  	start.next = head;</span><br><span class="line">    ListNode node1 = next;</span><br><span class="line">    ListNode node2 = next;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(node1!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">        length += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length-n-<span class="number">1</span>;i++) &#123;</span><br><span class="line">        node2 = node2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node2.next==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(node2.next.next==<span class="keyword">null</span>) node2.next = <span class="keyword">null</span>; </span><br><span class="line">    <span class="keyword">else</span> node2.next = node2.next.next;</span><br><span class="line">    <span class="keyword">return</span> start.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>思路2：要想只遍历一遍链表，需要定义两个指针，当第一个指针走n次之后，两个指针一起走，第一个指针指向链表尾部时，第二个链表指向要删除的前一个位置。然后<code>node.next = node.next.next</code> 即可。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line"> 	start.next = head;</span><br><span class="line">    ListNode node1 = start;</span><br><span class="line">    ListNode node2 = start;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">  	<span class="keyword">while</span>(node1!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        node1 = node1.next;</span><br><span class="line">        node2 = node2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node2.next.next==<span class="keyword">null</span>) node2.next=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">else</span> node2.next = node2.next.next;</span><br><span class="line">    <span class="keyword">return</span> start.next;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h3 id="leetcode-876-输出链表的中间节点"><a href="#leetcode-876-输出链表的中间节点" class="headerlink" title="leetcode 876. 输出链表的中间节点"></a><a href="https://leetcode.com/problems/middle-of-the-linked-list/">leetcode 876. 输出链表的中间节点</a></h3><ul>
-<li>如果链表长度为奇数，输出中间一个：<code>1-&gt;2-&gt;3-&gt;4-&gt;5</code>, 输出为：<code>3</code></li>
-<li>如果链表长度为偶数，输出中间两个的第二个：<code>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6</code>, 输出为：<code>4</code></li>
-<li>这道题和上一道题和相似，上一道题是指定第n个，这个是中间一个</li>
-<li>但不同点在于，知道n就知道差几了，这个完全不知道链表长度啊！</li>
-<li>快慢指针赛跑，快指针一次走两步，慢指针一次走一步，快指针到链表尾时，慢指针指向中间节点</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">middleNode</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    ListNode slow = head;</span><br><span class="line">    <span class="keyword">while</span>(fast!=<span class="keyword">null</span> &amp;&amp; fast.next!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>举一反三：当我们用一个指针遍历链表不能解决问题的时候，可以尝试用两个指针来遍历链表。可以让其中一个指针遍历的速度快一些，或者让它在链表上先走若干步。</p>
-</blockquote>
-<h3 id="leetcode-206-链表反转"><a href="#leetcode-206-链表反转" class="headerlink" title="leetcode 206. 链表反转"></a><a href="https://leetcode.com/problems/reverse-linked-list/">leetcode 206. 链表反转</a></h3><ul>
-<li>定义一个new_head, 用在开头，每次在new_head之后插入节点。</li>
-<li>Ori: 1-&gt;2-&gt;3-&gt;4</li>
-<li>New: new_head-&gt;1;   new_head-&gt;2-&gt;1;  new_head-&gt;3-&gt;2-&gt;1;  new_head-&gt;4-&gt;3-&gt;2-&gt;1</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode new_head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(head!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        ListNode tmp = head.next;</span><br><span class="line">        head.next = new_head.next;</span><br><span class="line">        new_head.next = head;</span><br><span class="line">        head = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> new_head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Algorithms</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 常用命令</title>
-    <url>//posts/512/</url>
-    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
-<li>增加对某个目录的权限: <code>sudo chown -R gesong /export/g06 </code></li>
-<li>查看文件多少行: <code>wc -l file.txt  </code></li>
-<li>将某个文件分成多份：<code>split -l 10000000 -d file.txt file_</code></li>
-<li>将多个文件合为一个文件： <code>cat 1.tsv 2.tsv 3.tsv &gt; 123.tsv</code></li>
-<li>查看正在执行 python 程序: <code>ps -ef | grep python</code><span id="more"></span></li>
-<li>从我电脑往服务器拷东西：<code>scp file name@ip:/home/user/...</code></li>
-<li>从服务器往容器拷东西：<code>sudo docker cp mini-id_map.json  330773d6b921:/notebooks/</code></li>
-</ul>
-<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
-<li><p><a href="https://www.cnblogs.com/hankal/p/9815068.html">linux 网络文件下载</a></p>
-</li>
-<li><p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2">linux ssh-key 免密登陆</a></p>
-</li>
-<li><p><a href="https://cloud.tencent.com/developer/article/1341083">如何在Ubuntu 16.04上添加和删除用户</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/Jacky_Dai/article/details/84885212">在linux 下怎么进入 /dev/sda1</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/h_8410435/article/details/86303995">Linux /dev/sda1磁盘满了，清理办法。</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/wl1780852311/article/details/104247348?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param">Ubuntu 18.04下创建新用户/目录、修改用户权限及删除用户的方法</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/cunyusup/p/9813847.html">解决ubuntu登陆失败，”Failed to start session”的问题</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Batch Normalization and Layer Normalization</title>
-    <url>//posts/406/</url>
+    <url>//posts/308/</url>
     <content><![CDATA[<h2 id="Batch-Normalization-and-Layer-Normalization"><a href="#Batch-Normalization-and-Layer-Normalization" class="headerlink" title="Batch Normalization and Layer Normalization "></a><span>Batch Normalization and Layer Normalization </span></h2><ul>
 <li><a href="http://arxiv.org/abs/1502.03167">Batch Normalization 论文</a></li>
 <li><a href="https://www.bilibili.com/video/av16000304">Batch Normalization 作用</a> </li>
@@ -1146,31 +1110,67 @@
       </tags>
   </entry>
   <entry>
-    <title>C++ 类</title>
-    <url>//posts/402/</url>
-    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
+    <title>pytorch tensor 操作：合并、分割、维度变换</title>
+    <url>//posts/309/</url>
+    <content><![CDATA[<p><a href="https://pytorch.org/docs/stable/tensors.html">torch.Tensor — PyTorch 1.9.0 documentation</a></p>
+<p>查看维度：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=torch.randn(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">a.size()</span><br><span class="line"><span class="comment"># torch.Size([3, 4])</span></span><br></pre></td></tr></table></figure>
+
 <span id="more"></span>
 
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="对-tensor-进行-reshape：-tensor-view"><a href="#对-tensor-进行-reshape：-tensor-view" class="headerlink" title="对 tensor 进行 reshape： tensor.view"></a><span>对 tensor 进行 reshape： tensor.view</span></h2><p>定义：将 tensor 中的元素，按照顺序逐个选取，凑成 (shape) 的大小</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = torch.randn(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">b = a.view(<span class="number">2</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把原先tensor中的数据按照行优先的顺序排成一个一维的数据（这里应该是因为要求地址是连续存储的），然后按照参数组合成其他维度的tensor。比如说是不管你原先的数据是[[[1,2,3],[4,5,6]]] 还是 [1,2,3,4,5,6]，因为它们排成一维向量都是 6 个元素，所以只要 view 后面的参数一致，得到的结果都是一样的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=torch.Tensor([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]])</span><br><span class="line">b=torch.Tensor([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a.view(<span class="number">1</span>,<span class="number">6</span>))  <span class="comment"># tensor([[1., 2., 3., 4., 5., 6.]]) </span></span><br><span class="line"><span class="built_in">print</span>(b.view(<span class="number">1</span>,<span class="number">6</span>))  <span class="comment"># tensor([[1., 2., 3., 4., 5., 6.]]) </span></span><br><span class="line"></span><br><span class="line">a=torch.Tensor([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]])</span><br><span class="line"><span class="built_in">print</span>(a.view(<span class="number">3</span>,<span class="number">2</span>)) </span><br><span class="line"><span class="comment"># tensor([[1., 2.],</span></span><br><span class="line"><span class="comment">#         [3., 4.],</span></span><br><span class="line"><span class="comment">#         [5., 6.]])  相当于就是从 1，2，3，4，5，6 顺序的拿数组来填充需要的形状。</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
-<ol>
-<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
-<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
-<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
-<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
-<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
-</ol>
+<h2 id="tensor-交换维度：tensor-permute"><a href="#tensor-交换维度：tensor-permute" class="headerlink" title="tensor 交换维度：tensor.permute"></a><span>tensor 交换维度：tensor.permute</span></h2><p>定义：将tensor的维度换位。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = torch.randn(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="comment"># torch.Size([2, 3, 4])</span></span><br><span class="line">b = a.permute(<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>)   <span class="comment"># torch.Size([4, 2, 3])</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="对-tensor-维度进行压缩：tensor-squeeze"><a href="#对-tensor-维度进行压缩：tensor-squeeze" class="headerlink" title="对 tensor 维度进行压缩：tensor.squeeze"></a><span>对 tensor 维度进行压缩：tensor.squeeze</span></h2><p>定义：对数据的维度进行压缩，去掉维数为 1 的的维度</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=torch.randn(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">x = a.squeeze() <span class="comment"># 去掉所有为 1 的维度：torch.Size([2, 3, 4])</span></span><br><span class="line">y = a.squeeze(dim=<span class="number">2</span>) <span class="comment"># 去掉维度为 1 的 dim 维度：torch.Size([1, 2, 3, 4])</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="对-tensor-维度进行扩充：tensor-unsqueeze"><a href="#对-tensor-维度进行扩充：tensor-unsqueeze" class="headerlink" title="对 tensor 维度进行扩充：tensor.unsqueeze"></a><span>对 tensor 维度进行扩充：tensor.unsqueeze</span></h2><p>定义：给指定位置加上维数为 1 的维度</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=torch.randn(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">x = a.unsqueeze(dim=<span class="number">1</span>) <span class="comment"># torch.Size([2, 1, 3, 4])</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="tensor-维度扩张：tensor-expand"><a href="#tensor-维度扩张：tensor-expand" class="headerlink" title=" tensor 维度扩张：tensor.expand "></a><span> tensor 维度扩张：tensor.expand </span></h2><p>定义：对 tensor 的维度进行扩张。</p>
+<p>如果某个维度参数是 -1，代表这个维度不改变。</p>
+<p>tensor 可以被 expand 到更大的维度，新的维度的只是前面的值的重复。新的维度参数不能为 -1。</p>
+<p>expand 一个 tensor 并不会分配新的内存，而只是生成一个已存在的 tensor 的 view。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = torch.tensor([[<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">3</span>]])</span><br><span class="line">x.size() </span><br><span class="line"><span class="comment">#torch.Size([3, 1])</span></span><br><span class="line">x.expand(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment"># tensor([[ 1,  1,  1,  1],</span></span><br><span class="line"><span class="comment">#         [ 2,  2,  2,  2],</span></span><br><span class="line"><span class="comment">#         [ 3,  3,  3,  3]])</span></span><br><span class="line">x.expand(-<span class="number">1</span>, <span class="number">4</span>)   <span class="comment"># -1 means not changing the size of that dimension</span></span><br><span class="line"><span class="comment"># tensor([[ 1,  1,  1,  1],</span></span><br><span class="line"><span class="comment">#         [ 2,  2,  2,  2],</span></span><br><span class="line"><span class="comment">#         [ 3,  3,  3,  3]])</span></span><br></pre></td></tr></table></figure>
+
+<p>经过实践发现，使用 expand 可以增加新的一个维度，但是只能在第 0 维增加一个维度，增加的维度大小可以大于 1，比如原始 t = tensor(X,Y)，可以 t.expand(Z,X,Y)，不能在其他维度上增加；expand 拓展某个已经存在的维度的时候，如果原始 t = tensor(X,Y)，则必须要求 X 或者 Y 中至少有 1 个维度为 1，且只能 expand 维度为 1 的那一维。</p>
+<h2 id="将-tensor-的指定维度合并为一个维度：torch-flatten"><a href="#将-tensor-的指定维度合并为一个维度：torch-flatten" class="headerlink" title="将 tensor 的指定维度合并为一个维度：torch.flatten"></a><span>将 tensor 的指定维度合并为一个维度：torch.flatten</span></h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.flatten(<span class="built_in">input</span>, start_dim=<span class="number">0</span>, end_dim=-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>start_dim: flatten 的起始维度。</p>
+<p>end_dim: flatten 的结束维度。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=torch.randn(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">x = torch.flatten(a, start_dim=<span class="number">1</span>) <span class="comment"># torch.Size([2, 12])</span></span><br><span class="line">y = torch.flatten(a, start_dim=<span class="number">0</span>, end_dim=<span class="number">1</span>) <span class="comment"># torch.Size([6, 4])</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a: tensor([[[-<span class="number">0.2499</span>, -<span class="number">0.0171</span>,  <span class="number">1.1206</span>,  <span class="number">0.5814</span>],</span><br><span class="line">            [ <span class="number">0.9040</span>, -<span class="number">0.6853</span>,  <span class="number">0.1916</span>, -<span class="number">1.3254</span>],</span><br><span class="line">            [ <span class="number">0.3648</span>, -<span class="number">1.7594</span>, -<span class="number">0.2376</span>, -<span class="number">0.0100</span>]],</span><br><span class="line">           </span><br><span class="line">           [[-<span class="number">0.4587</span>,  <span class="number">0.4200</span>, -<span class="number">0.3693</span>,  <span class="number">1.5906</span>],</span><br><span class="line">            [ <span class="number">0.8472</span>, -<span class="number">1.4564</span>,  <span class="number">0.8263</span>, -<span class="number">2.2202</span>],</span><br><span class="line">            [ <span class="number">0.9074</span>,  <span class="number">2.2779</span>, -<span class="number">0.2543</span>,  <span class="number">0.2251</span>]]])</span><br><span class="line"></span><br><span class="line">x: tensor([[-<span class="number">0.2499</span>, -<span class="number">0.0171</span>,  <span class="number">1.1206</span>,  <span class="number">0.5814</span>,  <span class="number">0.9040</span>, -<span class="number">0.6853</span>,  <span class="number">0.1916</span>, -<span class="number">1.3254</span>,</span><br><span class="line">             <span class="number">0.3648</span>, -<span class="number">1.7594</span>, -<span class="number">0.2376</span>, -<span class="number">0.0100</span>],</span><br><span class="line">           [-<span class="number">0.4587</span>,  <span class="number">0.4200</span>, -<span class="number">0.3693</span>,  <span class="number">1.5906</span>,  <span class="number">0.8472</span>, -<span class="number">1.4564</span>,  <span class="number">0.8263</span>, -<span class="number">2.2202</span>,</span><br><span class="line">             <span class="number">0.9074</span>,  <span class="number">2.2779</span>, -<span class="number">0.2543</span>,  <span class="number">0.2251</span>]])</span><br><span class="line"></span><br><span class="line">y: tensor([[-<span class="number">0.2499</span>, -<span class="number">0.0171</span>,  <span class="number">1.1206</span>,  <span class="number">0.5814</span>],</span><br><span class="line">           [ <span class="number">0.9040</span>, -<span class="number">0.6853</span>,  <span class="number">0.1916</span>, -<span class="number">1.3254</span>],</span><br><span class="line">           [ <span class="number">0.3648</span>, -<span class="number">1.7594</span>, -<span class="number">0.2376</span>, -<span class="number">0.0100</span>],</span><br><span class="line">           [-<span class="number">0.4587</span>,  <span class="number">0.4200</span>, -<span class="number">0.3693</span>,  <span class="number">1.5906</span>],</span><br><span class="line">           [ <span class="number">0.8472</span>, -<span class="number">1.4564</span>,  <span class="number">0.8263</span>, -<span class="number">2.2202</span>],</span><br><span class="line">           [ <span class="number">0.9074</span>,  <span class="number">2.2779</span>, -<span class="number">0.2543</span>,  <span class="number">0.2251</span>]])</span><br></pre></td></tr></table></figure>
+
+<h2 id="将两个-tensor-拼接起来：torch-cat"><a href="#将两个-tensor-拼接起来：torch-cat" class="headerlink" title="将两个 tensor 拼接起来：torch.cat"></a><span>将两个 tensor 拼接起来：torch.cat</span></h2><p>定义：把2个 tensor 按照特定的维度连接起来。</p>
+<p>要求：除被拼接的维度外，其他维度必须相同</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">a=torch.randn(<span class="number">3</span>,<span class="number">4</span>) <span class="comment">#随机生成一个shape（3，4）的tensor</span></span><br><span class="line">b=torch.randn(<span class="number">2</span>,<span class="number">4</span>) <span class="comment">#随机生成一个shape（2，4）的tensor</span></span><br><span class="line"></span><br><span class="line">torch.cat([a,b],dim=<span class="number">0</span>) </span><br><span class="line"><span class="comment">#返回一个shape（5，4）的tensor</span></span><br><span class="line"><span class="comment">#把a和b拼接成一个shape（5，4）的tensor，</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="将两个-tensor-堆叠起来：torch-stack"><a href="#将两个-tensor-堆叠起来：torch-stack" class="headerlink" title="将两个 tensor 堆叠起来：torch.stack "></a><span>将两个 tensor 堆叠起来：torch.stack </span></h2><p>定义：增加一个新的维度，来表示拼接后的2个 tensor。</p>
+<p>直观些理解的话，咱们不妨把一个 2 维的 tensor 理解成一张长方形的纸张，<code>cat</code>相当于是把两张纸缝合在一起，形成一张更大的纸，而<code>stack</code>相当于是把两张纸上下堆叠在一起。<br>要求：两个tensor拼接前的形状完全一致</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=torch.randn(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">b=torch.randn(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">c=torch.stack([a,b],dim=<span class="number">0</span>)</span><br><span class="line"><span class="comment">#返回一个shape(2,3,4)的tensor,新增的维度2分别指向a和b</span></span><br><span class="line"></span><br><span class="line">d=torch.stack([a,b],dim=<span class="number">1</span>)</span><br><span class="line"><span class="comment">#返回一个shape（3,2,4）的tensor，新增的维度2分别指向相应的a的第i行和b的第i行</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="将-tensor-进行分割：torch-split"><a href="#将-tensor-进行分割：torch-split" class="headerlink" title="将 tensor 进行分割：torch.split "></a><span>将 tensor 进行分割：torch.split </span></h2><p>定义：根据长度去拆分 tensor</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=torch.randn(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">a.split([<span class="number">1</span>,<span class="number">2</span>],dim=<span class="number">0</span>)</span><br><span class="line"><span class="comment">#把维度0按照长度[1,2]拆分，形成2个tensor，shape（1，4）和 shape（2，4）</span></span><br><span class="line"></span><br><span class="line">a.split([<span class="number">2</span>,<span class="number">2</span>],dim=<span class="number">1</span>)</span><br><span class="line"><span class="comment">#把维度1按照长度[2,2]拆分，形成2个tensor，shape（3，2）和shape（3，2）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="将-tensor-均等分割：torch-chunk"><a href="#将-tensor-均等分割：torch-chunk" class="headerlink" title="将 tensor 均等分割：torch.chunk"></a><span>将 tensor 均等分割：torch.chunk</span></h2><p>定义：均等分的 split，但是当维度长度不能被等分份数整除时，虽然不会报错，但可能结果与预期的不一样，建议只在可以被整除的情况下运用。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=torch.randn(<span class="number">4</span>,<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">a.chunk(<span class="number">2</span>,dim=<span class="number">0</span>)</span><br><span class="line"><span class="comment">#返回一个shape（2，6）的tensor</span></span><br><span class="line">a.chunk(<span class="number">2</span>,dim=<span class="number">1</span>)</span><br><span class="line"><span class="comment">#返回一个shape（4，3）的tensor</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Links"><a href="#Links" class="headerlink" title=" Links "></a><span> Links </span></h2><p><a href="https://www.jianshu.com/p/4e57dbe1d281">Pytorch:Tensor的合并与分割 - 简书 (jianshu.com)</a></p>
+<p>[pytorch常用总结 之 tensor维度变换 - 知乎 (zhihu.com)](<a href="https://zhuanlan.zhihu.com/p/206444428#:~:text=pytorch%E4%B8%AD%E5%B8%B8%E7%94%A8tensor%E7%BB%B4%E5%BA%A6%E5%8F%98%E6%8D%A2%E6%9C%89%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%8C%E4%B8%80%E7%A7%8D%E6%98%AFa.view">https://zhuanlan.zhihu.com/p/206444428#:~:text=pytorch中常用tensor维度变换有两种方法，一种是a.view</a> ()，另一种是a.permute,()。 假设a%3Dtorch.randn (1%2C2%2C3%2C4)，a的数据是按照行优先的原则存储的（一般存储要求地址是连续的），这里24个变量的地址是连续的，且固定好的。)</p>
 ]]></content>
       <categories>
-        <category>Languages</category>
+        <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>C++</tag>
+        <tag>Deep Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -1209,28 +1209,39 @@
       </categories>
   </entry>
   <entry>
-    <title>soft label 和 hard label</title>
-    <url>//posts/302/</url>
-    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
-<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
-<span id="more"></span>
-
-<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
-<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
-</li>
-<li><p>软标签：</p>
-<ul>
-<li>用于模棱两可的情况；</li>
-<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
+    <title>Linux 常用命令</title>
+    <url>//posts/512/</url>
+    <content><![CDATA[<h2 id="常用命令"><a href="#常用命令" class="headerlink" title=" 常用命令 "></a><span> 常用命令 </span></h2><ul>
+<li>增加对某个目录的权限: <code>sudo chown -R gesong /export/g06 </code></li>
+<li>查看文件多少行: <code>wc -l file.txt  </code></li>
+<li>将某个文件分成多份：<code>split -l 10000000 -d file.txt file_</code></li>
+<li>将多个文件合为一个文件： <code>cat 1.tsv 2.tsv 3.tsv &gt; 123.tsv</code></li>
+<li>查看正在执行 python 程序: <code>ps -ef | grep python</code><span id="more"></span></li>
+<li>从我电脑往服务器拷东西：<code>scp file name@ip:/home/user/...</code></li>
+<li>从服务器往容器拷东西：<code>sudo docker cp mini-id_map.json  330773d6b921:/notebooks/</code></li>
 </ul>
+<h2 id="有用的网站"><a href="#有用的网站" class="headerlink" title=" 有用的网站 "></a><span> 有用的网站 </span></h2><ul>
+<li><p><a href="https://www.cnblogs.com/hankal/p/9815068.html">linux 网络文件下载</a></p>
+</li>
+<li><p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2">linux ssh-key 免密登陆</a></p>
+</li>
+<li><p><a href="https://cloud.tencent.com/developer/article/1341083">如何在Ubuntu 16.04上添加和删除用户</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/Jacky_Dai/article/details/84885212">在linux 下怎么进入 /dev/sda1</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/h_8410435/article/details/86303995">Linux /dev/sda1磁盘满了，清理办法。</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/wl1780852311/article/details/104247348?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param">Ubuntu 18.04下创建新用户/目录、修改用户权限及删除用户的方法</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/cunyusup/p/9813847.html">解决ubuntu登陆失败，”Failed to start session”的问题</a></p>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>Deep Learning</category>
+        <category>Tools</category>
       </categories>
       <tags>
-        <tag>NLP</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1309,6 +1320,140 @@
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++ 类</title>
+    <url>//posts/402/</url>
+    <content><![CDATA[<h2 id="类声明和成员函数定义的分离"><a href="#类声明和成员函数定义的分离" class="headerlink" title="类声明和成员函数定义的分离"></a><span>类声明和成员函数定义的分离</span></h2><p>如果一个类只被一个程序使用，那么类的声明和成员函数的定义可以直接写在程序的开头，但如果一个类被多个程序使用，这样做的重复工作量就很大了，效率就太低了。在面向对象的程序开发中，一般做法是<strong>将类的声明（其中包含成员函数的声明）放在指定的头文件中，</strong>用户如果想用该类，只要把有关的头文件包含进来即可，不必再程序中重复书写类的声明，以减少工作量，节省篇幅，提高编程效率。</p>
+<span id="more"></span>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.h  这是头文件，在此文件中进行类的声明</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:   <span class="comment">// 公用成员函数声明</span></span><br><span class="line">        <span class="built_in">Student</span>();</span><br><span class="line">        <span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex);</span><br><span class="line">        <span class="keyword">virtual</span> ~<span class="built_in">Student</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        string name;</span><br><span class="line">        <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// student.cpp  在此文件中进行函数的定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Student.h&quot;</span>   <span class="comment">// 不要漏写此行，否则编译不通过</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>() &#123;</span><br><span class="line">    num = <span class="number">-1</span>;</span><br><span class="line">    name = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sex = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::<span class="built_in">Student</span>(<span class="keyword">int</span> num, string name, <span class="keyword">char</span> sex)&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;num = num;</span><br><span class="line">    <span class="keyword">this</span>-&gt;name = name;</span><br><span class="line">    <span class="keyword">this</span>-&gt;sex = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student::~<span class="built_in">Student</span>()&#123;  <span class="comment">// 析构函数</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Destructor called...&quot;</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Student::display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;num:&quot;</span>&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;name:&quot;</span>&lt;&lt;name&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sex:&quot;</span>&lt;&lt;sex&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.cpp  主函数模块</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;student.h&quot;</span>   <span class="comment">// 将类声明头文件包含进来</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Student <span class="title">stud1</span><span class="params">(<span class="number">1</span>, <span class="string">&quot;alyssa&quot;</span>, <span class="string">&#x27;M&#x27;</span>)</span></span>;</span><br><span class="line">    stud1.<span class="built_in">display</span>();</span><br><span class="line">    Student stud2;</span><br><span class="line">    stud2.<span class="built_in">display</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a><span>析构函数</span></h2><p>析构函数：当对象的生命周期结束时，会自动执行析构函数。</p>
+<ol>
+<li>析构函数的作用并不是删除对象，而是在撤销对象占用的内存之前完成一些清理工作，使这部分内存可以被程序分配给新对象使用。</li>
+<li>析构函数不返回任何值，没有函数类型，也没有函数参数。</li>
+<li>一个类可以有多个构造函数，但只能有一个析构函数。</li>
+<li>析构函数不仅可以用来释放资源，还可以被用来执行“<strong>用户虚妄在最后一次使用对象之后所执行的任何操作。</strong>”</li>
+<li><strong>先构造的后析构，后构造的先析构。相当于一个栈，先进后出。</strong></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Languages</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>soft label 和 hard label</title>
+    <url>//posts/302/</url>
+    <content><![CDATA[<p>soft label：软标签，例如：probs 0.3, 0,8, 0,2…</p>
+<p>hard label：硬标签，例如：实际label值 0, 1, 2…</p>
+<span id="more"></span>
+
+<h2 id="label-选择"><a href="#label-选择" class="headerlink" title=" label 选择 "></a><span> label 选择 </span></h2><ul>
+<li><p>硬标签：使用会比较多一点，用于非是即非的任务上，例如是猫就是猫，是狗就是狗；</p>
+</li>
+<li><p>软标签：</p>
+<ul>
+<li>用于模棱两可的情况；</li>
+<li>用于蒸馏，例如，计算 teacher 模型的参数于 student 模型参数的 loss，用硬标签会过于绝对，不利于 student 模型更好地学习 teacher 参数的分布和 teacher 的决策行为，当然也可以软硬标签都用上，不过在大规模无监督的蒸馏背景下，用 soft label 更为何时。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小样本分类训练模型 PET 和 P-tuning</title>
+    <url>//posts/305/</url>
+    <content><![CDATA[<h2 id="MLM"><a href="#MLM" class="headerlink" title=" MLM "></a><span> MLM </span></h2><p>MLM，全称 “Masked Language Model”，可以翻译为 “掩码语言模型”，实际上就是一个完形填空任务，随机 Mask 掉文本中的某些字词，然后要模型去预测被 Mask 的字词，示意图如下：</p>
+<p><img data-src="/images/Models/640.webp"></p>
+<p>其中被 Mask 掉的部分，可以是直接随机选择的 Token，也可以是随机选择连续的能组成一整个词的 Token，后者称为 WWM（Whole Word Masking）。</p>
+<p>开始，MLM 仅被视为 BERT 的一个预训练任务，训练完了就可以扔掉的那种，因此有一些开源的模型干脆没保留 MLM 部分的权重，然而，随着研究的深入，研究人员发现不止 BERT 的 Encoder 很有用，预训练用的 MLM 本身也很有用。</p>
+<span id="more"></span>
+
+<h2 id="将任务转成完形填空"><a href="#将任务转成完形填空" class="headerlink" title="将任务转成完形填空"></a><span>将任务转成完形填空</span></h2><p>在本文里，我们再学习 MLM 的一个精彩应用：用于小样本学习或半监督学习，某些场景下甚至能做到零样本学习。</p>
+<p>怎么将我们要做的任务跟 MLM 结合起来呢？很简单，<strong>给任务一个文本描述，然后转换为完形填空问题</strong>即可。举个例子，假如给定句子“这趟北京之旅我感觉很不错。”，那么我们补充个描述，构建如下的完形填空：</p>
+<blockquote>
+<p> ______满意。这趟北京之旅我感觉很不错。</p>
+</blockquote>
+<p>进一步地，我们限制空位处只能填一个“很”或“不”，问题就很清晰了，就是要我们根据上下文一致性判断是否满意，如果“很”的概率大于“不”的概率，说明是正面情感倾向，否则就是负面的，这样我们就将情感分类问题转换为一个完形填空问题了，它可以用 MLM 模型给出预测结果，而 MLM 模型的训练可以不需要监督数据，因此理论上这能够实现零样本学习了。</p>
+<p>多分类问题也可以做类似转换，比如新闻主题分类，输入句子为“八个月了，终于又能在赛场上看到女排姑娘们了。”，那么就可以构建：</p>
+<blockquote>
+<p>下面播报一则______新闻。八个月了，终于又能在赛场上看到女排姑娘们了。</p>
+</blockquote>
+<p>这样我们就将新闻主题分类也转换为完形填空问题了，一个好的 MLM 模型应当能预测出“体育”二字来。</p>
+<p>还有一些简单的推理任务也可以做这样的转换，常见的是给定两个句子，判断这两个句子是否相容，比如“我去了北京”跟“我去了上海”就是矛盾的，“我去了北京”跟“我在天安门广场”是相容的，常见的做法就是将两个句子拼接起来输入到模型做，作为一个二分类任务。如果要转换为完形填空，那该怎么构造呢？一种比较自然的构建方式是：</p>
+<blockquote>
+<p>我去了北京？______，我去了上海。</p>
+</blockquote>
+<blockquote>
+<p>我去了北京？______，我在天安门广场。</p>
+</blockquote>
+<p>其中空位之处的候选词为 <font color=Blue>{是的, 不是}</font> 。</p>
+<h2 id="PET-Pattern-Exploiting-Training"><a href="#PET-Pattern-Exploiting-Training" class="headerlink" title=" PET (Pattern-Exploiting Training) "></a><span> PET (Pattern-Exploiting Training) </span></h2><ul>
+<li><p>Papers: </p>
+<ul>
+<li><p><a href="https://arxiv.org/abs/2001.07676">Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference</a></p>
+</li>
+<li><p><a href="https://arxiv.org/abs/2009.07118">It’s Not Just Size That Matters: Small Language Models Are Also Few-Shot Learners</a></p>
+</li>
+</ul>
+</li>
+<li><p>Code: <a href="https://github.com/timoschick/pet">GitHub - timoschick/pet”</a></p>
+</li>
+<li><p>讲解及实验：</p>
+<ul>
+<li><p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247512167&idx=1&sn=cc7695d92362e3b18a6e8969fb14dc27&chksm=96ea6fe7a19de6f1be86b965e268df1b9c6320810cf32b6d64ddd3d238bf9088be41fb36adfe#rd">必须要 GPT-3 吗？不，BERT 的 MLM 模型也能小样本学习</a> </p>
+</li>
+<li><p><a href="https://kexue.fm/archives/7764">必须要 GPT-3 吗？不，BERT 的 MLM 模型也能小样本学习 - 科学空间</a></p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/375934846">NLP 系列之文本分类（二）：小样本学习/无监督学习/半监督学习—PET 范式</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>给输入的文本增加一个前缀或者后缀描述，并且 Mask 掉某些 Token，转换为完形填空问题，这样的转换在原论文中称为 <strong>Pattern</strong>，这个转换要尽可能与原来的句子组成一句自然的话，不能过于生硬，因为预训练的 MLM 模型就是在自然语言上进行的。</p>
+<p>然后，我们需要构建预测 Token 的候选空间，并且建立 Token 到实际类别的映射，这在原论文中称为 <strong>Verbalizer</strong>，比如情感分类的例子，我们的候选空间是<font color=Blue>{ 很, 不}</font>，映射关系是 <font color=Blue>很-&gt;正面</font>，<font color=Blue>不-&gt;负面</font>，候选空间与实际类别之间不一定是一一映射，比如我们还可以加入“挺”、“太”、“难”字，并且认为 <font color=Blue>{很，挺，太}-&gt;正面</font> 以及 <font color=Blue>{不，难}-&gt;负面</font>，等等。</p>
+<p>不难理解，不少 NLP 任务都有可能进行这种转换，但显然这种转换一般只适用于<strong>候选空间有限</strong>的任务，说白了就是只用来做<strong>选择题</strong>，常见任务的就是<strong>文本分类</strong>。</p>
+<p>刚才说了，同一个任务可以有多种不同的 Pattern，原论文是这样处理的：</p>
+<ol>
+<li><p>样本数量比较少，没有大量的标注数据怎么办？先用标注数据 training data，进行 pattern 数据生成，然后将 pattern 部分进行 mask, finetune 一个 MLM 模型；</p>
+</li>
+<li><p>因为有多种 pattern, 这样我们就有了多个基于 training data 的 MLM 模型，因为不知道哪种 pattern 是最好的，所以将多个模型进行集成，得到一个融合模型；</p>
+</li>
+<li><p>用这个融合模型，对 unlabeled data 进行预测，每个 data 都得到了一个伪标签 (soft label)；</p>
+</li>
+<li><p>用拥有伪标签的这部分 unlabeled data 去 finetune 一个分类模型，用于最终的分类预测。</p>
+</li>
+<li><p>注：如果使用了 Auxilliary Language Modeling，那么在第一步的时候，除了用 training data，mask 掉 pattern 的部分作为训练数据，还要使用 unlabeled data，随机 mask 掉一部分 token，然后对其预测。目的是为了能让 model 更好的适应当前的 domain。</p>
+</li>
+</ol>
+<h2 id="P-tuning-自动构建模版，释放语言模型潜能"><a href="#P-tuning-自动构建模版，释放语言模型潜能" class="headerlink" title=" P-tuning  自动构建模版，释放语言模型潜能"></a><span> P-tuning  自动构建模版，释放语言模型潜能</span></h2><p>讲解：<a href="https://kexue.fm/archives/8295">P-tuning：自动构建模版，释放语言模型潜能 - 科学空间|Scientific Spaces (kexue.fm)</a></p>
+<p>Code：<a href="https://github.com/THUDM/P-tuning">P-tuning: A novel method to tune language models. Codes and datasets for paper ``GPT understands, too’’.</a></p>
+<p>直观来看，模版就是由自然语言构成的前缀/后缀，通过这些模版我们使得下游任务跟预训练任务一致，这样才能更加充分地利用原始预训练模型，起到更好的零样本、小样本学习效果。</p>
+<p>等等，我们真的在乎模版是不是“自然语言”构成的吗？</p>
+<p>并不是。本质上来说，我们并不关心模版长什么样，<font color=Blue>我们只需要知道模版由哪些 token 组成，该插入到哪里，插入后能不能完成我们的下游任务，输出的候选空间是什么。</font>模版是不是自然语言组成的，对我们根本没影响，“自然语言”的要求，只是为了更好地实现“一致性”，但不是必须的。于是，P-tuning考虑了如下形式的模版：</p>
+<p><img data-src="/images/Models/2868831073.png"></p>
+<p>这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]，也就是用几个从未见过的 token 来构成模板，这里的 token 数目是一个超参数，放在前面还是后面也可以调整。接着，为了让“模版”发挥作用，我们用标注数据来求出这个模板。</p>
+]]></content>
+      <categories>
+        <category>NLP</category>
+      </categories>
+      <tags>
+        <tag>Models</tag>
       </tags>
   </entry>
   <entry>
@@ -1522,87 +1667,6 @@
       </categories>
       <tags>
         <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小样本分类训练模型 PET 和 P-tuning</title>
-    <url>//posts/305/</url>
-    <content><![CDATA[<h2 id="MLM"><a href="#MLM" class="headerlink" title=" MLM "></a><span> MLM </span></h2><p>MLM，全称 “Masked Language Model”，可以翻译为 “掩码语言模型”，实际上就是一个完形填空任务，随机 Mask 掉文本中的某些字词，然后要模型去预测被 Mask 的字词，示意图如下：</p>
-<p><img data-src="/images/Models/640.webp"></p>
-<p>其中被 Mask 掉的部分，可以是直接随机选择的 Token，也可以是随机选择连续的能组成一整个词的 Token，后者称为 WWM（Whole Word Masking）。</p>
-<p>开始，MLM 仅被视为 BERT 的一个预训练任务，训练完了就可以扔掉的那种，因此有一些开源的模型干脆没保留 MLM 部分的权重，然而，随着研究的深入，研究人员发现不止 BERT 的 Encoder 很有用，预训练用的 MLM 本身也很有用。</p>
-<span id="more"></span>
-
-<h2 id="将任务转成完形填空"><a href="#将任务转成完形填空" class="headerlink" title="将任务转成完形填空"></a><span>将任务转成完形填空</span></h2><p>在本文里，我们再学习 MLM 的一个精彩应用：用于小样本学习或半监督学习，某些场景下甚至能做到零样本学习。</p>
-<p>怎么将我们要做的任务跟 MLM 结合起来呢？很简单，<strong>给任务一个文本描述，然后转换为完形填空问题</strong>即可。举个例子，假如给定句子“这趟北京之旅我感觉很不错。”，那么我们补充个描述，构建如下的完形填空：</p>
-<blockquote>
-<p> ______满意。这趟北京之旅我感觉很不错。</p>
-</blockquote>
-<p>进一步地，我们限制空位处只能填一个“很”或“不”，问题就很清晰了，就是要我们根据上下文一致性判断是否满意，如果“很”的概率大于“不”的概率，说明是正面情感倾向，否则就是负面的，这样我们就将情感分类问题转换为一个完形填空问题了，它可以用 MLM 模型给出预测结果，而 MLM 模型的训练可以不需要监督数据，因此理论上这能够实现零样本学习了。</p>
-<p>多分类问题也可以做类似转换，比如新闻主题分类，输入句子为“八个月了，终于又能在赛场上看到女排姑娘们了。”，那么就可以构建：</p>
-<blockquote>
-<p>下面播报一则______新闻。八个月了，终于又能在赛场上看到女排姑娘们了。</p>
-</blockquote>
-<p>这样我们就将新闻主题分类也转换为完形填空问题了，一个好的 MLM 模型应当能预测出“体育”二字来。</p>
-<p>还有一些简单的推理任务也可以做这样的转换，常见的是给定两个句子，判断这两个句子是否相容，比如“我去了北京”跟“我去了上海”就是矛盾的，“我去了北京”跟“我在天安门广场”是相容的，常见的做法就是将两个句子拼接起来输入到模型做，作为一个二分类任务。如果要转换为完形填空，那该怎么构造呢？一种比较自然的构建方式是：</p>
-<blockquote>
-<p>我去了北京？______，我去了上海。</p>
-</blockquote>
-<blockquote>
-<p>我去了北京？______，我在天安门广场。</p>
-</blockquote>
-<p>其中空位之处的候选词为 <font color=Blue>{是的, 不是}</font> 。</p>
-<h2 id="PET-Pattern-Exploiting-Training"><a href="#PET-Pattern-Exploiting-Training" class="headerlink" title=" PET (Pattern-Exploiting Training) "></a><span> PET (Pattern-Exploiting Training) </span></h2><ul>
-<li><p>Papers: </p>
-<ul>
-<li><p><a href="https://arxiv.org/abs/2001.07676">Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/2009.07118">It’s Not Just Size That Matters: Small Language Models Are Also Few-Shot Learners</a></p>
-</li>
-</ul>
-</li>
-<li><p>Code: <a href="https://github.com/timoschick/pet">GitHub - timoschick/pet”</a></p>
-</li>
-<li><p>讲解及实验：</p>
-<ul>
-<li><p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247512167&idx=1&sn=cc7695d92362e3b18a6e8969fb14dc27&chksm=96ea6fe7a19de6f1be86b965e268df1b9c6320810cf32b6d64ddd3d238bf9088be41fb36adfe#rd">必须要 GPT-3 吗？不，BERT 的 MLM 模型也能小样本学习</a> </p>
-</li>
-<li><p><a href="https://kexue.fm/archives/7764">必须要 GPT-3 吗？不，BERT 的 MLM 模型也能小样本学习 - 科学空间</a></p>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/375934846">NLP 系列之文本分类（二）：小样本学习/无监督学习/半监督学习—PET 范式</a></p>
-</li>
-</ul>
-</li>
-</ul>
-<p>给输入的文本增加一个前缀或者后缀描述，并且 Mask 掉某些 Token，转换为完形填空问题，这样的转换在原论文中称为 <strong>Pattern</strong>，这个转换要尽可能与原来的句子组成一句自然的话，不能过于生硬，因为预训练的 MLM 模型就是在自然语言上进行的。</p>
-<p>然后，我们需要构建预测 Token 的候选空间，并且建立 Token 到实际类别的映射，这在原论文中称为 <strong>Verbalizer</strong>，比如情感分类的例子，我们的候选空间是<font color=Blue>{ 很, 不}</font>，映射关系是 <font color=Blue>很-&gt;正面</font>，<font color=Blue>不-&gt;负面</font>，候选空间与实际类别之间不一定是一一映射，比如我们还可以加入“挺”、“太”、“难”字，并且认为 <font color=Blue>{很，挺，太}-&gt;正面</font> 以及 <font color=Blue>{不，难}-&gt;负面</font>，等等。</p>
-<p>不难理解，不少 NLP 任务都有可能进行这种转换，但显然这种转换一般只适用于<strong>候选空间有限</strong>的任务，说白了就是只用来做<strong>选择题</strong>，常见任务的就是<strong>文本分类</strong>。</p>
-<p>刚才说了，同一个任务可以有多种不同的 Pattern，原论文是这样处理的：</p>
-<ol>
-<li><p>样本数量比较少，没有大量的标注数据怎么办？先用标注数据 training data，进行 pattern 数据生成，然后将 pattern 部分进行 mask, finetune 一个 MLM 模型；</p>
-</li>
-<li><p>因为有多种 pattern, 这样我们就有了多个基于 training data 的 MLM 模型，因为不知道哪种 pattern 是最好的，所以将多个模型进行集成，得到一个融合模型；</p>
-</li>
-<li><p>用这个融合模型，对 unlabeled data 进行预测，每个 data 都得到了一个伪标签 (soft label)；</p>
-</li>
-<li><p>用拥有伪标签的这部分 unlabeled data 去 finetune 一个分类模型，用于最终的分类预测。</p>
-</li>
-<li><p>注：如果使用了 Auxilliary Language Modeling，那么在第一步的时候，除了用 training data，mask 掉 pattern 的部分作为训练数据，还要使用 unlabeled data，随机 mask 掉一部分 token，然后对其预测。目的是为了能让 model 更好的适应当前的 domain。</p>
-</li>
-</ol>
-<h2 id="P-tuning-自动构建模版，释放语言模型潜能"><a href="#P-tuning-自动构建模版，释放语言模型潜能" class="headerlink" title=" P-tuning  自动构建模版，释放语言模型潜能"></a><span> P-tuning  自动构建模版，释放语言模型潜能</span></h2><p>讲解：<a href="https://kexue.fm/archives/8295">P-tuning：自动构建模版，释放语言模型潜能 - 科学空间|Scientific Spaces (kexue.fm)</a></p>
-<p>Code：<a href="https://github.com/THUDM/P-tuning">P-tuning: A novel method to tune language models. Codes and datasets for paper ``GPT understands, too’’.</a></p>
-<p>直观来看，模版就是由自然语言构成的前缀/后缀，通过这些模版我们使得下游任务跟预训练任务一致，这样才能更加充分地利用原始预训练模型，起到更好的零样本、小样本学习效果。</p>
-<p>等等，我们真的在乎模版是不是“自然语言”构成的吗？</p>
-<p>并不是。本质上来说，我们并不关心模版长什么样，<font color=Blue>我们只需要知道模版由哪些 token 组成，该插入到哪里，插入后能不能完成我们的下游任务，输出的候选空间是什么。</font>模版是不是自然语言组成的，对我们根本没影响，“自然语言”的要求，只是为了更好地实现“一致性”，但不是必须的。于是，P-tuning考虑了如下形式的模版：</p>
-<p><img data-src="/images/Models/2868831073.png"></p>
-<p>这里的[u1]～[u6]，代表BERT词表里边的[unused1]～[unused6]，也就是用几个从未见过的 token 来构成模板，这里的 token 数目是一个超参数，放在前面还是后面也可以调整。接着，为了让“模版”发挥作用，我们用标注数据来求出这个模板。</p>
-]]></content>
-      <categories>
-        <category>NLP</category>
-      </categories>
-      <tags>
-        <tag>Models</tag>
       </tags>
   </entry>
   <entry>
