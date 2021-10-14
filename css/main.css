@@ -3037,9 +3037,9 @@ mjx-container[display="true"] + br {
 /* header-页面背景 */
 body {
   background-image: url("/images/body-bg.png");
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: contain;
   background-position: 50% 50%;
   opacity: 1;
 }
