@@ -230,7 +230,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/13/">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/511/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -243,7 +243,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/13/" class="post-title-link" itemprop="url">洗牌算法</a>
+          <a href="/posts/511/" class="post-title-link" itemprop="url">Git 学习</a>
         </h2>
 
         <div class="post-meta-container">
@@ -254,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">发布：</span>
 
-      <time title="创建时间：2019-09-01 20:00:12" itemprop="dateCreated datePublished" datetime="2019-09-01T20:00:12+08:00">2019-09-01</time>
+      <time title="创建时间：2019-11-10 16:25:30" itemprop="dateCreated datePublished" datetime="2019-11-10T16:25:30+08:00">2019-11-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -262,7 +262,7 @@
       </span>
       <span class="post-meta-item-text">分类：</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+          <a href="/overview/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
         </span>
     </span>
 
@@ -275,13 +275,13 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/posts/13/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/13/" data-xid="/posts/13/" itemprop="commentCount"></span>
+    <a title="waline" href="/posts/511/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/511/" data-xid="/posts/511/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-    <span id="/posts/13/" class="post-meta-item leancloud_visitors" data-flag-title="洗牌算法" title="阅读">
+    <span id="/posts/511/" class="post-meta-item leancloud_visitors" data-flag-title="Git 学习" title="阅读">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -298,10 +298,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>之前两次面试都被问到洗牌算法，虽然不是直接问的，但都是基于洗牌算法的。结果第一次被问到之后没有重视，导致在一个地方栽了两次坑。。。😭</p>
-<blockquote>
-<p>洗牌算法，就是给你一个1到n的序列，让你随机打乱，保证每个数出现在任意一个位置的概率相同。换句话说，经过洗牌的数组的排列组合有n!种可能。</p>
-</blockquote>
+          <p>教程链接： <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a> </p>
+<h4 id="🍬-总结"><a href="#🍬-总结" class="headerlink" title="🍬. 总结"></a>🍬. 总结</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1. 初始化一个Git仓库，使用 <span class="string">&quot;git init&quot;</span> 命令。</span><br><span class="line">2. 添加文件到Git仓库，分两步：</span><br><span class="line">     - 使用命令 <span class="string">&quot;git add &lt;file&gt;&quot;</span>，注意，可反复多次使用，添加多个文件；</span><br><span class="line">     - 使用命令 <span class="string">&quot;git commit -m &lt;message&gt;&quot;</span>，完成。</span><br><span class="line">3. 要随时掌握工作区的状态，使用 <span class="string">&quot;git status&quot;</span> 命令。</span><br><span class="line">   如果 <span class="string">&quot;git status&quot;</span> 告诉你有文件被修改过，用 <span class="string">&quot;git diff&quot;</span> 可以查看修改内容。</span><br><span class="line">4. 版本回退：</span><br><span class="line">   - HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令 <span class="string">&quot;git reset --hard commit_id&quot;</span>。</span><br><span class="line">   - 穿梭前，用 <span class="string">&quot;git log&quot;</span> 可以查看提交历史，以便确定要回退到哪个版本。</span><br><span class="line">   - 要重返未来，用 <span class="string">&quot;git reflog&quot;</span> 查看命令历史，以便确定要回到未来的哪个版本。</span><br><span class="line">5. 撤销修改：</span><br><span class="line">   - 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令 <span class="string">&quot;git checkout -- file&quot;</span>。</span><br><span class="line">   - 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令 <span class="string">&quot;git reset HEAD&quot;</span>，就回到了场景1，第二步按场景1操作。</span><br><span class="line">6. 删除文件：</span><br><span class="line">   - 删除一个文件：用命令 <span class="string">&quot;git rm file&quot;</span> 删掉，并且 <span class="string">&quot;git commit -m xxx&quot;</span></span><br><span class="line">   - 恢复误删除文件：<span class="string">&quot;git checkout -- file&quot;</span> 其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</span><br><span class="line">7. 创建与合并分支：</span><br><span class="line">   - 查看分支：<span class="string">&quot;git branch&quot;</span></span><br><span class="line">   - 创建分支：<span class="string">&quot;git branch &lt;name&gt;&quot;</span></span><br><span class="line">   - 切换分支：<span class="string">&quot;git checkout &lt;name&gt;&quot;</span> 或者 <span class="string">&quot;git switch &lt;name&gt;&quot;</span></span><br><span class="line">   - 创建+切换分支：<span class="string">&quot;git checkout -b &lt;name&gt;&quot;</span> 或者 <span class="string">&quot;git switch -c &lt;name&gt;&quot;</span></span><br><span class="line">   - 合并某分支到当前分支：<span class="string">&quot;git merge &lt;name&gt;&quot;</span></span><br><span class="line">   - 删除分支：<span class="string">&quot;git branch -d &lt;name&gt;&quot;</span></span><br><span class="line">8. 当你当前分支的工作没做完想切换分支的时候，需要把当前分支的内容先隐藏 <span class="string">&quot;git stash&quot;</span></span><br><span class="line">9. 如果要丢弃一个没有被合并过的分支，可以通过 <span class="string">&quot;git branch -D &lt;name&gt;&quot;</span> 强行删除。</span><br><span class="line">10. 多人协作：</span><br><span class="line">   - 查看远程库信息，使用 <span class="string">&quot;git remote -v&quot;</span>；</span><br><span class="line">   - 本地新建的分支如果不推送到远程，对其他人就是不可见的；</span><br><span class="line">   - 从本地推送分支，使用 <span class="string">&quot;git push origin branch-name&quot;</span>，如果推送失败，先用 <span class="string">&quot;git pull&quot;</span> 抓取远程的新提交；</span><br><span class="line">   - 在本地创建和远程分支对应的分支，使用 <span class="string">&quot;git checkout -b branch-name origin/branch-name&quot;</span>，本地和远程分支的名称最好一致；</span><br><span class="line">   - 建立本地分支和远程分支的关联，使用 <span class="string">&quot;git branch --set-upstream branch-name origin/branch-name&quot;</span>；</span><br><span class="line">   - 从远程抓取分支，使用 <span class="string">&quot;git pull&quot;</span>，如果有冲突，要先处理冲突。</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <!--/noindex-->
         
@@ -330,7 +328,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/12/">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/308/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -343,7 +341,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/12/" class="post-title-link" itemprop="url">查找算法</a>
+          <a href="/posts/308/" class="post-title-link" itemprop="url">Batch Normalization and Layer Normalization</a>
         </h2>
 
         <div class="post-meta-container">
@@ -354,408 +352,7 @@
       </span>
       <span class="post-meta-item-text">发布：</span>
 
-      <time title="创建时间：2019-08-28 01:14:49" itemprop="dateCreated datePublished" datetime="2019-08-28T01:14:49+08:00">2019-08-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类：</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">评论：</span>
-  
-    <a title="waline" href="/posts/12/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/12/" data-xid="/posts/12/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span id="/posts/12/" class="post-meta-item leancloud_visitors" data-flag-title="查找算法" title="阅读">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>平均查找长度（Average Search Length，ASL）：</strong>需和指定key进行比较的关键字的个数的期望值，称为查找算法在查找成功时的平均查找长度。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Alyssa">
-      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醉里挑灯赏猫">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/6/" class="post-title-link" itemprop="url">图</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发布：</span>
-
-      <time title="创建时间：2019-08-21 21:30:11" itemprop="dateCreated datePublished" datetime="2019-08-21T21:30:11+08:00">2019-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类：</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">评论：</span>
-  
-    <a title="waline" href="/posts/6/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/6/" data-xid="/posts/6/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span id="/posts/6/" class="post-meta-item leancloud_visitors" data-flag-title="图" title="阅读">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>图，最多的遇到的面试题就是深度优先搜索和广度优先搜索，这也是最基础的。<br>图的一个最重要的点：<strong>设置一个 visit[] 数组，用来表示图中的每个节点是否已经被访问过</strong>。</p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Alyssa">
-      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醉里挑灯赏猫">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/10/" class="post-title-link" itemprop="url">数组</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发布：</span>
-
-      <time title="创建时间：2019-08-21 21:30:11" itemprop="dateCreated datePublished" datetime="2019-08-21T21:30:11+08:00">2019-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类：</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">评论：</span>
-  
-    <a title="waline" href="/posts/10/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/10/" data-xid="/posts/10/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span id="/posts/10/" class="post-meta-item leancloud_visitors" data-flag-title="数组" title="阅读">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="数组的全排列"><a href="#数组的全排列" class="headerlink" title="数组的全排列"></a><span>数组的全排列</span></h2><h3 id="leetcode-31-给出全排列的下一个排列"><a href="#leetcode-31-给出全排列的下一个排列" class="headerlink" title="leetcode 31. 给出全排列的下一个排列"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/next-permutation/">leetcode 31. 给出全排列的下一个排列</a></h3><ul>
-<li>输入1: <code>1,2,3,4,3,8,7,6,5</code> → <code>1,2,3,4,5,3,6,7,8</code></li>
-<li>输入2: <code>3,2,1</code> → <code>1,2,3</code></li>
-<li>条件：在nums数组上就地转换，并且要使用常数级辅助空间</li>
-<li><strong>从后向前，找到递减的位置，然后从后面找到比他大的第一个元素，交换，然后对后面从小到大排序即可</strong></li>
-<li>如果当前已经是最大，那么就输出他的最小值  从小到大排序即可</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> begin)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> end = nums.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(end-begin+<span class="number">1</span>)/<span class="number">2</span>;i++)</span><br><span class="line">        swap(nums, begin+i, end-i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=nums.length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i]&lt;=nums[i-<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//nums[i-1]是递减的那个值</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=nums.length-<span class="number">1</span>;j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[j]&gt;nums[i-<span class="number">1</span>]) &#123;</span><br><span class="line">                    swap(nums, i-<span class="number">1</span>, j);</span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//对后面逆序</span></span><br><span class="line">            reverse(nums, i);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag)</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Alyssa">
-      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醉里挑灯赏猫">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/7/" class="post-title-link" itemprop="url">字符串</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发布：</span>
-
-      <time title="创建时间：2019-08-21 21:30:11" itemprop="dateCreated datePublished" datetime="2019-08-21T21:30:11+08:00">2019-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类：</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">评论：</span>
-  
-    <a title="waline" href="/posts/7/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/7/" data-xid="/posts/7/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span id="/posts/7/" class="post-meta-item leancloud_visitors" data-flag-title="字符串" title="阅读">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><span>例题</span></h2><h3 id="leetcode-316-删除字符串中的重复字符"><a href="#leetcode-316-删除字符串中的重复字符" class="headerlink" title="leetcode 316. 删除字符串中的重复字符"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-duplicate-letters/">leetcode 316. 删除字符串中的重复字符</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given a string which contains only lowercase letters, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</span><br><span class="line">Example <span class="number">1</span>:  Input: <span class="string">&quot;bcabc&quot;</span>      Output: <span class="string">&quot;abc&quot;</span></span><br><span class="line">Example <span class="number">2</span>:  Input: <span class="string">&quot;cbacdcbc&quot;</span>   Output: <span class="string">&quot;acdb&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>因为只有26个小写字母，所以可以用数组模拟 hashmap 先统计每个字符出现的次数。</li>
-<li>然后要用辅助栈。其实发现很多问题都是数组和栈辅助进行操作，来对比当前元素和栈顶元素的大小，从而进行相应的操作。删除栈顶元素还是向栈中添加元素。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeDuplicateLetters</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];  <span class="comment">// 统计每个字符出现的次数</span></span><br><span class="line">    <span class="keyword">boolean</span>[] visit = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">26</span>];  <span class="comment">// 表示某个字符是否已经出现在栈中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray())  </span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] += <span class="number">1</span>;</span><br><span class="line">    Stack&lt;Character&gt; sta = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> ch : s.toCharArray()) &#123;</span><br><span class="line">        count[ch-<span class="string">&#x27;a&#x27;</span>] -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(visit[ch-<span class="string">&#x27;a&#x27;</span>]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">// 如果当前元素比栈顶元素小，并且栈顶元素次数不等0</span></span><br><span class="line">        <span class="comment">// 那么就把栈顶元素弹出来，把当前元素入栈</span></span><br><span class="line">        <span class="keyword">while</span>(!sta.isEmpty() &amp;&amp; ch&lt;sta.peek() &amp;&amp; count[sta.peek()-<span class="string">&#x27;a&#x27;</span>]!=<span class="number">0</span>) </span><br><span class="line">            visit[sta.pop()-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">false</span>;</span><br><span class="line">        sta.push(ch);</span><br><span class="line">        visit[ch-<span class="string">&#x27;a&#x27;</span>] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span>(!sta.isEmpty())</span><br><span class="line">        res = sta.pop()+res;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/301/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Alyssa">
-      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醉里挑灯赏猫">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/301/" class="post-title-link" itemprop="url">将keras的h5文件转为tensorflow的pb文件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发布：</span>
-
-      <time title="创建时间：2019-08-21 13:30:11" itemprop="dateCreated datePublished" datetime="2019-08-21T13:30:11+08:00">2019-08-21</time>
+      <time title="创建时间：2019-11-08 14:30:43" itemprop="dateCreated datePublished" datetime="2019-11-08T14:30:43+08:00">2019-11-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -776,13 +373,13 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/posts/301/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/301/" data-xid="/posts/301/" itemprop="commentCount"></span>
+    <a title="waline" href="/posts/308/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/308/" data-xid="/posts/308/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-    <span id="/posts/301/" class="post-meta-item leancloud_visitors" data-flag-title="将keras的h5文件转为tensorflow的pb文件" title="阅读">
+    <span id="/posts/308/" class="post-meta-item leancloud_visitors" data-flag-title="Batch Normalization and Layer Normalization" title="阅读">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -799,7 +396,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><span>背景</span></h2><p>目前keras框架使用简单，很容易上手，深得广大算法工程师的喜爱，但是当部署到客户端时，可能会出现各种各样的bug，甚至不支持使用keras，本文来解决的是将keras的h5模型转换为客户端常用的tensorflow的pb模型并使用tensorflow加载pb模型。</p>
+          <h2 id="Batch-Normalization-and-Layer-Normalization"><a href="#Batch-Normalization-and-Layer-Normalization" class="headerlink" title="Batch Normalization and Layer Normalization "></a><span>Batch Normalization and Layer Normalization </span></h2><ul>
+<li><a target="_blank" rel="noopener" href="http://arxiv.org/abs/1502.03167">Batch Normalization 论文</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av16000304">Batch Normalization 作用</a> </li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1607.06450">Layer Normalization 论文</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54530247">Layer Normalization 讲解</a>
           <!--noindex-->
           <!--/noindex-->
         
@@ -828,7 +429,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/9/">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/401/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -841,7 +442,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/9/" class="post-title-link" itemprop="url">排序算法</a>
+          <a href="/posts/401/" class="post-title-link" itemprop="url">机器学习白板推导</a>
         </h2>
 
         <div class="post-meta-container">
@@ -852,207 +453,7 @@
       </span>
       <span class="post-meta-item-text">发布：</span>
 
-      <time title="创建时间：2019-08-17 21:01:20" itemprop="dateCreated datePublished" datetime="2019-08-17T21:01:20+08:00">2019-08-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类：</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">评论：</span>
-  
-    <a title="waline" href="/posts/9/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/9/" data-xid="/posts/9/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span id="/posts/9/" class="post-meta-item leancloud_visitors" data-flag-title="排序算法" title="阅读">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="各种排序算法复杂度分析"><a href="#各种排序算法复杂度分析" class="headerlink" title="各种排序算法复杂度分析"></a><span>各种排序算法复杂度分析</span></h2><ul>
-<li>稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</li>
-<li>不稳定：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</li>
-</ul>
-<p><img data-src="/images/sort/analysis.png"></p>
-<p>在写排序算法之前，先把每种排序算法都用到的数组元素交换的代码写出来：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Alyssa">
-      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醉里挑灯赏猫">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/2/" class="post-title-link" itemprop="url">二叉树</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发布：</span>
-
-      <time title="创建时间：2019-08-17 14:11:16" itemprop="dateCreated datePublished" datetime="2019-08-17T14:11:16+08:00">2019-08-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类：</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/overview/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">评论：</span>
-  
-    <a title="waline" href="/posts/2/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/2/" data-xid="/posts/2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span id="/posts/2/" class="post-meta-item leancloud_visitors" data-flag-title="二叉树" title="阅读">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="二叉树结构的定义"><a href="#二叉树结构的定义" class="headerlink" title="二叉树结构的定义"></a><span>二叉树结构的定义</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/300/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Alyssa">
-      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="醉里挑灯赏猫">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/300/" class="post-title-link" itemprop="url">准确率，精确率，召回率和AUC曲线，PR曲线</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发布：</span>
-
-      <time title="创建时间：2019-08-17 14:11:16" itemprop="dateCreated datePublished" datetime="2019-08-17T14:11:16+08:00">2019-08-17</time>
+      <time title="创建时间：2019-10-21 18:30:01" itemprop="dateCreated datePublished" datetime="2019-10-21T18:30:01+08:00">2019-10-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1073,13 +474,13 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/posts/300/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/300/" data-xid="/posts/300/" itemprop="commentCount"></span>
+    <a title="waline" href="/posts/401/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/401/" data-xid="/posts/401/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-    <span id="/posts/300/" class="post-meta-item leancloud_visitors" data-flag-title="准确率，精确率，召回率和AUC曲线，PR曲线" title="阅读">
+    <span id="/posts/401/" class="post-meta-item leancloud_visitors" data-flag-title="机器学习白板推导" title="阅读">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1096,7 +497,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>我们都知道机器学习要建模，但是对于模型性能的好坏（即模型的泛化能力），我们并不知道是怎样的，很可能这个模型就是一个差的模型，泛化能力弱，对测试集不能很好的预测或分类。那么如何知道这个模型是好是坏呢？我们必须有个评判的标准。<strong>为了了解模型的泛化能力，我们需要用某个指标来衡量，这就是性能度量的意义。</strong>有了一个指标，我们就可以对比不同模型了，从而知道哪个模型相对好，那个模型相对差，并通过这个指标来进一步调参逐步优化我们的模型。</p>
+          <h2 id="白板推导"><a href="#白板推导" class="headerlink" title="白板推导"></a><span>白板推导</span></h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av28186618">SVM 白板推导</a></li>
+<li></li>
+<li>
           <!--noindex-->
           <!--/noindex-->
         
@@ -1125,7 +529,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/14/">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/303/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -1138,7 +542,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/14/" class="post-title-link" itemprop="url">链表</a>
+          <a href="/posts/303/" class="post-title-link" itemprop="url">互联网时代的社会语言学：基于 SNS 的文本数据挖掘</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1149,7 +553,105 @@
       </span>
       <span class="post-meta-item-text">发布：</span>
 
-      <time title="创建时间：2019-08-15 23:30:11" itemprop="dateCreated datePublished" datetime="2019-08-15T23:30:11+08:00">2019-08-15</time>
+      <time title="创建时间：2019-10-17 17:45:03" itemprop="dateCreated datePublished" datetime="2019-10-17T17:45:03+08:00">2019-10-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类：</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/overview/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">评论：</span>
+  
+    <a title="waline" href="/posts/303/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/303/" data-xid="/posts/303/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span id="/posts/303/" class="post-meta-item leancloud_visitors" data-flag-title="互联网时代的社会语言学：基于 SNS 的文本数据挖掘" title="阅读">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="如何挖掘新词"><a href="#如何挖掘新词" class="headerlink" title="如何挖掘新词"></a><span>如何挖掘新词</span></h2><p>汉语是一种独特而神奇的语言。对汉语资料进行自然语言处理时，我们会遇到很多其他语言不会有的困难，比如分词——汉语的词与词之间没有空格，那计算机怎么才知道，“已结婚的和尚未结婚的青年都要实行计划生育”究竟说的是“已／结婚／的／和／尚未／结婚／的／青年”，还是“已／结婚／的／和尚／未／结婚／的／青年”呢？这就是所谓的分词歧义难题。不过，现在很多语言模型已经能比较漂亮地解决这一问题了。但在中文分词领域里，还有一个比分词歧义更令人头疼的东西——未登录词。中文没有首字母大写，专名号也被取消了，这叫计算机如何辨认人名地名之类的东西？更惨的则是机构名、品牌名、专业名词、缩略语、网络新词等等，它们的产生机制似乎完全无规律可寻。最近十年来，中文分词领域都在集中攻克这一难关。自动发现新词成为了关键的环节。</p>
+<p>挖掘新词的传统方法是，先对文本进行分词，然后猜测未能成功匹配的剩余片段就是新词。这似乎陷入了一个怪圈：分词的准确性本身就依赖于词库的完整性，如果词库中根本没有新词，我们又怎么能信任分词结果呢？此时，一种大胆的想法是，首先不依赖于任何已有的词库，仅仅根据词的共同特征，将一段大规模语料中可能成词的文本片段全部提取出来，不管它是新词还是旧词。然后，再把所有抽出来的词和已有词库进行比较，不就能找出新词了吗？有了抽词算法后，我们还能以词为单位做更多有趣的数据挖掘工作。这里，我所选用的语料是人人网 2011 年 12 月前半个月部分用户的状态。非常感谢人人网提供这份极具价值的网络语料。</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.dlzhang.com/posts/8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Alyssa">
+      <meta itemprop="description" content="二次元/coser/手办宅/程序媛">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醉里挑灯赏猫">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/8/" class="post-title-link" itemprop="url">字符串匹配算法－KMP算法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发布：</span>
+
+      <time title="创建时间：2019-10-16 13:29:34" itemprop="dateCreated datePublished" datetime="2019-10-16T13:29:34+08:00">2019-10-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1170,13 +672,13 @@
     </span>
     <span class="post-meta-item-text">评论：</span>
   
-    <a title="waline" href="/posts/14/#waline-comments" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" id="/posts/14/" data-xid="/posts/14/" itemprop="commentCount"></span>
+    <a title="waline" href="/posts/8/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/8/" data-xid="/posts/8/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-    <span id="/posts/14/" class="post-meta-item leancloud_visitors" data-flag-title="链表" title="阅读">
+    <span id="/posts/8/" class="post-meta-item leancloud_visitors" data-flag-title="字符串匹配算法－KMP算法" title="阅读">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -1193,11 +695,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a><span>链表结构</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>链表有一个很烦的点在于可能会对头节点进行处理。。所以时刻不能忽略头节点可能被处理的情况。</p>
-</blockquote>
+          <p>给定一个主串S及一个模式串P，判断模式串是否为主串的子串；若是，返回匹配的第一个元素的位置，否则返回-1；</p>
+<p>如S=“abcd”，P=“bcd”，则返回1；S=“abcd”，P=“acb”，返回-1。</p>
           <!--noindex-->
           <!--/noindex-->
         
@@ -1219,7 +718,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
@@ -1263,7 +762,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 

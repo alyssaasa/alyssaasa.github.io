@@ -11,7 +11,7 @@
   --table-row-odd-bg-color: #f9f9f9;
   --table-row-hover-bg-color: #f5f5f5;
   --menu-item-bg-color: #f5f5f5;
-  --btn-default-bg: #ef7060;
+  --btn-default-bg: #ada49f;
   --btn-default-color: #555;
   --btn-default-border-color: #555;
   --btn-default-hover-bg: #649ab6;
@@ -3037,9 +3037,9 @@ mjx-container[display="true"] + br {
 /* header-页面背景 */
 body {
   background-image: url("/images/body-bg.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: contain;
+  background-size: cover;
   background-position: 50% 50%;
   opacity: 1;
 }
@@ -3082,7 +3082,7 @@ body {
 /* post-首页文章标题 */
 .index .post-title {
   text-align: left;
-  border-left: #ef7060 8px solid;
+  border-left: #ada49f 8px solid;
   padding-left: 10px;
 }
 /* post-首页文章信息 */
@@ -3149,7 +3149,7 @@ li {
 /************************ Button ***************************/
 /* button-back2top */
 .back-to-top {
-  background: #ef7060;
+  background: #ada49f;
   opacity: 0.8;
   font-weight: bold;
   font-size: 1em;
@@ -3238,7 +3238,7 @@ li {
 }
 /* pagination-当前页码 */
 .pagination .page-number.current {
-  background: #ef7060;
+  background: #ada49f;
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -3274,7 +3274,7 @@ li {
     padding: 10px 15px;
     font-weight: bold;
     color: #fff;
-    background: #ef7060;
+    background: #ada49f;
     border-bottom: none;
     border-radius: 15px;
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -3319,7 +3319,7 @@ li {
   .tag-cloud a,
   .posts-expand .post-tags a {
     color: var(--text-color) !important;
-    background: #ef7060;
+    background: #ada49f;
   }
 }
 /************************* Comment ************************/
@@ -3361,8 +3361,8 @@ li {
 /* comment-评论提交按钮 */
 .v[data-class=v] .vbtn.primary {
   color: #fff !important;
-  border-color: #ef7060 !important;
-  background: #ef7060 !important;
+  border-color: #ada49f !important;
+  background: #ada49f !important;
 }
 .v[data-class=v] .vbtn.primary:hover {
   border-color: #649ab6 !important;
@@ -3373,12 +3373,12 @@ li {
 .post-body code {
   padding: 3px 6px;
   font-size: 0.85rem;
-  color: #ef7060;
+  color: #ada49f;
   background: #f2f2f2;
   border-radius: 3px;
 }
 .post-body h2 {
-  border-bottom: 2px solid #ef7060;
+  border-bottom: 2px solid #ada49f;
 }
 .post-body h2 .header-anchor,
 .post-body h2 .headerlink {
@@ -3398,7 +3398,7 @@ li {
 .post-body h2 span {
   display: inline-block;
   font-weight: bold;
-  background: #ef7060;
+  background: #ada49f;
   color: #fff;
   padding: 3px 10px 1px;
   border-top-right-radius: 3px;
